@@ -1,10 +1,10 @@
-*** You can found other screens, configs on: ***
+You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)
 + [Reddit](https://www.reddit.com/user/szorfein/posts/)
 + [Imgur](https://imgur.com/user/Szorfein/submitted)
 + [Google+](https://plus.google.com/103351806729237673609)
 + [twitter](https://twitter.com/szorfein)
-+ [Personal blog](https://szorfein.github.io/)
++ [Blog](https://szorfein.github.io/)
 
 ## Advertise
 
@@ -27,7 +27,7 @@ If you search an old wallpaper that i've use, search into the list [here](https:
 + firejail - launch app in a secure sandbox
 + pscircle - the wallpaper
 
-A complete list of programs that i use is [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
+A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
 
 ## Requirements for lemonbar || polybar
 
@@ -42,12 +42,17 @@ All dependencies for polybar can be remove, change, etc, you just have to edit t
 + dnscrypt-proxy
 + tor
 
+## Screens
+
+**Current Desktop** on ([subtle](https://subforge.org/projects/subtle))
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
+
+**Previously** on ([subtle](https://subforge.org/projects/subtle))
+![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
+
 ### Troubleshoot
 
-To install on:  
+To install:  
 + bspwm: [wiki](https://github.com/szorfein/dotfiles/wiki/Install-BSPWM)  
 + i3-gaps: [wiki](https://github.com/szorfein/dotfiles/wiki/i3-gaps)
 + subtle: [wiki](https://github.com/szorfein/dotfiles/wiki/subtle)
-
-Current Desktop: ([subtle](https://subforge.org/projects/subtle))
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshot.jpg "Screenshot")
