@@ -1,6 +1,8 @@
+app-admin/pscircle
 app-admin/pwgen
 app-admin/sudo
 app-crypt/gnupg
+app-editors/vim +X
 app-misc/ranger
 app-misc/tmux
 app-shells/bash
@@ -8,20 +10,25 @@ app-shells/zsh
 app-text/zathura
 app-text/zathura-cb
 app-text/zathura-pdf-mupdf
-dev-util/dialog
-lxde-base/lxappearance
+app-vim/gnupg
+app-vim/nerdtree
+app-vim/pathogen
+dev-python/pillow +jpeg +zlib
 mail-client/mutt +gpg
 mail-mta/msmtp +mta +sasl +ssl
+media-fonts/hack
 media-fonts/iosevka
 media-fonts/material-icons
 media-gfx/feh
 media-gfx/gimp
+media-gfx/imagemagick +jpeg +png
 media-gfx/scrot
-media-sound/alsa-utils
 media-sound/cava
 media-sound/mpc
 media-sound/mpd
+media-sound/mps-youtube
 media-sound/ncmpcpp +clock +unicode +taglib
+media-video/ffmpeg +ladspa +network +openssl +webp +x264
 media-video/mpv +lua +opengl +egl
 net-dns/dnscrypt-proxy
 net-irc/weechat +ssl +irc
@@ -29,19 +36,10 @@ net-mail/offlineimap +ssl
 net-misc/aria2 +ssl +metalink +libxml2 +adns +bittorent
 net-misc/autossh
 net-misc/keychain
-net-misc/mps-youtube
-net-misc/openssh
 net-misc/wget
-net-proxy/obfs4proxy
 net-proxy/privoxy +acl +client-tags +fast-redirect +threads
 net-vpn/tor +seccomp +tor-hardening
-net-wireless/iw
-net-wireless/wireless-tools
-net-wireless/wpa_supplicant
-sys-apps/dbus
 sys-apps/firejail +seccomp
-sys-apps/systemd
-sys-libs/pam
 www-client/brave-bin
 www-servers/darkhttpd
 x11-apps/xinit
@@ -56,14 +54,5 @@ x11-misc/rofi
 x11-misc/wmname
 x11-misc/xclip
 x11-misc/xdo
-x11-themes/adapta-gtk-theme
-x11-themes/gtk-engines-adwaita
-x11-themes/gtk-engines-murrine
-x11-wm/subtle +xft
-app-editors/vim +X
-app-vim/gnupg
-app-vim/pathogen
-media-gfx/imagemagick +jpeg +png
-dev-python/pillow +jpeg +zlib
 x11-terms/kitty +imagemagick
-media-video/ffmpeg +ladspa +network +openssl +webp +x264
+x11-wm/subtle +xft
