@@ -33,6 +33,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 
 All dependencies for polybar can be remove, change, etc, you just have to edit the config file to your needs.
 
++ Liberation Mono 
 + material-icons
 + wget - used for retrieve IP address
 + mpd - music server
