@@ -11,43 +11,42 @@ size_hints = true
 filter_unmatched_urls = true
 
 [colors]
-cursor = #ffffff
-cursor_foreground = #666666
-foreground = #ffeacb
-background = #313131
-#background = rgba(16,14,18,.97)
-highlight = #2f1a21
+cursor = #00afaf
+cursor_foreground = #ffffff
+foreground = #afd7ff
+background = #1e1e1e
+highlight = #116666
 
-# black
-color0= #3c3836
-color8= #504945
+#: black
+color0 = #3c3836
+color8 = #504945
 
-# red
-color1= #cc241d
-color9= #fb4934
+#: red
+color1 = #d15e85
+color9 = #d15e85
 
-# Green
-color2 = #98971a
-color10 = #b8bb26
+#: green
+color2 = #87ffff
+color10 = #87ffff
 
-# Yellow
-color3= #aa5448
-color11= #b26356
+#: yellow
+color3 = #a1a6a8
+color11 = #a1a6a8
 
-# Blue
-color4 = #5a5c67
-color12 = #63656f
+#: blue
+color4 = #5f87af
+color12 = #5f87af
 
-# Magenta
-color5 =  #b64cc9
-color13 = #b64cc9
+#: magenta
+color5 = #af5faf
+color13 = #8787af
 
-# Cyan 
-color6 = #689d6a
-color14 = #8ec07c
+#: cyan
+color6 = #008787
+color14 = #008787
 
-# White
-color7=  #b2a796
-color15= #beb4a6 
+#: white
+color7 = #afd7d7
+color15 = #afd7d7
 
 [hints]
