@@ -1,3 +1,66 @@
+## Setup
+
+```txt                              
+bar               > polybar,lemonbar
+compositor        > compton
+extra background  > pscircle
+fonts             > iosevka,roboto,noto,liberation mono,material-icons
+image viewer      > feh
+irc               > Weechat
+lock screen       > i3lock
+media player      > mpv
+music player      > ncmpcpp
+program launcher  > rofi,dmenu
+PDF viewer        > zathura
+terms             > kitty,termite,rxvt
+web browser       > vivaldi, brave
+wm                > subtle,i3,bspwm
+```
+A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
+
+## Installation
+
+I've switch to [GNU stow](http://www.gnu.org/software/stow/) recently in order to keep 4-5 different themes.  
+Start going into your home:
+
+    $ cd ~
+
+Clone this repository:
+
+    $ git clone https://github.com/szorfein/dotfiles
+
+The last theme is installable with:
+
+    $ cd dotfiles
+    $ stow theme-darkest-space
+
+It will create for each file a symbolic link into your `$HOME`. 
+To switch on an other theme, you have to delete the older:
+
+    $ stow -D theme-darkest-space
+    $ stow theme-other
+
+## vim
+
+Vim use my own colorscheme [darkest-space](https://github.com/szorfein/darkest-space), i use vim with:
++ [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins.
++ [nerdtree](https://github.com/scrooloose/nerdtree)
++ [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
+
+## zsh
+
+I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the theme [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).
+
+## Screens
+
+**Last**:`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*.
+
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
+
+`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*, [wallpaper](link)
+
+![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
+
 You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)
 + [Reddit](https://www.reddit.com/user/szorfein/posts/)
@@ -6,51 +69,11 @@ You can found other screens on:
 + [twitter](https://twitter.com/szorfein)
 + [Blog](https://szorfein.github.io/)
 
-## Advertise
+## Old wallpapers
 
-A new theme will erase the previous, only the colors (.Xresources) are saved into `~/.colors`. It change about every 15 days. if you like a theme, do a copy locally with:
+If you search an wallpaper that i've use, search into the list [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
 
-    $ git clone https://github.com/szorfein/dotfiles darkest-space-theme
-
-If you search an old wallpaper that i've use, search into the list [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
-
-## Requirements for this desktop
-
-+ subtle
-+ kitty - terminal
-+ rofi - to run programs
-+ polybar - top | bottom bar
-+ iosevka-term - font for terminal
-+ feh - for set wallpaper
-+ compton - minimal shadows / transparency of windows
-+ firejail - launch app in a secure sandbox
-+ pscircle - the wallpaper
-
-A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
-
-## Requirements for lemonbar || polybar
-
-All dependencies for polybar can be remove, change, etc, you just have to edit the config file to your needs.
-
-+ Liberation Mono 
-+ material-icons
-+ wget - used for retrieve IP address
-+ mpd - music server
-+ mpc - music client
-+ systemd - used to see state of daemon and reload service.
-+ i3lock
-+ dnscrypt-proxy
-+ tor
-
-## Screens
-
-**Current Desktop** on ([subtle](https://subforge.org/projects/subtle))
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
-
-**Previously** on ([subtle](https://subforge.org/projects/subtle))
-![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
-
-### Troubleshoot
+### Troubleshooting
 
 To install:  
 + bspwm: [wiki](https://github.com/szorfein/dotfiles/wiki/Install-BSPWM)  

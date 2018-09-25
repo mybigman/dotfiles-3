@@ -39,7 +39,7 @@ URxvt.colorUL:                       #e9cfd3
 ! General Colors
 
 ! Need full path here
-#include "/home/user/.colors/darkest-space"
+#include "/home/user/.colors/color"
 
 !-------------------------------------------
 ! Man pages colors
