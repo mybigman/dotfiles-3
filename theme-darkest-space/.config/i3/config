@@ -192,3 +192,6 @@ assign [class="Gimp"] → $ws5
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id compton -b --config $HOME/.compton.conf
+exec --no-startup-id $HOME/bin/pscircle.sh &
+

@@ -27,11 +27,6 @@ fi
 
 # SSH tunnel
 autossh_own &
-#urxvtd -q -o -f
-xsetroot -cursor_name left_ptr &
-wmname LG3D
-hsetroot -fill images/798884-kerrigan-wallpaper-1920x1080-photo.jpg
-compton &
 
 # Lower the brightness to a minimum
 xbacklight -set 1

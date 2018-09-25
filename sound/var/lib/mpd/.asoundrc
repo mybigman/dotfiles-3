@@ -1,0 +1,113 @@
+# Dependencies
+# (gentoo): tap-plugins swh-plugins libsamplerate ladspa-cmt caps-plugins
+
+# Find card name:
+# aplay -l | awk -F \: '/,/{print $2}' | awk '{print $1}' | uniq
+
+# If sound crackle when music switch, 
+# recompile kernel with change CONFIG_SND_HDA_PREALLOC_SIZE=2048
+
+# For mpd, copy this file to /var/lib/mpd/.asoundrc
+# and set device "headphones", format "44100:16:1", mixer_type "software"
+
+# If problem with alsamixer for find your device, launch alsamixer with arg:
+# alsamixer -D "hw:Pro"
+
+# Rate converter are in /usr/lib64/alsa-lib/libasound_module_rate_<name>.so
+defaults.pcm.rate_converter "samplerate_medium"
+
+# Default card
+# shown: cat /proc/asound/card0/pcm0p/sub0/hw_params
+pcm_slave.sb1095 {
+    pcm "hw:Pro"
+    format S16_LE
+    rate 48000
+    channels 6
+    period_size 1024
+    buffer_size 8192 
+    period_time 0
+}
+
+# speaker-test -Dplug:primal -c2 -t1 -twav
+pcm.primal {
+    type asym
+    playback.pcm {
+        type dmix
+        ipc_key 5678293
+        ipc_key_add_uid false
+        ipc_perm 0666
+        slave sb1095
+    }
+    capture.pcm "dsnoop"
+}
+
+# Enable control in alsamixer
+# Source: http://www.alsa-project.org/main/index.php/Matrix:Module-usb-audio
+pcm.softvol {
+    type softvol
+    slave.pcm "primal"
+    control {
+        name "Master"
+        card Pro
+    }
+}
+
+# speaker-test -Dplug:default -l1 -c2 -twav
+pcm.!default {
+    type plug
+    slave.pcm "softvol"
+}
+
+pcm.!surround20 {
+    type plug
+    slave.pcm "primal"
+}
+
+# Alternative to bs2b | music via Headphones
+# analyseplugin caps | grep -A14 Narrow
+pcm.narrower {
+    type ladspa
+    path "/usr/lib64/ladspa"
+    plugins {
+        0 {
+            id 2595
+            input {
+                controls [ 0 0.35 ]
+            }
+        }
+    }
+    slave.pcm "surround20"
+}
+
+# source: http://bs2b.sourceforge.net/
+# listplugins
+# analyseplugin bs2b
+pcm.bs2b {
+    type ladspa
+    path "/usr/lib/ladspa"
+    plugins {
+        0 {
+            id 4221
+            input {
+                controls [ 700 6 ]
+            }
+        }
+    }
+    slave.pcm "surround20"
+}
+
+# speaker-test -Dheadphones -c2 -t1 -twav
+pcm.headphones {
+    type rate
+    slave {
+        #pcm "plug:bs2b"
+        pcm "plug:narrower"
+        rate 48000
+    }
+    # Option bellow make sound cracke and a lot of gapless!
+    #converter "samplerate_medium"
+    hint {
+        show on
+        description "Headphones"
+    }
+}
