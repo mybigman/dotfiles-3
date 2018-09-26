@@ -28,17 +28,17 @@ Start going into your home:
 Clone this repository:
 
     $ git clone https://github.com/szorfein/dotfiles
+    $ cd dotfiles
 
 The last theme is installable with:
 
-    $ cd dotfiles
-    $ stow theme-darkest-space
+    $ stow theme-universe
 
 It will create for each file a symbolic link into your `$HOME`. 
 To switch on an other theme, you have to delete the older:
 
-    $ stow -D theme-darkest-space
-    $ stow theme-other
+    $ stow -D theme-universe
+    $ stow theme-darkest-space
 
 ## vim
 
@@ -53,13 +53,17 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*.
+**Last**:`theme-universe`, [wm]:*subtle*. [term]: *kitty*.
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
+
+`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*.
+
+![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
 `theme-gruvbox`, [wm]:*subtle*. [term]: *termite*, [wallpaper](link)
 
-![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
+![Gruvbox screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
 
 You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)
