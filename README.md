@@ -32,6 +32,7 @@ Clone this repository:
 
 The last theme is installable with:
 
+    $ stow config
     $ stow theme-universe
 
 It will create for each file a symbolic link into your `$HOME`. 

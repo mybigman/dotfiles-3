@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TERM=/usr/bin/termite
+TERM=$TERMINAL
 LIST_PROC=(
     "weechat"
     "ncmpcpp"
