@@ -38,7 +38,7 @@ URxvt.colorUL:                       #e9cfd3
 !--------------------------------------------
 ! General Colors
 
-! Need full path here
+! Just change username here
 #include "/home/user/.colors/color"
 
 !-------------------------------------------
