@@ -62,7 +62,11 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
-`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*, [wallpaper](link)
+`theme-empire`, [wm]:*subtle*. [term]: *termite*
+
+![Empire screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/empire.jpg "empire")
+
+`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*
 
 ![Gruvbox screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
 

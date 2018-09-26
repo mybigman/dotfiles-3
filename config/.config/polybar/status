@@ -1,11 +1,12 @@
 #!/bin/sh
 
-arg=$1
-cmd=""
+set -e
 
-# For english, you have to replace word Active with Enable (or other ?).
-if [ $arg ] ; then
-    cmd=$(systemctl status $arg | grep Active | awk '{print $2}' | cut -d ':' -f -1)
-fi
+daemon=${1:?}
+state="%{F#d15e85}off%{F-}"
+cmd="$(systemctl status $daemon | grep -i run 2>/dev/null || echo '')"
 
-echo "${arg:0:8} - $cmd"
+[[ "$cmd" ]] && state="%{F#5f87af}on%{F-}"
+
+echo "%{F#008787}${daemon}%{F-} ${state}"
+exit 0

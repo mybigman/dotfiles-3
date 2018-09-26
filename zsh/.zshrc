@@ -12,7 +12,7 @@
 # Themes are into ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="gallois"
+ZSH_THEME="spaceship"
 
 # It's not automatically call for me
 if [ -r $HOME/.aliases.zsh ] ; then
@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 DISABLE_AUTO_UPDATE="true"
 
 # Plugin list in ~/.oh-my-zsh/plugins
-plugins=(git git-prompt rbenv ruby)
+plugins=(git git-prompt ruby)
 
 # With Zsh and Termite
 if [[ $TERM == xterm-termite ]] ; then
