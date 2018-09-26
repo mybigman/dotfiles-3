@@ -1,3 +1,7 @@
+; modules
+modules-center = runBrave runMail runMsf runWireshark
+
+; others
 width = 100%
 heigth = 0
 offset-x = 0
