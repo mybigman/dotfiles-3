@@ -38,8 +38,7 @@ URxvt.colorUL:                       #e9cfd3
 !--------------------------------------------
 ! General Colors
 
-! Just change username here
-#include "/home/user/.colors/color"
+#include ".colors/color"
 
 !-------------------------------------------
 ! Man pages colors

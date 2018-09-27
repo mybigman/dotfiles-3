@@ -45,7 +45,7 @@ www-servers/darkhttpd
 x11-apps/xinit
 x11-apps/xsetroot
 x11-apps/xwininfo
-x11-misc/compton
+x11-misc/compton +pcre
 x11-misc/dunst
 x11-misc/hsetroot
 x11-misc/i3lock
