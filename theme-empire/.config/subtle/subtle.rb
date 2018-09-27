@@ -169,7 +169,7 @@ tag "terms" do
   match :instance => "xterm|[u]?rxvt|termite|kitty"
 end
 
-tag "browser", "uzbl|opera|firefox|navigator|vivaldi"
+tag "browser", "uzbl|opera|firefox|navigator|vivaldi|brave"
 
 tag "fixed" do
   geometry [ 10, 10, 100, 100 ]
@@ -309,11 +309,13 @@ view "gimp",  "gimp_.*"
 #
 
 on :start do
+  Subtlext::Client.spawn( "compton -b" )
+  Subtlext::Client.spawn( "feh --bg-fill images/empire.jpg" )
   Subtlext::Client.spawn( "termite" )
-  Subtlext::Client.spawn( "vivaldi_sec" )
   Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_3.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_4.sh" )
+  Subtlext::Client.spawn( "vivaldi_sec" )
 end
 
 on :reload do
