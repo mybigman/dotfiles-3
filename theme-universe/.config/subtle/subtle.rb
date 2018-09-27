@@ -342,7 +342,7 @@ view "vm",  "vms"
 
 on :start do
     Subtlext::Client.spawn( "compton -b" )
-    Subtlext::Client.spawn( "pscircle-with-image.sh images/1783833.jpg" )
+    Subtlext::Client.spawn( "pscircle-with-image.sh images/universe.jpg" )
     Subtlext::Client.spawn( "kitty" )
     Subtlext::Client.spawn( "~/.config/polybar/launch.sh" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )
