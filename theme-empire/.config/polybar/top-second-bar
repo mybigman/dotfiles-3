@@ -1,5 +1,5 @@
 ; modules
-modules-left = dns tor rldTor
+modules-left = dns tor rldTor volume
 modules-center = wave mpd wave
 modules-right = netstat wlan eth
 
@@ -7,7 +7,7 @@ modules-right = netstat wlan eth
 width = 90%
 height = 19
 offset-x = 5%
-offset-y = 3  
+offset-y = 2  
 background = ${colors.background-alt}
 foreground = ${colors.foreground-alt}
 font-0 = "Iosevka Term Regular:size=6;2"
