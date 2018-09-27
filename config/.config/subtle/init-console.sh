@@ -2,26 +2,37 @@
 
 TERM=$TERMINAL
 LIST_PROC=(
-    "code-1"
-    "code-2"
-    "code-3"
-    "code-4"
-    "code-5"
-    "code-6"
+    "weechat"
+    "ncmpcpp"
+    "mutt"
+    "pwd"
+    "cava"
 )
 
 clear_env() {
-    local old_term=$(ps aux | grep -i "termite --name=code"|awk '{print $2}')
-    for i in ${old_term[@]} ; do
+    local old_term=$(ps aux|egrep pwd|head -n1|awk '{print $2}')
+    for i in ${LIST_PROC[@]} ; do
         echo "clear process $i"
-        kill -9 $i
+        if [ $i == "pwd" ] ; then
+            for p in $old_term ; do
+                kill -9 $p
+            done
+        else
+            for s in $(pgrep -u $UID -x $i) ; do
+                kill -9 $s
+            done
+        fi
     done
 }
 
 launch_proc() {
     for i in ${LIST_PROC[@]} ; do
         echo "launch proc $i"
-        $TERM --name="$i" &
+        if [ $i == "pwd" ]; then
+            $TERM --name="$i" &
+        else
+            $TERM --name="$i" -e "$i" &
+        fi
         sleep .4
     done
 }

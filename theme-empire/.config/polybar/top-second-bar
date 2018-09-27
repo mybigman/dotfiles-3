@@ -1,5 +1,5 @@
 ; modules
-modules-left = dns tor
+modules-left = dns tor rldTor
 modules-center = wave mpd wave
 modules-right = netstat wlan eth
 
@@ -7,19 +7,20 @@ modules-right = netstat wlan eth
 width = 90%
 height = 19
 offset-x = 5%
-offset-y = 5  
+offset-y = 3  
 background = ${colors.background-alt}
 foreground = ${colors.foreground-alt}
-font-0 = "Iosevka-Term:size=6;2"
-font-1 = "Material Icons:antialias=false:size=8;5"
+font-0 = "Iosevka Term Regular:size=6;2"
+font-1 = "Material Icons:antialias=false:size=8;4"
 border-top-size = 1
 border-top-color = ${colors.border}
 border-size = 0
 padding-left = 2
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
 line-size = 0
 bottom = false
 cursor-click = pointer
 cursor-scroll = ns-resize
+separator = " %{F#776666}*%{F-} "

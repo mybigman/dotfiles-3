@@ -140,7 +140,7 @@ grab "W-F4", [ :pp, :we, :mu, :ca, :ma ]
 grab "W-F5", [ :fl_1, :fl_2, :fl_3 ]
 
 # Exec programs
-grab "W-Return", "termite"
+grab "W-Return", "#{ENV["TERMINAL"]}"
 grab "W-p", "rofi -show run"
 
 # Run Ruby lambdas
@@ -311,7 +311,7 @@ view "gimp",  "gimp_.*"
 on :start do
   Subtlext::Client.spawn( "compton -b" )
   Subtlext::Client.spawn( "feh --bg-fill images/empire.jpg" )
-  Subtlext::Client.spawn( "termite" )
+  Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
   Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_3.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_4.sh" )
