@@ -1,7 +1,7 @@
 ; modules
-modules-left = hostname ip volume uptime
+modules-left = hostname ip xwindow
 modules-center = dagg-l date dagg-r
-modules-right =  mail dns memory battery powermenu
+modules-right =  uptime mail memory battery powermenu
 
 ; others
 width = 90%

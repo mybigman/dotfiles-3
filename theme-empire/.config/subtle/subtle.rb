@@ -2,7 +2,7 @@
 # Default options
 #
 
-set :increase_step, 1
+set :increase_step, 5
 set :border_snap, 10
 set :default_gravity, :ct
 set :urgent_dialogs, false
@@ -11,6 +11,7 @@ set :gravity_tiling, true
 set :click_to_focus, false
 set :skip_pointer_warp, true 
 set :skip_urgent_warp, true 
+set :wmname, "Subtle"
 
 #
 # Screen & bar, we use polybar
@@ -223,35 +224,35 @@ tag "gimp_scum" do
 end
 
 ## programs on view console
-gravity :pp, [ 33, 5, 34, 20 ]
-gravity :we, [ 1, 13, 28, 79 ]
-gravity :mu, [ 71, 13, 28, 40 ]
-gravity :ca, [ 71, 53, 28, 39 ]
-gravity :ma, [ 33, 32, 34, 66 ]
+gravity :term, [ 33, 5, 34, 20 ]
+gravity :wee, [ 1, 13, 28, 79 ]
+gravity :mus, [ 71, 13, 28, 40 ]
+gravity :cav, [ 71, 53, 28, 39 ]
+gravity :mai, [ 33, 32, 34, 66 ]
 
 tag "pwd" do
   match "pwd"
-  gravity :pp
+  gravity :term
 end
 
 tag "chat" do
   match :instance => "weechat"
-  gravity :we
+  gravity :wee
 end
 
 tag "music" do
   match :instance => "ncmpcpp"
-  gravity :mu
+  gravity :mus
 end
 
 tag "cava" do
   match :instance => "cava"
-  gravity :ca
+  gravity :cav
 end
 
 tag "mail" do
   match :instance => "mutt"
-  gravity :ma
+  gravity :mai
 end
 
 ## programs on view dev 
@@ -313,8 +314,8 @@ on :start do
   Subtlext::Client.spawn( "feh --bg-fill images/empire.jpg" )
   Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
   Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
-  Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_3.sh" )
-  Subtlext::Client.spawn( "sh ~/.config/subtle/init_desktop_4.sh" )
+  Subtlext::Client.spawn( "sh ~/.config/subtle/init-console.sh" )
+  Subtlext::Client.spawn( "sh ~/.config/subtle/init-dev.sh" )
   Subtlext::Client.spawn( "vivaldi_sec" )
 end
 

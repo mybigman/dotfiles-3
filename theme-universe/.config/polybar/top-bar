@@ -1,6 +1,6 @@
 ; modules
 modules-left = hostname ip xwindow
-modules-center = line_l date line_r
+modules-center = line-l date line-r
 modules-right = uptime mail memory battery powermenu
 
 ; others
