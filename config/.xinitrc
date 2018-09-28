@@ -26,7 +26,9 @@ if [ -f "$userresources" ]; then
 fi
 
 # SSH tunnel
-autossh_own &
+if [ -f ~/bin/autossh.sh ] ; then
+  autossh.sh &
+fi
 
 # Lower the brightness to a minimum
 xbacklight -set 1
