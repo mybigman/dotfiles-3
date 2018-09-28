@@ -55,7 +55,7 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-universe`, [wm]:*subtle*. [term]: *kitty*.
+**Last**:`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*.
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 
