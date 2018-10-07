@@ -341,7 +341,7 @@ view "vm",  "vms"
 
 on :start do
     Subtlext::Client.spawn( "compton -b" )
-    Subtlext::Client.spawn( "feh --bg-fill images/demone.jpg" )
+    Subtlext::Client.spawn( "feh --bg-fill images/fantasy.jpg" )
     Subtlext::Client.spawn( "kitty" )
     Subtlext::Client.spawn( "~/.config/polybar/launch.sh" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )
