@@ -23,13 +23,19 @@ NumCPUs 2
 # More protection 
 Sandbox 1 
 
-# Stream isolation
+# Stream isolation, prefer port between 40000-55000
 # default
 SocksPort 127.0.0.1:9050
 # gpg client
 SocksPort 127.0.0.1:9100
-# privoxy
+# privoxy (default web)
 SocksPort 127.0.0.1:9150
+# youtube.com
+SocksPort 127.0.0.1:9151
+# transfer.sh
+SocksPort 127.0.0.1:9152
+# *.onion
+Socksport 127.0.0.1:9153
 
 # if ssh (hidden service)
 HiddenServiceDir /var/lib/tor/hidden_service/ssh

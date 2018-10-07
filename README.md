@@ -55,13 +55,17 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*.
+**Last**:`theme-fantasy`, [wm]:*subtle* [term]: *kitty*.
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
+
+`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*.
+
+![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 
 `theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*.
 
-![Previous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
+![Darkest-space screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
 `theme-empire`, [wm]:*subtle*. [term]: *termite* or *kitty*
 

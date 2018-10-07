@@ -39,7 +39,10 @@ permit-access  192.168.1.0/24
 permit-access  192.168.0.0/24
 permit-access  localhost
 
-forward-socks4a / localhost:9050 . # Send default on TOR
+forward-socks4a *.onion/ localhost:9053 .
+forward-socks4a transfer.sh/ localhost:9152 .
+forward-socks4a yout*.com/ localhost:9151 .
+forward-socks4a / localhost:9150 . # Send default
 forward 127.*.*.*/ .
 forward localhost/ .
 forward 192.168.1.1/ .

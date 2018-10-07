@@ -33,7 +33,7 @@ class Default(ColorScheme):
                 fg = white
         if context.container:
             attr != normal
-            fg = 169
+            fg = magenta
         if context.directory:
             attr != normal
             fg = cyan  # 73   
