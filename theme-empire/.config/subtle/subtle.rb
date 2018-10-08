@@ -316,7 +316,7 @@ on :start do
   Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh subtle" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init-console.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init-dev.sh" )
-  Subtlext::Client.spawn( "brave_sec" )
+  Subtlext::Client.spawn( "brave-sec" )
 end
 
 on :reload do
