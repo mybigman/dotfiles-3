@@ -15,7 +15,8 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
-client.focused            #000000 #006868 #ffffff #4F4F4F #444444
+client.focused            #000000 #006868 #ffffff #4F4F4F #5f8787
+client.focused_inactive   #000000 #006868 #ffffff #4F4F4F #333333
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -33,6 +34,7 @@ bindsym $mod+d exec rofi -show run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+#for_window [class="^.*"] border normal 1
 for_window [class=".*"] title_format " >_ %title "
 
 # change focus
