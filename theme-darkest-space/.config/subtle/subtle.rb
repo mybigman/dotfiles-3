@@ -324,6 +324,11 @@ tag "gimp_scum" do
   match role: "gimp-.*|screenshot"
 end
 
+tag "vms" do
+  match "VirtualBox"
+  gravity :center66"
+end
+
 #
 # == Views
 #
@@ -333,6 +338,7 @@ view "www",   "browser"
 view "dev",   "code_.*"
 view "console",   "pwd|music|cava|chat|mail"
 view "gimp",  "gimp_.*"
+view "vm",  "vms"
 
 #
 # Autorun
