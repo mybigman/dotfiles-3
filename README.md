@@ -4,7 +4,7 @@
 bar               > polybar,lemonbar
 compositor        > compton
 extra background  > pscircle
-fonts             > iosevka,roboto,noto,liberation mono,material-icons
+fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina
 image viewer      > feh
 irc               > Weechat
 lock screen       > i3lock
@@ -70,6 +70,10 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 `theme-empire`, [wm]:*subtle*. [term]: *termite* or *kitty*
 
 ![Empire screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/empire.jpg "empire")
+
+`theme-madness`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*
+
+![Madness screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/madness.jpg "madness")
 
 `theme-gruvbox`, [wm]:*subtle*. [term]: *termite*
 
