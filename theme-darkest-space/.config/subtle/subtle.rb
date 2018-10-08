@@ -342,13 +342,13 @@ on :start do
     Subtlext::Client.spawn( "compton -b" )
     Subtlext::Client.spawn( "pscircle.sh" )
     Subtlext::Client.spawn( "kitty" )
-    Subtlext::Client.spawn( "~/.config/polybar/launch.sh" )
+    Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )
     Subtlext::Client.spawn( "~/.config/subtle/init-console.sh" )
     Subtlext::Client.spawn( "brave-sec" )
 end
 
 on :reload do
-    Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
+    Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
     Subtlext::Client.spawn( "sh ~/.fehbg" )
 end

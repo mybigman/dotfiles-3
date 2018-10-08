@@ -1,6 +1,6 @@
 set font                        "Cantarell 8"
-set default-bg                  "#000000" #00
-set default-fg                  "#1f1b3f" #01
+set default-bg                  "#0f0a13" #00
+set default-fg                  "#9aa8a9" #01
 
 set statusbar-fg                "#1f1b3f" #04
 set statusbar-bg                "#dbe2ec" #01
@@ -26,8 +26,8 @@ set completion-fg               "#1f1b3f" #0C
 set notification-bg             "#ee8109" #0B
 set notification-fg             "#1f1b3f" #00
 
-set recolor-lightcolor          "#151d22" #00
-set recolor-darkcolor           "#afe1d2" #06
+set recolor-lightcolor          "#0f0a13" #00
+set recolor-darkcolor           "#0aa8a9" #06
 set recolor                     "true"
 
 # setting recolor-keep true will keep any color your pdf has.
