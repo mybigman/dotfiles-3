@@ -14,7 +14,7 @@ program launcher  > rofi,dmenu
 PDF viewer        > zathura
 terms             > kitty,termite,rxvt
 web browser       > vivaldi, brave
-wm                > subtle,i3,bspwm
+wm                > subtle,i3-gaps,bspwm
 ```
 A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
 
@@ -36,15 +36,37 @@ The last theme is installable with:
     $ stow images
     $ stow theme-universe
 
-It will create for each file a symbolic link into your `$HOME`. 
+It will create for each file a symbolic link into your `$HOME`, the first time, stow will show you files you have to backup (or delete).    
 To switch on an other theme, you have to delete the older:
 
     $ stow -D theme-universe
     $ stow theme-darkest-space
 
+If you install my dots in an other directory than `home/username`, each commands should have `-t ~` in addition, e.g:
+
+    $ stow -D theme-universe -t ~
+    $ stow theme-darkest-space -t ~
+
+And last thing, when you update this repository with `git pull`, it's nice to reinstall all directories than you use in order to have all the latest files in your home:
+
+    $ git pull
+    $ stow -D image -t ~
+    $ stow images -t ~
+    $ stow -D theme-universe -t ~
+    $ stow theme-universe -t ~
+
+## Environment
+
+A variable should be set in your ~/.bashrc or ~/.zshrc, the terminal you use, kitty for me:
+
+    $ vim ~/.zshrc
+    export TERMINAL=/usr/bin/kitty
+
+It will be used by i3 and subtle.
+
 ## vim
 
-Vim use my own colorscheme [darkest-space](https://github.com/szorfein/darkest-space), i use vim with:
+For now, i use vim with:
 + [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins.
 + [nerdtree](https://github.com/scrooloose/nerdtree)
 + [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
@@ -63,7 +85,7 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 
-`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*.
+`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-colorscheme] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![Darkest-space screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
@@ -75,7 +97,11 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Madness screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/madness.jpg "madness")
 
-`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*
+`theme-city`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*
+
+![City screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/city.jpg "city")
+
+`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*. [vim colorscheme] [gruvbox](https://github.com/morhetz/gruvbox)
 
 ![Gruvbox screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
 
