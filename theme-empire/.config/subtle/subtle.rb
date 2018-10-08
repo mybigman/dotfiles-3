@@ -313,12 +313,12 @@ on :start do
   Subtlext::Client.spawn( "compton -b" )
   Subtlext::Client.spawn( "feh --bg-fill images/empire.jpg" )
   Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
-  Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
+  Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh subtle" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init-console.sh" )
   Subtlext::Client.spawn( "sh ~/.config/subtle/init-dev.sh" )
-  Subtlext::Client.spawn( "vivaldi_sec" )
+  Subtlext::Client.spawn( "brave_sec" )
 end
 
 on :reload do
-  Subtlext::Client.spawn( "sh ~/.config/polybar/launch.sh" )
+  Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
 end

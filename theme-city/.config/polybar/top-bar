@@ -1,7 +1,7 @@
 ; modules
 modules-left = hostname ip rldTor mpd xwindow
-modules-center =
-modules-right = volume mail memory battery wlan date powermenu
+modules-center = dagg-l date dagg-r
+modules-right = volume mail memory battery wlan powermenu
 
 ; others
 width = 98%

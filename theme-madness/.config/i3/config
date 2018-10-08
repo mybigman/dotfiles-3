@@ -187,6 +187,6 @@ assign [class="Gimp"] → $ws5
 #
 
 # Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh i3
 exec --no-startup-id compton -b
 exec --no-startup-id feh --bg-scale images/madness.png
