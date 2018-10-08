@@ -5,8 +5,8 @@
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
-    info title
-    info underline
+    #info title
+    #info underline
 
     info "OS" distro
     info "Uptime" uptime
@@ -437,7 +437,7 @@ install_time_format="12h"
 # Example:
 # colors=(distro)      - Text is colored based on Distro colors.
 # colors=(4 6 1 8 8 6) - Text is colored in the order above.
-colors=(7 4 8 3 0 7)
+colors=(7 4 8 2 0 7)
 
 
 # Text Options

@@ -127,8 +127,8 @@ set expandtab
 set foldenable
 set foldmethod=manual
 
-"" Colors
-colorscheme darkest-space
+"" Colors ( all themes should have a ~/.vimcolor )
+source .vimcolor
 
 "" Gruvbox colorscheme
 let g:gruvbox_contrast_dark = 'soft'
