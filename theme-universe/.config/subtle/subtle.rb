@@ -163,7 +163,7 @@ grab "W-F3", [ :c1, :c2, :c3 ]
 grab "W-F3", [ :mus, :cav, :wee, :mai, :term ]
 
 # Exec programs
-grab "W-Return", "kitty"
+grab "W-Return", "#{ENV["TERMINAL"]}"
 grab "W-p", "dmenu_run -b -nb '#020307' -nf '#afd7ff' -fn 'Roboto Mono:size=10'"
 
 # Run Ruby lambdas
@@ -343,7 +343,7 @@ view "vm",  "vms"
 on :start do
     Subtlext::Client.spawn( "compton -b" )
     Subtlext::Client.spawn( "pscircle-with-image.sh images/universe.jpg" )
-    Subtlext::Client.spawn( "kitty" )
+    Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
     Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )
     Subtlext::Client.spawn( "~/.config/subtle/init-console.sh" )
