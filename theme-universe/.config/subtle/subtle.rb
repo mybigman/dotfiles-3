@@ -44,9 +44,9 @@ end
 
 # Style for active/inactive windows
 style :clients do
-  active    "#5f8787", 1
+  active    "#1d5b80", 1
   inactive  "#333333", 1
-  margin 5, 5, 5, 5
+  margin 8, 8, 8, 8
   width     50
 end
 
@@ -223,6 +223,7 @@ end
 tag "imgs" do
     match "sxiv|feh"
     #float true
+    stick true
     gravity :center66
 end
 

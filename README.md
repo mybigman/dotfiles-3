@@ -71,6 +71,8 @@ For now, i use vim with:
 + [nerdtree](https://github.com/scrooloose/nerdtree)
 + [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
 
+Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
+
 ## zsh
 
 I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the theme [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).
@@ -81,11 +83,11 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
 
-`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*.
+`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 
-`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-colorscheme] [darkest-space](https://github.com/szorfein/darkest-space)
+`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![Darkest-space screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
