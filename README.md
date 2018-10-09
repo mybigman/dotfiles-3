@@ -91,7 +91,7 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Darkest-space screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
 
-`theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*
+`theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*. [vim-color] [fromthehell](https://github.com/szorfein/fromthehell.vim)
 
 ![Empire screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/empire.jpg "empire")
 
