@@ -79,7 +79,7 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-fantasy`, [wm]:*subtle* [term]: *kitty*.
+**Last**:`theme-fantasy`, [wm]:*subtle* [term]: *kitty*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
 
