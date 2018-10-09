@@ -13,7 +13,7 @@ for_window [class=".*"] title_format " >_ %title "
 font -*-dina-medium-r-*-*-8-*-*-*-*-*-*-*
 
 # Window colors           border  background   text  indicator  child_border
-client.focused            #383838 #302f3e #BBBBBB #4F4F4F #302f3e
+client.focused            #383838 #0d2a3a #BBBBBB #4F4F4F #302f3e
 client.focused_inactive   #1A1A1A #0f0a13 #424242 #121212 #201a28
 client.unfocused          #030706 #0f0a13 #4F4F4F #4F4F4F #201a28
 client.urgent             #1A1A1A #0f0a13 #a5a5a5 #1A1A1A #d34680
