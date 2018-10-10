@@ -47,7 +47,7 @@ style :clients do
   active    "#27241f", 1
   inactive  "#0b0a08", 1
   # need -1 bellow, maybe because my res (1366)
-  margin 0, 7, -1, 7
+  margin 2, 5, 2, 5
   width     50
 end
 

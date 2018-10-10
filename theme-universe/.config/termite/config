@@ -2,8 +2,9 @@
 audible_bell = false
 clickable_url = true
 dynamic_title = true
-font = Iosevka Term Medium 9
+font = Roboto Mono Regular 9
 fullscreen = true
+#mouse_autohide = true
 scrollback_lines = 1000
 browser = vivaldi
 size_hints = true
@@ -12,37 +13,37 @@ filter_unmatched_urls = true
 [colors]
 cursor = #00afaf
 cursor_foreground = #ffffff
-foreground = #afd7ff
-background = #1e1e1e
-highlight = #116666
+foreground = #abcfff
+background = #000b11
+highlight = #111b22
 
 #: black
-color0 = #3c3836
-color8 = #504945
+color0 = #020307
+color8 = #020307
 
 #: red
-color1 = #d15e85
-color9 = #d15e85
+color1 = #ac9db2
+color9 = #ac9db2
 
 #: green
-color2 = #87ffff
-color10 = #87ffff
+color2 = #559d99
+color10 = #559d99
 
 #: yellow
-color3 = #a1a6a8
-color11 = #a1a6a8
+color3 = #b38856
+color11 = #b38856
 
 #: blue
-color4 = #5f87af
-color12 = #5f87af
+color4 = #1b5578
+color12 = #1b5578
 
 #: magenta
-color5 = #af5faf
-color13 = #8787af
+color5 = #725073
+color13 = #725073
 
 #: cyan
-color6 = #008787
-color14 = #008787
+color6 = #217186
+color14 = #217186
 
 #: white
 color7 = #afd7d7

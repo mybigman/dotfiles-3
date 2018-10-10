@@ -3,7 +3,7 @@
 set $mod Mod4
 
 gaps outer 0
-gaps inner 7
+gaps inner 10
 
 for_window [class="^.*"] border pixel 1
 for_window [class=".*"] title_format " >_ %title "
