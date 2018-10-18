@@ -9,17 +9,25 @@
 #      ░ ░          ░   ░  ░  ░   ░     ░ ░      
 #    ░                                  ░        
 
+# oh-my-zsh path
+source $ZSH/oh-my-zsh.sh
+
 # Themes are into ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Optionally, if you set this to "random", it'll load a random theme each time
 ZSH_THEME="spaceship"
 
-# It's not automatically call for me
+# Plugin list in ~/.oh-my-zsh/plugins
+plugins=(git git-prompt ruby)
+
+# Disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
+# Load .aliases.zsh
 if [ -r $HOME/.aliases.zsh ] ; then
     source $HOME/.aliases.zsh
 fi
 
-# It's not automatically call for me
+# Load .zshenv
 if [ -r $HOME/.zshenv ] ; then
     source $HOME/.zshenv
 fi
@@ -31,15 +39,6 @@ fi
 #bindkey "\e[4~"  end-of-line
 #bindkey "\e[5~"  up-line-or-history
 #bindkey "\e[6~"  down-line-or-history
-
-# Path for oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Plugin list in ~/.oh-my-zsh/plugins
-plugins=(git git-prompt ruby)
 
 # With Zsh and Termite
 if [[ $TERM == xterm-termite ]] ; then
@@ -78,7 +77,7 @@ buildfile() {
 }
 
 # Create new password with : pw newpass.gpg
-# read pass : pw newpass
+# read pass, no need extension : pw newpass
 pw() {
    cd "$PASSWD"
    if [ ! -z "$1" ]; then
@@ -88,23 +87,20 @@ pw() {
 }
 
 # Function for upload file -> https://transfer.sh/
-# Use : curl --upload-file ./hello.txt https://transfer.sh/hello.txt 
-# or : transfer hello.txt 
+# Alias of : curl --upload-file ./hello.txt https://transfer.sh/hello.txt 
+# transfer hello.txt 
 transfer() { 
-    local torIp=127.0.0.1
-    local torPort=9050 
-
-    if [ $# -eq 0 ]; then 
-        echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; 
-        return 1; 
-    fi 
-    tmpfile=$( mktemp -t transferXXX ); 
-    if tty -s; then
-        basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); 
-        curl --socks5-hostname ${torIp}:${torPort} --retry 3 --connect-timeout 60 --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; 
-    else 
-        curl --socks5-hostname ${torIp}:${torPort} --retry 3 --connect-timeout 60 --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; 
-    fi;
-    cat $tmpfile; 
-    rm -f $tmpfile; 
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+    return 1;
+  fi
+  tmpfile=$( mktemp -t transferXXX );
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+    curl --socks5-hostname ${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT} --retry 3 --connect-timeout 60 --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
+  else
+    curl --socks5-hostname ${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT} --retry 3 --connect-timeout 60 --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
+  fi;
+  cat $tmpfile;
+  rm -f $tmpfile;
 }
