@@ -1,5 +1,5 @@
 # shart keychain
-keychain --clear --agents "ssh,gpg" ssh1 ssh2 0xgpgkey
+keychain --clear --agents "ssh,gpg" ssh_git 0x91D16ADFCDDD7959E25F21648838FC91D890EB06
 
 [ -z "$HOSTNAME" ] && HOSTNAME=$(uname -n)
 

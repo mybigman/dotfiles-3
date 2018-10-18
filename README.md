@@ -79,11 +79,15 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-fantasy`, [wm]:*subtle* or *i3* [term]: *kitty*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+**Last**:`theme-bot` **IN PROGRESS**, [wm]:*subtle* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
 
-`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
+`theme-fantasy`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+
+![Fantasy screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
+
+`theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 

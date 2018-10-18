@@ -1,0 +1,7 @@
+background = ${xrdb:background}
+background-alt = ${xrdb:color8}
+foreground = ${xrdb:color7}
+foreground-alt = ${xrdb:color14}
+primary = ${xrdb:color6}
+secondary = ${xrdb:color4}
+alert = #d75f87
