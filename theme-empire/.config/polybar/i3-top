@@ -14,8 +14,8 @@ background = ${colors.background-alt}
 foreground = ${colors.foreground-alt}
 line-size = 0
 line-color = #f00
-padding-left = 0
-padding-right = 0
+padding-left = 2
+padding-right = 2
 module-margin-left = 0
 module-margin-right = 0
 font-0 = "Iosevka Term Regular:size=6;3"

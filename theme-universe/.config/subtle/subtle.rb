@@ -44,9 +44,9 @@ end
 
 # Style for active/inactive windows
 style :clients do
-  active    "#1d5b80", 1
-  inactive  "#333333", 1
-  margin 8, 8, 8, 8
+  active    "#1d5b80", 0
+  inactive  "#333333", 0
+  margin -1, -1, -1, -2
   width     50
 end
 
@@ -62,20 +62,9 @@ end
 # == Gravities
 #
 
-# Left
-gravity :left,           [   5,   12,  45, 79 ]
-gravity :left_t,         [   5,   12,  45, 39 ]
-gravity :left_b,         [   5,   51,  45, 40 ]
-
 # Center
 gravity :center,         [   0,   6, 100, 91 ]
 gravity :center66,       [  25,  25,  50,  50 ]
-gravity :center33,       [  33,  33,  33,  33 ]
-
-# Right
-gravity :right,          [  50,   12,  45, 79 ]
-gravity :right_t,          [  50,   12,  45, 39 ]
-gravity :right_b,          [  50,   51,  45, 40 ]
 
 # Gimp
 gravity :gimp_image,     [  10,   6,  80, 91 ]
@@ -157,10 +146,9 @@ grab "W-Right", :WindowRight
 grab "W-z", :WindowKill
 
 # Cycle between given gravities
-grab "W-F1", [ :left_t, :left_b, :left, :right_t, :right_b, :right ]
-grab "W-F2", [ :center, :center66, :center33 ]
-grab "W-F3", [ :c1, :c2, :c3 ]
-grab "W-F3", [ :mus, :cav, :wee, :mai, :term ]
+grab "W-F1", [ :c1 ]
+grab "W-F2", [ :c2, :center66 ]
+grab "W-F3", [ :c3 ]
 
 # Exec programs
 grab "W-Return", "#{ENV["TERMINAL"]}"
