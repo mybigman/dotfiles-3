@@ -1,5 +1,6 @@
 ; modules
 modules-left = dns tor rldTor volume mpd
+modules-center = i3
 modules-right = netstat wlan eth
 
 ; others

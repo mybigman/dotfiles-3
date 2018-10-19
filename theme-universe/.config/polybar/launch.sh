@@ -16,6 +16,7 @@ if [ $1 = subtle ] ; then
   polybar top-second &
 elif [ $1 = i3 ] ; then
   polybar i3top &
+  sleep .7
   polybar i3secondtop &
 else
   echo "WTF ???"

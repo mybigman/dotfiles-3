@@ -13,7 +13,7 @@ for_window [class=".*"] title_format " >_ %title "
 font -*-dina-medium-r-*-*-8-*-*-*-*-*-*-*
 
 # Window colors           border  background   text  indicator  child_border
-client.focused            #231417 #281d2a #848474 #4F4F4F #101110
+client.focused            #231417 #281d2a #93cfbd #4F4F4F #101110
 client.focused_inactive   #231417 #141d24 #636357 #121212 #101110
 client.unfocused          #231417 #17212a #68685b #4F4F4F #101107
 client.urgent             #23181a #4a3d31 #6c777a #1A1A1A #1f1515
@@ -83,16 +83,12 @@ bindsym $mod+q focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "default"
+set $ws2 "web"
+set $ws3 "dev"
+set $ws4 "music"
+set $ws5 "gimp"
+set $ws6 "vms"
 
 bindsym $mod+Tab workspace back_and_forth
 

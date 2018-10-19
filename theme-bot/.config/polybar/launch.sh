@@ -16,7 +16,7 @@ if [ $1 = subtle ] ; then
   polybar bottom-launcher &
 elif [ $1 = i3 ] ; then
   polybar i3top &
-  polybar i3secondtop &
+  polybar i3bottom &
 else
   echo "WTF ???"
 fi

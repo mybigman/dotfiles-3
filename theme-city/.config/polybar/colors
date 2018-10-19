@@ -5,3 +5,5 @@ foreground-alt = ${xrdb:color4}
 primary = ${xrdb:color6}
 secondary = ${xrdb:color13}
 alert = ${xrdb:color9}
+desktop = #2c2839
+extend = #1b495c

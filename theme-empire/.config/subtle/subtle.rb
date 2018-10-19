@@ -4,7 +4,7 @@
 
 set :increase_step, 5
 set :border_snap, 10
-set :default_gravity, :ct
+set :default_gravity, :ct66
 set :urgent_dialogs, false
 set :honor_size_hints, false
 set :gravity_tiling, true
@@ -53,12 +53,8 @@ end
 #  Gravities
 #
 
-# Left - Right
-gravity :l_side, [ 0, 5, 50, 93 ]
-gravity :r_side, [ 50, 5, 50, 93 ]
-
 # Center
-gravity :ct, [ 1, 5, 98, 93 ]
+gravity :center, [ 1, 5, 98, 93 ]
 gravity :ct66, [ 25, 25, 50, 50 ]
 
 # Gimp
@@ -134,11 +130,10 @@ grab "W-Right", :WindowRight
 grab "W-z", :WindowKill
 
 # Cycle between given gravities
-grab "W-F1", [ :l_side, :r_side ]
-grab "W-F2", [ :ct, :ct66 ]
-grab "W-F3", [ :d1, :d2, :d3 ]
-grab "W-F4", [ :pp, :we, :mu, :ca, :ma ]
-grab "W-F5", [ :fl_1, :fl_2, :fl_3 ]
+grab "W-F1", [ :d1 ]
+grab "W-F2", [ :d2, :ct66 ]
+grab "W-F3", [ :d3 ]
+grab "W-F4", [ :center ]
 
 # Exec programs
 grab "W-Return", "#{ENV["TERMINAL"]}"
@@ -170,7 +165,10 @@ tag "terms" do
   match :instance => "xterm|[u]?rxvt|termite|kitty"
 end
 
-tag "browser", "uzbl|opera|firefox|navigator|vivaldi|brave"
+tag "browser" do
+  match "uzbl|opera|firefox|navigator|vivaldi|brave"
+  gravity :center
+end
 
 tag "fixed" do
   geometry [ 10, 10, 100, 100 ]
@@ -183,7 +181,7 @@ tag "resize" do
 end
 
 tag "gravity" do
-  gravity :ct
+  gravity :center
 end
 
 # Modes
