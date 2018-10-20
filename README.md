@@ -79,7 +79,7 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-bot` **IN PROGRESS**, [wm]:*subtle* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+**Last**:`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
 

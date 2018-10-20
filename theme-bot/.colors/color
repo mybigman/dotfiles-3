@@ -1,4 +1,4 @@
-*color0: #373831
+*color0: #524a42
 *color1: #dc5757
 *color2: #7e755c
 *color3: #fae0cf
@@ -6,7 +6,7 @@
 *color5: #886466
 *color6: #9d988b
 *color7: #b7aa90
-*color8: #40413c
+*color8: #5e554c
 *color9: #f9807a
 *color10: #857d69
 *color11: #fae0cf
@@ -16,5 +16,5 @@
 *color15: #c4b69c
 *background: #474039
 *foreground: #f4d3bd
-rofi.color-normal: argb:00000000, #fae0cf, argb:00000000, #373831, #fae0cf
+rofi.color-normal: argb:00000000, #fae0cf, argb:00000000, #524a42, #fae0cf
 rofi.color-window: #474039, #000000, #832757

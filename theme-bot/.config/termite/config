@@ -18,8 +18,8 @@ background = #474039
 highlight = #111b22
 
 #: black
-color0 = #373831
-color8 = #40413c
+color0 = #524a42
+color8 = #5e554c
 
 #: red
 color1 = #dc5757

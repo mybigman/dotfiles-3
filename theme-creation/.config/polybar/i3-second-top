@@ -1,6 +1,6 @@
 ; modules
 modules-left = dns tor rldTor volume
-modules-center = mpd
+modules-center = mpd mpd-music
 modules-right = netstat wlan eth
 
 ; others
