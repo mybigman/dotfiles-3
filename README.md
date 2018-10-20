@@ -40,12 +40,12 @@ It will create for each file a symbolic link into your `$HOME`, the first time, 
 To switch on an other theme, you have to delete the older:
 
     $ stow -D theme-universe
-    $ stow theme-darkest-space
+    $ stow theme-creation
 
 If you install my dots in an other directory than `home/username`, each commands should have `-t ~` in addition, e.g:
 
     $ stow -D theme-universe -t ~
-    $ stow theme-darkest-space -t ~
+    $ stow theme-creation -t ~
 
 And last thing, when you update this repository with `git pull`, it's nice to reinstall all directories than you use in order to have all the latest files in your home:
 
@@ -91,9 +91,9 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
 
-`theme-darkest-space`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
+`theme-creation`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
-![Darkest-space screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/darkest-space.jpg "darkest-space")
+![Creation screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/creation.jpg "creation")
 
 `theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*. [vim-color] [fromthehell.vim](https://github.com/szorfein/fromthehell.vim)
 
