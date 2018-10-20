@@ -152,7 +152,7 @@ grab "W-F3", [ :c3 ]
 
 # Exec programs
 grab "W-Return", "#{ENV["TERMINAL"]}"
-grab "W-p", "dmenu_run -b -nb '#020307' -nf '#afd7ff' -fn 'Roboto Mono:size=10'"
+grab "W-p", "dmenu_run -i -b -nb '#020307' -nf '#afd7ff' -fn 'Roboto Mono:size=10'"
 
 # Run Ruby lambdas
 grab "S-F2" do |c|

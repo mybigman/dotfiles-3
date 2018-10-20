@@ -4,7 +4,6 @@ clickable_url = true
 dynamic_title = true
 font = Iosevka Term Medium 9
 fullscreen = true
-#mouse_autohide = true
 scrollback_lines = 1000
 browser = vivaldi
 size_hints = true
