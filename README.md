@@ -70,6 +70,7 @@ For now, i use vim with:
 + [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins.
 + [nerdtree](https://github.com/scrooloose/nerdtree)
 + [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
++ [lightline](https://github.com/itchyny/lightline.vim)
 
 Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
 
@@ -79,9 +80,13 @@ I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the
 
 ## Screens
 
-**Last**:`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+**Last**:`theme-zerg` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/zerg.jpg "zerg")
+
+`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+
+![Bot screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
 
 `theme-fantasy`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
 

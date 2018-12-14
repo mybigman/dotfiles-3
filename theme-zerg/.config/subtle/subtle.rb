@@ -30,32 +30,36 @@ end
 
 # Style for all style elements
 style :all do
-  background  "#202020"
-  icon        "#757575"
-  border      "#303030", 0
-  padding     0, 3
+  background  "#000000"
+  icon        "#000000"
+  border      "#000000", 2
+  padding     0, 0
   font        "-*-*-*-*-*-*-14-*-*-*-*-*-*-*"
 end
 
 # Style for the all views
 style :views do
-  foreground  "#757575"
+  foreground  "#000000"
 end
 
 # Style for active/inactive windows
 style :clients do
-  active    "#1d5b80", 0
-  inactive  "#333333", 0
-  margin 0, 1, 1, 0
-  width     50
+  active    "#1e1819", 0
+  inactive  "#1e1617", 0
+  # need -1 bellow, maybe because my res (1366)
+  # margin arg: top/bottom, left/right
+  margin_top 6
+  margin_right 5
+  margin_left 5
+  margin_bottom 6
 end
 
 # Style for subtle
 style :subtle do
   margin      0, 0, 0, 0
-  panel       "#202020"
-  background  "#3d3d3d"
-  stipple     "#757575"
+  panel       "#000000"
+  background  "#000000"
+  stipple     "#000000"
 end
 
 #
@@ -63,13 +67,14 @@ end
 #
 
 # Center
-gravity :center,         [   0,   6, 100, 91 ]
+gravity :center,         [   0,   0, 100, 97 ]
 gravity :center66,       [  25,  25,  50,  50 ]
+gravity :center33,       [  33,  33,  33,  33 ]
 
 # Gimp
-gravity :gimp_image,     [  10,   6,  80, 91 ]
-gravity :gimp_toolbox,   [   0,   6,  10, 91 ]
-gravity :gimp_dock,      [  90,   6,  10, 91 ]
+gravity :gimp_image,     [  10,   0,  80, 97 ]
+gravity :gimp_toolbox,   [   0,   0,  10, 97 ]
+gravity :gimp_dock,      [  90,   0,  10, 97 ]
 
 #
 # == Grabs
@@ -142,7 +147,7 @@ grab "W-Down",  :WindowDown
 grab "W-Up",    :WindowUp
 grab "W-Right", :WindowRight
 
-# Kill current window
+# Kill current window 
 grab "W-z", :WindowKill
 
 # Cycle between given gravities
@@ -152,7 +157,7 @@ grab "W-F3", [ :c3 ]
 
 # Exec programs
 grab "W-Return", "#{ENV["TERMINAL"]}"
-grab "W-p", "dmenu_run -i -b -nb '#020307' -nf '#afd7ff' -fn 'Roboto Mono:size=10'"
+grab "W-p", "~/bin/launcher"
 
 # Run Ruby lambdas
 grab "S-F2" do |c|
@@ -210,7 +215,6 @@ end
 
 tag "imgs" do
     match "sxiv|feh"
-    #float true
     stick true
     gravity :center66
 end
@@ -220,10 +224,15 @@ tag "float" do
   float true
 end
 
+tag "wine" do
+  match class: "Wine"
+  gravity :center
+end
+
 ## programs on view dev [3]
-gravity :c1, [ 0, 6, 33, 91 ]
-gravity :c2, [ 33, 6, 34, 91 ]
-gravity :c3, [ 67, 6, 33, 91 ]
+gravity :c1, [ 0, 0, 33, 97 ]
+gravity :c2, [ 33, 0, 34, 97 ]
+gravity :c3, [ 67, 0, 33, 97 ]
 
 tag "code_1" do
     match "code-1"
@@ -257,35 +266,29 @@ end
 ## End programs on view dev [3]
 
 ## Programs on view console [4]
-gravity :term, [ 6, 18, 34, 26 ]
-gravity :wee, [ 6, 46, 34, 40 ]
-gravity :mus, [ 41, 18, 27, 36 ]
-gravity :cav, [ 69, 30, 25, 24 ]
-gravity :mai, [ 41, 56, 53, 30 ]
-
 tag "pwd" do
     match "pwd"
-    gravity :term
+    gravity :c1
 end
 
 tag "chat" do
     match :instance => "weechat"
-    gravity :wee
+    gravity :c3
 end
 
 tag "music" do
     match :instance => "ncmpcpp"
-    gravity :mus
+    gravity :c1
 end
 
 tag "cava" do
     match :instance => "cava"
-    gravity :cav
+    gravity :c1
 end
 
 tag "mail" do
     match :instance => "mutt"
-    gravity :mai
+    gravity :c2
 end
 ## End Programs on view console [4]
 
@@ -309,21 +312,21 @@ tag "gimp_scum" do
   match role: "gimp-.*|screenshot"
 end
 
-tag "vms" do
+tag "vms_manager" do
   match "VirtualBox*"
-  gravity :center66
+  gravity :center
 end
 
 #
 # == Views
 #
 
-view "terms", "terms|imgs|default"
+view "terms", "terms|imgs|wine|default"
 view "www",   "browser"
 view "dev",   "code_.*"
 view "console",   "pwd|music|cava|chat|mail"
 view "gimp",  "gimp_.*"
-view "vm",  "vms"
+view "ctf",  "vms_.*"
 
 #
 # Autorun
@@ -331,7 +334,7 @@ view "vm",  "vms"
 
 on :start do
     Subtlext::Client.spawn( "compton -b" )
-    Subtlext::Client.spawn( "pscircle-with-image.sh images/universe.jpg" )
+    Subtlext::Client.spawn( "feh --bg-fill images/zerg.jpg" )
     Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
     Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )

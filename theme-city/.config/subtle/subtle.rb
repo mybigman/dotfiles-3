@@ -44,8 +44,8 @@ end
 
 # Style for active/inactive windows
 style :clients do
-  active    "#27241f", 1
-  inactive  "#0b0a08", 1
+  active    "#81374a", 3
+  inactive  "#36384d", 3
   # need -1 bellow, maybe because my res (1366)
   margin 7, 7, 7, 7
   width     50

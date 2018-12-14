@@ -190,3 +190,36 @@ if has("autocmd")
         set foldopen=insert
     endfunction
 endif
+
+" Lightline.vim
+" http://git.io/lightline
+set laststatus=2
+let s:base03 = [ '#151513', 233 ]
+let s:base02 = [ '#303030', 0 ]
+let s:base01 = [ '#4e4e43', 239 ]
+let s:base00 = [ '#666656', 242  ]
+let s:base0 = [ '#808070', 244 ]
+let s:base1 = [ '#949484', 242 ]
+let s:base2 = [ '#a8a897', 248 ]
+let s:base3 = [ '#e8e8d3', 253 ]
+let s:yellow = [ '#7A7A57', 11 ]
+let s:orange = [ '#7A7A57', 3 ]
+let s:red = [ '#5F8787', 1 ]
+let s:magenta = [ '#8181A6', 13 ]
+let s:cyan = [ '#87ceeb', 12 ]
+let s:green = [ '#7A7A57', 3 ]
+let s:none = [ 'none', 'none' ]
+
+let s:p = {
+      \ 'normal':   {},
+      \ 'inactive': {},
+      \ 'insert':   {},
+      \ 'replace':  {},
+      \ 'visual':   {},
+      \ 'tabline':  {}}
+
+let g:lightline#colorscheme#hybrid#palette = s:p
+
+let g:lightline = {
+  \ 'colorscheme': 'nord'
+  \ }

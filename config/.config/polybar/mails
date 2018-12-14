@@ -31,4 +31,4 @@ else
     count=$(ls -1 "${gmaildir}" | wc -l)
 fi
 
-echo "${count}"
+echo " ${count}"
