@@ -232,6 +232,11 @@ tag "float" do
   float true
 end
 
+tag "full" do
+  match class: "[z|Z]athura"
+  gravity :center
+end
+
 ## programs on view dev [3]
 gravity :c1, [ 0, 7, 33, 91 ]
 gravity :c2, [ 33, 7, 34, 91 ]
@@ -328,7 +333,7 @@ end
 # == Views
 #
 
-view "terms", "terms|imgs|default"
+view "terms", "terms|full|imgs|default"
 view "www",   "browser"
 view "dev",   "code_.*"
 view "console",   "pwd|music|cava|chat|mail"

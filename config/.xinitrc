@@ -25,11 +25,6 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-# SSH tunnel
-if [ -f ~/bin/autossh.sh ] ; then
-  autossh.sh &
-fi
-
 # Lower the brightness to a minimum
 xbacklight -set 1
 

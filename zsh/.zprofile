@@ -13,3 +13,8 @@ keychain --clear --agents "ssh,gpg" ssh_git 0x91D16ADFCDDD7959E25F21648838FC91D8
 #if [ -r $HOME/.infinality ] ; then
 #    source $HOME/.infinality
 #fi
+
+# SSH tunnel
+if [ -f $HOME/bin/autossh.sh ] ; then
+  autossh.sh &
+fi
