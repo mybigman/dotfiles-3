@@ -1,3 +1,7 @@
 *.swp
 *.pyc
 ncmpcpp/.ncmpcpp/error.log
+gnupg/.gnupg/*.d
+gnupg/.gnupg/pub*.*
+gnupg/.gnupg/rand*
+gnupg/.gnupg/trust*
