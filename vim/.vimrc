@@ -1,3 +1,4 @@
+"
 "     ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄  
 "    ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█  
 "     ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄ 
@@ -127,8 +128,8 @@ set expandtab
 set foldenable
 set foldmethod=manual
 
-"" Colors ( all themes should have a ~/.vimcolor )
-source .vimcolor
+"" Colors
+source ~/.vim/colorscheme
 
 "" Gruvbox colorscheme
 let g:gruvbox_contrast_dark = 'soft'
@@ -151,6 +152,7 @@ nnoremap <silent> <F2> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 
 " update colors with F8 with darkest-space colorscheme
+"map <F8> :update<CR>:colorscheme darkest-space<CR>
 map <F8> :update<CR>:colorscheme darkest-space<CR>
 let mapleader=","
 
@@ -162,33 +164,23 @@ nmap <leader>y "+yE
 " Copy in visual mode
 vmap <leader>y "+y
 
-"" plugin here: http://www.vim.org/scripts/script.php?script_id=3645
-"" wiki here http://pig-monkey.com/2013/04/password-management-vim-gnupg/
-"" Only work with the version 2.5 for me... (https://github.com/jamessan/vim-gnupg/archive/v2.5.tar.gz)
+"" gnupg.vim
+" plugin here: http://www.vim.org/scripts/script.php?script_id=3645
+" wiki here http://pig-monkey.com/2013/04/password-management-vim-gnupg/
 if has("autocmd")
-    let g:GPGPreferArmor = 1
-    let g:GPGPreferSign=1
-    let g:GPGUseAgent = 1
-    let g:GPGFilePattern='*.\(gpg\|asc\|pgp\)'
-    let g:GPGUsePipes = 1
+  let g:GPGDefaultRecipients = ["0xE2ADD2080A6B28AE"]
+  let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)'
 
-    augroup GnuPGExtra
-        autocmd!
-        " Set extra file options.
-        exe "autocmd BufReadCmd,FileReadCmd " . g:GPGFilePattern . " call s:SetGPGOptions() "
-         " Automatically close unmodified files after inactivity.
-        exe "autocmd CursorHold " . g:GPGFilePattern . " quit "
-    augroup END
+  augroup GnuPGExtra
+    exe "autocmd BufReadCmd,FileReadCmd " . g:GPGFilePattern . " call SetGPGOptions()"
+    exe "autocmd CursorHold " . g:GPGFilePattern . " quit"
+  augroup END
 
-    function s:SetGPGOptions()
-        set filetype=gpgpass
-        set noswapfile
-        set viminfo=
-        set updatetime=30000
-        set foldmethod=marker
-        set foldclose=all
-        set foldopen=insert
-    endfunction
+  function SetGPGOptions()
+    set filetype=gpgpass
+    set noswapfile
+    set viminfo=
+  endfunction
 endif
 
 " Lightline.vim
