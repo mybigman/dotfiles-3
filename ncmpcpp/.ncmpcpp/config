@@ -1,7 +1,7 @@
 ncmpcpp_directory = ~/.ncmpcpp
 mpd_host = localhost
 mpd_port = 6600
-mpd_music_dir = ~/music
+mpd_music_dir = ~/musics
 visualizer_fifo_path = /tmp/mpd.fifo
 visualizer_type = ellipse
 visualizer_look = ●▮
@@ -16,8 +16,11 @@ song_columns_list_format = "(26)[97]{f} (15)[74]{a} (21)[232]{t|f} (31)[111]{b|D
 #execute_on_song_change = ""
 playlist_display_mode = classic
 playlist_disable_highlight_delay = "1"
+
 progressbar_look = "→→"
-progressbar_boldness = yes
+progressbar_color = magenta
+progressbar_elapsed_color = green
+
 user_interface = alternative
 header_visibility = no 
 statusbar_visibility = no 
@@ -31,17 +34,21 @@ mouse_support = yes
 external_editor = vim 
 use_console_editor = yes
 main_window_color = white 
-progressbar_color = magenta
-progressbar_elapsed_color = green
 
 header_window_color = "black"
 volume_color = "black"
 state_line_color = "cyan"
 state_flags_color = "blue"
-main_window_highlight_color="cyan"
+
+current_item_prefix = "$(cyan)$r"
+current_item_suffix = "$/r$(end)"
+
 color1 = "white"
 color2 = "blue"
 statusbar_color = "white"
-active_column_color = "magenta"
+
+current_item_inactive_column_prefix = 
+current_item_inactive_column_suffix =
+
 window_border_color = "red"
 active_window_border = "red"
