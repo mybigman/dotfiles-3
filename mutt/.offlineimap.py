@@ -12,4 +12,4 @@ from subprocess import check_output
 #
 # more info here: https://szorfein.github.io/vim/gpg/password/vim-gpg/
 def get_pass():
-    return check_output("give_pass mail Gmail", shell=True).strip("\n")
+    return check_output("give_pass gmail gmail", shell=True).strip("\n")

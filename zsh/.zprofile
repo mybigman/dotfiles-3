@@ -1,5 +1,5 @@
 # shart keychain
-keychain --clear --agents "ssh,gpg" ssh_git 0x91D16ADFCDDD7959E25F21648838FC91D890EB06
+keychain --clear --agents "ssh,gpg" git 0x9CC9729A2E369CB3
 
 [ -z "$HOSTNAME" ] && HOSTNAME=$(uname -n)
 
@@ -14,7 +14,8 @@ keychain --clear --agents "ssh,gpg" ssh_git 0x91D16ADFCDDD7959E25F21648838FC91D8
 #    source $HOME/.infinality
 #fi
 
-# SSH tunnel
+# SSH tunnel, run autossh.sh if not alrealy run
 if [ -f $HOME/bin/autossh.sh ] ; then
-  autossh.sh &
+  autossh_proc=$(pgrep -u $USER -x autossh)
+  [[ -z $autossh_proc ]] && ~/bin/autossh.sh &
 fi

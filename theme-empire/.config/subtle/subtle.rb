@@ -29,7 +29,7 @@ end
 style :all do
   padding      0
   margin       0
-  font        "-*-*-*-*-*-*-14-*-*-*-*-*-*-*"
+  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
   border      "#ff3030", 0
   background  "#202020"
 end

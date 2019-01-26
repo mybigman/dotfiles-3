@@ -24,8 +24,10 @@ bind compose p pgp-menu
 # GPG
 set crypt_use_gpgme = yes
 set pgp_use_gpg_agent = yes
-set pgp_sign_as = 0xlong_key_id_for_sign
-set pgp_self_encrypt_as = 0xlong_key_id_for_encrypt
+# sign key [S]
+set pgp_sign_as = 0xFD696BDDAA8FDC50
+# encrypt key [E]
+set pgp_self_encrypt_as = 0xE2ADD2080A6B28AE
 set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 set pgp_timeout = 600
 set crypt_autosign = yes

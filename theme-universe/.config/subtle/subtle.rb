@@ -34,7 +34,7 @@ style :all do
   icon        "#757575"
   border      "#303030", 0
   padding     0, 3
-  font        "-*-*-*-*-*-*-14-*-*-*-*-*-*-*"
+  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*"
 end
 
 # Style for the all views
@@ -208,11 +208,17 @@ tag "stick" do
   stick true 
 end
 
+gravity :img, [ 26, 3, 48, 94 ]
 tag "imgs" do
     match "sxiv|feh"
-    #float true
     stick true
-    gravity :center66
+    gravity :img
+end
+
+gravity :reader, [ 6, 3, 88, 93 ]
+tag "readers" do
+  match :class => "zathura"
+  gravity :reader
 end
 
 tag "float" do
@@ -318,7 +324,7 @@ end
 # == Views
 #
 
-view "terms", "terms|imgs|default"
+view "terms", "terms|imgs|readers|default"
 view "www",   "browser"
 view "dev",   "code_.*"
 view "console",   "pwd|music|cava|chat|mail"

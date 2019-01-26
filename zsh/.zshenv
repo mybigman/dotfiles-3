@@ -12,7 +12,7 @@ export EDITOR='vim'
 export SUDO_EDITOR='vim'
 
 # Proxy
-export http_proxy="http://127.0.0.1:8118"
+export http_proxy="http://127.0.0.1:45411"
 export https_proxy=${http_proxy}
 export ftp_proxy=${http_proxy}
 export rsync_proxy=${http_proxy}

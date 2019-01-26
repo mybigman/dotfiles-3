@@ -1,0 +1,115 @@
+#!/bin/sh
+
+GIT=$(which git)
+
+###############################################################
+# Check deps
+
+[[ -z $GIT ]] && echo "You have to install git plz" && exit 1
+
+###############################################################
+# Local functions
+
+anim() {
+  local i sp n
+  sp='/-\|'
+  n=${#sp}
+  printf ' '
+  while sleep 0.1; do
+    printf "%s\b" "${sp:i++%n:1}"
+  done
+}
+
+# Download with git ( arg1 = url | arg2 = path )
+dl() {
+  local pid
+  echo -n "dl $1..."
+  anim &
+  pid=$!
+  $($GIT clone $1 $2 2>/dev/null || exit 1)
+  echo "[ok]"
+  kill $pid # kill anim()
+}
+
+# Check if file exist else download ( arg1 = url | arg2 = path )
+chk() {
+  if [[ -d $2 ]] ; then
+    echo "$2 is found"
+  else
+    dl $1 $2
+  fi
+}
+
+forZsh() {
+  chk https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  chk https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/themes/spaceship-prompt
+  # create symbolic link if not exist
+  if [[ ! -s ~/.oh-my-zsh/themes/spaceship.zsh-theme ]] ; then
+    ln -s  ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
+  fi
+}
+
+pathogen() {
+  [[ ! -d ~/.vim/bundle ]] && mkdir -p $HOME/.vim/bundle
+  chk https://github.com/kaicataldo/material.vim ~/.vim/bundle/material.vim
+  chk https://github.com/szorfein/fantasy.vim ~/.vim/bundle/fantasy.vim
+  chk https://github.com/szorfein/darkest-space ~/.vim/bundle/darkest-space
+  chk https://github.com/szorfein/fromthehell.vim ~/.vim/bundle/fromthehell.vim
+}
+
+banner() {
+  printf "%s\n" \
+  '
+▓█████▄  ▒█████  ▄▄▄█████▓  █████▒██▓ ██▓    ▓█████   ██████
+▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▒██    ▒
+░██   █▌▒██░  ██▒▒ ▓██░ ▒░▒████ ░▒██▒▒██░    ▒███   ░ ▓██▄
+░▓█▄   ▌▒██   ██░░ ▓██▓ ░ ░▓█▒  ░░██░▒██░    ▒▓█  ▄   ▒   ██▒
+░▒████▓ ░ ████▓▒░  ▒██▒ ░ ░▒█░   ░██░░██████▒░▒████▒▒██████▒▒
+ ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░    ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
+ '
+}
+
+usage() {
+  banner
+  printf "%s\n" \
+    "-z, --zsh    Download and install dependencies of zsh"
+
+  printf "%s\n" \
+    "-v, --vim    Download and install dependencies of vim for pathogen"
+
+  printf "%s\n" \
+    "-h, --help   Display this really usefull message"
+}
+
+###############################################################
+# Command line options
+
+if [ "$#" -eq 0 ]; then
+  printf "%s\\n" "$prog_name: Argument required"
+  printf "%s\\n" "Try '$prog_name --help' for more information."
+  exit 1
+fi
+
+while [ "$#" -gt 0 ] ; do
+  case "$1" in
+    -z | --zsh)
+      banner
+      forZsh
+      shift
+      ;;
+    -v | --vim)
+      banner
+      pathogen
+      shift
+      ;;
+    -h | --help)
+      usage
+      shift
+      ;;
+    *)
+      usage
+      printf "\\n%s\\n" "$prog_name: Invalid option '$1'"
+      exit 1
+      ;;
+  esac
+done

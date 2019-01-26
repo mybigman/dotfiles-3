@@ -9,18 +9,18 @@
 #      ░ ░          ░   ░  ░  ░   ░     ░ ░      
 #    ░                                  ░        
 
-# oh-my-zsh path
-source $ZSH/oh-my-zsh.sh
 
 # Themes are into ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each time
 ZSH_THEME="spaceship"
 
 # Plugin list in ~/.oh-my-zsh/plugins
-plugins=(git git-prompt ruby)
+plugins=(git git-prompt ruby rails)
 
 # Disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
+
+source $ZSH/oh-my-zsh.sh
 
 # Load .aliases.zsh
 if [ -r $HOME/.aliases.zsh ] ; then
@@ -97,9 +97,9 @@ transfer() {
   tmpfile=$( mktemp -t transferXXX );
   if tty -s; then
     basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-    curl --socks5-hostname ${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT} --retry 3 --connect-timeout 60 --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
+    curl --retry 3 --connect-timeout 60 --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
   else
-    curl --socks5-hostname ${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT} --retry 3 --connect-timeout 60 --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
+    curl --retry 3 --connect-timeout 60 --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
   fi;
   cat $tmpfile;
   rm -f $tmpfile;

@@ -34,7 +34,7 @@ style :all do
   icon        "#000000"
   border      "#000000", 1
   padding     0, 0
-  font        "-*-*-*-*-*-*-14-*-*-*-*-*-*-*"
+  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 end
 
 # Style for the all views

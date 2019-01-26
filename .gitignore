@@ -5,3 +5,4 @@ gnupg/.gnupg/*.d
 gnupg/.gnupg/pub*.*
 gnupg/.gnupg/rand*
 gnupg/.gnupg/trust*
+mutt/.mutt/gpg.rc

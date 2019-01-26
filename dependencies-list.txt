@@ -5,12 +5,11 @@ app-crypt/gnupg
 app-editors/vim +X
 app-misc/ranger
 app-misc/tmux
-app-shells/bash
 app-shells/zsh
 app-text/zathura
-app-text/zathura-cb
 app-text/zathura-pdf-mupdf
 app-vim/gnupg
+app-vim/lightline
 app-vim/nerdtree
 app-vim/pathogen
 dev-python/pillow +jpeg +zlib
@@ -19,6 +18,8 @@ mail-mta/msmtp +mta +sasl +ssl
 media-fonts/hack
 media-fonts/iosevka
 media-fonts/material-icons
+media-fonts/robotomono
+media-fonts/sfmono
 media-gfx/feh
 media-gfx/gimp
 media-gfx/imagemagick +jpeg +png
@@ -26,10 +27,9 @@ media-gfx/scrot
 media-sound/cava
 media-sound/mpc
 media-sound/mpd
-media-sound/mps-youtube
 media-sound/ncmpcpp +clock +unicode +taglib
 media-video/ffmpeg +ladspa +network +openssl +webp +x264
-media-video/mpv +lua +opengl +egl
+media-video/mpv
 net-dns/dnscrypt-proxy
 net-irc/weechat +ssl +irc
 net-mail/offlineimap +ssl
@@ -37,22 +37,18 @@ net-misc/aria2 +ssl +metalink +libxml2 +adns +bittorent
 net-misc/autossh
 net-misc/keychain
 net-misc/wget
-net-proxy/privoxy +acl +client-tags +fast-redirect +threads
+net-mist/youtube-dl
 net-vpn/tor +seccomp +tor-hardening
-sys-apps/firejail +seccomp
+sys-apps/firejail +seccomp +suid
 www-client/brave-bin
-www-servers/darkhttpd
+x11-apps/xdpyinfo
 x11-apps/xinit
-x11-apps/xsetroot
 x11-apps/xwininfo
 x11-misc/compton +pcre
 x11-misc/dunst
-x11-misc/hsetroot
 x11-misc/i3lock
 x11-misc/polybar
 x11-misc/rofi
-x11-misc/wmname
 x11-misc/xclip
-x11-misc/xdo
 x11-terms/kitty +imagemagick
 x11-wm/subtle +xft

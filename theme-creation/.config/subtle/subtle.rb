@@ -34,7 +34,7 @@ style :all do
   icon        "#757575"
   border      "#303030", 0
   padding     0, 3
-  font        "-*-*-*-*-*-*-14-*-*-*-*-*-*-*"
+  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 end
 
 # Style for the all views
@@ -216,7 +216,7 @@ end
 tag "imgs" do
     match "sxiv|feh"
     stick true
-    float true
+    gravity :center66
 end
 
 tag "float" do

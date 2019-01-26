@@ -20,7 +20,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 
 ## Installation
 
-I've switch to [GNU stow](http://www.gnu.org/software/stow/) recently in order to keep 4-5 different themes.  
+I use [GNU stow](http://www.gnu.org/software/stow/) in order to keep 4-5 different themes.  
 Start going into your home:
 
     $ cd ~
@@ -74,9 +74,17 @@ For now, i use vim with:
 
 Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
 
+If you use pathogen, you can use my script to download and install all the vim colors that i use:
+
+    $ ./install --vim
+
 ## zsh
 
 I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the theme [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).
+
+You can install with theses 2 repos with:
+
+    $ ./install --zsh
 
 ## Screens
 
