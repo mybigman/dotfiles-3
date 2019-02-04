@@ -1,4 +1,4 @@
-#alias feh='feh -g 600 --scale-down --zoom fill'
+alias feh='feh --scale-down --zoom fill'
 alias sxiv='sxiv -s h -g 628x580'
 alias mpv='firejail mpv'
 alias ionic="~/node_modules/ionic/bin/ionic"

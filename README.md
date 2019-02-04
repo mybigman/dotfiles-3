@@ -4,7 +4,7 @@
 bar               > polybar,lemonbar
 compositor        > compton
 extra background  > pscircle
-fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina
+fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder
 image viewer      > feh
 irc               > Weechat
 lock screen       > i3lock
@@ -88,9 +88,13 @@ You can install with theses 2 repos with:
 
 ## Screens
 
-**Last**:`theme-zerg` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
+**Last**:`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/zerg.jpg "zerg")
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/sombra.jpg "sombra")  
+
+`theme-zerg` [wm]:*subtle* [term]: *kitty*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
+
+![Zerg screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/zerg.jpg "zerg")
 
 `theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
 
