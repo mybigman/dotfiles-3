@@ -88,15 +88,15 @@ You can install with theses 2 repos with:
 
 ## Screens
 
-**Last**:`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
+**Last**:`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/sombra.jpg "sombra")  
 
-`theme-zerg` [wm]:*subtle* [term]: *kitty*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git).  
+`theme-zerg` [wm]:*subtle* [term]: *kitty*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [SF Mono](https://github.com/ZulwiyozaPutra/SF-Mono-Font).  
 
 ![Zerg screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/zerg.jpg "zerg")
 
-`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
+`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim), [font] [Roboto Mono](https://github.com/google/fonts).  
 
 ![Bot screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
 
@@ -112,11 +112,11 @@ You can install with theses 2 repos with:
 
 ![Creation screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/creation.jpg "creation")
 
-`theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*. [vim-color] [fromthehell.vim](https://github.com/szorfein/fromthehell.vim)
+`theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*. [vim-color] [fromthehell.vim](https://github.com/szorfein/fromthehell.vim) [font] [Iosevka Term](https://github.com/be5invis/Iosevka).  
 
 ![Empire screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/empire.jpg "empire")
 
-`theme-madness`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
+`theme-madness`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space) [font] [dina](http://www.donationcoder.com/Software/Jibz/Dina/index.html).  
 
 ![Madness screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/madness.jpg "madness")
 

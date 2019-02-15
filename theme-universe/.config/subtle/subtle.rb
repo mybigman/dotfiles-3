@@ -167,8 +167,8 @@ end
 grab "C-A-Right", "mpc next"
 grab "C-A-Left", "mpc prev"
 grab "S-A-d", "mpc del 0"
-grab "C-A-Up", "mpc volume +1"
-grab "C-A-Down", "mpc volume -1"
+grab "C-A-Up", "volume.sh -i 1"
+grab "C-A-Down", "volume.sh -d 1"
 grab "G-F9", "xbacklight +1"
 grab "G-F8", "xbacklight -1"
 
@@ -233,7 +233,7 @@ gravity :c3, [ 67, 6, 33, 91 ]
 
 tag "code_1" do
     match "code-1"
-    gravity :c1
+    gravity :center
 end
 
 tag "code_2" do
@@ -316,8 +316,8 @@ tag "gimp_scum" do
 end
 
 tag "vms" do
-  match "VirtualBox*"
-  gravity :center66
+  match "virtualbox"
+  float true
 end
 
 #

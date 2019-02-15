@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 FILE="${1:?Need File}"
 FILE_GPG="$PASSWD/$FILE.gpg"
@@ -12,7 +12,7 @@ function check_dir_permission()
       exit 1
    fi
    if [[ $perm > 700 ]]; then
-      echo "WARM file unsecure, permission must be set to 700"
+      echo "[WARN] file unsecure, permission on $PASSWD must be set to 700"
    fi
 }
 

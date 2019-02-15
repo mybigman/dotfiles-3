@@ -1,54 +1,74 @@
-ncmpcpp_directory = ~/.ncmpcpp
-mpd_host = localhost
-mpd_port = 6600
-mpd_music_dir = ~/musics
-visualizer_fifo_path = /tmp/mpd.fifo
-visualizer_type = ellipse
-visualizer_look = ●▮
-visualizer_color = blue, cyan, green, yellow, magenta, red
-#visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
+# ███▄    █  ▄████▄   ███▄ ▄███▓ ██▓███   ▄████▄   ██▓███   ██▓███  
+#  ██ ▀█   █ ▒██▀ ▀█  ▓██▒▀█▀ ██▒▓██░  ██▒▒██▀ ▀█  ▓██░  ██▒▓██░  ██▒
+#  ▓██  ▀█ ██▒▒▓█    ▄ ▓██    ▓██░▓██░ ██▓▒▒▓█    ▄ ▓██░ ██▓▒▓██░ ██▓▒
+#  ▓██▒  ▐▌██▒▒▓▓▄ ▄██▒▒██    ▒██ ▒██▄█▓▒ ▒▒▓▓▄ ▄██▒▒██▄█▓▒ ▒▒██▄█▓▒ ▒
+#  ▒██░   ▓██░▒ ▓███▀ ░▒██▒   ░██▒▒██▒ ░  ░▒ ▓███▀ ░▒██▒ ░  ░▒██▒ ░  ░
+#  ░ ▒░   ▒ ▒ ░ ░▒ ▒  ░░ ▒░   ░  ░▒▓▒░ ░  ░░ ░▒ ▒  ░▒▓▒░ ░  ░▒▓▒░ ░  ░
+#  ░ ░░   ░ ▒░  ░  ▒   ░  ░      ░░▒ ░       ░  ▒   ░▒ ░     ░▒ ░     
+
+
+# mpd
+
+mpd_host = "127.0.0.1"
+mpd_port = "6600"
+mpd_music_dir = "~/.musics"
+
+## Selected tracks ##
+selected_item_prefix = "* "
+discard_colors_if_item_is_selected = "no"
+
+# Colors
+color1 = "magenta"
+color2 = "cyan" 
+main_window_color = "cyan" 
+state_line_color = "black"
+statusbar_color = "black"
+progressbar_color = "magenta"
+progressbar_elapsed_color = "cyan"
+current_item_prefix = "$(red)$r"
+current_item_suffix = "$/r$(end)"
+alternative_ui_separator_color = "black"
+
+# Settings
+autocenter_mode = "yes"
+header_visibility = "no" 
+statusbar_visibility = "no"
+cyclic_scrolling = "yes"
+titles_visibility = "no"
+display_bitrate = "yes"
+playlist_separate_albums = "no"
+ask_before_clearing_playlists = "no"
+
+# Playlist
+user_interface = "alternative"
+playlist_display_mode = "classic"
+browser_display_mode = "classic"
 song_list_format = "$7 {%a}|{%D}$8 * $5%t $R $6%l"
-alternative_header_first_line_format =
-alternative_header_second_line_format = "$b $7$aqqu$/a$9 $8{%t}|{%f} $7$atqq$/a$9$/b"
+song_status_format = "$6%t $1>> $8%a $1>> $2%b$1"
+song_columns_list_format = "(5)[]{} (20)[red]{a} (26)[white]{t|f} (44)[blue]{b} (20)[red]{l}"
+alternative_header_second_line_format = "$6{%a} $b$8-$9 $4{%b}$9"
 now_playing_prefix = "$b$4>$5> "
 now_playing_suffix = "$2$/b$2"
-song_columns_list_format = "(26)[97]{f} (15)[74]{a} (21)[232]{t|f} (31)[111]{b|D} (1)[169]{l}"
-#execute_on_song_change = ""
-playlist_display_mode = classic
-playlist_disable_highlight_delay = "1"
 
-progressbar_look = "→→"
-progressbar_color = magenta
-progressbar_elapsed_color = green
+# Progressbars to use.
+# This section works as
+# a clipboard so no need
+# to hunt these down from
+# the web.
 
-user_interface = alternative
-header_visibility = no 
-statusbar_visibility = no 
-titles_visibility = no 
-ask_before_clearing_playlists = no 
-autocenter_mode = yes
-display_volume_level = no 
-display_bitrate = yes
-display_remaining_time = no
-mouse_support = yes
-external_editor = vim 
-use_console_editor = yes
-main_window_color = white 
-
-header_window_color = "black"
-volume_color = "black"
-state_line_color = "cyan"
-state_flags_color = "blue"
-
-current_item_prefix = "$(cyan)$r"
-current_item_suffix = "$/r$(end)"
-
-color1 = "white"
-color2 = "blue"
-statusbar_color = "white"
-
-current_item_inactive_column_prefix = 
-current_item_inactive_column_suffix =
-
-window_border_color = "red"
-active_window_border = "red"
+#progressbar_look = "░█ "
+#progressbar_look = "=>"
+#progressbar_look = "─- "
+#progressbar_look = "▒▒░"
+#progressbar_look = "┅┅┄"
+#progressbar_look = "─⊙┄"
+#progressbar_look = "─➞─"
+#progressbar_look = "─┅─"
+#progressbar_look = "▪▪▪"
+#progressbar_look = "▪▪▫"
+#progressbar_look = "───"
+#progressbar_look = "▁▁▁"
+#progressbar_look = "‒‒‒"
+#progressbar_look = "■◣ "
+progressbar_look = "◈◆◇"
+#progressbar_look = "→→"

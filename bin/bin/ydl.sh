@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Deps: youtube-dl
-
 # Script to download musics on youtube
 # Dep: youtube-dl
 # Usage e.g: ydl.sh https://youtu.be/1dAazZxw83Y?list=PLYaK2zRLpEbvjyUIqjroO5sVxugCRTH7c
@@ -22,9 +20,10 @@ agent="${agentsList[$rand]}"
 
 cd $WORKDIR
 echo "Downloading $LINK_MUSIC..."
+TOR_PORT=$(grep -i socksport /etc/tor/torrc | head -n 1 | awk '{print $2}')
 
 youtube-dl \
-  --proxy "socks5://${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT}" \
+  --proxy "socks5://127.0.0.1:${TOR_PORT:-9050}" \
   --user-agent "$agent" \
   --add-metadata \
   -o '%(title)s.%(ext)s' \

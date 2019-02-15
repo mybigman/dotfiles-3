@@ -66,6 +66,9 @@ end
 # == Gravities
 #
 
+# Left
+gravity :left23, [ 0, 4, 67, 96 ]
+
 # Center
 gravity :center,         [   0,   4, 100, 96 ]
 gravity :center66,       [  25,  25,  50,  50 ]
@@ -151,8 +154,8 @@ grab "W-Right", :WindowRight
 grab "W-z", :WindowKill
 
 # Cycle between given gravities
-grab "W-F1", [ :c1 ]
-grab "W-F2", [ :c2, :center66 ]
+grab "W-F1", [ :c1, :left23 ]
+grab "W-F2", [ :c2, :center66, :center ]
 grab "W-F3", [ :c3 ]
 
 # Exec programs
