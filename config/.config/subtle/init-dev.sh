@@ -4,6 +4,7 @@ TERM=$TERMINAL
 LIST_PROC=(
     "code-1"
 )
+#"code-2"
 
 clear_env() {
     local old_term=$(ps aux | grep -i "${TERM} --name=code" | awk '{print $2}')

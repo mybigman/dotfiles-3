@@ -71,6 +71,7 @@ For now, i use vim with:
 + [nerdtree](https://github.com/scrooloose/nerdtree)
 + [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
 + [lightline](https://github.com/itchyny/lightline.vim)
++ [indentLine](https://github.com/Yggdroot/indentLine)
 
 Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
 

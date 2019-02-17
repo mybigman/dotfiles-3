@@ -54,7 +54,7 @@ end
 #
 
 # Center
-gravity :center, [ 1, 5, 98, 93 ]
+gravity :center, [ 2, 5, 96, 93 ]
 gravity :ct66, [ 25, 25, 50, 50 ]
 
 # Gimp
@@ -72,6 +72,7 @@ grab "W-S-2", :ViewJump2
 grab "W-S-3", :ViewJump3
 grab "W-S-4", :ViewJump4
 grab "W-S-5", :ViewJump5
+grab "W-S-6", :ViewJump6
 
 # Switch current view
 grab "W-1", :ViewSwitch1
@@ -79,6 +80,7 @@ grab "W-2", :ViewSwitch2
 grab "W-3", :ViewSwitch3
 grab "W-4", :ViewSwitch4
 grab "W-5", :ViewSwitch5
+grab "W-6", :ViewSwitch6
 
 # Move mouse to screen1, screen2, ...
 grab "W-A-1", :ScreenJump1
@@ -86,6 +88,7 @@ grab "W-A-2", :ScreenJump2
 grab "W-A-3", :ScreenJump3
 grab "W-A-4", :ScreenJump4
 grab "W-A-5", :ScreenJump5
+grab "W-A-6", :ScreenJump6
 
 # Force reload of config and sublets
 grab "W-C-r", :SubtleReload
@@ -152,8 +155,8 @@ end
 grab "C-A-Right", "mpc next"
 grab "C-A-Left", "mpc prev"
 grab "S-A-d", "mpc del 0"
-grab "C-A-Up", "mpc volume +2"
-grab "C-A-Down", "mpc volume -2"
+grab "C-A-Up", "volume.sh -i 1"
+grab "C-A-Down", "volume.sh -d 1"
 grab "G-F9", "xbacklight +1"
 grab "G-F8", "xbacklight -1"
 
@@ -221,6 +224,11 @@ tag "gimp_scum" do
   match role: "gimp-.*|screenshot"
 end
 
+tag "vms" do
+  match "virtualbox"
+  float true
+end
+
 ## programs on view console
 gravity :term, [ 33, 5, 34, 20 ]
 gravity :wee, [ 1, 13, 28, 79 ]
@@ -254,9 +262,8 @@ tag "mail" do
 end
 
 ## programs on view dev 
-gravity :d1, [ 1, 5, 33, 93 ]
-gravity :d2, [ 34, 5, 33, 93 ]
-gravity :d3, [ 67, 5, 32, 93 ]
+gravity :d1, [ 2, 5, 47, 93 ]
+gravity :d2, [ 51, 5, 47, 93 ]
 
 tag "code_1" do
   match "code-1"
@@ -266,26 +273,6 @@ end
 tag "code_2" do
   match "code-2"
   gravity :d2
-end
-
-tag "code_3" do
-  match "code-3"
-  gravity :d3
-end
-
-tag "code_4" do
-  match "code-4"
-  gravity :d1
-end
-
-tag "code_5" do
-  match "code-5"
-  gravity :d2
-end
-
-tag "code_6" do
-  match "code-6"
-  gravity :d3
 end
 
 ## float gravity
@@ -302,6 +289,7 @@ view "www",   "browser"
 view "dev",   "code_.*"
 view "console", "pwd|music|cava|chat|mail"
 view "gimp",  "gimp_.*"
+view "vm", "vms"
 
 #
 # Autorun

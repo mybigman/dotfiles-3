@@ -144,7 +144,7 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$','\.bak$', '\~$']
 let NERDTreeShowBookmarks = 1
 let NERDTree_tabs_focus_on_files=1
 let NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let NERDTreeWinSize = 14
+let NERDTreeWinSize = 18
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
@@ -153,7 +153,7 @@ map <F3> :NERDTreeToggle<CR>
 
 " update colors with F8 with darkest-space colorscheme
 "map <F8> :update<CR>:colorscheme darkest-space<CR>
-map <F8> :update<CR>:colorscheme darkest-space<CR>
+map <F8> :update<CR>:colorscheme fromthehell<CR>
 let mapleader=","
 
 "" With vim, copy to clipboard work only if you compile vim with X support
