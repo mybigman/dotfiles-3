@@ -280,6 +280,14 @@ time-alt = %H:%M
 label = " %time% %date% "
 label-background = ${colors.background-alt}
 
+[module/day]
+type = internal/date
+interval = 5
+date = %a %d %b
+date-alt = %Y-%m-%d
+label = " %date% "
+label-background = ${colors.background-alt}
+
 [module/volume]
 type = custom/script
 interval = 2

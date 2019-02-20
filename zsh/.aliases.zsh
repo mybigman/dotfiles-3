@@ -1,4 +1,4 @@
-alias feh='feh --scale-down --zoom fill'
+alias feh='feh -Z'
 alias sxiv='sxiv -s h -g 628x580'
 alias virtualbox='firejail VirtualBox'
 alias mpv='firejail mpv'

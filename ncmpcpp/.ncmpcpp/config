@@ -38,6 +38,8 @@ titles_visibility = "no"
 display_bitrate = "yes"
 playlist_separate_albums = "no"
 ask_before_clearing_playlists = "no"
+visualizer_type = "ellipse"
+visualizer_fifo_path = "/tmp/mpd.fifo"
 
 # Playlist
 user_interface = "alternative"

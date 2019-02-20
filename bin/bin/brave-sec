@@ -15,8 +15,7 @@ rand=$[$RANDOM % ${#agentsList[@]}]
 agent="${agentsList[$rand]}"
 
 # -no-sandbox is require to start chrome based browser with firejail --seccomp
-firejail --nonewprivs \
+firejail --nonewprivs --seccomp \
   /opt/brave/brave -no-sandbox --proxy-server="${HTTP_PROXY}" \
   --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1" \
-  -user-agent="${agent}" \
-  --disk-cache-dir=/tmp/brave-cache
+  -user-agent="${agent}" --disk-cache-dir=/tmp/brave-cache --incognito

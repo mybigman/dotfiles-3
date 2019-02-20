@@ -89,7 +89,11 @@ You can install with theses 2 repos with:
 
 ## Screens
 
-**Last**:`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
+**Last**:`theme-termtor` [wm]:*subtle* [term]: *kitty* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
+
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/termtor.jpg "termtor")  
+
+**`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/sombra.jpg "sombra")  
 
@@ -132,8 +136,6 @@ You can install with theses 2 repos with:
 You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)
 + [Reddit](https://www.reddit.com/user/szorfein/posts/)
-+ [Imgur](https://imgur.com/user/Szorfein/submitted)
-+ [Google+](https://plus.google.com/103351806729237673609)
 + [twitter](https://twitter.com/szorfein)
 + [Blog](https://szorfein.github.io/)
 
