@@ -73,9 +73,9 @@ gravity :center66,       [  25,  25,  50,  50 ]
 gravity :center33,       [  33,  33,  33,  33 ]
 
 # Gimp
-gravity :gimp_image,     [  10,   4,  80, 96 ]
-gravity :gimp_toolbox,   [   0,   4,  10, 96 ]
-gravity :gimp_dock,      [  90,   4,  10, 96 ]
+gravity :gimp_image,     [  10,   8,  80, 92 ]
+gravity :gimp_toolbox,   [   0,   8,  10, 92 ]
+gravity :gimp_dock,      [  90,   8,  10, 92 ]
 
 #
 # == Grabs
@@ -270,7 +270,7 @@ tag "pwd" do
     gravity :pwd
 end
 
-gravity :music, [ 3, 9, 27, 59 ]
+gravity :music, [ 3, 8, 27, 60 ]
 tag "music" do
     match :instance => "ncmpcpp"
     gravity :music

@@ -13,8 +13,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if [ $1 = subtle ] ; then
   polybar top &
-elif [ $1 = i3 ] ; then
-  polybar i3top &
 else
   echo "WTF ???"
 fi

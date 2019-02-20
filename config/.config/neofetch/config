@@ -576,10 +576,7 @@ disk_display="off"
 
 # Image backend.
 #
-# Default:  'ascii'
-# Values:   'ascii', 'caca', 'catimg', 'jp2a', 'iterm2', 'off', 'termpix', 'pixterm', 'tycat', 'w3m'
-# Flag:     --backend
-image_backend="ascii"
+image_backend="kitty"
 
 # Image Source
 #
@@ -592,7 +589,7 @@ image_backend="ascii"
 # NOTE: 'auto' will pick the best image source for whatever image backend is used.
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
-image_source="auto"
+image_source="images/111417-amazing-demon-wallpaper-1920x1080-pc.jpg"
 
 
 # Ascii Options
