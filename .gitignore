@@ -1,4 +1,5 @@
 *.swp
+*.swo
 *.pyc
 ncmpcpp/.ncmpcpp/error.log
 gnupg/.gnupg/*.d
