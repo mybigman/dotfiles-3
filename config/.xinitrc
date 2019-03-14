@@ -38,3 +38,5 @@ case $session in
     subtle|subtlewm ) exec subtle 2> /tmp/subtle.log;;
     * ) exec $1;;
 esac
+
+pkill X

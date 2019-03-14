@@ -170,8 +170,8 @@ format-padding = 1
 [module/hostname]
 type = custom/script
 interval = 256
-format = "<label> "
-format-prefix = "  "
+format = "<label>"
+format-prefix = "  "
 format-prefix-foreground = ${colors.secondary}
 format-padding = 0
 exec = echo "$(uname -n)"

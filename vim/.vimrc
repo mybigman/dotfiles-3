@@ -128,9 +128,6 @@ set expandtab
 set foldenable
 set foldmethod=manual
 
-"" Colors
-source ~/.vim/colorscheme
-
 "" Gruvbox colorscheme
 let g:gruvbox_contrast_dark = 'soft'
 set background=dark
@@ -215,3 +212,21 @@ let g:lightline#colorscheme#hybrid#palette = s:p
 let g:lightline = {
   \ 'colorscheme': 'nord'
   \ }
+
+
+" Color
+syntax enable
+
+" for vim 8
+if (has("termguicolors"))
+  set termguicolors
+  " This is only necessary if you use "set termguicolors".
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" for vim 7
+set t_Co=256
+
+"" Colors
+source ~/.vim/colorscheme

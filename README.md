@@ -6,15 +6,15 @@ compositor        > compton
 extra background  > pscircle
 fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder
 image viewer      > feh
-irc               > Weechat
+irc               > weechat
 lock screen       > i3lock
 media player      > mpv
 music player      > ncmpcpp
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
 terms             > kitty,termite,rxvt
-web browser       > vivaldi, brave
-wm                > subtle,i3-gaps,bspwm
+web browser       > brave
+wm                > subtle
 ```
 A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
 
@@ -88,10 +88,13 @@ You can install with theses 2 repos with:
     $ ./install --zsh
 
 ## Screens
+**Last**:`theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 
-**Last**:`theme-termtor` [wm]:*subtle* [term]: *kitty* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/termtor.jpg "termtor")  
+`theme-termtor` [wm]:*subtle* [term]: *kitty* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
+
+![termtor screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/termtor.jpg "termtor")  
 
 **`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
 
@@ -100,14 +103,6 @@ You can install with theses 2 repos with:
 `theme-zerg` [wm]:*subtle* [term]: *kitty*. [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [SF Mono](https://github.com/ZulwiyozaPutra/SF-Mono-Font).  
 
 ![Zerg screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/zerg.jpg "zerg")
-
-`theme-bot` [wm]:*subtle*, *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim), [font] [Roboto Mono](https://github.com/google/fonts).  
-
-![Bot screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/bot.jpg "bot")
-
-`theme-fantasy`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [fantasy.vim](https://github.com/szorfein/fantasy.vim).
-
-![Fantasy screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/fantasy.jpg "fantasy")
 
 `theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
@@ -130,8 +125,6 @@ You can install with theses 2 repos with:
 ![City screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/city.jpg "city")
 
 `theme-gruvbox`, [wm]:*subtle*. [term]: *termite*. [vim colorscheme] [gruvbox](https://github.com/morhetz/gruvbox)
-
-![Gruvbox screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/gruvbox.jpg "gruvbox")
 
 You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)

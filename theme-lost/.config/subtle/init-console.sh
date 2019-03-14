@@ -31,7 +31,7 @@ launch_proc() {
   $TERM --name="ncmpcpp" -e "ncmpcpp" &
   $TERM --name="cava" -e "cava" &
   $TERM --name="mutt" -e "tmux-mc" &
-  sleep 1
+  sleep 4
 }
 
 clear_env

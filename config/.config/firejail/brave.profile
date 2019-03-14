@@ -6,12 +6,14 @@ include /etc/firejail/brave.local
 include /etc/firejail/globals.local
 
 noblacklist ${HOME}/.config/brave
+noblacklist ${HOME}/.config/BraveSoftware
 # brave uses gpg for built-in password manager
 noblacklist ${HOME}/.gnupg
 
 mkdir ${HOME}/.config/brave
-mkdir /tmp/brave-cache
+mkdir ${HOME}/.config/BraveSoftware
 whitelist ${HOME}/.config/brave
+whitelist ${HOME}/.config/BraveSoftware
 whitelist ${HOME}/.gnupg
 
 # noexec /tmp is included in chromium-common.profile and breaks Brave
@@ -19,5 +21,3 @@ ignore noexec /tmp
 
 # Redirect
 include /etc/firejail/chromium-common.profile
-
-dns 127.0.0.1

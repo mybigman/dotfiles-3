@@ -30,46 +30,58 @@ end
 
 # Style for all style elements
 style :all do
-  background  "#202020"
-  icon        "#757575"
-  border      "#303030", 0
-  padding     0, 3
-  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*"
+  background  "#000000"
+  icon        "#000000"
+  border      "#000000", 1
+  padding     0, 0
+  font        "-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 end
 
 # Style for the all views
 style :views do
-  foreground  "#757575"
+  foreground  "#000000"
 end
 
 # Style for active/inactive windows
 style :clients do
-  active    "#1d5b80", 0
-  inactive  "#333333", 0
-  margin 0, 1, 1, 0
+  active    "#3c2841", 3
+  inactive  "#132530", 2
+  # need -1 bellow, maybe because my res (1366)
+  margin 2, 5
   width     50
 end
 
 # Style for subtle
 style :subtle do
   margin      0, 0, 0, 0
-  panel       "#202020"
-  background  "#3d3d3d"
-  stipple     "#757575"
+  panel       "#000000"
+  background  "#000000"
+  stipple     "#000000"
 end
 
 #
 # == Gravities
 #
 
+# Left
+gravity :left,           [   5,   12,  45, 79 ]
+gravity :left_t,         [   5,   12,  45, 39 ]
+gravity :left_b,         [   5,   51,  45, 40 ]
+
 # Center
-gravity :center,         [   0,   6, 100, 91 ]
+gravity :center,         [ 3, 9, 94, 82 ]
 gravity :center66,       [  25,  25,  50,  50 ]
+gravity :center33,       [  33,  33,  33,  33 ]
+
+# Right
+gravity :right,          [  50,   12,  45, 79 ]
+gravity :right_t,          [  50,   12,  45, 39 ]
+gravity :right_b,          [  50,   51,  45, 40 ]
 
 # Gimp
-gravity :gimp_image,     [  10,   6,  80, 91 ]
-gravity :gimp_toolbox,   [   0,   6,  10, 91 ]
-gravity :gimp_dock,      [  90,   6,  10, 91 ]
+gravity :gimp_image,     [  10,   6,  80, 88 ]
+gravity :gimp_toolbox,   [   0,   6,  10, 88 ]
+gravity :gimp_dock,      [  90,   6,  10, 88 ]
 
 #
 # == Grabs
@@ -142,17 +154,22 @@ grab "W-Down",  :WindowDown
 grab "W-Up",    :WindowUp
 grab "W-Right", :WindowRight
 
-# Kill current window
+# Kill current window 
 grab "W-z", :WindowKill
 
 # Cycle between given gravities
 grab "W-F1", [ :c1 ]
 grab "W-F2", [ :c2, :center66 ]
 grab "W-F3", [ :c3 ]
+#grab "W-F3", [ :mus, :cav, :wee, :mai, :term ]
+#grab "W-F1", [ :left_t, :left_b, :left, :right_t, :right_b, :right ]
+#grab "W-F2", [ :center, :center66, :center33 ]
+#grab "W-F3", [ :c1, :c2, :c3 ]
+#grab "W-F3", [ :mus, :cav, :wee, :mai, :term ]
 
 # Exec programs
 grab "W-Return", "#{ENV["TERMINAL"]}"
-grab "W-p", "dmenu_run -i -b -nb '#020307' -nf '#afd7ff' -fn 'Roboto Mono:size=10'"
+grab "W-p", "rofi -show run"
 
 # Run Ruby lambdas
 grab "S-F2" do |c|
@@ -208,17 +225,11 @@ tag "stick" do
   stick true 
 end
 
-gravity :img, [ 26, 3, 48, 94 ]
+gravity :image,       [  25,  25,  50,  50 ]
 tag "imgs" do
     match "sxiv|feh"
     stick true
-    gravity :img
-end
-
-gravity :reader, [ 6, 3, 88, 93 ]
-tag "readers" do
-  match :class => "zathura"
-  gravity :reader
+    gravity :image
 end
 
 tag "float" do
@@ -226,14 +237,18 @@ tag "float" do
   float true
 end
 
+tag "pdf" do
+  match class: "[Zz]athura"
+  gravity :center
+end
+
 ## programs on view dev [3]
-gravity :c1, [ 0, 6, 33, 91 ]
-gravity :c2, [ 33, 6, 34, 91 ]
-gravity :c3, [ 67, 6, 33, 91 ]
+gravity :c1, [ 3, 9, 94, 82 ]
+gravity :c2, [ 69, 8, 30, 84 ]
 
 tag "code_1" do
     match "code-1"
-    gravity :center
+    gravity :c1
 end
 
 tag "code_2" do
@@ -263,35 +278,34 @@ end
 ## End programs on view dev [3]
 
 ## Programs on view console [4]
-gravity :term, [ 6, 18, 34, 26 ]
-gravity :wee, [ 6, 46, 34, 40 ]
-gravity :mus, [ 41, 18, 27, 36 ]
-gravity :cav, [ 69, 30, 25, 24 ]
-gravity :mai, [ 50, 60, 48, 38 ]
+gravity :tmux, [ 48, 9, 49, 42 ]
+gravity :con_c, [ 6, 12, 26, 20 ]
+gravity :music, [ 5, 44, 26, 47 ]
+gravity :cava, [ 64, 64, 26, 22 ]
 
 tag "pwd" do
-    match "pwd"
-    gravity :term
+    match :instance => "pwd"
+    gravity :con_c
 end
 
 tag "chat" do
     match :instance => "weechat"
-    gravity :wee
+    gravity :tmux
 end
 
 tag "music" do
     match :instance => "ncmpcpp"
-    gravity :mus
+    gravity :music
 end
 
 tag "cava" do
     match :instance => "cava"
-    gravity :cav
+    gravity :cava
 end
 
 tag "mail" do
     match :instance => "mutt"
-    gravity :mai
+    gravity :tmux
 end
 ## End Programs on view console [4]
 
@@ -316,7 +330,7 @@ tag "gimp_scum" do
 end
 
 tag "vms" do
-  match "virtualbox"
+  match "virtualbox*"
   float true
 end
 
@@ -324,7 +338,7 @@ end
 # == Views
 #
 
-view "terms", "terms|imgs|readers|default"
+view "terms", "terms|imgs|pdf|default"
 view "www",   "browser"
 view "dev",   "code_.*"
 view "console",   "pwd|music|cava|chat|mail"
@@ -337,7 +351,7 @@ view "vm",  "vms"
 
 on :start do
     Subtlext::Client.spawn( "compton -b" )
-    Subtlext::Client.spawn( "pscircle-with-image.sh images/universe.jpg" )
+    Subtlext::Client.spawn( "feh --bg-fill images/lost.jpg" )
     Subtlext::Client.spawn( "#{ENV["TERMINAL"]}" )
     Subtlext::Client.spawn( "~/.config/polybar/launch.sh subtle" )
     Subtlext::Client.spawn( "~/.config/subtle/init-dev.sh" )
