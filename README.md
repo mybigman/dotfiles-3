@@ -4,7 +4,7 @@
 bar               > polybar,lemonbar
 compositor        > compton
 extra background  > pscircle
-fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder
+fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder,NERD fonts
 image viewer      > feh
 irc               > weechat
 lock screen       > i3lock
@@ -12,9 +12,10 @@ media player      > mpv
 music player      > ncmpcpp
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
-terms             > kitty,termite,rxvt
+terms             > kitty
 web browser       > brave
-wm                > subtle
+wm                > awesome,subtle,i3-gaps
+mails             > offlineimap,msmtp and mutt (soon neomutt)
 ```
 A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
 
@@ -88,15 +89,18 @@ You can install with theses 2 repos with:
     $ ./install --zsh
 
 ## Screens
-**Last**:`theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+**Last**:`theme-dark` [wm]:*awesome* [term]: *kitty* [vim-color] [Dark](https://github.com/szorfein/dark.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/dark.jpg "dark")  
 
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  
+`theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+
+![Lost screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  
 
 `theme-termtor` [wm]:*subtle* [term]: *kitty* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
 
 ![termtor screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/termtor.jpg "termtor")  
 
-**`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
+`theme-sombra` [wm]:*subtle*, *i3* [term]: *kitty* [vim-color] [material.vim](https://github.com/kaicataldo/material.vim.git), [font] [Anka/Coder](https://code.google.com/archive/p/anka-coder-fonts).   
 
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/sombra.jpg "sombra")  
 
@@ -107,10 +111,6 @@ You can install with theses 2 repos with:
 `theme-universe`, [wm]:*subtle* or *i3* [term]: *kitty*, *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![Universe screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/universe.jpg "universe")
-
-`theme-creation`, [wm]:*subtle* or *i3*. [term]: *kitty* or *termite*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
-
-![Creation screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/creation.jpg "creation")
 
 `theme-empire`, [wm]:*subtle* or *i3*. [term]: *termite* or *kitty*. [vim-color] [fromthehell.vim](https://github.com/szorfein/fromthehell.vim) [font] [Iosevka Term](https://github.com/be5invis/Iosevka).  
 
@@ -123,8 +123,6 @@ You can install with theses 2 repos with:
 `theme-city`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 
 ![City screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/city.jpg "city")
-
-`theme-gruvbox`, [wm]:*subtle*. [term]: *termite*. [vim colorscheme] [gruvbox](https://github.com/morhetz/gruvbox)
 
 You can found other screens on:
 + [dotshare.it](http://dotshare.it/~szorfein/dots/)

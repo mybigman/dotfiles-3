@@ -29,13 +29,14 @@ fi
 xbacklight -set 1
 
 # Start wm
-session=${1:-subtle}
+session=${1:-awesome}
 case $session in
     i3|i3wm ) exec i3;;
     bspwm ) exec bspwm-launch;;
     herbstuf|herbstluftwm ) exec herbstluftwm --locked;;
     spectr|spectrwm ) exec spectrwm 2> /tmp/spectrwm.log;;
     subtle|subtlewm ) exec subtle 2> /tmp/subtle.log;;
+    awesome|awesomewm ) exec awesome ;;
     * ) exec $1;;
 esac
 

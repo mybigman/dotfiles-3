@@ -42,7 +42,7 @@ visualizer_type = "ellipse"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 
 # Playlist
-user_interface = "alternative"
+#user_interface = "alternative"
 playlist_display_mode = "classic"
 browser_display_mode = "classic"
 song_list_format = "$7 {%a}|{%D}$8 * $5%t $R $6%l"

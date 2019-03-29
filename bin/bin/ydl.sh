@@ -30,7 +30,7 @@ youtube-dl \
   -f 'bestaudio' \
   --no-playlist \
   -x --audio-format best \
-  --audio-quality 0 "$LINK_MUSIC"
+  --audio-quality 0 "$LINK_MUSIC" || exit 1
 
 echo "$LINK_MUSIC success"
 cd $OLDPATH

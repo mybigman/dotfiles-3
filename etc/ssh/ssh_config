@@ -8,7 +8,6 @@ Host *.onion
    ProxyCommand socat - SOCKS4A:localhost:%h:%p,socksport=%t
 
 Host *
-   UseRoaming no
    PasswordAuthentication no
    ChallengeResponseAuthentication no
    PubkeyAuthentication yes
