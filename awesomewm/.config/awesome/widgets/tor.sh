@@ -5,9 +5,9 @@ check_tor() {
    url="https://check.torproject.org/"
   curl -s -m 10 -L "$url" | cat | tac | grep -q 'Congratulations'
   if [ $? -eq 0 ] ; then
-    echo "[+] Tor is working properly"
+    echo 0
   else
-    echo "[-] Unfortunately, Tor is no working"
+    echo 1
     exit 1
    fi
 
@@ -25,7 +25,10 @@ check_ip() {
   fi
 }
 
-check_tor
-check_ip
+case "$1" in
+  check) check_tor ;;
+  ip) check_ip ;;
+  *) echo "unknown arg $1" ; exit 1 ;;
+esac
 
 exit 0

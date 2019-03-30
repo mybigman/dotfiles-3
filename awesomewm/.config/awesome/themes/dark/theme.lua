@@ -173,7 +173,8 @@ theme.widget_text_font = "RobotoMono Nerd Font Mono 10"
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 
 -- Tor
-theme.widget_tor_text_icon = '<span foreground="#434e4a"> 﨩</span>'
+theme.widget_tor_text_enable_icon = '<span foreground="#434f4a"> 﨩</span>'
+theme.widget_tor_text_disable_icon = '<span foreground="#8a4e4a"> 﨩</span>'
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'

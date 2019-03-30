@@ -4,17 +4,27 @@ local naughty = require("naughty")
 local beautiful = require("beautiful")
 
 local font_icon = beautiful.widget_icon_font or 'RobotoMono Nerd Font Mono 18'
-
-local markup_icon = beautiful.widget_tor_text_icon or '<span foreground="#434e4a"> 﨩</span>'
+local tor_text_enable_icon = beautiful.widget_tor_text_enable_icon or '<span foreground="#434e4a"> 﨩</span>'
+local tor_text_disable_icon = beautiful.widget_tor_text_disable_icon or '<span foreground="#aa4e4a"> 﨩</span>'
 
 tor_icon = wibox.widget {
-  markup = markup_icon,
   widget = wibox.widget.textbox,
   font = font_icon,
 }
 
+awful.widget.watch(
+os.getenv("HOME").."/.config/awesome/widgets/tor.sh check", 60, -- 1m
+function(widget, stdout, stderr, exitreason, exitcode)
+  local code = tonumber(stdout) or 1
+  if (code == 0) then
+    tor_icon:set_markup_silently (tor_text_enable_icon)
+  else
+    tor_icon:set_markup_silently (tor_text_disable_icon)
+  end
+end)
+
 function show_tor() 
-  awful.spawn.easy_async( os.getenv("HOME").."/.config/awesome/widgets/tor.sh",
+  awful.spawn.easy_async( os.getenv("HOME").."/.config/awesome/widgets/tor.sh ip",
   function(stdout, stderr, reason, exitcode)
     naughty.notify {
       text = stdout,
