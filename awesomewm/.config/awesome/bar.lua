@@ -12,6 +12,7 @@ local hostname = require("widgets.hostname")
 local tor = require("widgets.tor")
 local text_taglist = require("widgets.text_taglist")
 local mail = require("widgets.mail")
+local scrot = require("widgets.scrot")
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -97,15 +98,16 @@ awful.screen.connect_for_each_screen(function(s)
     text_taglist, -- Middle widget
     --s.mytaglist,
     { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
       --mykeyboardlayout,
       email_icon,
       pad(2),
       email_text,
-      pad(8),
+      pad(1),
+      scrot_icon,
       wibox.widget.systray(),
       --mytextclock,
-      s.mylayoutbox,
+      --s.mylayoutbox,
+      layout = wibox.layout.fixed.horizontal,
     },
   }
 end)

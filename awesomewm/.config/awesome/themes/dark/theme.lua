@@ -185,6 +185,9 @@ theme.widget_ncmpcpp_next = '<span foreground="#334932"> &gt; </span>'
 theme.widget_email_text_read_icon = '<span foreground="#434e4a"></span>'
 theme.widget_email_text_unread_icon = '<span foreground="#192429"></span>'
 
+-- Screenshot
+theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
+
 -- }}} End WIDGET
 
 return theme
