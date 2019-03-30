@@ -14,7 +14,7 @@ tor_icon = wibox.widget {
 }
 
 function show_tor() 
-  awful.spawn.easy_async([[bash -c "~/.config/awesome/widgets/tor.sh"]],
+  awful.spawn.easy_async( os.getenv("HOME").."/.config/awesome/widgets/tor.sh",
   function(stdout, stderr, reason, exitcode)
     naughty.notify {
       text = stdout,

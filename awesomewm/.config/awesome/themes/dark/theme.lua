@@ -135,46 +135,25 @@ theme.menu_width  = dpi(100)
 
 -- }}} End MENU
 
--- Define the image to load
-theme.titlebar_ontop_button_normal_inactive = themes_path..theme_name.."/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path..theme_name.."/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path..theme_name.."/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themes_path..theme_name.."/titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = themes_path..theme_name.."/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path..theme_name.."/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path..theme_name.."/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themes_path..theme_name.."/titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = themes_path..theme_name.."/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = themes_path..theme_name.."/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path..theme_name.."/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = themes_path..theme_name.."/titlebar/floating_focus_active.png"
-
-theme.titlebar_maximized_button_normal_inactive = themes_path..theme_name.."/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path..theme_name.."/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path..theme_name.."/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = themes_path..theme_name.."/titlebar/maximized_focus_active.png"
-
 theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = layout_icon_path.."fairhw.png"
-theme.layout_fairv = layout_icon_path.."fairvw.png"
+--theme.layout_fairv = layout_icon_path.."fairvw.png"
 theme.layout_floating  = layout_icon_path.."floatingw.png"
 theme.layout_magnifier = layout_icon_path.."magnifierw.png"
 theme.layout_max = layout_icon_path.."max.png"
 theme.layout_fullscreen = layout_icon_path.."fullscreenw.png"
-theme.layout_tilebottom = layout_icon_path.."tilebottomw.png"
-theme.layout_tileleft   = layout_icon_path.."tileleftw.png"
+--theme.layout_tilebottom = layout_icon_path.."tilebottomw.png"
+--theme.layout_tileleft   = layout_icon_path.."tileleftw.png"
 theme.layout_tile = layout_icon_path.."tilew.png"
-theme.layout_tiletop = layout_icon_path.."tiletopw.png"
-theme.layout_spiral  = layout_icon_path.."spiralw.png"
-theme.layout_dwindle = layout_icon_path.."dwindlew.png"
-theme.layout_cornernw = layout_icon_path.."cornernww.png"
-theme.layout_cornerne = layout_icon_path.."cornernew.png"
-theme.layout_cornersw = layout_icon_path.."cornersww.png"
-theme.layout_cornerse = layout_icon_path.."cornersew.png"
+--theme.layout_tiletop = layout_icon_path.."tiletopw.png"
+--theme.layout_spiral  = layout_icon_path.."spiralw.png"
+--theme.layout_dwindle = layout_icon_path.."dwindlew.png"
+--theme.layout_cornernw = layout_icon_path.."cornernww.png"
+--theme.layout_cornerne = layout_icon_path.."cornernew.png"
+--theme.layout_cornersw = layout_icon_path.."cornersww.png"
+--theme.layout_cornerse = layout_icon_path.."cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(

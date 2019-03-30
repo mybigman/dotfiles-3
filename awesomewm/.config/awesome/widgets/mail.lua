@@ -22,7 +22,7 @@ email_text = wibox.widget {
 
 -- watch() require full path of the script
 awful.widget.watch(
-  "bash /home/brakk/.config/awesome/widgets/email.sh get", 300, -- 5m
+  os.getenv("HOME").."/.config/awesome/widgets/email.sh get", 300, -- 5m
   function(widget, stdout, stderr, exitreason, exitcode)
     local unread_email_num = tonumber(stdout) or 0
     if (unread_email_num > 0) then
@@ -35,7 +35,7 @@ awful.widget.watch(
 )
 
 function show_emails()
-  awful.spawn.easy_async([[bash -c '~/.config/awesome/widgets/email.sh show']],
+  awful.spawn.easy_async(os.getenv("HOME").."/.config/awesome/widgets/email.sh show",
   function(stdout, stderr, reason, exit_code)
     naughty.notify {
       text = stdout,
