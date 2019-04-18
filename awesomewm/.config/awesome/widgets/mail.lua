@@ -2,34 +2,35 @@ local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
+local widget = require("util.widgets")
 
-local font_icon = beautiful.widget_icon_font or 'RobotoMono Nerd Font Mono 18'
-local font_text = beautiful.widget_text_font or 'RobotoMono Nerd Font Mono 10'
+-- beautiful vars
+local fg_read = beautiful.widget_email_fg_read
+local fg_unread = beautiful.widget_email_fg_unread
+local read_icon = beautiful.widget_email_read_icon
+local unread_icon = beautiful.widget_email_unread_icon
+local bg = beautiful.widget_email_bg
 
-local email_text_read_icon = beautiful.widget_email_text_read_icon or '<span foreground="#565b5e"></span>'
-local email_text_unread_icon = beautiful.widget_email_text_unread_icon or '<span foreground="#434e4a"></span>'
+-- local str
+local email_text_read_icon = '<span foreground="'..fg_read..'">'..read_icon..'</span>'
+local email_text_unread_icon = '<span foreground="'..fg_unread..'">'..unread_icon..'</span>'
 
-email_icon = wibox.widget {
-  widget = wibox.widget.textbox,
-  font = font_icon
-}
+-- widget creation
+local icon = widget.base_icon()
+local text = widget.base_text()
+local icon_margin = widget.icon(bg, icon)
+local text_margin = widget.text(bg, text)
+email_widget = widget.box(icon_margin, text_margin)
 
-email_text = wibox.widget {
-  widget = wibox.widget.textbox,
-  valign = "center",
-  font = font_text
-}
-
--- watch() require full path of the script
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/email.sh get", 300, -- 5m
   function(widget, stdout, stderr, exitreason, exitcode)
     local unread_email_num = tonumber(stdout) or 0
     if (unread_email_num > 0) then
-      email_icon:set_markup_silently (email_text_read_icon)
-      email_text:set_text (stdout)
+      icon:set_markup_silently(email_text_read_icon)
+      text:set_text(stdout)
     elseif (unread_email_num == 0) then
-      email_icon:set_markup_silently (email_text_unread_icon)
+      icon:set_markup_silently(email_text_unread_icon)
     end
   end
 )
@@ -46,4 +47,4 @@ function show_emails()
   end)
 end
 
-email_icon:connect_signal("mouse::enter", function() show_emails() end)
+email_widget:connect_signal("mouse::enter", function() show_emails() end)

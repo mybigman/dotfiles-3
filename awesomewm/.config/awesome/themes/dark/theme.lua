@@ -169,15 +169,17 @@ theme.icon_theme = nil
 
 -- {{{ WIDGET
 
-theme.widget_icon_font = "RobotoMono Nerd Font Mono 18"
-theme.widget_text_font = "RobotoMono Nerd Font Mono 10"
+theme.widget_icon_font = "RobotoMono Nerd Font Mono 16"
+theme.widget_text_font = "RobotoMono Nerd Font 11"
 
 -- Hostname
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 
 -- Tor
-theme.widget_tor_text_enable_icon = '<span foreground="#434f4a"> 﨩</span>'
-theme.widget_tor_text_disable_icon = '<span foreground="#8a4e4a"> 﨩</span>'
+theme.widget_tor_icon = "﨩"
+theme.widget_tor_fg_enable = "#434f4a"
+theme.widget_tor_fg_disable = "#8a4e4a"
+theme.widget_tor_bg = theme.xbackground
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
@@ -186,8 +188,11 @@ theme.widget_ncmpcpp_toggle = '<span foreground="#334932">  </span>'
 theme.widget_ncmpcpp_next = '<span foreground="#334932"> &gt; </span>'
 
 -- Mails
-theme.widget_email_text_read_icon = '<span foreground="#434e4a"></span>'
-theme.widget_email_text_unread_icon = '<span foreground="#192429"></span>'
+theme.widget_email_read_icon = ""
+theme.widget_email_unread_icon = ""
+theme.widget_email_fg_read = "#434e4a"
+theme.widget_email_fg_unread = "#192429"
+theme.widget_email_bg = theme.xbackground
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'

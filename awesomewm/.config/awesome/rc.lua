@@ -17,8 +17,6 @@ require("awful.hotkeys_popup.keys")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 local theme = require("loaded-theme")
-local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes/"
-beautiful.init( theme_dir .. theme.name .. "/theme.lua" )
 
 -- Custom stuff
 local titlebars = require("titlebars")
