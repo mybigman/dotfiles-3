@@ -1,4 +1,4 @@
-# shart keychain
+# start keychain
 keychain --clear --agents "ssh,gpg" git 0x9CC9729A2E369CB3
 
 [ -z "$HOSTNAME" ] && HOSTNAME=$(uname -n)

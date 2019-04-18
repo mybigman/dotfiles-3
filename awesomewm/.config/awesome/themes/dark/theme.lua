@@ -55,6 +55,9 @@ theme.border_normal = theme.xbackground
 theme.border_focus  = theme.xcolor8
 theme.border_marked = "#91231c"
 
+-- general padding
+theme.general_padding = { left = 40, right = 40, top = 20, bottom = 20 }
+
 -- rounded corners
 theme.border_radius = dpi(6)
 

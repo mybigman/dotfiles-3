@@ -36,13 +36,4 @@ function helpers.colorize_text(txt, fg)
     return "<span foreground='" .. fg .."'>" .. txt .. "</span>"
 end
 
-function helpers.pad(size)
-    local str = ""
-    for i = 1, size do
-        str = str .. " "
-    end
-    local pad = wibox.widget.textbox(str)
-    return pad
-end
-
 return helpers

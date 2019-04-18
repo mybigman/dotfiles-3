@@ -4,8 +4,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local helpers = require("helpers")
 local dpi = require('beautiful').xresources.apply_dpi
-
-local pad = helpers.pad
+local separators = require('util.separators')
 
 -- widgets load
 local hostname = require("widgets.hostname")
@@ -13,6 +12,7 @@ local tor = require("widgets.tor")
 local text_taglist = require("widgets.text_taglist")
 local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
+local pad = separators.pad
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -78,10 +78,10 @@ awful.screen.connect_for_each_screen(function(s)
   ))
 
   -- Create a tasklist widget
-  s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+  --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
   -- Create the wibox with default options
-  s.mywibox = awful.wibar({ height = dpi(30) })
+  s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_height, bg = beautiful.wibar_bg })
   --position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
 
   -- Add widgets to the wibox

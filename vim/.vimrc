@@ -184,7 +184,7 @@ endif
 " http://git.io/lightline
 set laststatus=2
 let g:lightline = {
-  \ 'colorscheme': 'Dark',
+  \ 'colorscheme': 'Blackout',
   \ 'separator': { 'left': '', 'right': '' },
   \ }
 
