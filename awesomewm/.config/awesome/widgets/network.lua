@@ -18,7 +18,7 @@ local text_margin = widget.text(bg, text)
 network_widget = widget.box(icon_margin, text_margin)
 
 awful.widget.watch(
-  os.getenv("HOME").."/.config/awesome/widgets/network.sh", 60,
+  os.getenv("HOME").."/.config/awesome/widgets/network.sh net", 60,
   function(widget, stdout, stderr, exitreason, exitcode)
     if (stdout == "1") then
       icon:set_markup_silently('<span foreground="'..fg_error..'" background="'..bg..'">'..net_icon..'</span>')

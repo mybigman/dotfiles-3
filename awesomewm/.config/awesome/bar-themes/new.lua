@@ -15,6 +15,7 @@ local scrot = require("widgets.scrot")
 local network = require("widgets.network")
 local ram = require("widgets.ram")
 local date = require("widgets.date")
+local wifi_str = require("widgets.wifi_str")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -102,7 +103,9 @@ awful.screen.connect_for_each_screen(function(s)
       tor_widget,
       arrow("#222222", "#333333"),
       network_widget,
-      arrow("#333333", beautiful.xbackground),
+      arrow("#333333", "#222222"),
+      wifi_str_widget,
+      arrow("#222222", beautiful.xbackground),
       layout = wibox.layout.fixed.horizontal,
     },
     { -- Right widgets

@@ -201,6 +201,10 @@ theme.widget_network_fg = "#878787"
 theme.widget_network_fg_error = "#aa6644"
 theme.widget_network_bg = "#333333"
 
+-- Wifi str
+theme.widget_wifi_str_fg = "#878787"
+theme.widget_wifi_str_bg = "#222222"
+
 -- RAM
 theme.widget_ram_icon = ""
 theme.widget_ram_fg = "#898989"
