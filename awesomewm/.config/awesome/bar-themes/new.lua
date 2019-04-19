@@ -14,6 +14,7 @@ local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
 local network = require("widgets.network")
 local ram = require("widgets.ram")
+local date = require("widgets.date")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -33,8 +34,6 @@ end
 -- }}}
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -97,7 +96,7 @@ awful.screen.connect_for_each_screen(function(s)
       distrib_icon,
       text_taglist,
     },
-    {
+    { -- More or less Middle
       pad(5),
       arrow(beautiful.xbackground, "#222222"),
       tor_widget,
@@ -112,10 +111,11 @@ awful.screen.connect_for_each_screen(function(s)
       ram_widget,
       arrow("#222222", "#333333"),
       email_widget,
-      arrow("#333333", beautiful.xbackground),
+      arrow("#333333", "#222222"),
+      date_widget,
+      arrow("#222222", beautiful.xbackground),
       scrot_icon,
       wibox.widget.systray(),
-      --mytextclock,
       --s.mylayoutbox,
       layout = wibox.layout.fixed.horizontal,
     },
