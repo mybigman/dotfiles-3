@@ -13,6 +13,7 @@ local text_taglist = require("widgets.text_taglist")
 local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
 local network = require("widgets.network")
+local ram = require("widgets.ram")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -107,7 +108,9 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- Right widgets
       mykeyboardlayout,
-      arrow(beautiful.xbackground, "#333333"),
+      arrow(beautiful.xbackground, "#222222"),
+      ram_widget,
+      arrow("#222222", "#333333"),
       email_widget,
       arrow("#333333", beautiful.xbackground),
       scrot_icon,

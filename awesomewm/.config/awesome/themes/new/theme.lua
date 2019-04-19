@@ -170,7 +170,7 @@ theme.icon_theme = nil
 -- {{{ WIDGET
 
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 14"
-theme.widget_text_font = "RobotoMono Nerd Font 9"
+theme.widget_text_font = "RobotoMono Nerd Font 8"
 
 -- Hostname
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
@@ -199,6 +199,11 @@ theme.widget_network_icon = ""
 theme.widget_network_fg = "#878787"
 theme.widget_network_fg_error = "#aa6644"
 theme.widget_network_bg = "#333333"
+
+-- RAM
+theme.widget_ram_icon = ""
+theme.widget_ram_fg = "#898989"
+theme.widget_ram_bg = "#222222"
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'

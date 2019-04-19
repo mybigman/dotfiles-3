@@ -33,8 +33,8 @@ function widgets.icon(bg, icon_widget)
   local bg = bg or beautiful.xbackground
   local widget = wibox.widget {
     icon_widget,
-    top = 1,
-    bottom = 1,
+    top = 5, -- value depend on the font height
+    bottom = 5, -- value depend on the font height
     right = 6,
     left = 2,
     color = bg,
@@ -47,8 +47,8 @@ function widgets.text(bg, text_widget)
   local bg = bg or beautiful.xbackground
   local widget = wibox.widget {
     text_widget,
-    top = 3,
-    bottom = 3,
+    top = 5, -- value depend on the font height
+    bottom = 5, -- value depend on the font height
     right = 2,
     color = bg,
     widget = wibox.container.margin
