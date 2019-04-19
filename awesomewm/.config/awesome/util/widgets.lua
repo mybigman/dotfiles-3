@@ -47,8 +47,8 @@ function widgets.text(bg, text_widget)
   local bg = bg or beautiful.xbackground
   local widget = wibox.widget {
     text_widget,
-    top = 1,
-    bottom = 1,
+    top = 3,
+    bottom = 3,
     right = 2,
     color = bg,
     widget = wibox.container.margin

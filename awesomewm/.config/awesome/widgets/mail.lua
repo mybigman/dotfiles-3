@@ -12,12 +12,12 @@ local unread_icon = beautiful.widget_email_unread_icon
 local bg = beautiful.widget_email_bg
 
 -- local str
-local email_text_read_icon = '<span foreground="'..fg_read..'">'..read_icon..'</span>'
-local email_text_unread_icon = '<span foreground="'..fg_unread..'">'..unread_icon..'</span>'
+local email_text_read_icon = '<span foreground="'..fg_read..'" background="'..bg..'">'..read_icon..'</span>'
+local email_text_unread_icon = '<span foreground="'..fg_unread..'" background="'..bg..'">'..unread_icon..'</span>'
 
 -- widget creation
-local icon = widget.base_icon()
-local text = widget.base_text()
+local icon = widget.base_icon(bg, unread_icon)
+local text = widget.base_text(bg, ' ')
 local icon_margin = widget.icon(bg, icon)
 local text_margin = widget.text(bg, text)
 email_widget = widget.box(icon_margin, text_margin)
@@ -28,7 +28,7 @@ awful.widget.watch(
     local unread_email_num = tonumber(stdout) or 0
     if (unread_email_num > 0) then
       icon:set_markup_silently(email_text_read_icon)
-      text:set_text(stdout)
+      text:set_markup_silently('<span background="'..bg..'">'..stdout..'</span>')
     elseif (unread_email_num == 0) then
       icon:set_markup_silently(email_text_unread_icon)
     end
