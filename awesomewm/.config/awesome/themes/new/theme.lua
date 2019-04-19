@@ -88,19 +88,20 @@ end
 
 -- {{{ TAGLIST
 
+-- mini_taglist
 -- Nerd Font icon here
-theme.tagnames = {
-   "  ",
-   "  ",
-   " ﲵ ",
-   " ﱘ ",
-   "  ",
-   "  ", 
-   "  ",
-   "  ",
-   "  ",
-   " ﮊ "
-}
+--theme.tagnames = {"  ","  "," ﲵ "," ﱘ ","  ","  ","  ","  ","  "," ﮊ "}
+theme.tagnames = {" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10 "}
+theme.taglist_text_occupied = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+theme.taglist_text_focused = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+theme.taglist_text_urgent = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+theme.taglist_text_empty = {"","","","","","","","","",""}
+
+-- different color on each taglists
+theme.taglist_text_color_empty = { theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8 }
+theme.taglist_text_color_occupied = { theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4, theme.xcolor5, theme.xcolor6, theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4 }
+theme.taglist_text_color_focused = { theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4, theme.xcolor5, theme.xcolor6, theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4 }
+theme.taglist_text_color_urgent = { theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12, theme.xcolor13, theme.xcolor14, theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12 }
 
 -- Text Taglist (default)
 theme.taglist_font = "RobotoMono Nerd Font Mono 12"

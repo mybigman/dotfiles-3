@@ -9,7 +9,7 @@ local separators = require('util.separators')
 -- widgets load
 local hostname = require("widgets.hostname")
 local tor = require("widgets.tor")
-local text_taglist = require("widgets.text_taglist")
+local text_taglist = require("widgets.mini_taglist")
 local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
 local network = require("widgets.network")
