@@ -16,6 +16,7 @@ local network = require("widgets.network")
 local ram = require("widgets.ram")
 local date = require("widgets.date")
 local wifi_str = require("widgets.wifi_str")
+local battery = require("widgets.battery")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -107,6 +108,10 @@ awful.screen.connect_for_each_screen(function(s)
       wifi_str_widget,
       arrow("#222222", beautiful.xbackground),
       layout = wibox.layout.fixed.horizontal,
+      pad(15),
+      arrow(beautiful.xbackground, "#222222"),
+      battery_widget,
+      arrow("#222222", beautiful.xbackground),
     },
     { -- Right widgets
       mykeyboardlayout,
