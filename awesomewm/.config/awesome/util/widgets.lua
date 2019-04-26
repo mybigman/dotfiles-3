@@ -56,9 +56,16 @@ function widgets.text(bg, text_widget)
   return widget
 end
 
-function widgets.box(w1, w2)
+function widgets.box(w1, w2, w3)
   local widget
-  if ( w2 ~= nil ) then
+  if ( w3 ~= nil ) then
+    widget = wibox.widget {
+      w1,
+      w2,
+      w3,
+      layout = wibox.layout.fixed.horizontal
+    }
+  elseif ( w2 ~= nil ) then
     widget = wibox.widget {
       w1,
       w2,

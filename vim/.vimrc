@@ -148,6 +148,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 
+" tagbar
+map <F4> :TagbarToggle<CR>
+
 " update colors with F8 with darkest-space colorscheme
 "map <F8> :update<CR>:colorscheme darkest-space<CR>
 map <F8> :update<CR>:colorscheme skull<CR>
@@ -204,3 +207,11 @@ set t_Co=256
 
 " Colorscheme
 source ~/.vim/colorscheme
+
+" vim-tmux-navigator
+let g:tmux_navigator_no_mappings=1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-BS> :TmuxNavigatePrevious<CR>

@@ -307,7 +307,7 @@ awful.rules.rules = {
   -- Titlebars OFF
   { rule_any = {
     class = {
-      "Brave-browser",
+      "Brave-browser"
     },
   }, properties = { },
   callback = function(c)
@@ -320,7 +320,7 @@ awful.rules.rules = {
   -- Padding OFF
   { rule_any = {
     class = {
-      "Brave-browser",
+      --"Brave-browser",
     },
   }, properties = like_subtle(0, 5, 100, 96),
   },

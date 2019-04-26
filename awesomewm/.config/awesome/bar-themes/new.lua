@@ -17,6 +17,7 @@ local ram = require("widgets.ram")
 local date = require("widgets.date")
 local wifi_str = require("widgets.wifi_str")
 local battery = require("widgets.battery")
+local mpc = require("widgets.mpc")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -100,28 +101,30 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- More or less Middle
       pad(5),
-      arrow(beautiful.xbackground, "#222222"),
+      arrow(beautiful.xbackground, "#202724"),
       tor_widget,
-      arrow("#222222", "#333333"),
+      arrow("#202724", "#29322e"),
       network_widget,
-      arrow("#333333", "#222222"),
+      arrow("#29322e", "#202724"),
       wifi_str_widget,
-      arrow("#222222", beautiful.xbackground),
+      arrow("#202724", beautiful.xbackground),
       layout = wibox.layout.fixed.horizontal,
-      pad(15),
-      arrow(beautiful.xbackground, "#222222"),
+      pad(26),
+      arrow(beautiful.xbackground, "#202724"),
       battery_widget,
-      arrow("#222222", beautiful.xbackground),
+      arrow("#202724", "#29322e"),
+      mpc_widget,
+      arrow("#29322e", beautiful.xbackground),
     },
     { -- Right widgets
       mykeyboardlayout,
-      arrow(beautiful.xbackground, "#222222"),
+      arrow(beautiful.xbackground, "#202724"),
       ram_widget,
-      arrow("#222222", "#333333"),
+      arrow("#202724", "#29322e"),
       email_widget,
-      arrow("#333333", "#222222"),
+      arrow("#29322e", "#202724"),
       date_widget,
-      arrow("#222222", beautiful.xbackground),
+      arrow("#202724", beautiful.xbackground),
       scrot_icon,
       wibox.widget.systray(),
       --s.mylayoutbox,

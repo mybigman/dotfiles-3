@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local helpers = require("helpers")
 
 local keys = {}
 
@@ -125,11 +126,23 @@ keys.globalkeys = gears.table.join(
               {description = "light mode", group = "brightness"}),
     awful.key({ altgrkey }, "F8", function() awful.spawn.with_shell("xbacklight -1") end,
               {description = "dark mode", group = "brightness"})
-    
+
+    -- Gap
+    --awful.key({ altkey }, "y",
+    --function() 
+    --   awful.key({ superkey, shiftkey   }, "Down",   function (c) c:relative_move(  0,  40,   0,   0) end)
+    --end
+    --)
 )
 
 keys.clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
+  -- Move floating client (relative)
+  awful.key({ altkey, "Shift" }, "Down", function (c) c:relative_move( 0, 40, 0, 0 ) end),
+  awful.key({ altkey, "Shift" }, "Up", function (c) c:relative_move( 0, -40, 0, 0 ) end),
+  awful.key({ altkey, "Shift" }, "Left", function (c) c:relative_move( -40, 0, 0, 0 ) end),
+  awful.key({ altkey, "Shift" }, "Right", function (c) c:relative_move( 40, 0, 0, 0 ) end),
+  
+  awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()

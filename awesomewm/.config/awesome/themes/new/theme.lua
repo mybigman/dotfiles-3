@@ -48,9 +48,9 @@ theme.fg_focus      = theme.xcolor7
 theme.fg_urgent     = "#222222"
 theme.fg_minimize   = "#222222"
 
-theme.border_width  = dpi(0)
+theme.border_width  = dpi(3)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(6)
+theme.useless_gap   = dpi(4)
 theme.border_normal = theme.xbackground
 theme.border_focus  = theme.xcolor8
 theme.border_marked = "#91231c"
@@ -90,7 +90,6 @@ end
 
 -- mini_taglist
 -- Nerd Font icon here
---theme.tagnames = {"  ","  "," ﲵ "," ﱘ ","  ","  ","  ","  ","  "," ﮊ "}
 theme.tagnames = {" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10 "}
 theme.taglist_text_occupied = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
 theme.taglist_text_focused = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
@@ -180,7 +179,7 @@ theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 theme.widget_tor_icon = "﨩"
 theme.widget_tor_fg_enable = "#434f4a"
 theme.widget_tor_fg_disable = "#8a4e4a"
-theme.widget_tor_bg = "#222222"
+theme.widget_tor_bg = "#202724"
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
@@ -192,23 +191,23 @@ theme.widget_ncmpcpp_next = '<span foreground="#334932"> &gt; </span>'
 theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
 theme.widget_email_fg_read = "#888888"
-theme.widget_email_fg_unread = "#192429"
-theme.widget_email_bg = "#333333"
+theme.widget_email_fg_unread = "#666666"
+theme.widget_email_bg = "#29322e"
 
 -- Network
 theme.widget_network_icon = ""
 theme.widget_network_fg = "#878787"
 theme.widget_network_fg_error = "#aa6644"
-theme.widget_network_bg = "#333333"
+theme.widget_network_bg = "#29322e"
 
 -- Wifi str
 theme.widget_wifi_str_fg = "#878787"
-theme.widget_wifi_str_bg = "#222222"
+theme.widget_wifi_str_bg = "#202724"
 
 -- RAM
 theme.widget_ram_icon = ""
 theme.widget_ram_fg = "#898989"
-theme.widget_ram_bg = "#222222"
+theme.widget_ram_bg = "#202724"
 
 -- Battery
 theme.widget_battery_icon_discharging = ""
@@ -216,12 +215,21 @@ theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
 theme.widget_battery_fg = "#898989"
-theme.widget_battery_bg = "#222222"
+theme.widget_battery_bg = "#202724"
+
+-- mpc
+theme.widget_mpc_prev_icon = "玲"
+theme.widget_mpc_pause_icon = ""
+theme.widget_mpc_play_icon = ""
+theme.widget_mpc_stop_icon = ""
+theme.widget_mpc_next_icon = "怜"
+theme.widget_mpc_fg = "#aaaaaa"
+theme.widget_mpc_bg = "#29322e"
 
 -- Date
 theme.widget_date_icon = ""
 theme.widget_date_fg = "#898989"
-theme.widget_date_bg = "#222222"
+theme.widget_date_bg = "#202724"
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
