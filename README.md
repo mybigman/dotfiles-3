@@ -73,6 +73,9 @@ For now, i use vim with:
 + [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
 + [lightline](https://github.com/itchyny/lightline.vim)
 + [indentLine](https://github.com/Yggdroot/indentLine)
++ [colorizer](https://github.com/lilydjwg/colorizer)  
++ [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
++ [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)  
 
 Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
 
@@ -124,11 +127,7 @@ You can install with theses 2 repos with:
 
 ![City screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/city.jpg "city")
 
-You can found other screens on:
-+ [dotshare.it](http://dotshare.it/~szorfein/dots/)
-+ [Reddit](https://www.reddit.com/user/szorfein/posts/)
-+ [twitter](https://twitter.com/szorfein)
-+ [Blog](https://szorfein.github.io/)
+
 
 ## Old wallpapers
 

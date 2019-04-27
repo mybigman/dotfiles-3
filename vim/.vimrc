@@ -148,9 +148,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 
-" tagbar
-map <F4> :TagbarToggle<CR>
-
 " update colors with F8 with darkest-space colorscheme
 "map <F8> :update<CR>:colorscheme darkest-space<CR>
 map <F8> :update<CR>:colorscheme skull<CR>
@@ -215,3 +212,11 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <C-k> :TmuxNavigateUp<CR>
 nnoremap <silent> <C-l> :TmuxNavigateRight<CR>
 nnoremap <silent> <C-BS> :TmuxNavigatePrevious<CR>
+
+" gitbutter
+let g:gitgutter_realtime = 1
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = ':'
