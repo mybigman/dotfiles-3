@@ -226,6 +226,11 @@ theme.widget_mpc_next_icon = ""
 theme.widget_mpc_fg = "#aaaaaa"
 theme.widget_mpc_bg = "#29322e"
 
+-- volume
+theme.widget_volume_icon = ""
+theme.widget_volume_fg = "#878787"
+theme.widget_volume_bg = "#202724"
+
 -- Date
 theme.widget_date_icon = ""
 theme.widget_date_fg = "#898989"

@@ -110,7 +110,7 @@ awful.screen.connect_for_each_screen(function(s)
       wifi_str_widget,
       arrow("#202724", beautiful.xbackground),
       layout = wibox.layout.fixed.horizontal,
-      pad(26),
+      pad(32),
       arrow(beautiful.xbackground, "#202724"),
       battery_widget,
       arrow("#202724", "#29322e"),
