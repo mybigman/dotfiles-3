@@ -218,11 +218,11 @@ theme.widget_battery_fg = "#898989"
 theme.widget_battery_bg = "#202724"
 
 -- mpc
-theme.widget_mpc_prev_icon = "玲"
+theme.widget_mpc_prev_icon = ""
 theme.widget_mpc_pause_icon = ""
 theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
-theme.widget_mpc_next_icon = "怜"
+theme.widget_mpc_next_icon = ""
 theme.widget_mpc_fg = "#aaaaaa"
 theme.widget_mpc_bg = "#29322e"
 

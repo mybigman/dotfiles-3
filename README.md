@@ -87,7 +87,7 @@ If you use pathogen, you can use my script to download and install all the vim c
 
 I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the theme [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).
 
-You can install with theses 2 repos with:
+You can install theses repos with:
 
     $ ./install --zsh
 

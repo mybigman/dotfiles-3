@@ -18,6 +18,7 @@ local date = require("widgets.date")
 local wifi_str = require("widgets.wifi_str")
 local battery = require("widgets.battery")
 local mpc = require("widgets.mpc")
+local volume = require("widgets.volume")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
@@ -114,7 +115,9 @@ awful.screen.connect_for_each_screen(function(s)
       battery_widget,
       arrow("#202724", "#29322e"),
       mpc_widget,
-      arrow("#29322e", beautiful.xbackground),
+      arrow("#29322e", "#202724"),
+      volume_widget,
+      arrow("#202724", beautiful.xbackground),
     },
     { -- Right widgets
       mykeyboardlayout,
