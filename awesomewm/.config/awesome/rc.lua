@@ -21,6 +21,7 @@ local theme = require("loaded-theme")
 -- Custom stuff
 local titlebars = require("titlebars")
 local keys = require("keys")
+local helpers = require("helpers")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -417,8 +418,28 @@ end)
 
 -- Rounded Corner
 client.connect_signal("property::geometry", function (c)
-  gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, 20)
+  gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, beautiful.border_radius)
 end)
+
+if beautiful.border_radius ~= 0 then
+  client.connect_signal("manage", function (c, startup)
+    if c.fullscreen ~= false then
+      c.shape = helpers.rrect(beautiful.border_radius)
+    end
+  end)
+
+  -- Fullscreen & maximised clients should not have rounded corners
+  local function no_round_corners (c)
+    if c.fullscreen or c.maximized or c.class == "kitty" then
+      c.shape = helpers.rect()
+    else
+      c.shape = helpers.rrect(beautiful.border_radius)
+    end
+  end
+
+  client.connect_signal("property::fullscreen", no_round_corners)
+  client.connect_signal("property::maximized", no_round_corners)
+end
 
 -- Floating: restore geometry
 tag.connect_signal('property::layout',

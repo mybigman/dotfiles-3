@@ -14,6 +14,13 @@ helpers.rrect = function(radius)
   end
 end
 
+-- Create rectangle shape
+helpers.rect = function()
+  return function(cr, width, height)
+    gears.shape.rectangle(cr, width, height)
+  end
+end
+
 function helpers.create_titlebar(c, titlebar_buttons, titlebar_position, titlebar_size)
   awful.titlebar(c, {font = beautiful.titlebar_font, position = titlebar_position, size = titlebar_size}) : setup {
     { 

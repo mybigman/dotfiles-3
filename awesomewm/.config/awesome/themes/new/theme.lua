@@ -48,9 +48,9 @@ theme.fg_focus      = theme.xcolor7
 theme.fg_urgent     = "#222222"
 theme.fg_minimize   = "#222222"
 
-theme.border_width  = dpi(3)
+theme.border_width  = dpi(2)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(4)
+theme.useless_gap   = dpi(0)
 theme.border_normal = theme.xbackground
 theme.border_focus  = theme.xcolor8
 theme.border_marked = "#91231c"
@@ -59,7 +59,7 @@ theme.border_marked = "#91231c"
 theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- rounded corners
-theme.border_radius = dpi(0)
+theme.border_radius = dpi(8)
 
 -- {{{ TITLEBAR 
 
@@ -115,7 +115,7 @@ theme.taglist_bg_urgent = theme.xbackground
 theme.taglist_fg_urgent = "#3e3433"
 theme.taglist_disable_icon = true
 theme.taglist_spacing = dpi(0)
-theme.taglist_item_roundness = dpi(25)
+theme.taglist_item_roundness = dpi(5)
 
 theme.taglist_squares = "false"
 
@@ -192,7 +192,7 @@ theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
 theme.widget_email_fg_read = "#888888"
 theme.widget_email_fg_unread = "#666666"
-theme.widget_email_bg = "#29322e"
+theme.widget_email_bg = "#323d38"
 
 -- Network
 theme.widget_network_icon = ""
@@ -215,7 +215,7 @@ theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
 theme.widget_battery_fg = "#898989"
-theme.widget_battery_bg = "#202724"
+theme.widget_battery_bg = "#29322e"
 
 -- mpc
 theme.widget_mpc_prev_icon = ""

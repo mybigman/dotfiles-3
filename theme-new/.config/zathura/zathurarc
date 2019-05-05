@@ -3,7 +3,7 @@ set default-bg                  "#000000" #00
 set default-fg                  "#1f1b3f" #01
 
 set statusbar-fg                "#5e5e5d" #04
-set statusbar-bg                "#111215" #01
+set statusbar-bg                "#202724" #01
 
 set inputbar-bg                 "#dbe2ec" #00 currently not used
 set inputbar-fg                 "#2a4f81" #02
@@ -26,7 +26,7 @@ set completion-fg               "#1f1b3f" #0C
 set notification-bg             "#ee8109" #0B
 set notification-fg             "#1f1b3f" #00
 
-set recolor-lightcolor          "#111215" #00
+set recolor-lightcolor          "#171c1a" #00
 set recolor-darkcolor           "#5e5e5d" #06
 set recolor                     "true"
 
