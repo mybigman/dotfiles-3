@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# rofi doc: https://davedavenport.github.io/rofi/manpage.html
-# dmenu doc: 
-
-rofi -show run -location 2 -width 100 -lines 1 -font "SF Mono Regular 8" -line-margin 3 -columns 5 -padding 0 -separator-style solid -scrollbar-width 7

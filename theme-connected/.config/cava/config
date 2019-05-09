@@ -8,7 +8,7 @@ higher_cutoff_freq = 10000
 
 [input]
 method = alsa
-source = hw:Loopback,1
+source = hw:Pro
 
 method = fifo
 source = /tmp/mpd.fifo
@@ -18,9 +18,9 @@ method = ncurses
 style = stereo
 
 [color]
-gradient = 1
-gradient_color_1 = '#475055' #base
-gradient_color_2 = '#6b6265' #top
+gradient = 3
+gradient_color_1 = '#202724' #base
+gradient_color_2 = '#323d38' #top
 
 [smoothing]
 

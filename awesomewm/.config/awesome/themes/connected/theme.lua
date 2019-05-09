@@ -1,8 +1,8 @@
 ---------------------------
--- New awesome theme --
+-- Connected awesome theme --
 ---------------------------
 
-local theme_name = "new"
+local theme_name = "connected"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -48,12 +48,12 @@ theme.fg_focus      = theme.xcolor7
 theme.fg_urgent     = "#222222"
 theme.fg_minimize   = "#222222"
 
-theme.border_width  = dpi(2)
+theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(0)
 theme.border_normal = theme.xbackground
 theme.border_focus  = theme.xcolor8
-theme.border_marked = "#91231c"
+theme.border_marked = "#723218"
 
 -- general padding
 theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
@@ -138,7 +138,7 @@ theme.menu_width  = dpi(100)
 
 -- }}} End MENU
 
-theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".png"
+theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".jpg"
 
 -- You can use your own layout icons like this:
 --theme.layout_fairh = layout_icon_path.."fairhw.png"

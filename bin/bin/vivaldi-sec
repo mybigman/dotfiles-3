@@ -17,5 +17,5 @@ agent="${agentsList[$rand]}"
 echo -e start vivaldi...
 
 # -no-sandbox is require to start vivaldi with firejail --seccomp
-firejail /opt/vivaldi/vivaldi -no-sandbox --proxy-server="${HTTP_PROXY}" --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1" \
+/usr/bin/firejail /opt/vivaldi/vivaldi -no-sandbox --proxy-server="socks5://127.0.0.1:1080" --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1" \
         --disk-cache-dir=/tmp/cache -user-agent="${agent}" --incognito

@@ -146,10 +146,10 @@ local function set_wallpaper(s)
     --gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Method 2: Set theme's wallpaper with feh
-    --awful.spawn.with_shell("feh --bg-fill " .. wallpaper)
+    awful.spawn.with_shell("feh --bg-fill " .. wallpaper)
 
     -- Method 3: Set last wallpaper with feh
-    awful.spawn.with_shell(os.getenv("HOME") .. "/.fehbg")
+    --awful.spawn.with_shell(os.getenv("HOME") .. "/.fehbg")
   end
 end
 
@@ -417,19 +417,19 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Rounded Corner
-client.connect_signal("property::geometry", function (c)
-  gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, beautiful.border_radius)
-end)
+--client.connect_signal("property::geometry", function (c)
+--  gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, beautiful.border_radius)
+--end)
 
 if beautiful.border_radius ~= 0 then
   client.connect_signal("manage", function (c, startup)
-    if c.fullscreen ~= false then
+    if not c.fullscreen then
       c.shape = helpers.rrect(beautiful.border_radius)
     end
   end)
 
   -- Fullscreen & maximised clients should not have rounded corners
-  local function no_round_corners (c)
+  local function no_round_corners(c)
     if c.fullscreen or c.maximized or c.class == "kitty" then
       c.shape = helpers.rect()
     else
