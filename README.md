@@ -92,10 +92,10 @@ You can install theses repos with:
     $ ./install --zsh
 
 ## Screens
-**Last**:`theme-connected` [wm]:*awesome* [term]: *kitty* [vim-color] [Dark](https://github.com/szorfein/dark.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+**Last**:`theme-connected` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/connected.jpg "connected")  
 
-`theme-dark` [wm]:*awesome* [term]: *kitty* [vim-color] [Dark](https://github.com/szorfein/dark.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+`theme-dark` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Dark screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/dark.jpg "dark")  
 
 `theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   

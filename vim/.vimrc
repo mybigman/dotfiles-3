@@ -150,7 +150,7 @@ map <F3> :NERDTreeToggle<CR>
 
 " update colors with F8 with darkest-space colorscheme
 "map <F8> :update<CR>:colorscheme darkest-space<CR>
-map <F8> :update<CR>:colorscheme skull<CR>
+map <F8> :update<CR>:colorscheme darkness<CR>
 let mapleader=","
 
 "" With vim, copy to clipboard work only if you compile vim with X support
@@ -184,7 +184,7 @@ endif
 " http://git.io/lightline
 set laststatus=2
 let g:lightline = {
-  \ 'colorscheme': 'Blackout',
+  \ 'colorscheme': 'Connected',
   \ 'separator': { 'left': '', 'right': '' },
   \ }
 
