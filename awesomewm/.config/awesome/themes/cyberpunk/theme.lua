@@ -1,8 +1,8 @@
 ---------------------------
--- Connected awesome theme --
+-- Cyberpunk awesome theme --
 ---------------------------
 
-local theme_name = "connected"
+local theme_name = "cyberpunk"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -12,6 +12,7 @@ local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. them
 local widget_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/widgets/"
 local xrdb = xresources.get_current_theme()
 local wibox = require("wibox")
+local taglist_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/taglist/"
 
 local theme = {}
 
@@ -51,13 +52,13 @@ theme.fg_minimize   = "#222222"
 
 theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(9)
 theme.border_normal = theme.xbackground
 theme.border_focus  = theme.xcolor8
 theme.border_marked = "#723218"
 
 -- general padding
-theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+theme.general_padding = { left = 20, right = 30, top = 20, bottom = 30 }
 
 -- rounded corners
 theme.border_radius = dpi(8)
@@ -76,7 +77,7 @@ theme.titlebars_imitate_borders = false
 
 -- Top bar
 theme.wibar_height = dpi(22)
-theme.wibar_bg = theme.xbackground
+theme.wibar_bg = "#11121700"
 theme.wibar_border_radius = dpi(0)
 
 -- Edge snap
@@ -89,13 +90,27 @@ end
 
 -- {{{ TAGLIST
 
--- mini_taglist
 -- Nerd Font icon here
 theme.tagnames = {" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10 "}
-theme.taglist_text_occupied = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
-theme.taglist_text_focused = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
-theme.taglist_text_urgent = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
-theme.taglist_text_empty = {"","","","","","","","","",""}
+-- mini_taglist
+--theme.taglist_text_occupied = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+--theme.taglist_text_focused = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+--theme.taglist_text_urgent = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
+--theme.taglist_text_empty = {"","","","","","","","","",""}
+
+-- icon_taglist
+local ntags = 10
+theme.taglist_icons_empty = {}
+theme.taglist_icons_occupied = {}
+theme.taglist_icons_focused = {}
+theme.taglist_icons_urgent = {}
+-- table.insert(tag_icons, tag)
+for i = 1, ntags do
+  theme.taglist_icons_empty[i] = taglist_icon_path .. tostring(i) .. "_empty.png"
+  theme.taglist_icons_occupied[i] = taglist_icon_path .. tostring(i) .. "_occupied.png"
+  theme.taglist_icons_focused[i] = taglist_icon_path .. tostring(i) .. "_focused.png"
+  theme.taglist_icons_urgent[i] = taglist_icon_path .. tostring(i) .. "_urgent.png"
+end
 
 -- different color on each taglists
 theme.taglist_text_color_empty = { theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8 }
@@ -104,7 +119,7 @@ theme.taglist_text_color_focused = { theme.xcolor1, theme.xcolor2, theme.xcolor3
 theme.taglist_text_color_urgent = { theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12, theme.xcolor13, theme.xcolor14, theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12 }
 
 -- Text Taglist (default)
-theme.taglist_font = "RobotoMono Nerd Font Mono 12"
+theme.taglist_font = "RobotoMono Nerd Font Mono 16"
 theme.taglist_bg_normal = theme.xbackground
 theme.taglist_fg_focus = "#565b5e"
 theme.taglist_bg_focus = theme.xbackground
@@ -115,9 +130,9 @@ theme.taglist_fg_empty = "#192429"
 theme.taglist_bg_urgent = theme.xbackground
 theme.taglist_fg_urgent = "#3e3433"
 theme.taglist_disable_icon = true
-theme.taglist_spacing = dpi(0)
+theme.taglist_spacing = dpi(20)
 theme.taglist_item_roundness = dpi(5)
-theme.taglist_layout = wibox.layout.fixed.horizontal
+theme.taglist_layout = wibox.layout.fixed.vertical -- horizontal or vertical
 
 theme.taglist_squares = "false"
 

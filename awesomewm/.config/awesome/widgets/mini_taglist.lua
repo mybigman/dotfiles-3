@@ -60,7 +60,7 @@ local text_taglist = wibox.widget{
   tag_text[8],
   tag_text[9],
   tag_text[10],
-  layout = wibox.layout.fixed.horizontal
+  layout = beautiful.taglist_layout
 }
 
 --local text_taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
