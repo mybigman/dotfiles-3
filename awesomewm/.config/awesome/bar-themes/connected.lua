@@ -5,22 +5,51 @@ local beautiful = require("beautiful")
 local helpers = require("helpers")
 local dpi = require('beautiful').xresources.apply_dpi
 local separators = require('util.separators')
+local widget = require('util.widgets')
 
 -- widgets load
 local hostname = require("widgets.hostname")
-local tor = require("widgets.tor")
 local text_taglist = require("widgets.mini_taglist")
-local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
-local network = require("widgets.network")
-local ram = require("widgets.ram")
-local date = require("widgets.date")
-local wifi_str = require("widgets.wifi_str")
-local battery = require("widgets.battery")
 local mpc = require("widgets.mpc")
-local volume = require("widgets.volume")
 local pad = separators.pad
 local arrow = separators.arrow_left
+
+-- {{{ Redefine widgets with a background
+
+local tor = require("widgets.tor")
+local tor_bg = beautiful.widget_tor_bg
+local my_tor = widget.bg( tor_bg, tor_widget )
+
+local network = require("widgets.network")
+local network_bg = beautiful.widget_network_bg
+local my_network = widget.bg( network_bg, network_widget )
+
+local wifi_str = require("widgets.wifi_str")
+local wifi_bg = beautiful.widget_wifi_str_bg
+local my_wifi_str = widget.bg( wifi_bg, wifi_str_widget )
+
+local volume = require("widgets.volume")
+local volume_bg = beautiful.widget_volume_bg
+local my_volume = widget.bg( volume_bg, volume_widget )
+
+local ram = require("widgets.ram")
+local ram_bg = beautiful.widget_ram_bg
+local my_ram = widget.bg( ram_bg, ram_widget )
+
+local battery = require("widgets.battery")
+local battery_bg = beautiful.widget_battery_bg
+local my_battery = widget.bg( battery_bg, battery_widget )
+
+local mail = require("widgets.mail")
+local email_bg = beautiful.widget_email_bg
+local my_email = widget.bg( email_bg, email_widget )
+
+local date = require("widgets.date")
+local date_bg = beautiful.widget_date_bg
+local my_date = widget.bg( date_bg, date_widget )
+
+-- }}} End widget
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -103,30 +132,30 @@ awful.screen.connect_for_each_screen(function(s)
     { -- More or less Middle
       pad(5),
       arrow(beautiful.xbackground, "#202724"),
-      tor_widget,
+      my_tor,
       arrow("#202724", "#29322e"),
-      network_widget,
+      my_network,
       arrow("#29322e", "#202724"),
-      wifi_str_widget,
+      my_wifi_str,
       arrow("#202724", beautiful.xbackground),
       layout = wibox.layout.fixed.horizontal,
       pad(32),
       arrow(beautiful.xbackground, "#29322e"),
       mpc_widget,
       arrow("#29322e", "#202724"),
-      volume_widget,
+      my_volume,
       arrow("#202724", beautiful.xbackground),
     },
     { -- Right widgets
       mykeyboardlayout,
       arrow(beautiful.xbackground, "#202724"),
-      ram_widget,
+      my_ram,
       arrow("#202724", "#29322e"),
-      battery_widget,
+      my_battery,
       arrow("#29322e", "#323d38"),
-      email_widget,
+      my_email,
       arrow("#323d38", "#202724"),
-      date_widget,
+      my_date,
       arrow("#202724", beautiful.xbackground),
       scrot_icon,
       wibox.widget.systray(),

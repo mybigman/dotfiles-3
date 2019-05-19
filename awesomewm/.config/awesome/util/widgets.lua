@@ -109,4 +109,16 @@ function widgets.bg_rounded(bg_color, border_color, w)
   }
 end
 
+function widgets.bg(bg_color, w)
+  return wibox.widget {
+    {
+      w,
+      bg     = bg_color,
+      widget = wibox.container.background
+    },
+    spacing = 10,
+    layout  = wibox.layout.fixed.horizontal
+  }
+end
+
 return widgets
