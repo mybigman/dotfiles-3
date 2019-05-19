@@ -7,17 +7,18 @@ local widget = require("util.widgets")
 local ram_icon = beautiful.widget_ram_icon
 local fg = beautiful.widget_ram_fg
 local bg = beautiful.widget_ram_bg
+local l = beautiful.widget_ram_layout or 'horizontal'
 
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
 local icon_margin = widget.icon(bg, icon)
 local text_margin = widget.text(bg, text)
-ram_widget = widget.box(icon_margin, text_margin)
+ram_widget = widget.box(l, icon_margin, text_margin)
 
 local function update_widget(used_ram_percentage)
-  icon:set_markup_silently('<span foreground="'..fg..'" background="'..bg..'">'..ram_icon..'</span>')
-  text:set_markup_silently('<span foreground="'..fg..'" background="'..bg..'">'..used_ram_percentage..'%</span>')
+  icon:set_markup_silently('<span foreground="'..fg..'">'..ram_icon..'</span>')
+  text:set_markup_silently('<span foreground="'..fg..'">'..used_ram_percentage..'%</span>')
 end
 
 local used_ram_script = [[

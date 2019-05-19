@@ -11,6 +11,7 @@ local icon_stop = beautiful.widget_mpc_stop_icon
 local icon_next = beautiful.widget_mpc_next_icon
 local fg = beautiful.widget_mpc_fg
 local bg = beautiful.widget_mpc_bg
+local l = beautiful.widget_mpc_layout or 'horizontal'
 
 -- widget creation
 local icon_1 = widget.base_icon(bg, icon_prev)
@@ -19,7 +20,7 @@ local icon_3 = widget.base_icon(bg, icon_next)
 local icon_margin_1 = widget.icon(bg, icon_1)
 local icon_margin_2 = widget.icon(bg, icon_2) 
 local icon_margin_3 = widget.icon(bg, icon_3)
-mpc_widget = widget.box(icon_margin_1, icon_margin_2, icon_margin_3)
+mpc_widget = widget.box(l, icon_margin_1, icon_margin_2, icon_margin_3)
 
 local GET_MPD_CMD = "mpc status" 
 local TOGGLE_MPD_CMD = "mpc toggle"

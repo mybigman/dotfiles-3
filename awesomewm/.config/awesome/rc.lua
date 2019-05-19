@@ -329,9 +329,9 @@ awful.rules.rules = {
   -- Musics place at 4% x y like subtlewm :)
   { rule_any = {
     class = {
-      "music_n",
+      "music_n", -- ncmpcpp
     },
-  }, properties = like_subtle(4, 15, 30, 49),
+  }, properties = like_subtle(4, 14, 30, 49),
     -- callback = function (c)
     -- awful.placement.centered(c,{honor_workarea=true})
     -- end
@@ -348,9 +348,9 @@ awful.rules.rules = {
 
   { rule_any = {
     class = {
-      "music_c",
+      "music_c", -- cava
     },
-  }, properties = like_subtle(4, 65, 30, 20),
+  }, properties = like_subtle(4, 67, 30, 20),
     -- callback = function (c)
     -- awful.placement.centered(c,{honor_workarea=true})
     -- end

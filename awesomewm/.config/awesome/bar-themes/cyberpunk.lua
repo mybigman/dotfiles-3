@@ -5,22 +5,41 @@ local beautiful = require("beautiful")
 local helpers = require("helpers")
 local dpi = require('beautiful').xresources.apply_dpi
 local separators = require('util.separators')
+local widget = require('util.widgets')
 
 -- widgets load
 local hostname = require("widgets.hostname")
 local tor = require("widgets.tor")
 --local text_taglist = require("widgets.mini_taglist")
-local mail = require("widgets.mail")
 local scrot = require("widgets.scrot")
 local network = require("widgets.network")
-local ram = require("widgets.ram")
-local date = require("widgets.date")
 local wifi_str = require("widgets.wifi_str")
-local battery = require("widgets.battery")
-local mpc = require("widgets.mpc")
-local volume = require("widgets.volume")
 local pad = separators.pad
-local arrow = separators.arrow_left
+local tagslist = require("widgets.icon_taglist")
+
+-- {{{ Redefine widgets with a background
+
+local volume = require("widgets.volume")
+local volume_bg = beautiful.widget_volume_bg
+local my_vol = widget.bg_rounded( volume_bg, "#0000aa", volume_widget )
+
+local mail = require("widgets.mail")
+local mail_bg = beautiful.widget_battery_bg
+local my_mail = widget.bg_rounded( mail_bg, "#00aa00", email_widget )
+
+local ram = require("widgets.ram")
+local ram_bg = beautiful.widget_ram_bg
+local my_ram = widget.bg_rounded( ram_bg, "#008800", ram_widget )
+
+local battery = require("widgets.battery")
+local bat_bg = beautiful.widget_battery_bg
+local my_battery = widget.bg_rounded( bat_bg, "#00ff00", battery_widget )
+
+local date = require("widgets.date")
+local date_bg = beautiful.widget_date_bg
+local my_date = widget.bg_rounded( date_bg, "#8a0000", date_widget )
+
+-- widget redefined }}}
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
@@ -82,44 +101,82 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create a tasklist widget
   --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+  s.mytasklist = awful.widget.tasklist {
+    screen = s,
+    filter = awful.widget.tasklist.filter.currenttags,
+    buttons = tasklist_buttons,
+    widget_template = {
+      {
+        {
+          {
+            {
+              id     = 'icon_role',
+              widget = wibox.widget.imagebox,
+            },
+            margins = 2,
+            widget  = wibox.container.margin,
+          },
+        {
+          id     = 'text_role',
+          widget = wibox.widget.textbox,
+        },
+        layout = wibox.layout.fixed.horizontal,
+      },
+      left  = 10,
+      right = 10,
+      top = 6,
+      bottom = 6,
+      widget = wibox.container.margin
+    },
+    id     = 'background_role',
+    widget = wibox.container.background,
+  },
+}
 
-  -- Create the wibox with default options
-  s.mywibox = awful.wibar({ position = "top", height = beautiful.wibar_height, bg = beautiful.wibar_bg })
-  --position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
+-- For look like a detached bar, we have to add a fake invisible bar...
+s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
 
-  -- Add widgets to the wibox
-  s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
+-- Create the wibox with default options
+s.mywibox = awful.wibar({ height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = 1000 })
+--position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
+
+-- Add widgets to the wibox
+s.mywibox:setup {
+  layout = wibox.layout.align.horizontal,
+  spacing = dpi(9),
     { -- Left widgets
+      layout = wibox.layout.fixed.horizontal,
+      tagslist,
       --mylauncher,
-      s.mypromptbox,
-      distrib_icon,
-      arrow(beautiful.xbackground, "#202724"),
-      tor_widget,
-      arrow("#202724", "#29322e"),
+      --s.mypromptbox,
+      pad(3),
+      spacing = 12,
+      --distrib_icon,
       network_widget,
-      arrow("#29322e", "#202724"),
-      wifi_str_widget,
-      arrow("#202724", beautiful.xbackground),
-      arrow(beautiful.xbackground, "#29322e"),
-      mpc_widget,
-      arrow("#29322e", "#202724"),
-      volume_widget,
-      arrow("#202724", beautiful.xbackground),
-      ram_widget,
-      arrow("#202724", "#29322e"),
-      battery_widget,
-      arrow("#29322e", "#323d38"),
-      email_widget,
-      arrow("#323d38", "#202724"),
-      date_widget,
-      arrow("#202724", beautiful.xbackground),
-      scrot_icon,
+      --wifi_str_widget,
       wibox.widget.systray(),
       --s.mylayoutbox,
-      layout = wibox.layout.fixed.horizontal
     },
-    nil,
-    nil,
+    { -- middle
+      layout = wibox.layout.fixed.horizontal,
+      s.mytasklist
+    },
+    { -- right
+      layout = wibox.layout.fixed.horizontal,
+      tor_widget,
+      pad(1),
+      my_vol,
+      pad(1),
+      my_mail,
+      pad(1),
+      my_ram,
+      pad(1),
+      my_battery,
+      pad(1),
+      my_date,
+      pad(1),
+      scrot_icon,
+      pad(2),
+    },
   }
 end)

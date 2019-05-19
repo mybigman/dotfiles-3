@@ -1,5 +1,6 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local gears = require("gears")
 
 local widgets = {}
 
@@ -33,9 +34,9 @@ function widgets.icon(bg, icon_widget)
   local bg = bg or beautiful.xbackground
   local widget = wibox.widget {
     icon_widget,
-    top = 5, -- value depend on the font height
-    bottom = 5, -- value depend on the font height
-    right = 6,
+    --top = 2, -- value depend on the font height
+    --bottom = 2, -- value depend on the font height
+    right = 2,
     left = 2,
     color = bg,
     widget = wibox.container.margin
@@ -47,8 +48,8 @@ function widgets.text(bg, text_widget)
   local bg = bg or beautiful.xbackground
   local widget = wibox.widget {
     text_widget,
-    top = 5, -- value depend on the font height
-    bottom = 5, -- value depend on the font height
+    --top = 2, -- value depend on the font height
+    --bottom = 2, -- value depend on the font height
     right = 2,
     color = bg,
     widget = wibox.container.margin
@@ -56,28 +57,56 @@ function widgets.text(bg, text_widget)
   return widget
 end
 
-function widgets.box(w1, w2, w3)
+function widgets.box(l, w1, w2, w3)
   local widget
+  local _layout
+  if ( l ~= nil and l == "vertical" ) then
+    _layout = wibox.layout.fixed.vertical
+  else
+    _layout = wibox.layout.fixed.horizontal
+  end
+
   if ( w3 ~= nil ) then
     widget = wibox.widget {
       w1,
       w2,
       w3,
-      layout = wibox.layout.fixed.horizontal
+      layout = _layout
     }
   elseif ( w2 ~= nil ) then
     widget = wibox.widget {
       w1,
       w2,
-      layout = wibox.layout.fixed.horizontal
+      layout = _layout
     }
   else
     widget = wibox.widget {
       w1,
-      layout = wibox.layout.fixed.horizontal
+      layout = _layout
     }
   end
   return widget
+end
+
+function widgets.bg_rounded(bg_color, border_color, w)
+  return wibox.widget {
+    {
+      {
+        w,
+        left = 10,
+        right = 10,
+        top = 3,
+        bottom = 3,
+        widget = wibox.container.margin
+      },
+      shape = gears.shape.rounded_rect,
+      bg = bg_color,
+      shape_border_color = border_color,
+      shape_border_width = 2,
+      widget = wibox.container.background
+    },
+    layout = wibox.layout.fixed.horizontal
+  }
 end
 
 return widgets

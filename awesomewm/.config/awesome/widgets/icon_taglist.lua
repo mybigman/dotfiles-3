@@ -46,7 +46,11 @@ local icon_taglist = wibox.widget{
   tag_icons[8],
   tag_icons[9],
   tag_icons[10],
-  layout = beautiful.taglist_layout
+  --layout = beautiful.taglist_layout
+  expand = true,
+  forced_num_rows = 2,
+  forced_num_cols = 5,
+  layout = wibox.layout.grid,
 }
 
 icon_taglist:buttons(

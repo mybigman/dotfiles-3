@@ -9,15 +9,16 @@ local tor_icon = beautiful.widget_tor_icon
 local fg_enable = beautiful.widget_tor_fg_enable
 local fg_disable = beautiful.widget_tor_fg_disable
 local bg = beautiful.widget_tor_bg
+local l = beautiful.widget_tor_layout or 'horizontal'
 
 -- local str
-local tor_text_enable_icon = '<span foreground="'..fg_enable..'" background="'..bg..'">'..tor_icon..'</span>'
-local tor_text_disable_icon = '<span foreground="'..fg_disable..'" background="'..bg..'">'..tor_icon..'</span>'
+local tor_text_enable_icon = '<span foreground="'..fg_enable..'">'..tor_icon..'</span>'
+local tor_text_disable_icon = '<span foreground="'..fg_disable..'">'..tor_icon..'</span>'
 
 -- widget creation
 local icon = widget.base_icon(bg, tor_icon)
 local icon_margin = widget.icon(bg, icon)
-tor_widget = widget.box(icon_margin)
+tor_widget = widget.box(l, icon_margin)
 
 awful.widget.watch(
 os.getenv("HOME").."/.config/awesome/widgets/tor.sh check", 60, -- 1m

@@ -7,6 +7,7 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
+local gears = require("gears")
 local themes_path = gfs.get_themes_dir()
 local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/layouts/"
 local widget_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/widgets/"
@@ -39,7 +40,7 @@ theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 --theme.font          = "sans 8"
 theme.font          = "RobotoMono Nerd Font 8"
 
-theme.bg_normal     = theme.xbackground
+theme.bg_normal     = theme.xbackground .. "9f"
 theme.bg_focus      = theme.xcolor0
 --theme.bg_urgent     = theme.xbackground
 --theme.bg_minimize   = "#444444"
@@ -53,22 +54,22 @@ theme.fg_minimize   = "#222222"
 theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(9)
-theme.border_normal = theme.xbackground
-theme.border_focus  = theme.xcolor8
-theme.border_marked = "#723218"
+theme.border_normal = "#18191f"
+theme.border_focus  = "#181931"
+theme.border_marked = "#1f322a"
 
 -- general padding
-theme.general_padding = { left = 20, right = 30, top = 20, bottom = 30 }
+theme.general_padding = { left = 3, right = 3, top = 3, bottom = 3 }
 
 -- rounded corners
 theme.border_radius = dpi(8)
 
 -- {{{ TITLEBAR 
 
-theme.titlebar_fg_normal = "#434e4a"
-theme.titlebar_bg_normal = theme.xbackground
-theme.titlebar_fg_focus = "#4d5955"
-theme.titlebar_bg_focus = theme.xbackground
+theme.titlebar_fg_normal = "#78787c"
+theme.titlebar_bg_normal = "#1c1c24"
+theme.titlebar_fg_focus = "#949599"
+theme.titlebar_bg_focus = "#1c1c24"
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = false
@@ -76,8 +77,8 @@ theme.titlebars_imitate_borders = false
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_height = dpi(22)
-theme.wibar_bg = "#11121700"
+theme.wibar_height = dpi(42)
+theme.wibar_bg = theme.xbackground .. "00"
 theme.wibar_border_radius = dpi(0)
 
 -- Edge snap
@@ -132,7 +133,7 @@ theme.taglist_fg_urgent = "#3e3433"
 theme.taglist_disable_icon = true
 theme.taglist_spacing = dpi(20)
 theme.taglist_item_roundness = dpi(5)
-theme.taglist_layout = wibox.layout.fixed.vertical -- horizontal or vertical
+theme.taglist_layout = wibox.layout.fixed.horizontal -- horizontal or vertical
 
 theme.taglist_squares = "false"
 
@@ -184,6 +185,17 @@ theme.awesome_icon = theme_assets.awesome_icon(
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
+-- {{{ Tasklist
+
+theme.tasklist_disable_task_name = true
+theme.tasklist_shape = gears.shape.rounded_rect
+theme.tasklist_shape_border_width = 2
+theme.tasklist_shape_border_color = "#8a0050"
+theme.tasklist_spacing = dpi(8)
+theme.tasklist_align = "center"
+
+-- }}} End Tasklist
+
 -- {{{ WIDGET
 
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
@@ -196,35 +208,40 @@ theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 theme.widget_tor_icon = "﨩"
 theme.widget_tor_fg_enable = "#434f4a"
 theme.widget_tor_fg_disable = "#8a4e4a"
-theme.widget_tor_bg = "#202724"
+theme.widget_tor_bg = theme.xbackground .. "00"
+theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
-theme.widget_ncmpcpp_prev = '<span foreground="#334932"> &lt; </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="#334932">  </span>'
-theme.widget_ncmpcpp_next = '<span foreground="#334932"> &gt; </span>'
+theme.widget_ncmpcpp_prev = '<span foreground="#a92821"> &lt; </span>'
+theme.widget_ncmpcpp_toggle = '<span foreground="#a92821">  </span>'
+theme.widget_ncmpcpp_next = '<span foreground="#a92821"> &gt; </span>'
 
 -- Mails
 theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
 theme.widget_email_fg_read = "#888888"
 theme.widget_email_fg_unread = "#666666"
-theme.widget_email_bg = "#323d38"
+theme.widget_email_bg = theme.xbackground .. "ff"
+theme.widget_email_layout = 'vertical' -- horizontal or vertical
 
 -- Network
 theme.widget_network_icon = ""
-theme.widget_network_fg = "#878787"
+theme.widget_network_fg = "#aa8787"
 theme.widget_network_fg_error = "#aa6644"
-theme.widget_network_bg = "#29322e"
+theme.widget_network_bg = theme.xbackground .. "00"
+theme.widget_network_layout = 'vertical' -- horizontal or vertical
 
 -- Wifi str
-theme.widget_wifi_str_fg = "#878787"
-theme.widget_wifi_str_bg = "#202724"
+theme.widget_wifi_str_fg = "#87aaaa"
+theme.widget_wifi_str_bg = theme.xbackground .. "00"
+theme.widget_wifi_layout = 'vertical' -- horizontal or vertical
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = "#898989"
-theme.widget_ram_bg = "#202724"
+theme.widget_ram_fg = "#87aa87"
+theme.widget_ram_bg = theme.xbackground .. "ff"
+theme.widget_ram_layout = 'vertical' -- horizontal or vertical
 
 -- Battery
 theme.widget_battery_icon_discharging = ""
@@ -232,7 +249,8 @@ theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
 theme.widget_battery_fg = "#898989"
-theme.widget_battery_bg = "#29322e"
+theme.widget_battery_bg = theme.xbackground .. "ff"
+theme.widget_battery_layout = 'vertical' -- horizontal or vertical
 
 -- mpc
 theme.widget_mpc_prev_icon = ""
@@ -241,17 +259,19 @@ theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
 theme.widget_mpc_next_icon = ""
 theme.widget_mpc_fg = "#aaaaaa"
-theme.widget_mpc_bg = "#29322e"
+theme.widget_mpc_bg = theme.xbackground .. "00"
 
 -- volume
 theme.widget_volume_icon = ""
-theme.widget_volume_fg = "#878787"
-theme.widget_volume_bg = "#202724"
+theme.widget_volume_fg = "#aa87aa"
+theme.widget_volume_bg = theme.xbackground .. "ff"
+theme.widget_volume_layout = 'vertical' -- horizontal or vertical
 
 -- Date
 theme.widget_date_icon = ""
 theme.widget_date_fg = "#898989"
-theme.widget_date_bg = "#202724"
+theme.widget_date_bg = theme.xbackground .. "ff"
+theme.widget_date_layout = 'vertical' -- horizontal or vertical
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
