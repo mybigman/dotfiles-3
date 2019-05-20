@@ -14,7 +14,7 @@
 *color13: #6a506d
 *color14: #576a7b
 *color15: #bdbef8
-*background: #16171b
+*background: #14161c
 *foreground: #989b8b
 rofi.color-normal: argb:00000000, #383a3e, argb:00000000, #16171b, #514547
-rofi.color-window: #16171b, #000000, #832757
+rofi.color-window: #14161c, #000000, #832757

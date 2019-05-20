@@ -40,7 +40,7 @@ theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 --theme.font          = "sans 8"
 theme.font          = "RobotoMono Nerd Font 8"
 
-theme.bg_normal     = theme.xbackground .. "9f"
+theme.bg_normal     = theme.xbackground
 theme.bg_focus      = theme.xcolor0
 --theme.bg_urgent     = theme.xbackground
 --theme.bg_minimize   = "#444444"
@@ -53,13 +53,13 @@ theme.fg_minimize   = "#222222"
 
 theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(9)
-theme.border_normal = "#18191f"
-theme.border_focus  = "#181931"
-theme.border_marked = "#1f322a"
+theme.useless_gap   = dpi(7)
+theme.border_normal = "#1b1e26"
+theme.border_focus  = "#282830"
+theme.border_marked = "#4f322a"
 
 -- general padding
-theme.general_padding = { left = 3, right = 3, top = 3, bottom = 3 }
+theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- rounded corners
 theme.border_radius = dpi(8)
@@ -67,9 +67,9 @@ theme.border_radius = dpi(8)
 -- {{{ TITLEBAR 
 
 theme.titlebar_fg_normal = "#78787c"
-theme.titlebar_bg_normal = "#1c1c24"
+theme.titlebar_bg_normal = theme.xbackground .. "df"
 theme.titlebar_fg_focus = "#949599"
-theme.titlebar_bg_focus = "#1c1c24"
+theme.titlebar_bg_focus = "#1b1e26"
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = false
