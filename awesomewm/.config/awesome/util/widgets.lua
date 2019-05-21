@@ -88,17 +88,32 @@ function widgets.box(l, w1, w2, w3)
   return widget
 end
 
-function widgets.bg_rounded(bg_color, border_color, w)
+local function icon_plus_text_size(w)
+  return {
+    w,
+    left = 10, right = 10, top = 3, bottom = 3,
+    widget = wibox.container.margin
+  }
+end
+
+local function icon_size(w)
+  return {
+    w,
+    left = 9, right = 9, top = 9, bottom = 9,
+    widget = wibox.container.margin
+  }
+end
+
+function widgets.bg_rounded(bg_color, border_color, w, widget_type)
+  local mtype
+  if ( widget_type ~= nil and widget_type == "button" ) then
+    mtype = icon_size(w)
+  else
+    mtype = icon_plus_text_size(w)
+  end
   return wibox.widget {
     {
-      {
-        w,
-        left = 10,
-        right = 10,
-        top = 3,
-        bottom = 3,
-        widget = wibox.container.margin
-      },
+      mtype,
       shape = gears.shape.rounded_rect,
       bg = bg_color,
       shape_border_color = border_color,

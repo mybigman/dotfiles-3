@@ -49,7 +49,7 @@ end
 -- }}}
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = os.getenv("TERMINAL") or "xterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -85,50 +85,8 @@ awful.layout.layouts = {
 -- }}}
 
 -- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end},
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end}
-}
 
-myappmenu = {
-  { "ncmpcpp", terminal .. " --class=music_n -e ncmpcpp" },
-  { "cava", terminal .. " --class=music_c -e cava" },
-  { "brave", "brave-sec" },
-  { "virtualbox", "firejail VirtualBox" },
-  { "weechat", terminal .. " --class=chat -e weechat" },
-  { "mutt", terminal .. " --class=mail -e mutt" },
-  { "ranger", terminal .. " -e ranger" },
-  { "gimp", gimp }
-}
-
-mypentestmenu = {
-   { "metasploit", terminal .. " -e msf" },
-   { "leaked", terminal .. " -e leaked.py" },
-   { "burpsuite", burpsuite }
-}
-
-mygamemenu = {
-  { "baldur's gate 1", "" },
-  { "baldur's gate 2", "" },
-  { "don't starve", "" }
-}
-
-mymainmenu = awful.menu({ items = 
-  {
-    { "awesome", myawesomemenu, beautiful.awesome_icon },
-    { "open terminal", terminal },
-    { "apps", myappmenu },
-    { "pentest tools", mypentestmenu },
-    { "games", mygamemenu }
-  }
-})
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+local mymainmenu = require("menu")
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it

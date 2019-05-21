@@ -54,8 +54,8 @@ theme.fg_minimize   = "#222222"
 theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(7)
-theme.border_normal = "#1b1e26"
-theme.border_focus  = "#282830"
+theme.border_normal = "#2c2e39"
+theme.border_focus  = "#2c2e39"
 theme.border_marked = "#4f322a"
 
 -- general padding
@@ -67,9 +67,9 @@ theme.border_radius = dpi(8)
 -- {{{ TITLEBAR 
 
 theme.titlebar_fg_normal = "#78787c"
-theme.titlebar_bg_normal = theme.xbackground .. "df"
+theme.titlebar_bg_normal = "#222930"
 theme.titlebar_fg_focus = "#949599"
-theme.titlebar_bg_focus = "#1b1e26"
+theme.titlebar_bg_focus = "#222930"
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = false

@@ -39,6 +39,12 @@ local date = require("widgets.date")
 local date_bg = beautiful.widget_date_bg
 local my_date = widget.bg_rounded( date_bg, "#8a0000", date_widget )
 
+local my_menu = require("menu")
+local launcher = awful.widget.launcher(
+  { image = beautiful.awesome_icon, menu = my_menu }
+)
+local my_launcher = widget.bg_rounded( "#6a6a6a", "#a2a2a2", launcher, "button" )
+
 -- widget redefined }}}
 
 -- {{{ Helper functions
@@ -146,8 +152,9 @@ s.mywibox:setup {
   spacing = dpi(9),
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
+      my_launcher,
+      pad(1),
       tagslist,
-      --mylauncher,
       --s.mypromptbox,
       pad(3),
       spacing = 12,
@@ -176,7 +183,6 @@ s.mywibox:setup {
       my_date,
       pad(1),
       scrot_icon,
-      pad(2),
     },
   }
 end)

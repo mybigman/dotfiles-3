@@ -1,7 +1,7 @@
 ## Setup
 
 ```txt                              
-bar               > polybar,lemonbar
+bar               > awesome,polybar,lemonbar
 compositor        > compton
 extra background  > pscircle
 fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder,NERD fonts
@@ -12,7 +12,7 @@ media player      > mpv
 music player      > ncmpcpp
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
-terms             > kitty
+terms             > alacritty
 web browser       > brave
 wm                > awesome,subtle,i3-gaps
 mails             > offlineimap,msmtp and mutt (soon neomutt)
@@ -57,13 +57,12 @@ And last thing, when you update this repository with `git pull`, it's nice to re
     $ stow theme-universe -t ~
 
 ## Environment
-
-A variable should be set in your ~/.bashrc or ~/.zshrc, the terminal you use, kitty for me:
+Unless you use my `.zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `alacritty` for me:
 
     $ vim ~/.zshrc
-    export TERMINAL=/usr/bin/kitty
+    export TERMINAL=/usr/bin/alacritty
 
-It will be used by i3 and subtle.
+It will be used by all wm used in this repository.
 
 ## vim
 
