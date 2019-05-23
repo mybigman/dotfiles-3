@@ -21,29 +21,29 @@ local tagslist = require("widgets.icon_taglist")
 
 local volume = require("widgets.volume")
 local volume_bg = beautiful.widget_volume_bg
-local my_vol = widget.bg_rounded( volume_bg, "#0000aa", volume_widget )
+local my_vol = widget.bg_rounded( volume_bg, "#5b8f94", volume_widget )
 
 local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
-local my_mail = widget.bg_rounded( mail_bg, "#00aa00", email_widget )
+local my_mail = widget.bg_rounded( mail_bg, "#567092", email_widget )
 
 local ram = require("widgets.ram")
 local ram_bg = beautiful.widget_ram_bg
-local my_ram = widget.bg_rounded( ram_bg, "#008800", ram_widget )
+local my_ram = widget.bg_rounded( ram_bg, "#524e87", ram_widget )
 
 local battery = require("widgets.battery")
 local bat_bg = beautiful.widget_battery_bg
-local my_battery = widget.bg_rounded( bat_bg, "#00ff00", battery_widget )
+local my_battery = widget.bg_rounded( bat_bg, "#794298", battery_widget )
 
 local date = require("widgets.date")
 local date_bg = beautiful.widget_date_bg
-local my_date = widget.bg_rounded( date_bg, "#8a0000", date_widget )
+local my_date = widget.bg_rounded( date_bg, "#873075", date_widget )
 
 local my_menu = require("menu")
 local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
-local my_launcher = widget.bg_rounded( "#6a6a6a", "#a2a2a2", launcher, "button" )
+local my_launcher = widget.bg_rounded( "#7e7683", "#a4a0a7", launcher, "button" )
 
 -- widget redefined }}}
 
@@ -152,12 +152,12 @@ s.mywibox:setup {
   spacing = dpi(9),
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
+      spacing = 12,
       my_launcher,
       pad(1),
       tagslist,
       --s.mypromptbox,
-      pad(3),
-      spacing = 12,
+      pad(2),
       --distrib_icon,
       network_widget,
       --wifi_str_widget,

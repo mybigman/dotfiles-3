@@ -22,6 +22,7 @@ local theme = require("loaded-theme")
 local titlebars = require("titlebars")
 local keys = require("keys")
 local helpers = require("helpers")
+local env = require("env-config")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -47,11 +48,6 @@ do
     end)
 end
 -- }}}
-
--- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "xterm"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -89,7 +85,8 @@ awful.layout.layouts = {
 local mymainmenu = require("menu")
 
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+terminal = env.term
+menubar.utils.terminal = env.term -- Set the terminal for applications that require it
 -- }}}
 
 local function set_wallpaper(s)
@@ -338,7 +335,7 @@ awful.rules.rules = {
   { rule = { class = "Brave-browser" },
     properties = { screen = 1, tag = beautiful.tagnames[2] } },
 
-  { rule = { instance = "music*" },
+  { rule = { class = "music*" },
     properties = { screen = 1, tag = beautiful.tagnames[4] } },
 
   { rule = { class = "Gimp" },

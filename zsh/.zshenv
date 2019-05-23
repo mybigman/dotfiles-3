@@ -1,5 +1,5 @@
 export PATH=$HOME/bin:$HOME/.gems/bin:$PATH
-export TERMINAL=/usr/bin/alacritty
+export TERMINAL=/usr/bin/xst
 
 # Directory to encrypt password with vim-gpg
 export PASSWD=~/.passwords

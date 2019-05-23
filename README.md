@@ -12,7 +12,7 @@ media player      > mpv
 music player      > ncmpcpp
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
-terms             > alacritty
+terms             > xst
 web browser       > brave
 wm                > awesome,subtle,i3-gaps
 mails             > offlineimap,msmtp and mutt (soon neomutt)
@@ -21,7 +21,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 
 ## Installation
 
-I use [GNU stow](http://www.gnu.org/software/stow/) in order to keep 4-5 different themes.  
+I use [GNU stow](http://www.gnu.org/software/stow/) in order to keep several themes.  
 Start going into your home:
 
     $ cd ~
@@ -57,10 +57,10 @@ And last thing, when you update this repository with `git pull`, it's nice to re
     $ stow theme-universe -t ~
 
 ## Environment
-Unless you use my `.zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `alacritty` for me:
+Unless you use my `.zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `xst` for me:
 
     $ vim ~/.zshrc
-    export TERMINAL=/usr/bin/alacritty
+    export TERMINAL=/usr/bin/xst
 
 It will be used by all wm used in this repository.
 

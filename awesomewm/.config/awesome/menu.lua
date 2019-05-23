@@ -1,38 +1,33 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-
--- ENV
-local terminal = os.getenv("TERMINAL") or "xterm"
-local editor = os.getenv("EDITOR") or "vim"
-local editor_cmd = terminal .. " -e " .. editor
---
+local env = require("env-config")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 local myawesomemenu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end},
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end}
+  { "hotkeys", function() return false, hotkeys_popup.show_help end},
+  { "manual", env.term .. env.term_call[2] .. "man awesome" },
+  { "edit config", env.editor_cmd .. " " .. awesome.conffile },
+  { "restart", awesome.restart },
+  { "quit", function() awesome.quit() end}
 }
 
 local myappmenu = {
-  { "ncmpcpp", terminal .. " --class=music_n -e ncmpcpp" },
-  { "cava", terminal .. " --class=music_c -e cava" },
+  { "ncmpcpp", env.term .. env.term_call[1] .. "music_n" .. env.term_call[2] .. "ncmpcpp" },
+  { "cava", env.term .. env.term_call[1] .. "music_c" .. env.term_call[2] .. "cava" },
   { "brave", "brave-sec" },
   { "virtualbox", "firejail VirtualBox" },
-  { "weechat", terminal .. " --class=chat -e weechat" },
-  { "mutt", terminal .. " --class=mail -e mutt" },
-  { "ranger", terminal .. " -e ranger" },
+  { "weechat", env.term .. env.term_call[1] .. "chat" .. env.term_call[2] .. "weechat" },
+  { "mutt", env.term .. env.term_call[1] .. "mail" .. env.term_call[2] .. "mutt" },
+  { "ranger", env.term .. env.term_call[2] .. "ranger" },
   { "gimp", gimp }
 }
 
 local mypentestmenu = {
-   { "metasploit", terminal .. " -e msf" },
-   { "leaked", terminal .. " -e leaked.py" },
-   { "burpsuite", burpsuite }
+  { "metasploit", env.term .. env.term_call[2] .. "msf" },
+  { "leaked", env.term .. env.term_call[2] .. "leaked.py" },
+  { "burpsuite", burpsuite }
 }
 
 local mygamemenu = {
@@ -44,7 +39,7 @@ local mygamemenu = {
 local mymainmenu = awful.menu({ items = 
   {
     { "awesome", myawesomemenu, beautiful.awesome_icon },
-    { "open terminal", terminal },
+    { "open terminal", env.term },
     { "apps", myappmenu },
     { "pentest tools", mypentestmenu },
     { "games", mygamemenu }

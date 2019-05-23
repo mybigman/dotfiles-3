@@ -13,7 +13,7 @@ local l = beautiful.widget_network_layout or 'horizontal'
 
 -- widget creation
 local icon = widget.base_icon(bg, net_icon)
-local text = widget.base_text(bg)
+local text = widget.base_text()
 local icon_margin = widget.icon(bg, icon)
 local text_margin = widget.text(bg, text)
 network_widget = widget.box(l, icon_margin, text_margin)
