@@ -12,12 +12,16 @@ local hostname = require("widgets.hostname")
 local tor = require("widgets.tor")
 --local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
-local network = require("widgets.network")
+--local network = require("widgets.network")
 local wifi_str = require("widgets.wifi_str")
 local pad = separators.pad
 local tagslist = require("widgets.icon_taglist")
 
 -- {{{ Redefine widgets with a background
+
+local mpc = require("widgets.mpc")
+local mpc_bg = beautiful.widget_mpc_bg
+local my_mpc = widget.bg_rounded( mpc_bg, "#3b6f6f", mpc_widget )
 
 local volume = require("widgets.volume")
 local volume_bg = beautiful.widget_volume_bg
@@ -43,7 +47,7 @@ local my_menu = require("menu")
 local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
-local my_launcher = widget.bg_rounded( "#7e7683", "#a4a0a7", launcher, "button" )
+local my_launcher = widget.bg_rounded( "#ddeeee", "#20252c", launcher, "button" )
 
 -- widget redefined }}}
 
@@ -128,10 +132,10 @@ awful.screen.connect_for_each_screen(function(s)
         },
         layout = wibox.layout.fixed.horizontal,
       },
-      left  = 10,
-      right = 10,
-      top = 6,
-      bottom = 6,
+      left  = 5,
+      right = 5,
+      top = 5,
+      bottom = 5,
       widget = wibox.container.margin
     },
     id     = 'background_role',
@@ -143,7 +147,7 @@ awful.screen.connect_for_each_screen(function(s)
 s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
 
 -- Create the wibox with default options
-s.mywibox = awful.wibar({ height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = 1000 })
+s.mywibox = awful.wibar({ height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = dpi(1124) })
 --position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
 
 -- Add widgets to the wibox
@@ -157,9 +161,9 @@ s.mywibox:setup {
       pad(1),
       tagslist,
       --s.mypromptbox,
-      pad(2),
+      pad(1),
       --distrib_icon,
-      network_widget,
+      --network_widget,
       --wifi_str_widget,
       wibox.widget.systray(),
       --s.mylayoutbox,
@@ -170,7 +174,10 @@ s.mywibox:setup {
     },
     { -- right
       layout = wibox.layout.fixed.horizontal,
+      pad(2),
       tor_widget,
+      pad(1),
+      my_mpc,
       pad(1),
       my_vol,
       pad(1),

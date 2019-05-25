@@ -31,13 +31,15 @@ awful.widget.watch(GET_MPD_CMD, 3, function(widget, stdout, exitreason, exitcode
   stdout = string.gsub(stdout, "\n", "")
   local status = stdout:match('%[(.*)%]')
   status = string.gsub(status, '^%s*(.-)%s*$', '%1')
+  icon_1.markup = '<span foreground="'..fg..'">'..icon_prev..'</span>'
   if (status == "playing") then
-    icon_2.markup = '<span background="'..bg..'">'..icon_pause..'</span>'
+    icon_2.markup = '<span foreground="'..fg..'">'..icon_pause..'</span>'
   elseif (status == "paused") then
-    icon_2.markup = '<span background="'..bg..'">'..icon_play..'</span>'
+    icon_2.markup = '<span foreground="'..fg..'">'..icon_play..'</span>'
   else
-    icon_2.markup = '<span background="'..bg..'">'..icon_stop..'</span>'
+    icon_2.markup = '<span foreground="'..fg..'">'..icon_stop..'</span>'
   end
+  icon_3.markup = '<span foreground="'..fg..'">'..icon_next..'</span>'
 end)
 
 icon_1:connect_signal("button::press", function(_, _, _, button)

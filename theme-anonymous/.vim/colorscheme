@@ -1,1 +1,5 @@
 colorscheme darkest-space
+let g:lightline = {
+  \ 'colorscheme': 'Anonymous',
+  \ 'separator': { 'left': '', 'right': '' },
+  \ }

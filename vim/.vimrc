@@ -150,7 +150,7 @@ map <F3> :NERDTreeToggle<CR>
 
 " update colors with F8 with darkest-space colorscheme
 "map <F8> :update<CR>:colorscheme darkest-space<CR>
-map <F8> :update<CR>:colorscheme darkness<CR>
+map <F8> :update<CR>:colorscheme darkest-space<CR>
 let mapleader=","
 
 "" With vim, copy to clipboard work only if you compile vim with X support

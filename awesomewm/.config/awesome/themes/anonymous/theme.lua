@@ -188,11 +188,13 @@ theme.icon_theme = nil
 
 -- {{{ Tasklist
 
-theme.tasklist_disable_task_name = true
-theme.tasklist_shape = gears.shape.rounded_rect
+theme.tasklist_disable_task_name = false
+theme.tasklist_disable_icon = true 
+theme.tasklist_shape = function(cr, width, height) gears.shape.transform(gears.shape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
 theme.tasklist_shape_border_width = 2
 theme.tasklist_shape_border_color = "#8a0050"
-theme.tasklist_spacing = dpi(8)
+theme.tasklist_shape_border_color_focus = "#af0366"
+theme.tasklist_spacing = dpi(4)
 theme.tasklist_align = "center"
 
 -- }}} End Tasklist
@@ -259,8 +261,9 @@ theme.widget_mpc_pause_icon = ""
 theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
 theme.widget_mpc_next_icon = ""
-theme.widget_mpc_fg = "#aaaaaa"
+theme.widget_mpc_fg = "#3a8f9f"
 theme.widget_mpc_bg = theme.xbackground .. "00"
+theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
 -- volume
 theme.widget_volume_icon = ""
