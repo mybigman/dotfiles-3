@@ -1,8 +1,8 @@
 ---------------------------
--- Cyberpunk awesome theme --
+-- Anonymous awesome theme --
 ---------------------------
 
-local theme_name = "cyberpunk"
+local theme_name = "anonymous"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -178,13 +178,13 @@ theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".jpg"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
+  theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 --theme.icon_theme = nil
-theme.icon_theme = 'Numix'
+theme.icon_theme = nil
 
 -- {{{ Tasklist
 
@@ -214,9 +214,9 @@ theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
-theme.widget_ncmpcpp_prev = '<span foreground="#a92821"> &lt; </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="#a92821">  </span>'
-theme.widget_ncmpcpp_next = '<span foreground="#a92821"> &gt; </span>'
+theme.widget_ncmpcpp_prev = '<span foreground="'..theme.xcolor5..'"> &lt; </span>'
+theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.xcolor5..'">  </span>'
+theme.widget_ncmpcpp_next = '<span foreground="'..theme.xcolor5..'"> &gt; </span>'
 
 -- Mails
 theme.widget_email_read_icon = ""
