@@ -35,9 +35,10 @@ The last theme is installable with:
 
     $ stow config
     $ stow images
-    $ stow theme-universe
+    $ stow awesomewm
+    $ stow theme-anonymous
 
-It will create for each file a symbolic link into your `$HOME`, the first time, stow will show you files you have to backup (or delete).    
+It will create for each files a symbolic link into your `$HOME`. The first time, `stow` will show you files you have to backup (or delete).    
 To switch on an other theme, you have to delete the older:
 
     $ stow -D theme-universe
@@ -91,14 +92,11 @@ You can install theses repos with:
     $ ./install --zsh
 
 ## Screens
-**Last**:`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space.vim](https://github.com/szorfein/darkest-space.vim), [font] [Nerd Iosevka](http://nerdfonts.com/#downloads).   
+**Last**:`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/anonymous.jpg "anonymous")  
 
 **Last**:`theme-connected` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Connected screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/connected.jpg "connected")  
-
-`theme-dark` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
-![Dark screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/dark.jpg "dark")  
 
 `theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Lost screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  
