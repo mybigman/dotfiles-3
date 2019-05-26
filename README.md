@@ -91,8 +91,11 @@ You can install theses repos with:
     $ ./install --zsh
 
 ## Screens
+**Last**:`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space.vim](https://github.com/szorfein/darkest-space.vim), [font] [Nerd Iosevka](http://nerdfonts.com/#downloads).   
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/anonymous.jpg "anonymous")  
+
 **Last**:`theme-connected` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/connected.jpg "connected")  
+![Connected screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/connected.jpg "connected")  
 
 `theme-dark` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Dark screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/dark.jpg "dark")  

@@ -47,7 +47,7 @@ local my_menu = require("menu")
 local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
-local my_launcher = widget.bg_rounded( "#ddeeee", "#20252c", launcher, "button" )
+local my_launcher = widget.bg_rounded( "#4a455e", "#20252c", launcher, "button" )
 
 -- widget redefined }}}
 

@@ -124,6 +124,29 @@ function widgets.bg_rounded(bg_color, border_color, w, widget_type)
   }
 end
 
+function widgets.bg_border_line(bg_color, border_color, w, widget_type)
+  local mtype
+  local shape_line = function(cr, width, height) 
+    gears.shape.transform(gears.shape.rounded_rect) : translate(0,20) (cr,width, -1, 2) 
+  end
+  if ( widget_type ~= nil and widget_type == "button" ) then
+    mtype = icon_size(w)
+  else
+    mtype = icon_plus_text_size(w)
+  end
+  return wibox.widget {
+    {
+      mtype,
+      shape = shape_line,
+      bg = bg_color,
+      shape_border_color = border_color,
+      shape_border_width = 2,
+      widget = wibox.container.background
+    },
+    layout = wibox.layout.fixed.horizontal
+  }
+end
+
 function widgets.bg(bg_color, w)
   return wibox.widget {
     {

@@ -54,8 +54,8 @@ theme.fg_minimize   = "#222222"
 theme.border_width  = dpi(5)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(5)
-theme.border_normal = "#2c2e39"
-theme.border_focus  = "#2c2e39"
+theme.border_normal = "#202a34"
+theme.border_focus  = "#222c36"
 theme.border_marked = "#4f322a"
 
 -- general padding
@@ -67,9 +67,9 @@ theme.border_radius = dpi(8)
 -- {{{ TITLEBAR 
 
 theme.titlebar_fg_normal = "#78787c"
-theme.titlebar_bg_normal = "#222930"
+theme.titlebar_bg_normal = "#202a34"
 theme.titlebar_fg_focus = "#949599"
-theme.titlebar_bg_focus = "#222930"
+theme.titlebar_bg_focus = "#202a34"
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = false
@@ -216,9 +216,9 @@ theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
-theme.widget_ncmpcpp_prev = '<span foreground="'..theme.xcolor5..'"> &lt; </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.xcolor5..'">  </span>'
-theme.widget_ncmpcpp_next = '<span foreground="'..theme.xcolor5..'"> &gt; </span>'
+theme.widget_ncmpcpp_prev = '<span foreground="'..theme.xcolor1..'"> ≪ </span>'
+theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.xcolor1..'"> ⊡ </span>'
+theme.widget_ncmpcpp_next = '<span foreground="'..theme.xcolor1..'"> ≫ </span>'
 
 -- Mails
 theme.widget_email_read_icon = ""
