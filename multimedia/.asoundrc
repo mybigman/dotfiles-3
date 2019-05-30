@@ -9,7 +9,7 @@
 # recompile kernel with change CONFIG_SND_HDA_PREALLOC_SIZE=2048
 
 # For mpd, copy this file to /var/lib/mpd/.asoundrc
-# and set device "headphones", format "44100:16:1", mixer_type "software"
+# and set device "headphones", format "44100:16:1"
 
 # If problem with alsamixer for find your device, launch alsamixer with arg:
 # alsamixer -D "hw:Pro"

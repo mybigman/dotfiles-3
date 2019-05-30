@@ -14,8 +14,7 @@ include /etc/firejail/disable-programs.inc
 
 mkdir ~/.cache/vivaldi
 mkdir ~/.config/vivaldi
-whitelist ~/downloads 
-whitelist ~/images
+whitelist ${DOWNLOADS}
 whitelist ~/.cache/vivaldi
 whitelist ~/.config/vivaldi
 include /etc/firejail/whitelist-common.inc
@@ -24,14 +23,11 @@ caps.keep sys_chroot,sys_admin
 netfilter
 nodvd
 nogroups
-noroot
 notv
-seccomp
 shell none
-dns 127.0.0.1
 
 private-dev
-private-tmp
+# private-tmp - problems with multiple browser sessions
 
 noexec ${HOME}
 noexec /tmp

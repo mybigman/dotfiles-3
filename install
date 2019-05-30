@@ -59,7 +59,6 @@ pathogen() {
   chk https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
   chk https://github.com/edkolev/tmuxline.vim ~/.vim/bundle/tmuxline.vim
   chk https://github.com/lilydjwg/colorizer ~/.vim/bundle/colorizer
-  chk https://github.com/airblade/vim-gitgutter ~/.vim/bundle/vim-gitgutter
 }
 
 banner() {

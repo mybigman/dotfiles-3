@@ -1,5 +1,5 @@
 # start keychain
-keychain --clear --agents "ssh,gpg" git 0x9CC9729A2E369CB3
+keychain --clear --gpg2 --agents "ssh,gpg" id_ed25519 git 0x9CC9729A2E369CB3
 
 [ -z "$HOSTNAME" ] && HOSTNAME=$(uname -n)
 
@@ -15,7 +15,7 @@ keychain --clear --agents "ssh,gpg" git 0x9CC9729A2E369CB3
 #fi
 
 # SSH tunnel, run autossh.sh if not alrealy run
-if [ -f $HOME/bin/autossh.sh ] ; then
-  autossh_proc=$(pgrep -u $USER -x autossh)
-  [[ -z $autossh_proc ]] && ~/bin/autossh.sh &
-fi
+#if [ -f $HOME/bin/autossh.sh ] ; then
+#  autossh_proc=$(pgrep -u $USER -x autossh)
+#  [[ -z $autossh_proc ]] && ~/bin/autossh.sh &
+#fi

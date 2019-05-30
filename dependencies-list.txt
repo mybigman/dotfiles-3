@@ -1,7 +1,5 @@
 app-admin/pscircle
 app-admin/pwgen
-app-admin/sudo
-app-crypt/gnupg
 app-editors/vim +X
 app-misc/ranger
 app-misc/tmux
@@ -10,15 +8,16 @@ app-text/zathura
 app-text/zathura-pdf-mupdf
 app-vim/gnupg
 app-vim/lightline
+app-vim/gitgutter
 app-vim/nerdtree
 app-vim/pathogen
 dev-python/pillow +jpeg +zlib
-mail-client/mutt +gpg
+mail-client/neomutt +gpg
 mail-mta/msmtp +mta +sasl +ssl
-media-fonts/hack
-media-fonts/iosevka
+media-fonts/dina
 media-fonts/material-icons
-media-fonts/robotomono
+media-fonts/nerd-font-iosevka
+media-fonts/nerd-font-roboto-mono
 media-fonts/sfmono
 media-gfx/feh
 media-gfx/gimp
@@ -30,7 +29,6 @@ media-sound/mpd
 media-sound/ncmpcpp +clock +unicode +taglib
 media-video/ffmpeg +ladspa +network +openssl +webp +x264
 media-video/mpv
-net-dns/dnscrypt-proxy
 net-irc/weechat +ssl +irc
 net-mail/offlineimap +ssl
 net-misc/aria2 +ssl +metalink +libxml2 +adns +bittorent
@@ -40,6 +38,7 @@ net-misc/wget
 net-mist/youtube-dl
 net-vpn/tor +seccomp +tor-hardening
 sys-apps/firejail +seccomp +suid
+sys-power/acpilight 
 www-client/brave-bin
 x11-apps/xdpyinfo
 x11-apps/xinit
@@ -51,4 +50,6 @@ x11-misc/polybar
 x11-misc/rofi
 x11-misc/xclip
 x11-terms/kitty +imagemagick
+x11-terms/xst
+x11-wm/awesome
 x11-wm/subtle +xft

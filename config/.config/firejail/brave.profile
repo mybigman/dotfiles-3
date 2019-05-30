@@ -5,19 +5,30 @@ include /etc/firejail/brave.local
 # Persistent global definitions
 include /etc/firejail/globals.local
 
-noblacklist ${HOME}/.config/brave
-noblacklist ${HOME}/.config/BraveSoftware
+noblacklist ~/.config/brave
 # brave uses gpg for built-in password manager
-noblacklist ${HOME}/.gnupg
+noblacklist ~/.gnupg
+noblacklist ~/.pki
 
-mkdir ${HOME}/.config/brave
-mkdir ${HOME}/.config/BraveSoftware
-whitelist ${HOME}/.config/brave
-whitelist ${HOME}/.config/BraveSoftware
-whitelist ${HOME}/.gnupg
+include /etc/firejail/disable-common.inc
+include /etc/firejail/disable-devel.inc
+include /etc/firejail/disable-programs.inc
 
-# noexec /tmp is included in chromium-common.profile and breaks Brave
-ignore noexec /tmp
+mkdir ~/.config/brave
+mkdir ~/.pki
+whitelist ${DOWNLOADS}
+whitelist ~/.config/brave
+whitelist ~/.config/BraveSoftware
+whitelist ~/.pki
+include /etc/firejail/whitelist-common.inc
 
-# Redirect
-include /etc/firejail/chromium-common.profile
+caps.drop all
+netfilter
+nonewprivs
+# noroot
+nodvd
+notv
+# protocol unix,inet,inet6,netlink
+seccomp
+
+disable-mnt
