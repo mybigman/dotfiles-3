@@ -19,15 +19,12 @@ volume_widget = widget.box(l, icon_margin, text_margin)
 
 -- Change 'Pro' with your audio card, to find audio card name: aplay -l
 local volume_script = [[
-    bash -c "amixer -c Pro | grep 'Front Left:'"
+    bash -c "amixer -c Pro | grep 'Front Left:' | awk '{print $4}' | tr -d '[]'"
   ]]
 
 awful.widget.watch(
   volume_script, 4,
   function(widget, stdout, stderr, exitreason, exitcode)
-    local vol = stdout:match('%[(.*)%]')
-    vol = string.gsub(vol, '^%s*(.-)%s*$', '%1')
-    --stdout = stdout.match('Front Left')
-    text:set_markup_silently('<span foreground="'..fg..'">'..vol..'</span>')
+    text:set_markup_silently('<span foreground="'..fg..'">'..stdout..'</span>')
   end
 )

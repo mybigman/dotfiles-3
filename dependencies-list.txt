@@ -12,7 +12,7 @@ app-vim/gitgutter
 app-vim/nerdtree
 app-vim/pathogen
 dev-python/pillow +jpeg +zlib
-mail-client/neomutt +gpg
+mail-client/neomutt +gpgme
 mail-mta/msmtp +mta +sasl +ssl
 media-fonts/dina
 media-fonts/material-icons

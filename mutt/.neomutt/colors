@@ -1,0 +1,86 @@
+# NeoMutt color file
+# Maintainer: szorfein <szorfein@protonmail.com>
+# URL: https://github.com/szorfein/dotfiles
+# Last Change: 2019 June 02
+# Version: 0.1
+
+color normal            default default
+color indicator         yellow      black
+color status            brightgreen black
+color tree              brightred   default
+color signature         color102    default 
+color message           color253    default 
+color attachment        color117    default 
+color error             color30     default 
+color tilde             color130    black
+
+color search       color100     default
+color markers      color138     default
+
+color quoted        cyan default
+color quoted1       yellow black
+color quoted2       red black
+color quoted3       green black
+color quoted4       cyan black
+color quoted5       yellow black
+color quoted6       red black
+color quoted7       green black
+color quoted8       brightblack black
+color quoted9       brightred black
+
+# color body          cyan  default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body          cyan  default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
+# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+
+# Index
+color index color202 color234 ~F         # Flagged
+color index color39 color234 ~O
+color index color229 color22 ~T         # Tagged
+color index color240 color234 ~D         # Deleted
+color index blue default "~N" # NEW  
+color index magenta default "~U" # UNREAD
+color index cyan default "~R" # READ
+ 
+# URL
+color body brightgreen black "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body brightgreen black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body bold "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+
+# Email address
+color body brightgreen black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+#mono body      reverse         '^(subject):.*'
+#color body     brightwhite magenta     '^(subject):.*'
+#mono body      reverse         '[[:alpha:]][[:alnum:]-]+:'
+#color body     black cyan      '[[:alpha:]][[:alnum:]-]+:'
+
+# --- header ---
+
+color hdrdefault        color30         black
+color header            color132        black    '^date:'
+color header            color153        black    '^(to|cc|bcc):'
+color header cyan black '^from:'
+color header brightyellow black '^subject:'
+color header            color31         black    '^user-agent:'
+color header            color29         black    '^reply-to:'
+
+#color header   magenta default '^(status|lines|date|received|sender|references):'
+#color header   magenta default '^(pr|mime|x-|user|return|content-)[^:]*:'
+#color header   brightyellow default '^content-type:'
+#color header   magenta default '^content-type: *text/plain'
+# color header  brightgreen default '^list-[^:]*:'
+#mono  header    bold               '^(subject):.*$'
+#color header   brightcyan default      '^(disposition)'
+#color header   green default   '^(mail-)?followup'
+#color header   white default   '^reply'
+#color header   brightwhite default     '^(resent)'
+# color header  brightwhite default     '^from:'
+
+#mono index     bold '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"'
+#color index    green black '~h "^content-type: *multipart/(signed|encrypted)"'
+
+#color sidebar_new color39 color234

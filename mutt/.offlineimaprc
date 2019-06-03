@@ -18,4 +18,5 @@ type = Gmail
 auth_mechanisms = LOGIN
 remoteuser = szorfein@gmail.com
 remotepasseval = get_pass()
-transporttunnel = ssh brakk@star-1810r6imrq openssl s_client -connect star-1810r6imrq:45413 -CApath /etc/ssl/certs -quiet
+#transporttunnel = ssh yagdra@localhost openssl s_client -connect localhost -CApath /etc/ssl/certs -quiet
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
