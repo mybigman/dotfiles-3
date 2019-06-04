@@ -4,92 +4,132 @@
 bar               > awesome,polybar,lemonbar
 compositor        > compton
 extra background  > pscircle
-fonts             > iosevka,roboto mono,noto,liberation mono,material-icons,dina,ttf-anka-coder,NERD fonts
+fonts             > iosevka,roboto mono,liberation mono,material-icons,dina,ttf-anka-coder,NERD fonts
 image viewer      > feh
 irc               > weechat
-lock screen       > i3lock
 media player      > mpv
 music player      > ncmpcpp
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
 terms             > xst
-web browser       > brave
 wm                > awesome,subtle,i3-gaps
-mails             > offlineimap,msmtp and mutt (soon neomutt)
+mails             > offlineimap,msmtp and neomutt
 ```
-A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.
+A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.  
+If you search an wallpaper that i've use, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
 
-## Installation
+## Installation for the last theme [anonymous](https://github.com/szorfein/dotfiles/blob/master/README.md#screens)
+You will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).
 
-I use [GNU stow](http://www.gnu.org/software/stow/) in order to keep several themes.  
-Start going into your home:
+### Archlinux
+Official packages:
 
-    $ cd ~
+    sudo pacman -S stow awesome xorg-xinit git rofi compton feh
 
-Clone this repository:
+From AUR:  
+        
+    sudo yaourt build nerd-fonts-iosevka nerd-fonts-roboto-mono xst-git 
 
-    $ git clone https://github.com/szorfein/dotfiles
-    $ cd dotfiles
+### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
 
-The last theme is installable with:
+    sudo emerge -av app-admin/stow nerd-fonts-roboto-mono nerd-fonts-iosevka xst x11-wm/awesome x11-apps/xinit feh compton dev-vcs/git rofi
 
-    $ stow config
-    $ stow images
-    $ stow awesomewm
-    $ stow theme-anonymous
+### Clone this repos
 
-It will create for each files a symbolic link into your `$HOME`. The first time, `stow` will show you files you have to backup (or delete).    
-To switch on an other theme, you have to delete the older:
+    cd
+    git clone https://github.com/szorfein/dotfiles
+    cd dotfiles
 
-    $ stow -D theme-universe
-    $ stow theme-creation
+## Howto stow
+`stow` will create a symbolic link of each files in a given directory as argument in your `$HOME` and you need 4 directories:
 
-If you install my dots in an other directory than `home/username`, each commands should have `-t ~` in addition, e.g:
+    stow config
+    stow images
+    stow awesomewm
+    stow theme-anonymous
 
-    $ stow -D theme-universe -t ~
-    $ stow theme-creation -t ~
+If this repository is cloned into a different directory than`/home/username/`, each commands of `stow` should have `-t ~` in addition, e.g:
 
-And last thing, when you update this repository with `git pull`, it's nice to reinstall all directories than you use in order to have all the latest files in your home:
+    stow config -t ~
+    stow images -t ~
 
-    $ git pull
-    $ stow -D image -t ~
-    $ stow images -t ~
-    $ stow -D theme-universe -t ~
-    $ stow theme-universe -t ~
+If a file alrealy exist, `stow` will show you what you have to move, example:
+
+```
+stow config
+WARNING! stowing config would cause conflicts:
+* existing target is neither a link nor a directory: .Xresources
+* existing target is neither a link nor a directory: .xinitrc
+All operations aborted.
+```
+Here, you have to backup the files `.Xresources` and `.xinitrc`
+
+    mv ~/.Xresources ~/.Xresources-BACKUP
+    mv ~/.xinitrc ~/.xinitrc-BACKUP
+
+And relaunch stow to see if it's right now.
+
+    stow config
 
 ## Environment
-Unless you use my `.zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `xst` for me:
+Unless you use my `zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `xst` for me:
 
-    $ vim ~/.zshrc
+    vim ~/.zshrc
     export TERMINAL=/usr/bin/xst
 
 It will be used by all wm used in this repository.
 
-## vim
+### Restart X
 
-For now, i use vim with:
-+ [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins.
-+ [nerdtree](https://github.com/scrooloose/nerdtree)
-+ [vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt my password.
-+ [lightline](https://github.com/itchyny/lightline.vim)
-+ [indentLine](https://github.com/Yggdroot/indentLine)
-+ [colorizer](https://github.com/lilydjwg/colorizer)  
-+ [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-+ [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)  
+    pkill X
+    startx
 
-Colorscheme for vim are not include into this repo, you have to download and install them manually, the link is on the description of each screens bellow.  
+The installation of the last theme is complete.
 
-If you use pathogen, you can use my script to download and install all the vim colors that i use:
+## Some tips for stow
 
-    $ ./install --vim
+#### To change the theme
+You have to delete the older:
 
-## zsh
+    stow -D theme-universe
+    stow theme-creation
 
-I use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with the theme [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).
+And restart X
 
+#### After an update
+When you update this repository with `git pull`, it's nice to reinstall all directories than you use in order to have all the latest files in your home:
+
+    git pull
+    stow -D image -t ~
+    stow images -t ~
+    stow -D theme-universe -t ~
+    stow theme-universe -t ~
+
+## Vim
+If you want the same vim setup, you need:
+
+> [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins. 
+[vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt password, 
+[lightline](https://github.com/itchyny/lightline.vim), 
+[nerdtree](https://github.com/scrooloose/nerdtree), 
+[indentLine](https://github.com/Yggdroot/indentLine), 
+[colorizer](https://github.com/lilydjwg/colorizer), 
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter), 
+[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)  
+
+#### On gentoo:
+    sudo emerge -av app-vim/gnupg app-vim/lightline app-vim/gitgutter app-vim/nerdtree app-vim/pathogen
+
+#### And for all the vim colorscheme i use, with pathogen
+    ./install --vim
+
+## Shell
+For the shell, i use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).  
 You can install theses repos with:
 
-    $ ./install --zsh
+    ./install --zsh
+
+It's all for the setup :)
 
 ## Screens
 **Last**:`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
@@ -118,15 +158,3 @@ You can install theses repos with:
 
 `theme-city`, [wm]: *i3* or *subtle*. [term]: *termite* or *kitty*. [vim-color] [darkest-space](https://github.com/szorfein/darkest-space)
 ![City screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/city.jpg "city")
-
-
-## Old wallpapers
-
-If you search an wallpaper that i've use, search into the list [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
-
-### Troubleshooting
-
-To install:  
-+ bspwm: [wiki](https://github.com/szorfein/dotfiles/wiki/Install-BSPWM)  
-+ i3-gaps: [wiki](https://github.com/szorfein/dotfiles/wiki/i3-gaps)
-+ subtle: [wiki](https://github.com/szorfein/dotfiles/wiki/subtle)
