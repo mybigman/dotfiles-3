@@ -7,18 +7,16 @@ extra background  > pscircle
 fonts             > iosevka,roboto mono,liberation mono,material-icons,dina,ttf-anka-coder,NERD fonts
 image viewer      > feh
 irc               > weechat
-media player      > mpv
-music player      > ncmpcpp
+multimedia        > mpv,ncmpcpp,mpc,alsa
 program launcher  > rofi,dmenu
 PDF viewer        > zathura
 terms             > xst
 wm                > awesome,subtle,i3-gaps
 mails             > offlineimap,msmtp and neomutt
 ```
-A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need.  
-If you search an wallpaper that i've use, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
+A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need. For an old wallpaper, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
 
-## Installation for the last theme [anonymous](https://github.com/szorfein/dotfiles/blob/master/README.md#screens)
+## Installation for the last theme [anonymous](https://github.com/szorfein/dotfiles#screens) 
 You will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).
 
 ### Archlinux
@@ -34,7 +32,7 @@ From AUR:
 
     sudo emerge -av app-admin/stow nerd-fonts-roboto-mono nerd-fonts-iosevka xst x11-wm/awesome x11-apps/xinit feh compton dev-vcs/git rofi
 
-### Clone this repos
+### Clone this repository
 
     cd
     git clone https://github.com/szorfein/dotfiles
@@ -48,7 +46,7 @@ From AUR:
     stow awesomewm
     stow theme-anonymous
 
-If this repository is cloned into a different directory than`/home/username/`, each commands of `stow` should have `-t ~` in addition, e.g:
+If this repository is cloned into a different directory than `/home/username/`, each commands of `stow` should have `-t ~` in addition, e.g:
 
     stow config -t ~
     stow images -t ~
