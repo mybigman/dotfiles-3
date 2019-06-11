@@ -36,7 +36,7 @@ function widgets.icon(bg, icon_widget)
     icon_widget,
     --top = 2, -- value depend on the font height
     --bottom = 2, -- value depend on the font height
-    right = 2,
+    right = 4,
     left = 2,
     color = bg,
     widget = wibox.container.margin
@@ -156,6 +156,27 @@ function widgets.bg(bg_color, w)
     },
     spacing = 10,
     layout  = wibox.layout.fixed.horizontal
+  }
+end
+
+function widgets.border_bottom(w, colour)
+  return wibox.widget {
+    w,
+    bottom = 2,
+    color = colour,
+    widget = wibox.container.margin
+  }
+end
+
+function widgets.for_one_icon(fgp, bgp, icon, font_icon)
+  return wibox.widget {
+    {
+      markup = '<span foreground="'..fgp..'" background="'..bgp..'">'..icon..'</span>',
+      font = font_icon,
+      widget = wibox.widget.textbox
+    },
+    bg = bgp,
+    widget = wibox.container.background
   }
 end
 

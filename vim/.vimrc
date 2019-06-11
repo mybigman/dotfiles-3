@@ -188,6 +188,9 @@ let g:lightline = {
   \ 'separator': { 'left': '', 'right': '' },
   \ }
 
+" show lightline-bufferline
+set showtabline=2
+
 " Color
 syntax enable
 

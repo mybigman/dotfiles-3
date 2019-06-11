@@ -24,9 +24,9 @@ Official packages:
 
     sudo pacman -S stow awesome xorg-xinit git rofi compton feh
 
-From AUR:  
+From [AUR](https://aur.archlinux.org/), you need:
         
-    sudo yaourt build nerd-fonts-iosevka nerd-fonts-roboto-mono xst-git 
+    nerd-fonts-iosevka nerd-fonts-roboto-mono xst-git 
 
 ### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
 

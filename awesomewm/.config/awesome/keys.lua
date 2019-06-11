@@ -1,6 +1,9 @@
 local gears = require("gears")
 local awful = require("awful")
 local helpers = require("helpers")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+local mymainmenu = require("menu")
 
 local keys = {}
 
@@ -8,6 +11,8 @@ local keys = {}
 modkey = "Mod4"
 altkey = "Mod1"
 altgrkey = "Mod5"
+shiftkey = "Shift"
+ctrlkey = "Control"
 
 -- {{{ Key bindings
 keys.globalkeys = gears.table.join(
@@ -20,18 +25,82 @@ keys.globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
+    -- {{{ Focus by direction
     awful.key({ modkey,           }, "j",
         function ()
-            awful.client.focus.byidx( 1)
+            awful.client.focus.bydirection("down")
         end,
-        {description = "focus next by index", group = "client"}
+        {description = "focus down", group = "client"}
     ),
     awful.key({ modkey,           }, "k",
         function ()
-            awful.client.focus.byidx(-1)
+            awful.client.focus.bydirection("up")
         end,
-        {description = "focus previous by index", group = "client"}
+        {description = "focus up", group = "client"}
     ),
+    awful.key({ modkey,           }, "h",
+        function ()
+            awful.client.focus.bydirection("left")
+        end,
+        {description = "focus left", group = "client"}
+    ),
+    awful.key({ modkey,           }, "l",
+        function ()
+            awful.client.focus.bydirection("right")
+        end,
+        {description = "focus right", group = "client"}
+    ),
+    -- }}} End Focus by direction
+
+    -- {{{ Master width factor (resize)
+    awful.key({ modkey, ctrlkey }, "Left", function()
+      local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+      local c = client.focus
+      -- Floating: resize client
+      if current_layout == "floating" or c.floating == true then
+        c:relative_move(  0,  0, dpi(-20), 0)
+      else
+        awful.tag.incmwfact(-0.05)
+      end
+    end,
+      {description = "decreased master width factor", group = "layout"}
+    ),
+    awful.key({ modkey, ctrlkey }, "Right", function()
+      local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+      local c = client.focus
+      -- Floating: resize client
+      if current_layout == "floating" or c.floating == true then
+        c:relative_move(  0,  0, dpi(20), 0)
+      else
+        awful.tag.incmwfact(0.05)
+      end
+    end,
+      {description = "increased master width factor", group = "layout"}
+    ),
+    awful.key({ modkey, ctrlkey }, "Down", function()
+      local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+      local c = client.focus
+      if current_layout == "floating" or c.floating == true then
+        c:relative_move(  0,  0,  0, dpi(20))
+      else
+        awful.client.incwfact(0.05)
+      end
+    end,
+      {description = "increase master width factor", group = "layout"}
+    ),
+     awful.key({ modkey, ctrlkey }, "Up", function()
+       local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+       local c = client.focus
+       if current_layout == "floating" or c.floating == true then
+         c:relative_move(  0,  0,  0, dpi(-20))
+       else
+         awful.client.incwfact(-0.05)
+       end
+     end,
+       {description = "decrease master width factor", group = "layout"}
+     ),
+     -- }}} End Master width factor
+    
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
@@ -46,14 +115,19 @@ keys.globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
+
     awful.key({ modkey,           }, "Tab",
         function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
+          local s = awful.screen.focused()
+          local current_tag = s.selected_tag
+          local clicked_tag = s.selected_tag
+          if clicked_tag == current_tag then
+            awful.tag.history.restore()
+          else
+            click_tag:view_only()
+          end
         end,
-        {description = "go back", group = "client"}),
+        {description = "go previous tag like dwm", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -63,10 +137,6 @@ keys.globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,

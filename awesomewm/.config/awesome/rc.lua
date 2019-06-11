@@ -124,7 +124,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- local layouts = { l.max, l.floating, l.max, l.max , l.tile,
   --     l.max, l.max, l.max, l.floating, l.tile}
   local layouts = { 
-    l.tile, l.max, l.fair.horizontal, l.floating , l.floating,
+    l.tile, l.max, l.tile, l.floating , l.floating,
     l.tile, l.max, l.fair.horizontal, l.tile, l.max
   }
 
