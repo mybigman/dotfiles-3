@@ -14,7 +14,7 @@ terms             > xst
 wm                > awesome,subtle,i3-gaps
 mails             > offlineimap,msmtp and neomutt
 ```
-A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/dependencies-list.txt) if need. For an old wallpaper, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/wallpapers-list.txt).
+A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/hidden-stuff/dependencies-list.txt) if need. For an old wallpaper, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/hidden-stuff/wallpapers-list.txt).
 
 ## Installation for the last theme [anonymous](https://github.com/szorfein/dotfiles#screens) 
 You will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).

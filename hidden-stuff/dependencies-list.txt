@@ -20,7 +20,6 @@ media-fonts/nerd-font-iosevka
 media-fonts/nerd-font-roboto-mono
 media-fonts/sfmono
 media-gfx/feh
-media-gfx/gimp
 media-gfx/imagemagick +jpeg +png
 media-gfx/scrot
 media-sound/cava
