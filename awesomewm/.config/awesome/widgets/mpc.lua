@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
+local helpers = require("helpers")
 
 -- beautiful vars
 local icon_prev = beautiful.widget_mpc_prev_icon
@@ -14,12 +15,12 @@ local bg = beautiful.widget_mpc_bg
 local l = beautiful.widget_mpc_layout or 'horizontal'
 
 -- widget creation
-local icon_1 = widget.base_icon(bg, icon_prev)
-local icon_2 = widget.base_icon(bg)
-local icon_3 = widget.base_icon(bg, icon_next)
-local icon_margin_1 = widget.icon(bg, icon_1)
-local icon_margin_2 = widget.icon(bg, icon_2) 
-local icon_margin_3 = widget.icon(bg, icon_3)
+local icon_1 = widget.base_icon()
+local icon_2 = widget.base_icon()
+local icon_3 = widget.base_icon()
+local icon_margin_1 = widget.icon(icon_1)
+local icon_margin_2 = widget.icon(icon_2) 
+local icon_margin_3 = widget.icon(icon_3)
 mpc_widget = widget.box(l, icon_margin_1, icon_margin_2, icon_margin_3)
 
 local GET_MPD_CMD = "mpc status" 
@@ -31,15 +32,15 @@ awful.widget.watch(GET_MPD_CMD, 3, function(widget, stdout, exitreason, exitcode
   stdout = string.gsub(stdout, "\n", "")
   local status = stdout:match('%[(.*)%]')
   status = string.gsub(status, '^%s*(.-)%s*$', '%1')
-  icon_1.markup = '<span foreground="'..fg..'">'..icon_prev..'</span>'
+  icon_1.markup = helpers.colorize_text(icon_prev, fg)
   if (status == "playing") then
-    icon_2.markup = '<span foreground="'..fg..'">'..icon_pause..'</span>'
+    icon_2.markup = helpers.colorize_text(icon_pause, fg)
   elseif (status == "paused") then
-    icon_2.markup = '<span foreground="'..fg..'">'..icon_play..'</span>'
+    icon_2.markup = helpers.colorize_text(icon_play, fg)
   else
-    icon_2.markup = '<span foreground="'..fg..'">'..icon_stop..'</span>'
+    icon_2.markup = helpers.colorize_text(icon_stop, fg)
   end
-  icon_3.markup = '<span foreground="'..fg..'">'..icon_next..'</span>'
+  icon_3.markup = helpers.colorize_text(icon_next, fg)
 end)
 
 icon_1:connect_signal("button::press", function(_, _, _, button)

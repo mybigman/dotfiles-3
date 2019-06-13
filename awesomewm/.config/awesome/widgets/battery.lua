@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
+local helpers = require("helpers")
 
 -- beautiful vars
 local icon_discharging = beautiful.widget_battery_icon_discharging
@@ -15,21 +16,21 @@ local l = beautiful.widget_battery_layout or 'horizontal'
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-local icon_margin = widget.icon(bg_widget, icon)
-local text_margin = widget.text(bg_widget, text)
+local icon_margin = widget.icon(icon)
+local text_margin = widget.text(text)
 battery_widget = widget.box(l, icon_margin, text_margin)
 
 local function update_widget(state, value)
   if (state == "AC") then
-    icon:set_markup_silently('<span foreground="'..fg..'">'..icon_ac..'</span>')
+    icon.markup = helpers.colorize_text(icon_ac, fg)
   elseif (state == "Discharging") then
-    icon:set_markup_silently('<span foreground="'..fg..'">'..icon_discharging..'</span>')
+    icon.markup = helpers.colorize_text(icon_discharging, fg)
   elseif (state == "Charging") then
-    icon:set_markup_silently('<span foreground="'..fg..'">'..icon_charging..'</span>')
+    icon.markup = helpers.colorize_text(icon_charging, fg)
   elseif (state == "Full") then
-    icon:set_markup_silently('<span foreground="'..fg..'">'..icon_full..'</span>')
+    icon.markup = helpers.colorize_text(icon_full, fg)
   end
-  text:set_markup_silently('<span foreground="'..fg..'">'..value..'%</span>')
+  text.markup = helpers.colorize_text(value..'%', fg)
 end
 
 awful.widget.watch(

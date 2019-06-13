@@ -4,57 +4,39 @@ local gears = require("gears")
 
 local widgets = {}
 
-function widgets.base_icon(bg, icon)
-  local bg = bg or beautiful.xbackground
-  local icon = icon or ''
-  local icon_widget = wibox.widget {
-    markup = '<span background="'..bg..'">'..icon..'</span>',
+function widgets.base_icon()
+  return wibox.widget {
     align  = 'center',
     valign = 'center',
     font = beautiful.widget_icon_font,
     widget = wibox.widget.textbox
   }
-  return icon_widget
 end
 
-function widgets.base_text(bg, text)
-  local bg = bg or beautiful.xbackground
-  local text = text or ''
-  local text_widget = wibox.widget {
-    markup = '<span background="'..bg..'">'..text..'</span>',
+function widgets.base_text()
+  return wibox.widget {
     align  = 'center',
     valign = 'center',
     font = beautiful.widget_text_font,
     widget = wibox.widget.textbox
   }
-  return text_widget
 end
 
-function widgets.icon(bg, icon_widget)
-  local bg = bg or beautiful.xbackground
-  local widget = wibox.widget {
-    icon_widget,
-    --top = 2, -- value depend on the font height
-    --bottom = 2, -- value depend on the font height
-    right = 4,
+function widgets.icon(w)
+  return wibox.widget {
+    w,
+    right = 5,
     left = 2,
-    color = bg,
     widget = wibox.container.margin
   }
-  return widget
 end
 
-function widgets.text(bg, text_widget)
-  local bg = bg or beautiful.xbackground
-  local widget = wibox.widget {
-    text_widget,
-    --top = 2, -- value depend on the font height
-    --bottom = 2, -- value depend on the font height
+function widgets.text(w)
+  return wibox.widget {
+    w,
     right = 2,
-    color = bg,
     widget = wibox.container.margin
   }
-  return widget
 end
 
 function widgets.box(l, w1, w2, w3)
@@ -68,15 +50,12 @@ function widgets.box(l, w1, w2, w3)
 
   if ( w3 ~= nil ) then
     widget = wibox.widget {
-      w1,
-      w2,
-      w3,
+      w1, w2, w3,
       layout = _layout
     }
   elseif ( w2 ~= nil ) then
     widget = wibox.widget {
-      w1,
-      w2,
+      w1, w2,
       layout = _layout
     }
   else
@@ -85,6 +64,7 @@ function widgets.box(l, w1, w2, w3)
       layout = _layout
     }
   end
+
   return widget
 end
 
@@ -176,6 +156,15 @@ function widgets.for_one_icon(fgp, bgp, icon, font_icon)
       widget = wibox.widget.textbox
     },
     bg = bgp,
+    widget = wibox.container.background
+  }
+end
+
+function widgets.circle(w, background)
+  return {
+    w,
+    bg = background,
+    shape = gears.shape.circle,
     widget = wibox.container.background
   }
 end

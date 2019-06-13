@@ -40,7 +40,7 @@ function helpers.create_titlebar(c, titlebar_buttons, titlebar_position, titleba
 end
 
 function helpers.colorize_text(txt, fg)
-    return "<span foreground='" .. fg .."'>" .. txt .. "</span>"
+  return '<span foreground="'..fg..'">'..txt..'</span>'
 end
 
 return helpers

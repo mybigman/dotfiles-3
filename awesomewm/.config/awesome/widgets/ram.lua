@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
+local helpers = require("helpers")
 
 -- beautiful vars
 local ram_icon = beautiful.widget_ram_icon
@@ -12,13 +13,13 @@ local l = beautiful.widget_ram_layout or 'horizontal'
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-local icon_margin = widget.icon(bg, icon)
-local text_margin = widget.text(bg, text)
+local icon_margin = widget.icon(icon)
+local text_margin = widget.text(text)
 ram_widget = widget.box(l, icon_margin, text_margin)
 
 local function update_widget(used_ram_percentage)
-  icon:set_markup_silently('<span foreground="'..fg..'">'..ram_icon..'</span>')
-  text:set_markup_silently('<span foreground="'..fg..'">'..used_ram_percentage..'%</span>')
+  icon.markup = helpers.colorize_text(ram_icon, fg)
+  text.markup = helpers.colorize_text(used_ram_percentage, fg)
 end
 
 local used_ram_script = [[

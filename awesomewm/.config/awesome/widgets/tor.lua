@@ -3,6 +3,7 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
+local helpers = require("helpers")
 
 -- beautiful vars
 local tor_icon = beautiful.widget_tor_icon
@@ -11,13 +12,9 @@ local fg_disable = beautiful.widget_tor_fg_disable
 local bg = beautiful.widget_tor_bg
 local l = beautiful.widget_tor_layout or 'horizontal'
 
--- local str
-local tor_text_enable_icon = '<span foreground="'..fg_enable..'">'..tor_icon..'</span>'
-local tor_text_disable_icon = '<span foreground="'..fg_disable..'">'..tor_icon..'</span>'
-
 -- widget creation
-local icon = widget.base_icon(bg, tor_icon)
-local icon_margin = widget.icon(bg, icon)
+local icon = widget.base_icon()
+local icon_margin = widget.icon(icon)
 tor_widget = widget.box(l, icon_margin)
 
 awful.widget.watch(
@@ -25,9 +22,9 @@ os.getenv("HOME").."/.config/awesome/widgets/tor.sh check", 60, -- 1m
 function(widget, stdout, stderr, exitreason, exitcode)
   local code = tonumber(stdout) or 1
   if (code == 0) then
-    icon:set_markup_silently(tor_text_enable_icon)
+    icon.markup = helper.colorize_text(tor_icon, fg_enable)
   else
-    icon:set_markup_silently(tor_text_disable_icon)
+    icon.markup = helper.colorize_text(tor_icon, fg_disable)
   end
 end)
 
