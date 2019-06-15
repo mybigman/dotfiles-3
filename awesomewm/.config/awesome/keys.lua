@@ -22,8 +22,8 @@ keys.globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+    awful.key({ modkey,           }, "Tab", awful.tag.history.restore,
+        {description = "go back", group = "tag"}),
 
     -- {{{ Focus by direction
     awful.key({ modkey,           }, "j",
@@ -103,6 +103,8 @@ keys.globalkeys = gears.table.join(
     
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
+    awful.key({ modkey,           }, "Escape", function() exit_screen_show() end,
+        {description = "exit", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -115,19 +117,6 @@ keys.globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-
-    awful.key({ modkey,           }, "Tab",
-        function ()
-          local s = awful.screen.focused()
-          local current_tag = s.selected_tag
-          local clicked_tag = s.selected_tag
-          if clicked_tag == current_tag then
-            awful.tag.history.restore()
-          else
-            click_tag:view_only()
-          end
-        end,
-        {description = "go previous tag like dwm", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,

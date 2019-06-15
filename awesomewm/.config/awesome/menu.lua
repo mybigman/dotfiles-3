@@ -2,6 +2,7 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local env = require("env-config")
+local exit_screen = require("layouts.logout")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -10,7 +11,7 @@ local myawesomemenu = {
   { "manual", env.term .. env.term_call[2] .. "man awesome" },
   { "edit config", env.editor_cmd .. " " .. awesome.conffile },
   { "restart", awesome.restart },
-  { "quit", function() awesome.quit() end}
+  { "quit", function() exit_screen_show() end}
 }
 
 local myappmenu = {

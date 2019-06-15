@@ -22,9 +22,9 @@ os.getenv("HOME").."/.config/awesome/widgets/tor.sh check", 60, -- 1m
 function(widget, stdout, stderr, exitreason, exitcode)
   local code = tonumber(stdout) or 1
   if (code == 0) then
-    icon.markup = helper.colorize_text(tor_icon, fg_enable)
+    icon.markup = helpers.colorize_text(tor_icon, fg_enable)
   else
-    icon.markup = helper.colorize_text(tor_icon, fg_disable)
+    icon.markup = helpers.colorize_text(tor_icon, fg_disable)
   end
 end)
 

@@ -161,12 +161,19 @@ function widgets.for_one_icon(fgp, bgp, icon, font_icon)
 end
 
 function widgets.circle(w, background)
-  return {
+  return wibox.widget {
     w,
     bg = background,
+    shape_clip = true,
     shape = gears.shape.circle,
     widget = wibox.container.background
   }
+end
+
+function widgets.update_background(w, background)
+  w:set_shape(gears.shape.circle) -- otherwise there's no borders
+  w:set_shape_border_width(1)
+  w:set_shape_border_color(background)
 end
 
 return widgets

@@ -32,6 +32,7 @@ awful.widget.watch(
       text.markup = helpers.colorize_text(filter_mail, fg_read)
     else
       icon.markup = helpers.colorize_text(unread_icon, fg_unread)
+      text.markup = helpers.colorize_text(0, fg_read)
     end
   end
 )
