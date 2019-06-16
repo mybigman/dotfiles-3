@@ -170,9 +170,17 @@ function widgets.circle(w, background)
   }
 end
 
+function widgets.circle_padding(w, space)
+  return {
+    w,
+    spacing = space,
+    layout  = wibox.layout.fixed.horizontal
+  }
+end
+
 function widgets.update_background(w, background)
   w:set_shape(gears.shape.circle) -- otherwise there's no borders
-  w:set_shape_border_width(1)
+  w:set_shape_border_width(2)
   w:set_shape_border_color(background)
 end
 
