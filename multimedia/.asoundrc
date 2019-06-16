@@ -1,125 +1,246 @@
-# Dependencies
-# (gentoo): tap-plugins swh-plugins libsamplerate ladspa-cmt caps-plugins ladspa-bs2b 
-# alsa-plugins +libsamplerate
+# Dependencies (for gentoo)
+# echo "media-plugins/alsa-plugins libsamplerate speex mix" > /etc/portage/package.use/alsa
+# emerge -av tap-plugins swh-plugins libsamplerate ladspa-cmt caps-plugins ladspa-bs2b alsa-plugins
 
-# Find card name:
-# aplay -l | awk -F \: '/,/{print $2}' | awk '{print $1}' | uniq
+# To find the card name:
+# cat /proc/asound/card*/id
 
-# If sound crackle when music switch, 
+# If you experience skipping or distorted sound:
 # recompile kernel with change CONFIG_SND_HDA_PREALLOC_SIZE=2048
+# and increase buffer_size bellow
 
 # For mpd, copy this file to /var/lib/mpd/.asoundrc
-# and set device "headphones", format "44100:16:1"
+# and set in audio_output { mixer_device "headphones", buffer_time "1000000" }
 
 # If problem with alsamixer for find your device, launch alsamixer with arg:
 # alsamixer -D "hw:Pro"
 
 # Rate converter are in /usr/lib64/alsa-lib/libasound_module_rate_<name>.so
-defaults.pcm.rate_converter "samplerate_best"
+# choose speexrate_best if your cpu is slow, samplerate_best else.
+#defaults.pcm.rate_converter "samplerate_best"
+defaults.pcm.rate_converter "samplerate_medium"
 
 # Default card
 # cat /proc/asound/card0/pcm0p/sub0/hw_params
 pcm_slave.sb1095 {
-    pcm "hw:Pro"
-    format S16_LE
-    rate 48000
-    channels 6
-    period_time 0
-    period_size 1024
-    buffer_size 8192 
+  pcm "hw:Pro"
+  format S16_LE
+  rate 48000
+  channels 6
+  period_time 0
+  period_size 1024
+  buffer_size 8192 
+  buffer_time 0
+  buffer_size 32768
 }
 
-# software mixer
-pcm.dmixer {
-  type dmix
-  ipc_key 1024
-  ipc_perm 0666 # allow other users
-  slave sb1095
-}
-
-# allow multiple programs to capture simultaneously
-pcm.dsnooper {
-  type dsnoop
-  ipc_key 5678293
-  ipc_perm 0666 # allow other users
-  slave sb1095
-}
-
-# Enable control in alsamixer
-# Source: http://www.alsa-project.org/main/index.php/Matrix:Module-usb-audio
+# --------------------------
+# Volume
+# --------------------------
+# The X-Fi USB doesn't have a hardware mixer, so i have to use softvol
+# https://github.com/opensrc/alsa/blob/master/lib/md/How_to_use_softvol_to_control_the_master_volume.md
 pcm.softvol {
-    type softvol
-    slave.pcm "dmixer"
-    control {
-        name "Master"
-        card Pro
-    }
+  type softvol
+  slave.pcm "asymed" 
+  control {
+    name "Master"
+    card Pro
+  }
 }
 
-# speaker-test -Dplug:default -l2 -c2 -twav
-pcm.!default {
-    type asym
-    playback.pcm "softvol"
-    capture.pcm "dsnooper"
+pcm.asymed {
+  type asym
+  playback.pcm "dmixer"
+  capture.pcm  "ain"
 }
 
-pcm.default {
-    type asym
-    playback.pcm "softvol"
-    capture.pcm "dsnooper"
+# Use custom dmix instead of default.
+pcm.dmixer {
+  type asym
+  playback.pcm {
+    type dmix
+    ipc_key 567829
+    ipc_key_add_uid false
+    ipc_perm 0666 # allow other users
+    slave sb1095
+  }
 }
 
-# speaker-test -Dplug:surround20 -l1 -c2 -twav
-pcm.!surround20 {
-    type plug
-    slave.pcm "default"
+ctl.dmixer {
+  type hw
+  card Pro
 }
+
+pcm.duplicate {
+  type plug
+  slave.pcm "plug:softvol"
+  slave.channels 6
+  route_policy duplicate
+}
+
+# --------------------------
+# In (Record)
+# --------------------------
+# https://bbs.archlinux.org/viewtopic.php?id=167275
+pcm.ain {
+  type dsnoop
+  ipc_key 567830
+  ipc_key_add_uid false
+  ipc_perm 0660
+  slave sb1095
+}
+
+# --------------------------
+# Downmix 
+# --------------------------
+
+pcm.surround20 {
+  type route
+  slave.pcm "softvol"
+  ttable.0.0 1
+  ttable.1.1 1
+}
+
+# aplay -Dch51dup 2ch-stereo.wav
+pcm.ch51dup {
+  type route
+  slave.pcm "softvol"
+  slave.channels 6
+  ttable.0.0 1
+  ttable.1.1 1
+  ttable.0.2 1
+  ttable.1.3 1
+  ttable.0.4 0.5
+  ttable.1.4 0.5
+  ttable.0.5 0.5 
+  ttable.1.5 0.5 
+}
+
+pcm.ch71dup {
+  type route
+  slave.pcm "softvol"
+  slave.channels 6
+  ttable {
+    0.0  0.34
+    1.1  0.34
+    2.2  0.67
+    3.3  0.67
+    4.0  0.33
+    4.1  0.33
+    6.0  0.33
+    6.2  0.33
+    7.1  0.33
+    7.3  0.33
+  }
+}
+
+# --------------------------
+# Ladspa
+# --------------------------
 
 # Alternative to bs2b | music via Headphones
 # analyseplugin caps | grep -A14 Narrow
 # test: speaker-test -Dplug:narrower -c2 -t2 -twav
 pcm.narrower {
-    type ladspa
-    path "/usr/lib/ladspa"
-    plugins {
-        0 {
-            id 2595
-            input {
-                controls [ 0 0.25 ]
-            }
+  type ladspa
+  slave.pcm "surround20"
+  #path "/usr/lib/ladspa"
+  plugins {
+    0 {
+      id 2595
+        input {
+          controls [ 0 0.25 ]
         }
     }
-    slave.pcm "surround20"
+  }
 }
 
 # source: http://bs2b.sourceforge.net/
 # listplugins
 # analyseplugin bs2b
-# test: speaker-test -Dplug:bs2b -c1 -t2 -twav
+# test: speaker-test -D plug:bs2b -c1 -t2 -twav
 pcm.bs2b {
-    type ladspa
-    path "/usr/lib/ladspa"
-    plugins {
-        0 {
-            id 4221
-            input {
-                controls [ 700 6 ]
-            }
+  type ladspa
+  slave.pcm "surround20"
+  #path "/usr/lib/ladspa"
+  plugins {
+    0 {
+      id 4221
+        input {
+          controls [ 700 6 ]
         }
     }
-    slave.pcm "surround20"
+  }
+}
+
+# https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
+# mbeq
+# speaker-test -D plug:eq -c2 -t1 -twav
+pcm.eq {
+  type ladspa
+  slave.pcm "surround20"
+  plugins [
+    {
+      label mbeq
+      id 1197
+      input {
+        # The following setting is just an example, edit to your own taste:
+        # bands: 50hz, 100hz, 156hz, 220hz, 311hz, 440hz, 622hz, 880hz, 1250hz, 1750hz, 25000hz,
+        # 50000hz, 10000hz, 20000hz
+        controls [ -5 -5 -5 -5 -5 -10 -20 -15 -10 -10 -10 -10 -10 -3 -2 ]
+      }
+    }
+  ]
 }
 
 # speaker-test -Dheadphones -c2 -t1 -twav
 pcm.headphones {
-    type rate
-    slave {
-        pcm "plug:bs2b"
-        #pcm "plug:narrower"
-        rate 48000
-    }
-    hint {
-        show on
-        description "Headphones"
-    }
+  type rate
+  slave {
+    #pcm "plug:bs2b"
+    #pcm "plug:narrower"
+    pcm "plug:eq"
+      rate 48000
+  }
+  hint {
+    show on
+    description "Headphones"
+  }
+}
+
+# --------------------------
+# Overwrite existing devices
+# --------------------------
+
+# speaker-test -D default -l2 -c2 -twav
+pcm.!default {
+  type plug
+  slave.pcm "softvol"
+}
+
+# speaker-test -D surround20 -l1 -c2 -twav
+pcm.!surround20 {
+  type plug
+  slave.pcm "softvol"
+}
+
+pcm.!surround50 {
+  type plug
+  slave.pcm "plug:ch51dup"
+}
+
+pcm.!surround51 {
+  type plug
+  slave.pcm "plug:ch51dup"
+}
+
+pcm.!surround71 {
+  type plug
+  slave.pcm "plug:ch71dup"
+}
+
+# https://github.com/opensrc/alsa/blob/master/lib/md/Dmix.md
+pcm.dsp {
+  type plug
+  slave.pcm "dmixer"
 }

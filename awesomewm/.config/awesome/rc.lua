@@ -263,7 +263,8 @@ awful.rules.rules = {
   -- Titlebars OFF
   { rule_any = {
     class = {
-      "Brave-browser"
+      "Brave-browser",
+      "Lutris"
     },
   }, properties = { },
   callback = function(c)
@@ -273,6 +274,13 @@ awful.rules.rules = {
   end
   },
 
+  -- Fullscreen clients
+  { rule_any = {
+    class = {
+      "baldur.exe",
+    },
+  }, properties = { fullscreen = true }},
+  
   -- Padding OFF
   { rule_any = {
     class = {
@@ -345,6 +353,12 @@ awful.rules.rules = {
     properties = { screen = 1, tag = beautiful.tagnames[6] } },
   { rule = { class = "chat" },
     properties = { screen = 1, tag = beautiful.tagnames[6] } },
+  { rule_any = {
+    class = {
+      "baldur.exe",
+      "Wine"
+    },
+  },properties = { screen = 1, tag = beautiful.tagnames[8] } },
 }
 -- }}}
 
