@@ -20,8 +20,8 @@ local icon_margin = widget.icon(icon)
 local text_margin = widget.text(text)
 battery_widget = widget.box(l, icon_margin, text_margin)
 
-local function update_widget(state, value)
-  if (state == "AC") then
+local function update_widget(name, state, value)
+  if (name == "AC") then
     icon.markup = helpers.colorize_text(icon_ac, fg)
   elseif (state == "Discharging") then
     icon.markup = helpers.colorize_text(icon_discharging, fg)
@@ -36,6 +36,6 @@ end
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/battery.sh", 10, 
   function(widget, stdout)
-    local state, value = stdout:match('(%a*) (%d+)')
-    update_widget(state, value)
+    local name, state, value = stdout:match('(%w+)%s?(%a*)%s?(%d+)')
+    update_widget(name, state, value)
 end)
