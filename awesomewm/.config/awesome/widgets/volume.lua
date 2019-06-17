@@ -23,15 +23,11 @@ local function update_widget(volume)
   text.markup = helpers.colorize_text(volume, fg)
 end
 
--- Change 'Pro' with your audio card, to find audio card name: aplay -l
-local volume_script = [[
-    bash -c "amixer -c Pro | grep 'Front Left:' | awk '{print $4}'| tr -d '[]'"
-  ]]
-
 awful.widget.watch(
-  volume_script, 4,
+  -- you can change <Pro> with your card name if non detected
+  os.getenv("HOME").."/.config/awesome/widgets/audio.sh volume Pro", 4,
   function(widget, stdout, stderr, exitreason, exitcode)
-    local volume = stdout:match('%d+%%')
-    update_widget(volume)
+    local volume = stdout:match('%w+:%s?(%d+)')
+    update_widget(volume.."%")
   end
 )
