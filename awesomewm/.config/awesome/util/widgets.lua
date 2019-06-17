@@ -25,7 +25,7 @@ end
 function widgets.icon(w)
   return wibox.widget {
     w,
-    right = 5,
+    right = 4,
     left = 2,
     widget = wibox.container.margin
   }
