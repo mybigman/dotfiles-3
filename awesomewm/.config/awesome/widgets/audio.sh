@@ -38,6 +38,8 @@ show_volume() {
     echo
   elif alsa_or_pulse 1 ; then
     echo
+  elif alsa_or_pulse 0 ; then
+    echo
   else
     die "volume no found with amixer"
   fi
