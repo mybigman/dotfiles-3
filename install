@@ -56,9 +56,7 @@ pathogen() {
   chk https://github.com/szorfein/darkest-space ~/.vim/bundle/darkest-space
   chk https://github.com/szorfein/fromthehell.vim ~/.vim/bundle/fromthehell.vim
   chk https://github.com/szorfein/lightline.vim ~/.vim/bundle/lightline.vim
-  chk https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
   chk https://github.com/edkolev/tmuxline.vim ~/.vim/bundle/tmuxline.vim
-  chk https://github.com/lilydjwg/colorizer ~/.vim/bundle/colorizer
 }
 
 banner() {

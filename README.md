@@ -16,8 +16,17 @@ mails             > offlineimap,msmtp and neomutt
 ```
 A list of dependendies can be found [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/hidden-stuff/dependencies-list.txt) if need. For an old wallpaper, search [here](https://raw.githubusercontent.com/szorfein/dotfiles/master/hidden-stuff/wallpapers-list.txt).
 
-## Installation for the last theme [anonymous](https://github.com/szorfein/dotfiles#screens) 
-You will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).
+## Table of contents
+- [installation](#installation-for-the-last-theme)
+- [use stow](#howto-stow)
+- [tips with stow](#some-tips-for-stow)
+- [vim](#vim)
+- [shell](#shell)
+- [screenshots](#screens)
+
+## Installation for the last theme
+For the last [theme-anonymous](#screens), 
+you will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).
 
 ### Archlinux
 Official packages:
@@ -106,23 +115,26 @@ When you update this repository with `git pull`, it's nice to reinstall all dire
 ## Vim
 If you want the same vim setup, you need:
 
-> [pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins. 
-[vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt password, 
-[lightline](https://github.com/itchyny/lightline.vim), 
-[nerdtree](https://github.com/scrooloose/nerdtree), 
-[indentLine](https://github.com/Yggdroot/indentLine), 
+> [ale](https://github.com/w0rp/ale), 
 [colorizer](https://github.com/lilydjwg/colorizer), 
-[vim-gitgutter](https://github.com/airblade/vim-gitgutter), 
-[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)  
+[indentLine](https://github.com/Yggdroot/indentLine), 
+[lightline](https://github.com/itchyny/lightline.vim), 
+[lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline), 
+[nerdtree](https://github.com/scrooloose/nerdtree), 
+[pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins, 
+[vim-devicons](https://github.com/ryanoasis/vim-devicons), 
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter),  
+[vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt password,  
+[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator).  
 
-#### On gentoo:
-    sudo emerge -av app-vim/gnupg app-vim/lightline app-vim/gitgutter app-vim/nerdtree app-vim/pathogen
+#### On gentoo (with [ninjatools](https://github.com/szorfein/ninjatools)):
+    sudo emerge -av app-vim/gnupg app-vim/lightline gitgutter nerdtree pathogen app-vim/ale vim-devicons app-vim/colorizer vim-tmux-navigator indentline lightline-bufferline
 
 #### And for all the vim colorscheme i use, with pathogen
     ./install --vim
 
 ## Shell
-For the shell, i use the plugin [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).  
+For the shell, i use `zsh` with plugins [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt).  
 You can install theses repos with:
 
     ./install --zsh
