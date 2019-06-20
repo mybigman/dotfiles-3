@@ -18,15 +18,16 @@ check_audio_card() {
 }
 
 alsa_or_pulse() {
-  local vol bin
-  if bin=$(which pactl 2>/dev/null) && volume=$($bin list sinks | grep "^Volume" | grep -o -E "[[:digit]]+%" | head -n 1) ; then
-    echo "pactlPulse$1: $volume"
+  local bin pulse alsa
+  #if bin=$(which pactl 2>/dev/null) && volume=$($bin list sinks | grep "^Volume" | grep -o -E "[[:digit]]+%" | head -n 1) ; then
+  #  echo "pactlPulse$1: $volume"
+  pulse=$($AMIXER -c $1 -M -D pulse sget Master 2>/dev/null | grep -o -E "[[:digit:]]+%" | head -n 1)
+  alsa=$($AMIXER -c $1 -M sget Master 2>/dev/null | grep -o -E "[[:digit:]]+%" | head -n 1)
+  if [ ! -z $pulse ] ; then
+    echo "amixerPulse$1: $pulse"
     return 0
-  elif volume=$($AMIXER -c $1 -M get Master | grep -o -E "[[:digit:]]+%" | head -n 1) ; then
-    echo "amixerAlsa$1: $volume"
-    return 0
-  elif volume=$($AMIXER -c $1 -M -D pulse get Master | grep -o -E "[[:digit:]]+%" | head -n 1) ; then
-    echo "amixerPulse$1: $volume"
+  elif [ ! -z $alsa ] ; then
+    echo "amixerAlsa$1: $alsa"
     return 0
   fi
   return 1
