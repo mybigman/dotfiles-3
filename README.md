@@ -19,98 +19,19 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 ## Table of contents
 - [installation](#installation-for-the-last-theme)
 - [use stow](#howto-stow)
-- [tips with stow](#some-tips-for-stow)
 - [vim](#vim)
 - [shell](#shell)
 - [screenshots](#screens)
 
 ## Installation for the last theme
-For the last [theme-anonymous](#screens), 
-you will have to install some packages, like [GNU stow](http://www.gnu.org/software/stow/).
+For the last [theme-anonymous](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
 
-### Archlinux
-Official packages:
-
-    sudo pacman -S stow awesome xorg-xinit git rofi compton feh
-
-From [AUR](https://aur.archlinux.org/), you need:
-        
-    nerd-fonts-iosevka nerd-fonts-roboto-mono xst-git 
-
+<!--
 ### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
-
     sudo emerge -av app-admin/stow nerd-fonts-roboto-mono nerd-fonts-iosevka xst x11-wm/awesome x11-apps/xinit feh compton dev-vcs/git rofi
-
-### Clone this repository
-
-    cd
-    git clone https://github.com/szorfein/dotfiles
-    cd dotfiles
-
-## Howto stow
-`stow` will create a symbolic link of each files in a given directory as argument in your `$HOME` and you need 4 directories:
-
-    stow config
-    stow images
-    stow awesomewm
-    stow theme-anonymous
-
-If this repository is cloned into a different directory than `/home/username/`, each commands of `stow` should have `-t ~` in addition, e.g:
-
-    stow config -t ~
-    stow images -t ~
-
-If a file alrealy exist, `stow` will show you what you have to move, example:
-
-```
-stow config
-WARNING! stowing config would cause conflicts:
-* existing target is neither a link nor a directory: .Xresources
-* existing target is neither a link nor a directory: .xinitrc
-All operations aborted.
-```
-Here, you have to backup the files `.Xresources` and `.xinitrc`
-
-    mv ~/.Xresources ~/.Xresources-BACKUP
-    mv ~/.xinitrc ~/.xinitrc-BACKUP
-
-And relaunch stow to see if it's right now.
-
-    stow config
-
-## Environment
-Unless you use my `zsh`, a variable should be set in your `~/.bashrc` or `~/.zshrc`, the terminal you are using, `xst` for me:
-
-    vim ~/.zshrc
-    export TERMINAL=/usr/bin/xst
-
-It will be used by all wm used in this repository.
-
-### Restart X
-
-    pkill X
-    startx
-
-The installation of the last theme is complete.
-
-## Some tips for stow
-
-#### To change the theme
-You have to delete the older:
-
-    stow -D theme-universe
-    stow theme-creation
-
-And restart X
-
-#### After an update
-When you update this repository with `git pull`, it's nice to reinstall all directories than you use in order to have all the latest files in your home:
-
-    git pull
-    stow -D image -t ~
-    stow images -t ~
-    stow -D theme-universe -t ~
-    stow theme-universe -t ~
+-->
+## Stow
+If you are blocked with `stow` or need more explanations, see the [wiki page](https://github.com/szorfein/dotfiles/wiki/stow) before post an issue.  
 
 ## Vim
 If you want the same vim setup, you need:

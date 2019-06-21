@@ -201,22 +201,39 @@ keys.clientkeys = gears.table.join(
   awful.key({ altkey, "Shift" }, "Left", function (c) c:relative_move( -40, 0, 0, 0 ) end),
   awful.key({ altkey, "Shift" }, "Right", function (c) c:relative_move( 40, 0, 0, 0 ) end),
   
-  awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+  awful.key({ modkey,           }, "f", function (c)
+    c.fullscreen = not c.fullscreen
+    c:raise()
+  end,
+  {description = "toggle fullscreen", group = "client"}),
+
+  -- Set tiled layout
+  awful.key({ modkey }, "t", function()
+    awful.layout.set(awful.layout.suit.tile)
+  end,
+  {description = "set tiled layout", group = "tag"}),
+      
+  -- Set floating layout
+  awful.key({ modkey }, "s", function(c) 
+    c.width = screen_width * 0.7
+    c.height = screen_height * 0.75
+    c.floating = true
+    awful.placement.centered(c,{honor_workarea=true})
+    c:raise()
+  end,
+  {description = "focus mode floating", group = "client"}),
+
     awful.key({ modkey }, "z",      function (c) c:kill() end,
               {description = "close", group = "client"}),
+
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
+  --  awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+   --           {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be

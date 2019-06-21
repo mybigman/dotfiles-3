@@ -7,9 +7,10 @@ pulse=""
 log_file="/tmp/audio.log"
 log=false # true or false
 time=$(date)
+mpc=$(which mpc 2>/dev/null 2>&1)
 
 log() {
-  if [ $log ] ; then
+  if [ $log == true ] ; then
     echo "$time - $1" >> $log_file
   fi
 }
@@ -91,8 +92,8 @@ show_volume() {
 
 music_state() {
   local music_info
-  [ -z $MPC ] && die "mpc no found"
-  if music_info=$($MPC | grep "\[" | awk '{print $3,$4}' | tr -d '()') ; then
+  [ -z $mpc ] && die "mpc no found"
+  if music_info=$($mpc | grep "\[" | awk '{print $3,$4}' | tr -d '()') ; then
     echo "$music_info"
   fi
 }
