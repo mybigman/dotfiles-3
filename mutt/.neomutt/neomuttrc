@@ -36,6 +36,7 @@ bind compose p pgp-menu
 # GPG
 set crypt_use_gpgme = yes
 set pgp_use_gpg_agent = yes
+set pgp_default_key = 0x9CC9729A2E369CB3
 # sign key [S]
 set pgp_sign_as = 0xFD696BDDAA8FDC50
 # encrypt key [E]
