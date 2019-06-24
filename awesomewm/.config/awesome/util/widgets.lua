@@ -1,25 +1,33 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local helpers = require("helpers")
 
 local widgets = {}
 
-function widgets.base_icon()
+function widgets.create_text(text, fg, font)
+  local w = widgets.create_base_text(font)
+  w.markup = helpers.colorize_text(text, fg)
+  return w
+end
+
+function widgets.create_base_text(font)
   return wibox.widget {
     align  = 'center',
     valign = 'center',
-    font = beautiful.widget_icon_font,
+    font = font,
     widget = wibox.widget.textbox
   }
 end
 
+function widgets.base_icon()
+  local font = beautiful.widget_icon_font or "Iosevka Term Regular 11" 
+  return widgets.create_base_text(font)
+end
+
 function widgets.base_text()
-  return wibox.widget {
-    align  = 'center',
-    valign = 'center',
-    font = beautiful.widget_text_font,
-    widget = wibox.widget.textbox
-  }
+  local font = beautiful.widget_text_font or "Iosevka Term Regular 9" 
+  return widgets.create_base_text(font)
 end
 
 function widgets.icon(w)
@@ -148,14 +156,11 @@ function widgets.border_bottom(w, colour)
   }
 end
 
-function widgets.for_one_icon(fgp, bgp, icon, font_icon)
+function widgets.for_one_icon(fg, bg, icon, font)
+  local w = widgets.create_text(icon, fg, font)
   return wibox.widget {
-    {
-      markup = '<span foreground="'..fgp..'" background="'..bgp..'">'..icon..'</span>',
-      font = font_icon,
-      widget = wibox.widget.textbox
-    },
-    bg = bgp,
+    w,
+    bg = bg,
     widget = wibox.container.background
   }
 end

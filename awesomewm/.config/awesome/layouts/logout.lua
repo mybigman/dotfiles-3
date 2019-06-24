@@ -3,14 +3,33 @@ local awful = require("awful")
 local gears = require("gears")
 local separators = require("util.separators")
 local keygrabber = require("awful.keygrabber")
+local widgets = require("util.widgets")
 
 local pad = separators.pad
+local font_icon = "Iosevka Term Bold 63"
+local font_text = "Iosevka Term Regular 11"
 
 local username = os.getenv("USER")
-local goodbye_widget = wibox.widget.textbox("Goodbye " .. username:sub(1,1):upper() .. username:sub(2))
+local goodbye_text = "Goodbye " .. username:sub(1,1):upper() .. username:sub(2)
+local goodbye_widget = widgets.create_text(goodbye_text, "#999999", "Iosevka Term Bold  20")
 
 --exit,
---lock,
+
+-- {{{ Lock part
+local lock_command = function() 
+  --awful.spawn.with_shell("i3lock")
+  exit_screen_hide()
+end
+
+local lock_icon = widgets.create_text("", "#aaaaaa", font_icon)
+local lock_text = widgets.create_text("Lock", "#aaaaaa", font_text)
+local lock = widgets.box("vertical", lock_icon, lock_text)
+lock:buttons(gears.table.join(
+  awful.button({ }, 1, function() 
+    lock_command()
+  end)
+))
+-- {{{ END Lock part
 
 -- get screen geometry
 local screen_width = awful.screen.focused().geometry.width
@@ -64,7 +83,7 @@ exit_screen:setup {
         --{
           --exit,
           pad(3),
-          --lock,
+          lock,
           layout = wibox.layout.fixed.horizontal
         --},
         --widget = exit_screen_box
