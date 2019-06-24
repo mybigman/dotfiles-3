@@ -40,58 +40,58 @@ client.connect_signal("request::titlebars", function(c)
     helpers.create_titlebar(c, buttons, "bottom", beautiful.titlebar_size)
     helpers.create_titlebar(c, buttons, "left", beautiful.titlebar_size)
     helpers.create_titlebar(c, buttons, "right", beautiful.titlebar_size)
-  else 
-    if c.class == "music_n" then
-      awful.titlebar(c, {
-        font = beautiful.titlebar_font, position = "bottom", size= dpi(50)
-      }) : setup {
-        nil,
-        {
-          nil,
-          { -- music player
-          ncmpcpp_prev_icon,
-          pad,
-          ncmpcpp_toggle_icon,
-          pad,
-          ncmpcpp_next_icon,
-          layout  = wibox.layout.fixed.horizontal
-          },
-          nil,
-          expand = "none",
-          layout = wibox.layout.align.vertical
-        },
-        nil,
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-      }
-    -- then
-    end
-      awful.titlebar(c) : setup {
-        { --left
-          --awful.titlebar.widget.iconwidget(c),
-          buttons = buttons,
-          layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-          { -- Title
-            align  = "center",
-            widget = awful.titlebar.widget.titlewidget(c)
-          },
-          buttons = buttons,
-          layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-          --awful.titlebar.widget.floatingbutton (c),
-          --awful.titlebar.widget.maximizedbutton(c),
-          --awful.titlebar.widget.stickybutton   (c),
-          --awful.titlebar.widget.ontopbutton    (c),
-          --awful.titlebar.widget.closebutton    (c),
-          layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
-      }
-    -- end
   end
+
+  if c.class == "music_n" then
+    awful.titlebar(c, {
+      font = beautiful.titlebar_font, position = "bottom", size= dpi(50)
+    }) : setup {
+      nil,
+      {
+        nil,
+        { -- music player
+        ncmpcpp_prev_icon,
+        pad,
+        ncmpcpp_toggle_icon,
+        pad,
+        ncmpcpp_next_icon,
+        layout  = wibox.layout.fixed.horizontal
+      },
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    nil,
+    expand = "none",
+    layout = wibox.layout.align.horizontal
+    } 
+  --else
+  end
+
+  awful.titlebar(c) : setup {
+    { --left
+      --awful.titlebar.widget.iconwidget(c),
+      buttons = buttons,
+      layout  = wibox.layout.fixed.horizontal
+    },
+    { -- Middle
+      { -- Title
+        align  = "center",
+        widget = awful.titlebar.widget.titlewidget(c)
+      },
+      buttons = buttons,
+      layout  = wibox.layout.flex.horizontal
+    },
+    { -- Right
+      --awful.titlebar.widget.floatingbutton (c),
+      --awful.titlebar.widget.maximizedbutton(c),
+      --awful.titlebar.widget.stickybutton   (c),
+      --awful.titlebar.widget.ontopbutton    (c),
+      --awful.titlebar.widget.closebutton    (c),
+      layout = wibox.layout.fixed.horizontal()
+    },
+    layout = wibox.layout.align.horizontal
+  }
 end)
 
 return titlebars

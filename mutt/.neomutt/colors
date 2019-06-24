@@ -36,10 +36,10 @@ color body          cyan  default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
 # color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
 
 # Index
-color index color202 color234 ~F         # Flagged
-color index color39 color234 ~O
+color index color202 color8 ~F         # Flagged
+color index color39 color8 ~O
 color index color229 color22 ~T         # Tagged
-color index color240 color234 ~D         # Deleted
+color index color240 color8 ~D         # Deleted
 #color index brightblue default "~N" # NEW  
 #color index magenta default "~U" # UNREAD
 #color index white default "~R" # READ
@@ -83,9 +83,9 @@ color header            color29         black    '^reply-to:'
 #mono index     bold '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"'
 #color index    green black '~h "^content-type: *multipart/(signed|encrypted)"'
 
-#color sidebar_new color39 color234
+#color sidebar_new color39 color8
 
-# Credits to https://raw.githubusercontent.com/sheoak/neomutt-powerline-nerdfonts/master/powerline.neomuttrc
+# Credits to https://github.com/sheoak/neomutt-powerline-nerdfonts/
 set index_format=" %T %{!%d %b} %1M %-28.28L  %?X?&·? %s"
 set pager_format=" %n  %T %s%*  %{!%d %b · %H:%M} %?X?  %X ? %P  "
 set status_format = " %f%?r? %r?   %m %?n?  %n ?  %?d?  %d ?%?t?  %t ?%?F?  %F? %> %?p?   %p ?"
@@ -127,32 +127,32 @@ color status default black ''
 
 # Colors
 # cancel theme colors
-#color index color13 color0 ~Q
-#color index color13 color0 ~P
-#color index color13 color0 ~T
-#color index color13 color0 ~O
-#color index color1 color0 ~F
-#color index color1 color0 ~N
+color index color13 color8 ~Q
+color index color13 color8 ~P
+color index color13 color8 ~T
+color index color13 color8 ~O
+color index color1 color8 ~F
+color index color1 color8 ~N
 
 # add some nice custom coloring to the message list
 # thanks to new neomutt features
 # http://www.mutt.org/doc/manual/#patterns
 # https://neomutt.org/feature/index-color
-color index_subject color109 color234 "~P !~T !~D"
-color index_author color109 color234 "~P !~T !~D"
-color index_subject color243 color234 "~Q !~T !~D"
-color index_author color243 color234 "~Q !~T !~D"
-color index_subject brightcolor142 color234 "~N !~T !~D"
-color index_author  brightcolor142 color234 "~N !~T !~D"
-color index_subject color142 color234 "~O !~T !~D"
-color index_author color142 color234 "~O !~T !~D"
-color index_subject color214 color234 "~F !~T !~D"
-color index_author color214 color234 "~F !~T !~D"
-color index_subject brightcolor214 color234 "~F ~N !~T !~D"
-color index_author  brightcolor214 color234 "~F ~N !~T !~D"
-color index_subject color167 color234 "~= !~T !~D"
-color index_author color167 color234 "~= !~T !~D"
-color index_subject brightcolor109 color234 "~P ~N !~T !~D"
-color index_author brightcolor109 color234 "~P ~N !~T !~D"
-color index color234 color223 "~T"
+color index_subject color109 color8 "~P !~T !~D"
+color index_author color109 color8 "~P !~T !~D"
+color index_subject color243 color8 "~Q !~T !~D"
+color index_author color243 color8 "~Q !~T !~D"
+color index_subject brightcyan color8 "~N !~T !~D"
+color index_author  brightcyan color8 "~N !~T !~D"
+color index_subject color142 color8 "~O !~T !~D"
+color index_author color142 color8 "~O !~T !~D"
+color index_subject color214 color8 "~F !~T !~D"
+color index_author color214 color8 "~F !~T !~D"
+color index_subject brightcolor214 color8 "~F ~N !~T !~D"
+color index_author  brightcolor214 color8 "~F ~N !~T !~D"
+color index_subject color167 color8 "~= !~T !~D"
+color index_author color167 color8 "~= !~T !~D"
+color index_subject brightcolor109 color8 "~P ~N !~T !~D"
+color index_author brightcolor109 color8 "~P ~N !~T !~D"
+color index color8 color223 "~T"
 color index color229 color124 "~D"

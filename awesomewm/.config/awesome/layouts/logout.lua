@@ -16,7 +16,7 @@ local goodbye_widget = wibox.widget.textbox("Goodbye " .. username:sub(1,1):uppe
 local screen_width = awful.screen.focused().geometry.width
 local screen_height = awful.screen.focused().geometry.height
 
-exit_screen = wibox({ x = 0, y = 0, visible = false, ontop = true, type = "dock", width = screen_width, height = screen_height })
+exit_screen = wibox({ x = 0, y = 0, visible = false, ontop = true, type = "dock", width = screen_width, height = screen_height, bg = "#0000008f" })
 
 -- keylogger
 local exit_screen_grabber

@@ -124,8 +124,8 @@ awful.screen.connect_for_each_screen(function(s)
   -- local layouts = { l.max, l.floating, l.max, l.max , l.tile,
   --     l.max, l.max, l.max, l.floating, l.tile}
   local layouts = { 
-    l.tile, l.max, l.tile, l.floating , l.floating,
-    l.tile, l.max, l.fair.horizontal, l.tile, l.max
+    l.tile, l.max, l.tile, l.floating , l.max,
+    l.tile, l.tile, l.tile, l.max, l.max
   }
 
   -- Tag names
@@ -152,19 +152,23 @@ awful.screen.connect_for_each_screen(function(s)
   })
   awful.tag.add(tagnames[5], {
     layout = layouts[5],
-    master_width_factor = 0.65,
     screen = s,
   })
   awful.tag.add(tagnames[6], {
     layout = layouts[6],
+    gap = 46,
     screen = s,
   })
   awful.tag.add(tagnames[7], {
     layout = layouts[7],
+    gap = 46,
     screen = s,
   })
   awful.tag.add(tagnames[8], {
     layout = layouts[8],
+    master_width_factor = 0.65,
+    gap = 46,
+    column_count = 2,
     screen = s,
   })
   awful.tag.add(tagnames[9], {
@@ -268,9 +272,10 @@ awful.rules.rules = {
     },
   }, properties = { },
   callback = function(c)
-    if not beautiful.titlebars_imitate_borders then
-      awful.titlebar.hide(c)
-    end
+    awful.titlebar.hide(c,"top")
+    awful.titlebar.hide(c,"bottom")
+    awful.titlebar.hide(c,"left")
+    awful.titlebar.hide(c,"right")
   end
   },
 

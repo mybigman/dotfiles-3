@@ -29,7 +29,7 @@ pcm_slave.sb1095 {
   channels 6
   period_time 0
   period_size 1024
-  buffer_size 8192 
+  #buffer_size 8192 
   buffer_time 0
   buffer_size 32768
 }
@@ -59,9 +59,10 @@ pcm.dmixer {
   type asym
   playback.pcm {
     type dmix
-    ipc_key 567829
+    ipc_key 5678293
     ipc_key_add_uid false
-    ipc_perm 0666 # allow other users
+    ipc_perm 0660 # allow other users
+    ipc_gid audio
     slave sb1095
   }
 }

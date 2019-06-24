@@ -213,13 +213,18 @@ keys.clientkeys = gears.table.join(
   end,
   {description = "set tiled layout", group = "tag"}),
       
-  -- Set floating layout
+  -- Set or toggle/floating on client focus
   awful.key({ modkey }, "s", function(c) 
-    c.width = screen_width * 0.7
-    c.height = screen_height * 0.75
-    c.floating = true
-    awful.placement.centered(c,{honor_workarea=true})
-    c:raise()
+    local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
+    if current_layout ~= "floating" then
+      awful.client.floating.toggle()
+    else
+      c.width = screen_width * 0.7
+      c.height = screen_height * 0.75
+      c.floating = true
+      awful.placement.centered(c,{honor_workarea=true})
+      c:raise()
+    end
   end,
   {description = "focus mode floating", group = "client"}),
 
