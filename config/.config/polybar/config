@@ -19,27 +19,27 @@ dpi = 133
 include-file = ~/.config/polybar/top-bar
 
 [bar/top-second]
-monitor = eDP-1
+;monitor = eDP-1
 dpi = 133
 include-file = ~/.config/polybar/top-second-bar
 
 [bar/bottom-launcher]
-monitor = eDP-1
+;monitor = eDP-1
 dpi = 133
 include-file = ~/.config/polybar/bottom-launcher
 
 [bar/i3top]
-monitor = eDP-1
+;monitor = eDP-1
 dpi = 133
 include-file = ~/.config/polybar/i3-top
 
 [bar/i3secondtop]
-monitor = eDP-1
+;monitor = eDP-1
 dpi = 133
 include-file = ~/.config/polybar/i3-second-top
 
 [bar/i3bottom]
-monitor = eDP-1
+;monitor = eDP-1
 dpi = 133
 include-file = ~/.config/polybar/i3-bottom
 
