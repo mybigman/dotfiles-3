@@ -19,7 +19,7 @@ line-color = #f00
 padding = 2
 module-margin-left = 2
 module-margin-right = 2
-font-0 = Noto Sans Regular:pixelsize=7;0
+font-0 = NotoSans Nerd Font:style=Regular:pixelsize=7;0
 font-1 = Material Icons:antialias=false:size=7;0
 override-redirect = true
 cursor-click = pointer

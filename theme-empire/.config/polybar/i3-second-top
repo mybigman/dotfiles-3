@@ -7,10 +7,10 @@ modules-right = netstat wlan eth
 width = 90%
 heigth = 0
 offset-x = 5%
-offset-y = 36
+offset-y = 34
 background = ${colors.background-alt}
 foreground = ${colors.foreground-alt}
-font-0 = "Iosevka Term Regular:size=6;2"
+font-0 = "Iosevka Term:style=Regular:size=6;2"
 font-1 = "Material Icons:antialias=false:size=8;4"
 border-top-size = 1
 border-top-color = ${colors.border}
