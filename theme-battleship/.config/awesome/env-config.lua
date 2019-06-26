@@ -1,6 +1,6 @@
 local env = {}
 
-env.term = os.getenv("TERMINAL") or "xterm"
+env.term = os.getenv("TERMINAL") or "xst"
 env.editor = os.getenv("EDITOR") or "vim"
 
 -- Bellow are arguments to call a <class> and <exec> a program by terminal
