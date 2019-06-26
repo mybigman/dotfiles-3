@@ -23,6 +23,8 @@ local titlebars = require("titlebars")
 local keys = require("keys")
 local helpers = require("helpers")
 local env = require("env-config")
+local smartBorders = require("util.smart-borders")
+local double_border = beautiful.double_border or false
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -135,14 +137,19 @@ awful.screen.connect_for_each_screen(function(s)
   awful.tag.add(tagnames[1], {
     layout = layouts[1],
     screen = s,
+    gap_single_client  = false,
     selected = true,
   })
   awful.tag.add(tagnames[2], {
     layout = layouts[2],
+    gap_single_client  = false,
     screen = s,
   })
   awful.tag.add(tagnames[3], {
     layout = layouts[3],
+    master_width_factor = 0.34,
+    gap = 4,
+    column_count = 2,
     screen = s,
   })
   awful.tag.add(tagnames[4], {
@@ -152,22 +159,23 @@ awful.screen.connect_for_each_screen(function(s)
   })
   awful.tag.add(tagnames[5], {
     layout = layouts[5],
+    gap_single_client  = false,
     screen = s,
   })
   awful.tag.add(tagnames[6], {
     layout = layouts[6],
-    gap = 46,
+    gap = 40,
     screen = s,
   })
   awful.tag.add(tagnames[7], {
     layout = layouts[7],
-    gap = 46,
+    gap = 40,
     screen = s,
   })
   awful.tag.add(tagnames[8], {
     layout = layouts[8],
     master_width_factor = 0.65,
-    gap = 46,
+    gap = 40,
     column_count = 2,
     screen = s,
   })
@@ -391,10 +399,6 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Rounded Corner
---client.connect_signal("property::geometry", function (c)
---  gears.surface.apply_shape_bounding(c, gears.shape.rounded_rect, beautiful.border_radius)
---end)
-
 if beautiful.border_radius ~= 0 then
   client.connect_signal("manage", function (c, startup)
     if not c.fullscreen then
@@ -438,6 +442,11 @@ end
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+if double_border then
+  client.connect_signal("request::titlebars", function(c) smartBorders.set(c, true) end)
+  client.connect_signal("property::size", smartBorders.set)
+end
 
 -- Autostart
 local autostart = require("autostart")

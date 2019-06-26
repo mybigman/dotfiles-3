@@ -216,7 +216,7 @@ keys.clientkeys = gears.table.join(
   -- Set or toggle/floating on client focus
   awful.key({ modkey }, "s", function(c) 
     local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
-    if current_layout ~= "floating" then
+    if current_layout == "floating" then
       awful.client.floating.toggle()
     else
       c.width = screen_width * 0.7

@@ -8,6 +8,7 @@ local dpi = xresources.apply_dpi
 
 local ncmpcpp_bar = require("widgets.ncmpcpp")
 local pad = wibox.widget.textbox(" ")
+local double_border = beautiful.double_border or false
 
 local titlebars = {}
 
@@ -36,10 +37,10 @@ client.connect_signal("request::titlebars", function(c)
   local buttons = titlebars.buttons
 
   if beautiful.titlebars_imitate_borders then
-    helpers.create_titlebar(c, buttons, "top", beautiful.titlebar_size)
-    helpers.create_titlebar(c, buttons, "bottom", beautiful.titlebar_size)
-    helpers.create_titlebar(c, buttons, "left", beautiful.titlebar_size)
-    helpers.create_titlebar(c, buttons, "right", beautiful.titlebar_size)
+    helpers.create_titlebar(c, buttons, "top", beautiful.titlebars_imitate_borders_size)
+    helpers.create_titlebar(c, buttons, "bottom", beautiful.titlebars_imitate_borders_size)
+    helpers.create_titlebar(c, buttons, "left", beautiful.titlebars_imitate_borders_size)
+    helpers.create_titlebar(c, buttons, "right", beautiful.titlebars_imitate_borders_size)
   end
 
   if c.class == "music_n" then
@@ -68,30 +69,65 @@ client.connect_signal("request::titlebars", function(c)
   --else
   end
 
-  awful.titlebar(c) : setup {
-    { --left
-      --awful.titlebar.widget.iconwidget(c),
-      buttons = buttons,
-      layout  = wibox.layout.fixed.horizontal
-    },
-    { -- Middle
-      { -- Title
-        align  = "center",
-        widget = awful.titlebar.widget.titlewidget(c)
+  if double_border then
+    -- we have to go down the title by using a vertical layout
+    awful.titlebar(c, { size = beautiful.titlebar_size }) : setup {
+      nil,
+      {
+        {
+          nil,
+          pad,
+          layout = wibox.layout.align.horizontal
+        },
+        {
+          nil,
+          {
+            { -- Title
+              align  = "center",
+              widget = awful.titlebar.widget.titlewidget(c)
+            },
+            buttons = buttons,
+            layout  = wibox.layout.flex.horizontal
+          },
+          nil,
+          --expand = "none",
+          layout = wibox.layout.align.horizontal
+          --layout = wibox.layout.fixed.horizontal
+        },
+        layout = wibox.layout.fixed.vertical
       },
-      buttons = buttons,
-      layout  = wibox.layout.flex.horizontal
-    },
-    { -- Right
-      --awful.titlebar.widget.floatingbutton (c),
-      --awful.titlebar.widget.maximizedbutton(c),
-      --awful.titlebar.widget.stickybutton   (c),
-      --awful.titlebar.widget.ontopbutton    (c),
-      --awful.titlebar.widget.closebutton    (c),
-      layout = wibox.layout.fixed.horizontal()
-    },
-    layout = wibox.layout.align.horizontal
-  }
+      nil,
+      --expand = "none",
+      layout = wibox.layout.align.vertical
+    }
+
+  else
+
+    awful.titlebar(c) : setup {
+      { --left
+        --awful.titlebar.widget.iconwidget(c),
+        buttons = buttons,
+        layout  = wibox.layout.fixed.horizontal
+      },
+      { -- Middle
+        { -- Title
+          align  = "center",
+          widget = awful.titlebar.widget.titlewidget(c)
+        },
+        buttons = buttons,
+        layout  = wibox.layout.flex.horizontal
+      },
+      { -- Right
+        --awful.titlebar.widget.floatingbutton (c),
+        --awful.titlebar.widget.maximizedbutton(c),
+        --awful.titlebar.widget.stickybutton   (c),
+        --awful.titlebar.widget.ontopbutton    (c),
+        --awful.titlebar.widget.closebutton    (c),
+        layout = wibox.layout.fixed.horizontal()
+      },
+      layout = wibox.layout.align.horizontal
+    }
+  end
 end)
 
 return titlebars

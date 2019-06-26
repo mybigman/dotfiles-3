@@ -20,7 +20,7 @@ local poweroff_command = function()
   keygrabber.stop(exit_screen_grabber)
 end
 
-local poweroff_icon = widgets.create_text("⭘", "#a22277", font_icon)
+local poweroff_icon = widgets.create_text("⭘", "#7d4c73", font_icon)
 local poweroff_text = widgets.create_text("Poweroff", "#aaaaaa", font_text)
 local poweroff = widgets.box("vertical", poweroff_icon, poweroff_text)
 poweroff:buttons(gears.table.join(
@@ -35,7 +35,7 @@ local exit_command = function()
   awesome.quit()
 end
 
-local exit_icon = widgets.create_text("ﴙ", "#ff7777", font_icon_2)
+local exit_icon = widgets.create_text("ﴙ", "#6f5485", font_icon_2)
 local exit_text = widgets.create_text("Exit", "#aaaaaa", font_text)
 local exit = widgets.box("vertical", exit_icon, exit_text)
 exit:buttons(gears.table.join(
@@ -51,7 +51,7 @@ local lock_command = function()
   exit_screen_hide()
 end
 
-local lock_icon = widgets.create_text("", "#7777ff", font_icon)
+local lock_icon = widgets.create_text("", "#42446e", font_icon)
 local lock_text = widgets.create_text("Lock", "#aaaaaa", font_text)
 local lock = widgets.box("vertical", lock_icon, lock_text)
 lock:buttons(gears.table.join(
