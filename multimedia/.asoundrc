@@ -61,8 +61,8 @@ pcm.dmixer {
     type dmix
     ipc_key 5678293
     ipc_key_add_uid false
-    ipc_perm 0660 # allow other users
-    ipc_gid audio
+    ipc_perm 0666 # allow other users
+    #ipc_gid audio
     slave sb1095
   }
 }
