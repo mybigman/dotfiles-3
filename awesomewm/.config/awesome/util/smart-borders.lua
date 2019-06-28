@@ -90,8 +90,8 @@ function createFragment(c, position, firstRender, colour)
 end
 
 function theEnd(c, position, firstRender) 
-  local img_normal = createFragment(c, position, firstRender, "#202e2f")
-  local img_focus = createFragment(c, position, firstRender, "#26393a")
+  local img_normal = createFragment(c, position, firstRender, beautiful.grey_light)
+  local img_focus = createFragment(c, position, firstRender, beautiful.primary_dark)
   awful.titlebar(c, {
     size = GUTTER + WEIGHT,
     position = position,

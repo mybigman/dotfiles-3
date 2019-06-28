@@ -7,7 +7,8 @@ local dpi = require('beautiful').xresources.apply_dpi
 local separators = require('util.separators')
 local widget = require('util.widgets')
 
-local primary = beautiful.primary
+local primary_dark = beautiful.primary_dark
+local fg_primary = beautiful.fg_primary_focus
 
 -- widgets load
 --local hostname = require("widgets.hostname")
@@ -55,8 +56,8 @@ local my_network_monitor = network_monitor_widget
 local mpc_time = require("widgets.mpc_time")
 
 -- {{{ Define music block
-local other_icon = widget.for_one_icon("#ffffff", primary," ﲵ ","Iosevka Term 16")
-local network_icon = widget.for_one_icon("#ffffff", primary," 旅 ","Iosevka Term 16")
+local other_icon = widget.for_one_icon(fg_primary, primary_dark," ﲵ ","Iosevka Term 16")
+local network_icon = widget.for_one_icon(fg_primary, primary_dark," 旅 ","Iosevka Term 16")
 local other_block = wibox.widget {
   my_network_monitor,
   network_icon,
@@ -69,12 +70,12 @@ local other_block = wibox.widget {
   --forced_width = dpi(200),
   layout = wibox.layout.fixed.horizontal
 }
-local other_block_margin = widget.border_bottom(other_block, primary)
+local other_block_margin = widget.border_bottom(other_block, primary_dark)
 
 -- }}} End Define other block
 
 -- {{{ Define music block
-local music_icon = widget.for_one_icon("#ffffff", primary,"  ","Iosevka Term 16")
+local music_icon = widget.for_one_icon(fg_primary, primary_dark,"  ","Iosevka Term 16")
 
 -- Group multiple widgets
 local music_block = wibox.widget {
@@ -88,7 +89,7 @@ local music_block = wibox.widget {
 }
 
 -- Draw a border bottom line
-local music_block_margin = widget.border_bottom(music_block, primary)
+local music_block_margin = widget.border_bottom(music_block, primary_dark)
 --- }}} End Define music block
 
 -- Remove space between taglist icon
@@ -191,10 +192,10 @@ awful.screen.connect_for_each_screen(function(s)
 }
 
 -- For look like a detached bar, we have to add a fake invisible bar...
-s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
+s.useless_wibar = awful.wibar({ position = "bottom", screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
 
 -- Create the wibox with default options
-s.mywibox = awful.wibar({ height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = dpi(1164) })
+s.mywibox = awful.wibar({ position = "bottom", height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = dpi(1164) })
 --position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
 
 -- Add widgets to the wibox

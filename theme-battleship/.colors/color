@@ -1,24 +1,44 @@
-*foreground:   #5a838b
-*background:   #20222c
-*color0:       #202a34
-*color1:       #576d5a
-*color2:       #4a6e59
-*color3:       #5e6d7e
-*color4:       #333b4e
-*color5:       #40395f
-*color6:       #405e60
-*color7:       #556476
-*color8:       #252f3b
-*color9:       #6f3a3f
-*color10:      #4a746a
-*color11:      #626578
-*color12:      #384058
-*color13:      #443b5e
-*color14:      #486366
-*color15:      #5b5b7b
-*color16:      #20222c
-*color17:      #9b703f
-*color18:      #323537
-*color19:      #464b50
-*color20:      #838184
-*color21:      #c3c3c4
+! Material theme
+
+! theme https://www.colorspire.com/
+! material color: https://material.io/inline-tools/color/
+! material: https://material.io/tools/color 
+
+! Bg !
+
+! Grey bg (dark to light)
+! no place but used by tmux and awesome #1a252b
+*background:   #263238
+*color0:       #37474f
+*color8:       #455a64
+
+! Primary bg (dark to light)
+*color6:       #3d7066
+*color2:       #418075
+*color14:      #479186
+
+! Secondary bg (dark to light)
+*color5:       #3d6070
+*color4:       #4b7486
+*color13:      #588398
+
+! Error bg (dark to light)
+*color1:       #75447a
+*color9:       #804a81
+*color3:       #925d93
+
+! Text !
+
+! Text Grey
+*foreground:   #80cbc4
+
+! Text Primary (normal - focus)
+*color10:      #c8e6c9
+*color7:       #e8f5e9
+
+! Text Secondary (normal - focus)
+*color12:      #b3e5fc
+*color15:      #e1f5fe
+
+! Text Error
+*color11:      #eeeeee

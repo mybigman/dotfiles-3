@@ -169,13 +169,13 @@ awful.screen.connect_for_each_screen(function(s)
   })
   awful.tag.add(tagnames[7], {
     layout = layouts[7],
-    gap = 40,
+    gap = 4,
     screen = s,
   })
   awful.tag.add(tagnames[8], {
     layout = layouts[8],
-    master_width_factor = 0.65,
-    gap = 40,
+    master_width_factor = 0.33,
+    gap = 3,
     column_count = 2,
     screen = s,
   })

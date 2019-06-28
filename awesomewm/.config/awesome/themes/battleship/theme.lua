@@ -50,33 +50,51 @@ theme.bg_focus      = theme.xcolor0
 --theme.bg_minimize   = "#444444"
 --theme.bg_systray    = theme.xbackground
 
-theme.fg_normal     = "#666666"
-theme.fg_focus      = theme.xcolor7
-theme.fg_urgent     = "#222222"
-theme.fg_minimize   = "#222222"
+-- Material theme
+theme.grey_dark = "#1a252b"
+theme.grey = theme.xbackground
+theme.grey_light = theme.xcolor8
 
--- try material
-theme.primary = "#2c4748"
+theme.primary_dark = theme.xcolor6 -- cyan D
+theme.primary = theme.xcolor2 -- cyan
+theme.primary_light = theme.xcolor14 -- cyan L
+
+theme.secondary_dark = theme.xcolor5 -- magenta D
+theme.secondary = theme.xcolor4 -- magenta
+theme.secondary_light = theme.xcolor13 -- magenta L
+
+theme.fg_grey = theme.xforeground
+theme.fg_primary = theme.xcolor10
+theme.fg_primary_focus = theme.xcolor7
+theme.fg_secondary = theme.xcolor12
+theme.fg_secondary_focus = theme.xcolor15
+theme.fg_error = theme.xcolor11
+-- End Material theme
+
+theme.fg_normal     = theme.fg_primary
+theme.fg_focus      = theme.fg_primary_focus
+theme.fg_urgent     = theme.fg_primary_focus
+--theme.fg_minimize   = "#222222"
 
 theme.border_width  = dpi(2)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(5)
-theme.border_normal = theme.xbackground
-theme.border_focus  = theme.xbackground
-theme.border_marked = theme.xbackground
+theme.border_normal = theme.grey_dark
+theme.border_focus  = theme.grey
+theme.border_marked = theme.grey_light
 theme.border_radius = dpi(4)
 
 -- general padding
-theme.general_padding = { left = 0, right = 0, top = 9, bottom = 0 }
+theme.general_padding = { left = 0, right = 0, top = 0, bottom = 9 }
 
 theme.double_border = true
 
 -- {{{ TITLEBAR 
 
-theme.titlebar_fg_normal = "#78787c"
-theme.titlebar_bg_normal = "#1e1e26"
-theme.titlebar_fg_focus = "#949599"
-theme.titlebar_bg_focus = "#1e1e26"
+theme.titlebar_fg_normal = theme.fg_primary
+theme.titlebar_bg_normal = theme.grey_dark
+theme.titlebar_fg_focus = theme.fg_primary_focus
+theme.titlebar_bg_focus = theme.grey_dark
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = true 
@@ -145,14 +163,14 @@ theme.taglist_text_color_focused = { theme.xcolor1, theme.xcolor2, theme.xcolor3
 theme.taglist_text_color_urgent = { theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12, theme.xcolor13, theme.xcolor14, theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12 }
 
 -- Text Taglist (default)
-theme.taglist_bg_normal = theme.xbackground
+theme.taglist_bg_normal = theme.grey
 theme.taglist_fg_focus = "#565b5e"
-theme.taglist_bg_focus = theme.xbackground
-theme.taglist_bg_occupied = theme.xbackground
+theme.taglist_bg_focus = theme.grey_light
+theme.taglist_bg_occupied = theme.grey
 theme.taglist_fg_occupied = "#434e4a"
-theme.taglist_bg_empty = theme.xbackground
+theme.taglist_bg_empty = theme.grey_dark
 theme.taglist_fg_empty = "#192429"
-theme.taglist_bg_urgent = theme.xbackground
+theme.taglist_bg_urgent = theme.grey_light
 theme.taglist_fg_urgent = "#3e3433"
 theme.taglist_disable_icon = true
 theme.taglist_spacing = dpi(1)
@@ -198,8 +216,8 @@ theme.tasklist_disable_task_name = false
 theme.tasklist_disable_icon = true 
 theme.tasklist_shape = function(cr, width, height) gears.shape.transform(gears.shape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
 theme.tasklist_shape_border_width = 2
-theme.tasklist_shape_border_color = theme.primary
-theme.tasklist_shape_border_color_focus = "#334f66"
+theme.tasklist_shape_border_color = theme.primary_dark
+theme.tasklist_shape_border_color_focus = theme.secondary_dark
 theme.tasklist_spacing = dpi(4)
 theme.tasklist_align = "center"
 theme.tasklist_fg_normal = theme.xforeground
@@ -226,15 +244,15 @@ theme.widget_ncmpcpp_next = '<span foreground="'..theme.xcolor1..'"> ≫ </span>
 -- Mails
 theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
-theme.widget_email_fg_read = "#888888"
-theme.widget_email_fg_unread = "#666666"
+theme.widget_email_fg_read = theme.fg_grey
+theme.widget_email_fg_unread = theme.fg_primary
 theme.widget_email_bg = theme.xbackground .. "ff"
 theme.widget_email_layout = 'horizontal' -- horizontal or vertical
 
 -- Network
 theme.widget_network_icon = ""
-theme.widget_network_fg = "#427171"
-theme.widget_network_fg_error = "#aa6644"
+theme.widget_network_fg = theme.fg_primary
+theme.widget_network_fg_error = theme.fg_error
 theme.widget_network_bg = theme.xbackground .. "00"
 theme.widget_network_layout = 'horizontal' -- horizontal or vertical
 
@@ -245,7 +263,7 @@ theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = "#87aa87"
+theme.widget_ram_fg = theme.fg_error
 theme.widget_ram_bg = theme.xbackground .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 
@@ -254,7 +272,7 @@ theme.widget_battery_icon_discharging = ""
 theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
-theme.widget_battery_fg = "#8999a9"
+theme.widget_battery_fg = theme.fg_secondary
 theme.widget_battery_bg = theme.xbackground .. "ff"
 theme.widget_battery_layout = 'horizontal' -- horizontal or vertical
 
@@ -264,19 +282,19 @@ theme.widget_mpc_pause_icon = ""
 theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
 theme.widget_mpc_next_icon = ""
-theme.widget_mpc_fg = "#3a8f9f"
-theme.widget_mpc_bg = "#ff0000"
+theme.widget_mpc_fg = theme.fg_primary
+theme.widget_mpc_bg = theme.xbackground .. "ff"
 theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
 -- volume
 theme.widget_volume_icon = ""
-theme.widget_volume_fg = "#405e78"
+theme.widget_volume_fg = theme.fg_secondary
 theme.widget_volume_bg = theme.xbackground .. "ff"
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
 
 -- Date
 theme.widget_date_icon = ""
-theme.widget_date_fg = "#898999"
+theme.widget_date_fg = theme.fg_grey
 theme.widget_date_bg = theme.xbackground .. "ff"
 theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 

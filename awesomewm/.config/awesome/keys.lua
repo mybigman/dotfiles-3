@@ -14,6 +14,12 @@ altgrkey = "Mod5"
 shiftkey = "Shift"
 ctrlkey = "Control"
 
+local function updateScreenPadding(nb)
+  local screen = awful.screen.focused()
+  local v = screen.padding.top + nb
+  awful.screen.padding(screen, { top = v, right = v, bottom = v, left = v })
+end
+
 -- {{{ Key bindings
 keys.globalkeys = gears.table.join(
     --awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -100,7 +106,16 @@ keys.globalkeys = gears.table.join(
        {description = "decrease master width factor", group = "layout"}
      ),
      -- }}} End Master width factor
-    
+
+     -- my key < + > is on < = > :(
+     awful.key({ altkey, ctrlkey, shiftkey }, "=", function ()
+       updateScreenPadding(10) 
+     end, { description = "increase padding", group = "layout" }),
+
+     awful.key({ altkey, ctrlkey, shiftkey }, "-", function ()
+       updateScreenPadding(-10)
+     end, { description = "decrease padding", group = "layout" }),
+
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
     awful.key({ modkey,           }, "Escape", function() exit_screen_show() end,
