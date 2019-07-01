@@ -5,6 +5,9 @@ local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 
+-- widget for the popup
+local mpc = require("widgets.mpc")
+
 -- beautiful vars
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
@@ -26,5 +29,69 @@ awful.widget.watch(
     update_widget(info)
   end
 )
+
+local popup_image = wibox.widget {
+  resize = true,
+  forced_height = 128,
+  forced_width = 128,
+  widget = wibox.widget.imagebox
+}
+
+local popup_title = widget.base_text()
+local popup_artist = widget.base_text()
+local popup_time = widget.base_text()
+local popup_percbar = widget.base_text()
+
+local w = awful.popup {
+  widget = {
+    {
+      {
+        popup_image,
+        layout = wibox.layout.align.horizontal
+      },
+      {
+        {
+          popup_title,
+          popup_artist,
+          popup_time,
+          popup_percbar,
+          mpc_widget,
+          layout = wibox.layout.fixed.vertical
+        },
+        left = 10,
+        widget = wibox.container.margin
+      },
+      layout = wibox.layout.align.horizontal
+    },
+    margins = 10,
+    widget = wibox.container.margin
+  },
+  visible = false, -- do not show at start
+  ontop = true,
+  hide_on_right_click = true,
+  preferred_positions = 'top', -- depend of the bar
+  preferred_anchors = 'middle'
+  --placement = awful.placement.top
+}
+
+-- attach popup to mpd_time_widget
+w:bind_to_widget(mpc_time_widget)
+
+function update_popup()
+  awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 1 ,function(widget, stdout)
+    local img, title, artist, time, percbar = stdout:match('img:%[([%a/.]+)%]%s?title:%[([%a.,-%d&%s]*)%]%s?artist:%[([%a%s%d&]*)%]%s?time:%[(%d+:%d+.%d+:%d+%s?%(%d+%%%))%]%s?percbar:%[(.*)%]*%]')
+
+    popup_image.image = img
+    popup_title.markup = helpers.colorize_text("Title: "..title, "#ffffff")
+    popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffffff")
+    popup_time.markup = helpers.colorize_text("Time: "..time, "#ffffff")
+    popup_percbar.markup = helpers.colorize_text(percbar, "#ffffff")
+
+  end)
+end
+
+mpc_time_widget:connect_signal("mouse::enter", function() 
+  update_popup()
+end)
 
 return mpc_time_widget

@@ -98,6 +98,45 @@ music_state() {
   fi
 }
 
+draw() {
+  local v inc out size cur_lenght
+  cur_lenght="$(mpc | awk 'NR == 2 {gsub(/[()%]/,""); print $4}')"
+  size=26
+  inc=$(( cur_lenght * size / 100 ))
+  out=
+  for v in $(seq 0 $(( size - 1 )) ) ; do
+    test "$v" -le "$inc" && \
+      out="${out}-" || \
+      out="${out}┄"
+  done
+  echo $out
+}
+
+searchAlbumCover() {
+  echo "$HOME/images/anonymous.jpg"
+}
+
+call_mpc_details() {
+  local img title album artist time
+
+  img=$(searchAlbumCover)
+  artist="$(mpc current -f %artist%)"
+  album="$(mpc current -f %album% | tr -d "%([]){}\1/")"
+  title="$(mpc current -f %title% | tr -d "%([]){}\1/")"
+  time="$(mpc | grep  "playing\|paused\|stop" | awk '{print $3,$4}')"
+
+  echo "img:[$img] title:[$title] artist:[$artist] time:[$time] percbar:[$(draw)]"
+}
+
+music_details() {
+  local mpd_is_playing="$(mpc | grep "playing\|paused")"
+  if [[ ! -z $mpd_is_playing ]] ; then
+    call_mpc_details
+  else
+    exit 1
+  fi
+}
+
 case $1 in
   volume) 
     check_audio_card $2
@@ -107,6 +146,10 @@ case $1 in
     ;;
   music)
     music_state
+    shift
+    ;;
+  music_details)
+    music_details
     shift
     ;;
   *)
