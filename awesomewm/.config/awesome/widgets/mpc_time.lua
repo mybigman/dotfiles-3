@@ -32,7 +32,7 @@ awful.widget.watch(
 
 local popup_image = wibox.widget {
   resize = true,
-  forced_height = 128,
+  forced_height = 80,
   forced_width = 128,
   widget = wibox.widget.imagebox
 }
@@ -79,14 +79,16 @@ w:bind_to_widget(mpc_time_widget)
 
 function update_popup()
   awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 1 ,function(widget, stdout)
-    local img, title, artist, time, percbar = stdout:match('img:%[([%a/.]+)%]%s?title:%[([%a.,-%d&%s]*)%]%s?artist:%[([%a%s%d&]*)%]%s?time:%[(%d+:%d+.%d+:%d+%s?%(%d+%%%))%]%s?percbar:%[(.*)%]*%]')
+    local img, title, artist, time, percbar = stdout:match('img:%[([%a/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?time:%[(%d+:%d+.%d+:%d+%s?%(%d+%%%))%]%s?percbar:%[(.*)%]*%]')
+
+    local title_nv = title or '' -- avoid error if nil
+    local artist_nv = artist or '' -- avoid error if nil
 
     popup_image.image = img
-    popup_title.markup = helpers.colorize_text("Title: "..title, "#ffffff")
-    popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffffff")
-    popup_time.markup = helpers.colorize_text("Time: "..time, "#ffffff")
-    popup_percbar.markup = helpers.colorize_text(percbar, "#ffffff")
-
+    popup_title.markup = helpers.colorize_text("Title: "..title_nv, "#ff66ff")
+    popup_artist.markup = helpers.colorize_text("Artist: "..artist_nv, "#ffff66")
+    popup_time.markup = helpers.colorize_text("Time: "..time, "#66ffff")
+    popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
   end)
 end
 

@@ -101,7 +101,7 @@ music_state() {
 draw() {
   local v inc out size cur_lenght
   cur_lenght="$(mpc | awk 'NR == 2 {gsub(/[()%]/,""); print $4}')"
-  size=26
+  size=29
   inc=$(( cur_lenght * size / 100 ))
   out=
   for v in $(seq 0 $(( size - 1 )) ) ; do
@@ -125,7 +125,7 @@ call_mpc_details() {
   title="$(mpc current -f %title% | tr -d "%([]){}\1/")"
   time="$(mpc | grep  "playing\|paused\|stop" | awk '{print $3,$4}')"
 
-  echo "img:[$img] title:[$title] artist:[$artist] time:[$time] percbar:[$(draw)]"
+  echo "img:[$img] title:[${title:0:30}] artist:[$artist] time:[$time] percbar:[$(draw)]"
 }
 
 music_details() {
