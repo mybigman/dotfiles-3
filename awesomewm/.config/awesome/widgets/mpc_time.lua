@@ -4,9 +4,12 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
+local separators = require("util.separators")
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
+local volume_bar = require("widgets.volume-bar")
+local pad = separators.pad
 
 -- beautiful vars
 local fg = beautiful.widget_volume_fg
@@ -17,9 +20,11 @@ local l = beautiful.widget_volume_layout or 'horizontal'
 local text = widget.base_text()
 local text_margin = widget.text(text)
 local mpc_time_widget = widget.box(l, text_margin)
+local popup_time = widget.base_text()
 
 local function update_widget(volume)
   text.markup = helpers.colorize_text(volume, fg)
+  popup_time.markup = helpers.colorize_text("Time: "..volume, "#66ffff")
 end
 
 awful.widget.watch(
@@ -39,7 +44,6 @@ local popup_image = wibox.widget {
 
 local popup_title = widget.base_text()
 local popup_artist = widget.base_text()
-local popup_time = widget.base_text()
 local popup_percbar = widget.base_text()
 
 local w = awful.popup {
@@ -55,10 +59,16 @@ local w = awful.popup {
           popup_artist,
           popup_time,
           popup_percbar,
-          mpc_widget,
+          {
+            mpc_widget,
+            pad(1),
+            volume_bar,
+            layout = wibox.layout.align.horizontal
+          },
           layout = wibox.layout.fixed.vertical
         },
         left = 10,
+        right = 4,
         widget = wibox.container.margin
       },
       layout = wibox.layout.align.horizontal
@@ -77,17 +87,18 @@ local w = awful.popup {
 -- attach popup to mpd_time_widget
 w:bind_to_widget(mpc_time_widget)
 
-function update_popup()
-  awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 1 ,function(widget, stdout)
+local function update_popup()
+  awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 5 ,function(widget, stdout)
     local img, title, artist, time, percbar = stdout:match('img:%[([%a/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?time:%[(%d+:%d+.%d+:%d+%s?%(%d+%%%))%]%s?percbar:%[(.*)%]*%]')
 
-    local title_nv = title or '' -- avoid error if nil
-    local artist_nv = artist or '' -- avoid error if nil
+    -- TODO: enhance default value
+    title = title or '' -- avoid error if nil
+    artist = artist or '' -- avoid error if nil
+    percbar = percbar or ''
 
     popup_image.image = img
-    popup_title.markup = helpers.colorize_text("Title: "..title_nv, "#ff66ff")
-    popup_artist.markup = helpers.colorize_text("Artist: "..artist_nv, "#ffff66")
-    popup_time.markup = helpers.colorize_text("Time: "..time, "#66ffff")
+    popup_title.markup = helpers.colorize_text("Title: "..title, "#ff66ff")
+    popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
   end)
 end

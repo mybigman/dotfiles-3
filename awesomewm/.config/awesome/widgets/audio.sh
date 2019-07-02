@@ -120,7 +120,7 @@ call_mpc_details() {
   local img title album artist time
 
   img=$(searchAlbumCover)
-  artist="$(mpc current -f %artist%)"
+  artist="$(mpc current -f %artist% | tr -d "%([]){}\1/")"
   album="$(mpc current -f %album% | tr -d "%([]){}\1/")"
   title="$(mpc current -f %title% | tr -d "%([]){}\1/")"
   time="$(mpc | grep  "playing\|paused\|stop" | awk '{print $3,$4}')"
