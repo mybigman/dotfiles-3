@@ -35,10 +35,12 @@ end
 function createFragment(c, position, firstRender, colour)
   local COLOR = gears.color(colour)
 
-  if position == "top" then
-    GUTTER = beautiful.titlebar_size -- line size
+  if c.class == "music_n" and position == "top" then
+    GUTTER = 5
   elseif c.class == "music_n" and position == "bottom" then
-    GUTTER = 50
+    GUTTER = beautiful.titlebar_size * 2
+  elseif position == "top" then
+    GUTTER = beautiful.titlebar_size -- line size
   else
     GUTTER = 5
   end

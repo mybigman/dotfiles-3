@@ -4,12 +4,12 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
-local separators = require("util.separators")
+--local separators = require("util.separators")
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
 local volume_bar = require("widgets.volume-bar")
-local pad = separators.pad
+--local pad = separators.pad
 
 -- beautiful vars
 local fg = beautiful.widget_volume_fg
@@ -28,7 +28,7 @@ local function update_widget(volume)
 end
 
 awful.widget.watch(
-  os.getenv("HOME").."/.config/awesome/widgets/audio.sh music", 1,
+  os.getenv("HOME").."/.config/awesome/widgets/audio.sh music", 2,
   function(widget, stdout, stderr, exitreason, exitcode)
     local info = stdout:match('(%d+:%d+.%d+:%d+%s?%d+%%)') or 0
     update_widget(info)
@@ -38,7 +38,7 @@ awful.widget.watch(
 local popup_image = wibox.widget {
   resize = true,
   forced_height = 80,
-  forced_width = 128,
+  forced_width = 83,
   widget = wibox.widget.imagebox
 }
 
@@ -61,8 +61,12 @@ local w = awful.popup {
           popup_percbar,
           {
             mpc_widget,
-            pad(1),
-            volume_bar,
+            --pad(1),
+            {
+              volume_bar,
+              left = 14,
+              widget = wibox.container.margin
+            },
             layout = wibox.layout.align.horizontal
           },
           layout = wibox.layout.fixed.vertical
@@ -89,7 +93,7 @@ w:bind_to_widget(mpc_time_widget)
 
 local function update_popup()
   awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 5 ,function(widget, stdout)
-    local img, title, artist, time, percbar = stdout:match('img:%[([%a/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?time:%[(%d+:%d+.%d+:%d+%s?%(%d+%%%))%]%s?percbar:%[(.*)%]*%]')
+    local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
 
     -- TODO: enhance default value
     title = title or '' -- avoid error if nil

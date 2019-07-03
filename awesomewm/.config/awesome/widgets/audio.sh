@@ -93,7 +93,7 @@ show_volume() {
 music_state() {
   local music_info
   [ -z $mpc ] && die "mpc no found"
-  if music_info=$($mpc | grep "\[" | awk '{print $3,$4}' | tr -d '()') ; then
+  if music_info="$(mpc | grep  "playing\|paused\|stop" | awk '{print $3,$4}' | tr -d '()')" ; then
     echo "$music_info"
   fi
 }
@@ -113,19 +113,34 @@ draw() {
 }
 
 searchAlbumCover() {
-  echo "$HOME/images/anonymous.jpg"
+  local MUSIC_DIR="/opt/musics"
+  local file="$(mpc --format %file% current)"
+  local album_dir="${file%/*}"
+  local cover=""
+  local src=""
+  album_dir="$MUSIC_DIR/$album_dir"
+  if [ -d "$album_dir" ] ; then
+    covers="$(find "$album_dir" -type d -exec find {} -maxdepth 1 -type f -iregex ".*/.*\(${album}\|cover\|folder\|artwork\|front\).*[.]\(jpe?g\|png\)" \; )"
+    src="$(echo -n "$covers" | head -n1)"
+    if [ -f "$src" ] ; then
+      echo "$src"
+    else
+      echo "$HOME/images/anonymous.jpg"
+    fi
+  else
+    echo "$HOME/images/anonymous.jpg"
+  fi
 }
 
 call_mpc_details() {
-  local img title album artist time
+  local img title album artist
 
   img=$(searchAlbumCover)
   artist="$(mpc current -f %artist% | tr -d "%([]){}\1/")"
-  album="$(mpc current -f %album% | tr -d "%([]){}\1/")"
+  #album="$(mpc current -f %album% | tr -d "%([]){}\1/")"
   title="$(mpc current -f %title% | tr -d "%([]){}\1/")"
-  time="$(mpc | grep  "playing\|paused\|stop" | awk '{print $3,$4}')"
 
-  echo "img:[$img] title:[${title:0:30}] artist:[$artist] time:[$time] percbar:[$(draw)]"
+  echo "img:[$img] title:[${title:0:30}] artist:[$artist] percbar:[$(draw)]"
 }
 
 music_details() {
