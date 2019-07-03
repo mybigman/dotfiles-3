@@ -113,7 +113,7 @@ draw() {
 }
 
 searchAlbumCover() {
-  local MUSIC_DIR="/opt/musics"
+  local MUSIC_DIR="$1"
   local file="$(mpc --format %file% current)"
   local album_dir="${file%/*}"
   local cover=""
@@ -135,7 +135,7 @@ searchAlbumCover() {
 call_mpc_details() {
   local img title album artist
 
-  img=$(searchAlbumCover)
+  img=$(searchAlbumCover "$1")
   artist="$(mpc current -f %artist% | tr -d "%([]){}\1/")"
   #album="$(mpc current -f %album% | tr -d "%([]){}\1/")"
   title="$(mpc current -f %title% | tr -d "%([]){}\1/")"
@@ -146,7 +146,7 @@ call_mpc_details() {
 music_details() {
   local mpd_is_playing="$(mpc | grep "playing\|paused")"
   if [[ ! -z $mpd_is_playing ]] ; then
-    call_mpc_details
+    call_mpc_details "$1"
   else
     exit 1
   fi
@@ -164,7 +164,8 @@ case $1 in
     shift
     ;;
   music_details)
-    music_details
+    music_details "$2"
+    shift
     shift
     ;;
   *)

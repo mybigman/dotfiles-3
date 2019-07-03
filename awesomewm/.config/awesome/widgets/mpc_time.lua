@@ -91,8 +91,14 @@ local w = awful.popup {
 -- attach popup to mpd_time_widget
 w:bind_to_widget(mpc_time_widget)
 
+-- audio.sh arguments are [music_details] [path of thr music directory]
+local mpc_details_script = [[
+  bash -c "
+  pgrep -x audio.sh || ~/.config/awesome/widgets/audio.sh music_details /opt/musics
+"]]
+
 local function update_popup()
-  awful.widget.watch(os.getenv("HOME").."/.config/awesome/widgets/audio.sh music_details", 5 ,function(widget, stdout)
+  awful.widget.watch(mpc_details_script, 5 ,function(widget, stdout)
     local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
 
     -- TODO: enhance default value
@@ -101,7 +107,7 @@ local function update_popup()
     percbar = percbar or ''
 
     popup_image.image = img
-    popup_title.markup = helpers.colorize_text("Title: "..title, "#ff66ff")
+    popup_title.markup = helpers.colorize_text(title, "#ff66ff")
     popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
   end)
