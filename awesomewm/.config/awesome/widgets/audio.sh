@@ -124,11 +124,7 @@ searchAlbumCover() {
     src="$(echo -n "$covers" | head -n1)"
     if [ -f "$src" ] ; then
       echo "$src"
-    else
-      echo "$HOME/images/anonymous.jpg"
     fi
-  else
-    echo "$HOME/images/anonymous.jpg"
   fi
 }
 

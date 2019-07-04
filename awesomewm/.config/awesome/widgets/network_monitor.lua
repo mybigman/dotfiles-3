@@ -25,6 +25,8 @@ awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/network.sh monitor", 4,
   function(widget, stdout, stderr, exitreason, exitcode)
     local down, up = stdout:match('%w+[:]+%s?(%d+)%s?[%w/]+%s?%a+[:]%s?(%d+)')
+    down = tonumber(down) or 0
+    up = tonumber(up) or 0
     local to_print
     if (stdout == "1") then
       icon.markup = helpers.colorize_text(net_icon, fg_error)

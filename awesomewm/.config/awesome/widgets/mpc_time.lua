@@ -92,23 +92,26 @@ local w = awful.popup {
 w:bind_to_widget(mpc_time_widget)
 
 -- audio.sh arguments are [music_details] [path of thr music directory]
+-- pgrep -x audio.sh || ~/.config/awesome/widgets/audio.sh music_details /opt/musics
 local mpc_details_script = [[
   bash -c "
-  pgrep -x audio.sh || ~/.config/awesome/widgets/audio.sh music_details /opt/musics
+  ~/.config/awesome/widgets/audio.sh music_details /opt/musics
 "]]
 
 local function update_popup()
-  awful.widget.watch(mpc_details_script, 5 ,function(widget, stdout)
-    local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]+)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
+  awful.widget.watch(mpc_details_script, 15 ,function(widget, stdout)
+    local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]*)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
 
-    -- TODO: enhance default value
-    title = title or '' -- avoid error if nil
-    artist = artist or '' -- avoid error if nil
-    percbar = percbar or ''
+    local title_nv, artist_nv
 
-    popup_image.image = img
-    popup_title.markup = helpers.colorize_text(title, "#ff66ff")
-    popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
+    -- default value
+    title_nv = "Title: "..title or "Unknown"
+    artist_nv = "Artist: "..artist or 'Jane Doe'
+    percbar = percbar or '-----------------------------' -- 29
+
+    popup_image.image = img or beautiful.widget_mpc_time_cover_album
+    popup_title.markup = helpers.colorize_text(title_nv, "#ff66ff")
+    popup_artist.markup = helpers.colorize_text(artist_nv, "#ffff66")
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
   end)
 end

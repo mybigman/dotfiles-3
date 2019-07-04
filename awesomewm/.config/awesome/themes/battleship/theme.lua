@@ -298,6 +298,9 @@ theme.widget_date_fg = theme.fg_grey
 theme.widget_date_bg = theme.xbackground .. "ff"
 theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 
+-- mpc time
+theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
+
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
 

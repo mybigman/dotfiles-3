@@ -238,6 +238,9 @@ theme.widget_date_icon = ""
 theme.widget_date_fg = "#898989"
 theme.widget_date_bg = "#202724"
 
+-- mpc time
+theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
+
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
 
