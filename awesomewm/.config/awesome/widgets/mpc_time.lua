@@ -102,22 +102,31 @@ local function update_popup()
   awful.widget.watch(mpc_details_script, 15 ,function(widget, stdout)
     local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]*)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
 
-    local title_nv, artist_nv
-
     -- default value
-    title_nv = "Title: "..title or "Unknown"
-    artist_nv = "Artist: "..artist or 'Jane Doe'
     percbar = percbar or '-----------------------------' -- 29
 
-    popup_image.image = img or beautiful.widget_mpc_time_cover_album
-    popup_title.markup = helpers.colorize_text(title_nv, "#ff66ff")
-    popup_artist.markup = helpers.colorize_text(artist_nv, "#ffff66")
+    if img == '' then
+      popup_image.image = beautiful.widget_mpc_time_cover_album
+    else
+      popup_image.image = img
+    end
+
+    if title == '' then
+      popup_title.markup = helpers.colorize_text("Unknown", "#ff66ff")
+    else
+      popup_title.markup = helpers.colorize_text("Title: "..title, "#ff66ff")
+    end
+
+    if artist == '' then
+      popup_artist.markup = helpers.colorize_text("Artist: Jane Doe", "#ffff66")
+    else
+      popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
+    end
+
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
   end)
 end
 
-mpc_time_widget:connect_signal("mouse::enter", function() 
-  update_popup()
-end)
+update_popup()
 
 return mpc_time_widget
