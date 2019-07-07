@@ -100,7 +100,7 @@ local mpc_details_script = [[
 
 local function update_popup()
   awful.widget.watch(mpc_details_script, 15 ,function(widget, stdout)
-    local img, title, artist, percbar = stdout:match('img:%[([%w%s%p/.]*)%]%s?title:%[([%w%s%p.,-]*)%]%s?artist:%[([%w%s%p]*)%]%s?percbar:%[(.*)%]*%]')
+    local img, title, artist, percbar = stdout:match('img:%[(.*)%]%s?title:%[(.*)%]%s?artist:%[(.*)%]%s?percbar:%[(.*)%]*%]')
 
     -- default value
     percbar = percbar or '-----------------------------' -- 29
@@ -111,16 +111,16 @@ local function update_popup()
       popup_image.image = img
     end
 
-    if title == '' then
-      popup_title.markup = helpers.colorize_text("Unknown", "#ff66ff")
-    else
+    if title ~= '' then
       popup_title.markup = helpers.colorize_text("Title: "..title, "#ff66ff")
+    else
+      popup_title.markup = helpers.colorize_text("Unknown", "#ff66ff")
     end
 
-    if artist == '' then
-      popup_artist.markup = helpers.colorize_text("Artist: Jane Doe", "#ffff66")
-    else
+    if artist ~= '' then
       popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
+    else
+      popup_artist.markup = helpers.colorize_text("Artist: Jane Doe", "#ffff66")
     end
 
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
