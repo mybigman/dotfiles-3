@@ -103,12 +103,15 @@ local function update_popup()
     local img, title, artist, percbar = stdout:match('img:%[(.*)%]%s?title:%[(.*)%]%s?artist:%[(.*)%]%s?percbar:%[(.*)%]*%]')
 
     -- default value
+    img = img or ''
+    title = title or ''
+    artist = artist or ''
     percbar = percbar or '-----------------------------' -- 29
 
-    if img == '' then
-      popup_image.image = beautiful.widget_mpc_time_cover_album
-    else
+    if img ~= '' then
       popup_image.image = img
+    else
+      popup_image.image = beautiful.widget_mpc_time_cover_album
     end
 
     if title ~= '' then
