@@ -75,7 +75,7 @@ local other_block_margin = widget.border_bottom(other_block, primary_dark)
 -- }}} End Define other block
 
 -- {{{ Define music block
-local music_icon = widget.for_one_icon(fg_primary, primary_dark,"  ","Iosevka Term 16")
+local music_icon = require("widgets.button_only_mpc")
 
 -- Group multiple widgets
 local music_block = wibox.widget {
@@ -192,7 +192,7 @@ awful.screen.connect_for_each_screen(function(s)
 }
 
 -- For look like a detached bar, we have to add a fake invisible bar...
-s.useless_wibar = awful.wibar({ position = "bottom", screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
+s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
 
 -- Create the wibox with default options
 s.mywibox = awful.wibar({ position = "bottom", height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = dpi(1164) })

@@ -16,6 +16,8 @@ local STRING_OFFSET = 0 -- padding intern
 local ARROW_WEIGHT = 5
 local ARROW_WIDTH = beautiful.titlebar_size
 local SMART_GAP = 0
+local colour_normal = beautiful.double_border_normal or "#111111"
+local colour_focus = beautiful.double_border_focus or "#1f1f1f"
 
 if HIDPI then
   GUTTER = 20
@@ -35,7 +37,12 @@ end
 function createFragment(c, position, firstRender, colour)
   local COLOR = gears.color(colour)
 
+  -- We need matches with all Titlebars OFF from the rc.lua
   if c.class == "music_n" and position == "top" then
+    GUTTER = 5
+  elseif c.class == "Brave-browser" and position == "top" then
+    GUTTER = 5
+  elseif c.class == "Lutris" and position == "top" then
     GUTTER = 5
   elseif c.class == "music_n" and position == "bottom" then
     GUTTER = beautiful.titlebar_size * 2
@@ -92,8 +99,8 @@ function createFragment(c, position, firstRender, colour)
 end
 
 function theEnd(c, position, firstRender) 
-  local img_normal = createFragment(c, position, firstRender, beautiful.grey_light)
-  local img_focus = createFragment(c, position, firstRender, beautiful.primary_dark)
+  local img_normal = createFragment(c, position, firstRender, colour_normal)
+  local img_focus = createFragment(c, position, firstRender, colour_focus)
   awful.titlebar(c, {
     size = GUTTER + WEIGHT,
     position = position,
