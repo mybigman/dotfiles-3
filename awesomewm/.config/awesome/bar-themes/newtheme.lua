@@ -21,13 +21,9 @@ local pad = separators.pad
 
 -- {{{ Redefine widgets with a background
 
-local mpc = require("widgets.mpc")
+local mpc = require("widgets.button_only_mpc")
 local mpc_bg = beautiful.widget_mpc_bg
-local my_mpc = mpc_widget
-
-local volume = require("widgets.volume")
-local volume_bg = beautiful.widget_volume_bg
-local my_vol = volume_widget
+local my_mpc = mpc
 
 local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
@@ -53,8 +49,6 @@ local launcher = awful.widget.launcher(
 local network_monitor = require("widgets.network_monitor")
 local my_network_monitor = network_monitor_widget
 
-local mpc_time = require("widgets.mpc_time")
-
 -- {{{ Define music block
 local other_icon = widget.for_one_icon(fg_primary, primary_dark," ﲵ ","Iosevka Term 16")
 local network_icon = widget.for_one_icon(fg_primary, primary_dark," 旅 ","Iosevka Term 16")
@@ -79,8 +73,6 @@ local music_icon = widget.for_one_icon(fg_primary, primary_dark,"  ","Iosevka
 
 -- Group multiple widgets
 local music_block = wibox.widget {
-  mpc_widget,
-  mpc_time,
   volume_widget,
   music_icon,
   spacing = dpi(9),
@@ -191,32 +183,27 @@ awful.screen.connect_for_each_screen(function(s)
   },
 }
 
--- For look like a detached bar, we have to add a fake invisible bar...
-s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
-
 -- Create the wibox with default options
-s.mywibox = awful.wibar({ position = "bottom", height = beautiful.wibar_height, bg = beautiful.wibar_bg, width = dpi(1164) })
---position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
+s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_height, bg = beautiful.wibar_bg })
 
 -- Add widgets to the wibox
 s.mywibox:setup {
-    { -- Left widgets
-      { -- middle
-        --tor_widget,
-        --pad(1),
-        --scrot_icon,
-        layout = wibox.layout.fixed.horizontal
-      },
-      music_block_margin,
-      spacing = dpi(6),
-      s.mytasklist,
-      --wifi_str_widget,
-      --network_widget,
-      layout = wibox.layout.fixed.horizontal
+  {
+    mpc,
+    layout = wibox.layout.fixed.horizontal
+  },
+  {
+    {
+      my_tagslist,
+      bottom = 5,
+      widget = wibox.container.margin
     },
-    my_tagslist,
-    other_block_margin,
-    expand = "none",
-    layout = wibox.layout.align.horizontal
-  }
+    layout = wibox.layout.fixed.horizontal
+  },
+  {
+    layout = wibox.layout.fixed.horizontal
+  },
+  expand = "none",
+  layout = wibox.layout.align.horizontal
+}
 end)
