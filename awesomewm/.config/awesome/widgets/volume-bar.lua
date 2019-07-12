@@ -5,12 +5,12 @@ local beautiful = require("beautiful")
 
 -- Colors
 local primary = beautiful.primary or '#ff66ff'
-local secondary = beautiful.secondary_dark or '#6f6fff'
+local secondary = beautiful.grey_light or '#6f6fff'
 
 local bar = wibox.widget {
   max_value = 100,
   value = 0,
-  forced_height = 10,
+  forced_height = 3,
   forced_width = 100,
   shape = shape.rounded_bar,
   color = primary,

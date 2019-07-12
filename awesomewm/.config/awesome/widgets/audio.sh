@@ -99,14 +99,16 @@ music_state() {
 }
 
 draw() {
-  local v inc out size cur_lenght
+  local v inc out size cur_lenght bar
   cur_lenght="$(mpc | awk 'NR == 2 {gsub(/[()%]/,""); print $4}')"
-  size=29
+  size=28
   inc=$(( cur_lenght * size / 100 ))
   out=
+  #bar=$(grep "^progressbar" ~/.ncmpcpp/config | awk '{print $3}' | tr -d '"')
+  bar="■"
   for v in $(seq 0 $(( size - 1 )) ) ; do
     test "$v" -le "$inc" && \
-      out="${out}-" || \
+      out="${out}${bar:--}" || \
       out="${out}┄"
   done
   echo $out

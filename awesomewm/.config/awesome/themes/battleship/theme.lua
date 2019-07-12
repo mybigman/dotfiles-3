@@ -88,6 +88,8 @@ theme.border_radius = dpi(4)
 theme.general_padding = { left = 0, right = 0, top = 0, bottom = 9 }
 
 theme.double_border = true
+theme.double_border_normal = theme.grey_light
+theme.double_border_focus = theme.primary_dark
 
 -- {{{ TITLEBAR 
 
@@ -107,6 +109,7 @@ theme.titlebar_size = 25
 theme.wibar_height = dpi(42)
 theme.wibar_bg = theme.xbackground .. "00"
 theme.wibar_border_radius = dpi(0)
+theme.wibar_position = 'bottom'
 
 -- Edge snap
 theme.snap_bg = theme.bg_focus

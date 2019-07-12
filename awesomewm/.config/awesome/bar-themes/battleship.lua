@@ -75,7 +75,7 @@ local other_block_margin = widget.border_bottom(other_block, primary_dark)
 -- }}} End Define other block
 
 -- {{{ Define music block
-local music_icon = widget.for_one_icon(fg_primary, primary_dark,"  ","Iosevka Term 16")
+local music_icon = require("widgets.button_only_mpc")
 
 -- Group multiple widgets
 local music_block = wibox.widget {
