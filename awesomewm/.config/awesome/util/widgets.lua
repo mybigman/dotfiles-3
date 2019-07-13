@@ -165,12 +165,20 @@ function widgets.for_one_icon(fg, bg, icon, font)
   }
 end
 
-function widgets.circle(w, background)
+function widgets.circle(w, background, color_shape)
+  local w_shape = color_shape or nil
+  local w_width = 0  
+  if w_shape then
+    w_width = 1
+  end
+
   return wibox.widget {
     w,
     bg = background,
     shape_clip = true,
     shape = gears.shape.circle,
+    shape_border_color = w_shape,
+    shape_border_width = w_width,
     widget = wibox.container.background
   }
 end

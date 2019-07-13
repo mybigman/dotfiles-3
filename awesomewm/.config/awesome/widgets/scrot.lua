@@ -7,7 +7,7 @@ local gears = require("gears")
 local font_icon = beautiful.widget_icon_font or 'RobotoMono Nerd Font Mono 18'
 local markup_icon = beautiful.widget_scrot_text_icon or '<span foreground="#4c534d">  </span>'
 
-scrot_icon = wibox.widget {
+local scrot_icon = wibox.widget {
   markup = markup_icon,
   --align = 'left',
   --valign = 'top',
@@ -34,3 +34,5 @@ scrot_icon:buttons(gears.table.join(
     take_scrot() 
   end)
 ))
+
+return scrot_icon

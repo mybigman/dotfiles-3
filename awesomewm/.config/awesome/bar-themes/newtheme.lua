@@ -15,6 +15,8 @@ local fg_primary = beautiful.fg_primary_focus
 local tor = require("widgets.tor")
 --local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
+local scrot_circle = widget.circle(scrot, beautiful.grey, beautiful.primary)
+
 --local network = require("widgets.network")
 --local wifi_str = require("widgets.wifi_str")
 local pad = separators.pad
@@ -50,7 +52,6 @@ local network_monitor = require("widgets.network_monitor")
 local my_network_monitor = network_monitor_widget
 
 -- {{{ Define music block
-local other_icon = widget.for_one_icon(fg_primary, primary_dark," ﲵ ","Iosevka Term 16")
 local network_icon = widget.for_one_icon(fg_primary, primary_dark," 旅 ","Iosevka Term 16")
 local other_block = wibox.widget {
   my_network_monitor,
@@ -67,22 +68,6 @@ local other_block = wibox.widget {
 local other_block_margin = widget.border_bottom(other_block, primary_dark)
 
 -- }}} End Define other block
-
--- {{{ Define music block
-local music_icon = widget.for_one_icon(fg_primary, primary_dark,"  ","Iosevka Term 16")
-
--- Group multiple widgets
-local music_block = wibox.widget {
-  volume_widget,
-  music_icon,
-  spacing = dpi(9),
-  --forced_width = dpi(200),
-  layout = wibox.layout.fixed.horizontal
-}
-
--- Draw a border bottom line
-local music_block_margin = widget.border_bottom(music_block, primary_dark)
---- }}} End Define music block
 
 -- Remove space between taglist icon
 local tagslist = require("widgets.text_taglist_with_shape")
@@ -184,7 +169,7 @@ awful.screen.connect_for_each_screen(function(s)
 }
 
 -- Create the wibox with default options
-s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_height, bg = beautiful.wibar_bg })
+s.mywibox = awful.wibar({ position = beautiful.wibar_position, bg = beautiful.wibar_bg })
 
 -- Add widgets to the wibox
 s.mywibox:setup {
@@ -201,6 +186,7 @@ s.mywibox:setup {
     layout = wibox.layout.fixed.horizontal
   },
   {
+    scrot_circle,
     layout = wibox.layout.fixed.horizontal
   },
   expand = "none",

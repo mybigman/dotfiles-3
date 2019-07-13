@@ -1,5 +1,5 @@
 ---------------------------
--- Newtheme awesome theme --
+-- Tower awesome theme --
 ---------------------------
 
 local theme_name = "newtheme"
@@ -64,16 +64,18 @@ theme.secondary = theme.xcolor4 -- magenta
 theme.secondary_light = theme.xcolor13 -- magenta L
 
 theme.fg_grey = theme.xforeground
+theme.fg_error = theme.xcolor11
+
 theme.fg_primary = theme.xcolor10
 theme.fg_primary_focus = theme.xcolor7
+
 theme.fg_secondary = theme.xcolor12
 theme.fg_secondary_focus = theme.xcolor15
-theme.fg_error = theme.xcolor11
 -- End Material theme
 
 theme.fg_normal     = theme.fg_primary
 theme.fg_focus      = theme.fg_primary_focus
-theme.fg_urgent     = theme.fg_primary_focus
+theme.fg_urgent     = theme.fg_error
 --theme.fg_minimize   = "#222222"
 
 theme.border_width  = dpi(3)
@@ -203,7 +205,7 @@ theme.menu_width  = dpi(100)
 -- }}} End MENU
 
 --theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".jpg"
-theme.wallpaper = os.getenv("HOME") .. "/images/nito.jpg"
+theme.wallpaper = os.getenv("HOME") .. "/images/tower.jpg"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
@@ -242,9 +244,9 @@ theme.widget_tor_bg = theme.xbackground .. "00"
 theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
 
 -- Mini ncmpcpp player
-theme.widget_ncmpcpp_prev = '<span foreground="'..theme.xcolor1..'"> ≪ </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.xcolor1..'"> ⊡ </span>'
-theme.widget_ncmpcpp_next = '<span foreground="'..theme.xcolor1..'"> ≫ </span>'
+theme.widget_ncmpcpp_prev = '<span foreground="'..theme.secondary..'"> ≪ </span>'
+theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.secondary_light..'"> ⊡ </span>'
+theme.widget_ncmpcpp_next = '<span foreground="'..theme.secondary..'"> ≫ </span>'
 
 -- Mails
 theme.widget_email_read_icon = ""
@@ -287,7 +289,7 @@ theme.widget_mpc_pause_icon = ""
 theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
 theme.widget_mpc_next_icon = ""
-theme.widget_mpc_fg = theme.fg_primary
+theme.widget_mpc_fg = theme.fg_grey
 theme.widget_mpc_bg = theme.xbackground .. "ff"
 theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
@@ -307,7 +309,7 @@ theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
-theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
+theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
 
 -- }}} End WIDGET
 

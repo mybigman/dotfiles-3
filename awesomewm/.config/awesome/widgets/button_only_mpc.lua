@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
+local dpi = require('beautiful').xresources.apply_dpi
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
@@ -12,11 +13,12 @@ local volume_bar = require("widgets.volume-bar")
 -- beautiful vars
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
-local l = beautiful.widget_volume_layout or 'horizontal'
+-- for the popup
+local fg_p = beautiful.fg_grey or "#aaaaaa"
+local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 
 -- widget creation
 local text = widget.for_one_icon(fg, bg, "  ", "Iosevka Term 16")
-local button_only_mpc_widget = widget.box(l, text)
 local popup_time = widget.base_text()
 
 local function update_widget(volume)
@@ -63,9 +65,14 @@ local w = awful.popup {
           popup_time,
           popup_percbar,
           {
-            mpc_widget,
+            {
+              mpc_widget,
+              top = 4, -- have to have similar value than bellow
+              widget = wibox.container.margin
+            },
             {
               volume_bar,
+              top = 4, -- same above
               left = 14,
               widget = wibox.container.margin
             },
@@ -86,11 +93,14 @@ local w = awful.popup {
   ontop = true,
   hide_on_right_click = true,
   preferred_positions = w_position,
-  preferred_anchors = 'middle'
+  --preferred_anchors = 'middle',
+  --current_position = 'bottom',
+  offset = { y=dpi(1), x = dpi(1) }, -- no pasted on the bar
+  bg = bg_p,
 }
 
--- attach popup to mpd_time_widget
-w:bind_to_widget(button_only_mpc_widget)
+-- attach popup to widget
+w:bind_to_widget(text)
 
 -- audio.sh arguments are: [music_details] [path of your music directory]
 local mpc_details_script = [[
@@ -132,4 +142,4 @@ end
 
 update_popup()
 
-return button_only_mpc_widget
+return text

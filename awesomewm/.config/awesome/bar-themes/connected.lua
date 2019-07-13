@@ -157,7 +157,7 @@ awful.screen.connect_for_each_screen(function(s)
       arrow("#323d38", "#202724"),
       my_date,
       arrow("#202724", beautiful.xbackground),
-      scrot_icon,
+      scrot,
       wibox.widget.systray(),
       --s.mylayoutbox,
       layout = wibox.layout.fixed.horizontal,

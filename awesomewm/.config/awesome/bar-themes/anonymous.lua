@@ -189,7 +189,7 @@ s.mywibox:setup {
       pad(1),
       my_date,
       pad(1),
-      scrot_icon,
+      scrot,
     },
   }
 end)
