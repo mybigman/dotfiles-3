@@ -7,6 +7,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 local separators = require('util.separators')
 local widget = require('util.widgets')
 
+-- colors
 local primary_dark = beautiful.primary_dark
 local fg_primary = beautiful.fg_primary_focus
 
@@ -25,46 +26,40 @@ local pad = separators.pad
 
 local mpc = require("widgets.button_only_mpc")
 
-local mail = require("widgets.mail")
-local mail_bg = beautiful.widget_battery_bg
-local my_mail = email_widget
+--local mail = require("widgets.mail")
+--local mail_bg = beautiful.widget_battery_bg
+--local my_mail = email_widget
 
-local ram = require("widgets.ram")
-local ram_bg = beautiful.widget_ram_bg
-local my_ram = ram_widget
+--local ram = require("widgets.ram")
+--local ram_bg = beautiful.widget_ram_bg
+--local my_ram = ram_widget
 
-local battery = require("widgets.battery")
-local bat_bg = beautiful.widget_battery_bg
-local my_battery = battery_widget
+--local battery = require("widgets.battery")
+--local bat_bg = beautiful.widget_battery_bg
+--local my_battery = battery_widget
 
-local date = require("widgets.date")
-local date_bg = beautiful.widget_date_bg
-local my_date = date_widget
+--local date = require("widgets.date")
+--local date_bg = beautiful.widget_date_bg
+--local my_date = date_widget
 
 local my_menu = require("menu")
 local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
 
-local network_monitor = require("widgets.network_monitor")
-local my_network_monitor = network_monitor_widget
+--local network_monitor = require("widgets.network_monitor")
+--local my_network_monitor = network_monitor_widget
 
 -- {{{ Define music block
-local network_icon = widget.for_one_icon(fg_primary, primary_dark," 旅 ","Iosevka Term 16")
-local other_block = wibox.widget {
-  my_network_monitor,
-  network_icon,
-  my_mail,
-  other_icon,
-  my_ram,
-  my_battery,
-  my_date,
-  spacing = dpi(9),
-  --forced_width = dpi(200),
-  layout = wibox.layout.fixed.horizontal
-}
-local other_block_margin = widget.border_bottom(other_block, primary_dark)
+--local network_icon = widget.for_one_icon(fg_primary, primary_dark," 旅 ","Iosevka Term 16")
 
+--  my_network_monitor,
+--  network_icon,
+--  my_mail,
+--  my_ram,
+--  my_battery,
+--  my_date,
+--  spacing = dpi(9),
 -- }}} End Define other block
 
 -- Remove space between taglist icon
@@ -179,6 +174,7 @@ s.mywibox:setup {
   {
     {
       my_tagslist,
+      top = 2,
       bottom = 5,
       widget = wibox.container.margin
     },
