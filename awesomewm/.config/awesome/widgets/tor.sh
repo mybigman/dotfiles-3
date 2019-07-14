@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## Require dependencies jq 
+## Gentoo , app-misc/jq
+
 check_tor() {
   local url
    url="https://check.torproject.org/"
@@ -10,15 +13,13 @@ check_tor() {
     echo 1
     exit 1
    fi
-
 }
 
 check_ip() {
-  local ipa
-  if ipa="$(curl -s -m 11 https://ipinfo.io)" ; then
-    echo "$ipa"
-  elif ext_ip="$(curl -s -m 10 https://ip-api.com)" ; then
-    echo "$ext_ip"
+  local infos
+  if infos="$(curl -s -m 10 https://ipinfo.io)" || 
+     infos="$(curl -s -m 10 https://ipapi.co/json)" ; then
+       echo "$infos" | jq '.ip, .city, .region, .country, .hostname'
   else
     echo "no found..."
     exit 1

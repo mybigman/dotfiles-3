@@ -13,9 +13,11 @@ local volume_bar = require("widgets.volume-bar")
 -- beautiful vars
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
+
 -- for the popup
 local fg_p = beautiful.fg_grey or "#aaaaaa"
 local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
+local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
 local text = widget.for_one_icon(fg, bg, "  ", "Iosevka Term 16")
@@ -95,7 +97,7 @@ local w = awful.popup {
   preferred_positions = w_position,
   --preferred_anchors = 'middle',
   --current_position = 'bottom',
-  offset = { y=dpi(1), x = dpi(1) }, -- no pasted on the bar
+  offset = { y = padding, x = padding }, -- no pasted on the bar
   bg = bg_p,
 }
 

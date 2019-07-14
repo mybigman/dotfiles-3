@@ -233,15 +233,22 @@ theme.tasklist_fg_normal = theme.xforeground
 
 -- {{{ WIDGETS
 
+-- popup (distance between the bar and the popup, 0 is pasted at the bar)
+theme.widget_popup_padding = dpi(3)
+
 -- Hostname
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 
 -- Tor
-theme.widget_tor_icon = "﨩"
-theme.widget_tor_fg_enable = "#434f4a"
-theme.widget_tor_fg_disable = "#8a4e4a"
-theme.widget_tor_bg = theme.xbackground .. "00"
-theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
+theme.widget_tor_icon = " 﨩 "
+theme.widget_tor_fg_enable = theme.fg_grey
+theme.widget_tor_fg_disable = theme.fg_error
+theme.widget_tor_bg = "#272f3b"
+theme.widget_tor_on = widget_icon_path .. "toron.png"
+theme.widget_tor_off = widget_icon_path .. "toroff.png"
+theme.widget_tor_start = widget_icon_path .. "torstart.png"
+theme.widget_tor_stop = widget_icon_path .. "torstop.png"
+theme.widget_tor_restart = widget_icon_path .. "torrestart.png"
 
 -- Mini ncmpcpp player
 theme.widget_ncmpcpp_prev = '<span foreground="'..theme.secondary..'"> ≪ </span>'
@@ -296,7 +303,7 @@ theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 -- volume
 theme.widget_volume_icon = ""
 theme.widget_volume_fg = theme.fg_secondary
-theme.widget_volume_bg = theme.xbackground .. "ff"
+theme.widget_volume_bg = "#47534e"
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
 
 -- Date

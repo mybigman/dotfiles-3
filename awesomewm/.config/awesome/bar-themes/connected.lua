@@ -17,9 +17,9 @@ local arrow = separators.arrow_left
 
 -- {{{ Redefine widgets with a background
 
-local tor = require("widgets.tor")
+local tor = require("widgets.button_tor")
 local tor_bg = beautiful.widget_tor_bg
-local my_tor = widget.bg( tor_bg, tor_widget )
+local my_tor = widget.bg( tor_bg, tor )
 
 local network = require("widgets.network")
 local network_bg = beautiful.widget_network_bg

@@ -9,7 +9,7 @@ local widget = require('util.widgets')
 
 -- widgets load
 local hostname = require("widgets.hostname")
-local tor = require("widgets.tor")
+local tor = require("widgets.button_tor")
 --local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
 --local network = require("widgets.network")
@@ -175,7 +175,7 @@ s.mywibox:setup {
     { -- right
       layout = wibox.layout.fixed.horizontal,
       pad(2),
-      tor_widget,
+      tor,
       pad(1),
       my_mpc,
       pad(1),

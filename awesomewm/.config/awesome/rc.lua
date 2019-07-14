@@ -210,6 +210,7 @@ local function in_percent(size, coord)
   return value
 end
 
+-- create the gravity system like subtlewm
 function like_subtle(x, y, width, height)
   local _x = in_percent(x, 'x')
   local _y = in_percent(y, 'y')
@@ -338,6 +339,12 @@ awful.rules.rules = {
     },
   }, properties = like_subtle(66, 15, 30, 70),
   },
+
+  { rule_any = {
+    class = {
+      "miniterm", -- i use this when i need to enter password with sudo
+    },
+  }, properties = like_subtle(33, 33, 33, 33) },
 
   -- Centered windows
   { rule_any = {

@@ -12,7 +12,7 @@ local fg_primary = beautiful.fg_primary_focus
 
 -- widgets load
 --local hostname = require("widgets.hostname")
-local tor = require("widgets.tor")
+local tor = require("widgets.button_tor")
 --local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
 local scrot_circle = widget.circle(scrot, beautiful.grey, beautiful.primary)
@@ -24,8 +24,6 @@ local pad = separators.pad
 -- {{{ Redefine widgets with a background
 
 local mpc = require("widgets.button_only_mpc")
-local mpc_bg = beautiful.widget_mpc_bg
-local my_mpc = mpc
 
 local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
@@ -175,6 +173,7 @@ s.mywibox = awful.wibar({ position = beautiful.wibar_position, bg = beautiful.wi
 s.mywibox:setup {
   {
     mpc,
+    tor,
     layout = wibox.layout.fixed.horizontal
   },
   {

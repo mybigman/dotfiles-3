@@ -1,7 +1,10 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local gears = require("gears")
 local helpers = require("helpers")
+local gshape = require("gears.shape")
+local gtable = require("gears.table")
+local awful = require("awful")
+local env = require("env-config")
 
 local widgets = {}
 
@@ -102,7 +105,7 @@ function widgets.bg_rounded(bg_color, border_color, w, widget_type)
   return wibox.widget {
     {
       mtype,
-      shape = gears.shape.rounded_rect,
+      shape = gshape.rounded_rect,
       bg = bg_color,
       shape_border_color = border_color,
       shape_border_width = 2,
@@ -115,7 +118,7 @@ end
 function widgets.bg_border_line(bg_color, border_color, w, widget_type)
   local mtype
   local shape_line = function(cr, width, height) 
-    gears.shape.transform(gears.shape.rounded_rect) : translate(0,20) (cr,width, -1, 2) 
+    gshape.transform(gshape.rounded_rect) : translate(0,20) (cr,width, -1, 2) 
   end
   if ( widget_type ~= nil and widget_type == "button" ) then
     mtype = icon_size(w)
@@ -176,7 +179,7 @@ function widgets.circle(w, background, color_shape)
     w,
     bg = background,
     shape_clip = true,
-    shape = gears.shape.circle,
+    shape = gshape.circle,
     shape_border_color = w_shape,
     shape_border_width = w_width,
     widget = wibox.container.background
@@ -192,9 +195,37 @@ function widgets.circle_padding(w, space)
 end
 
 function widgets.update_background(w, background)
-  w:set_shape(gears.shape.circle) -- otherwise there's no borders
+  w:set_shape(gshape.circle) -- otherwise there's no borders
   w:set_shape_border_width(2)
   w:set_shape_border_color(background)
+end
+
+-- used to create icon
+function widgets.imagebox(image, size)
+  local w = wibox.widget.imagebox(image)
+  w.resize = true
+  w.forced_height = size
+  w.forced_width = size
+  return w
+end
+
+function widgets.add_left_click_action(w, action, shell)
+  local s = shell or 'noshell' -- noshell (or any word) to launch a terminal directly
+  if s == 'shell' then
+    s = awful.spawn.with_shell
+  else
+    s = awful.spawn
+  end
+  
+  w:buttons(gtable.join(
+    awful.button({ }, 1, function()
+      if s == 'shell' then
+        s(action)
+      else
+        s(env.term .. env.term_call[1] .. 'miniterm' .. env.term_call[2] .. action)
+      end
+    end)
+  ))
 end
 
 return widgets
