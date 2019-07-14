@@ -1,7 +1,7 @@
 local beautiful = require("beautiful")
 local theme = {}
 
-theme.name = "newtheme"
+theme.name = "tower"
 
 local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes/"
 beautiful.init( theme_dir .. theme.name .. "/theme.lua" )

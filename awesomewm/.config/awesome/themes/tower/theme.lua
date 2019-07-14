@@ -2,7 +2,7 @@
 -- Tower awesome theme --
 ---------------------------
 
-local theme_name = "newtheme"
+local theme_name = "tower"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -205,7 +205,7 @@ theme.menu_width  = dpi(100)
 -- }}} End MENU
 
 --theme.wallpaper = os.getenv("HOME") .. "/images/"..theme_name..".jpg"
-theme.wallpaper = os.getenv("HOME") .. "/images/tower.jpg"
+theme.wallpaper = os.getenv("HOME") .. "/images/" .. theme_name .. ".jpg"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
