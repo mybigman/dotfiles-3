@@ -24,7 +24,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 - [screenshots](#screens)
 
 ## Installation for the last theme
-For the last [theme-battleship](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
+For the last [theme-tower](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
 
 <!--
 ### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
@@ -63,10 +63,13 @@ You can install theses repos with:
 It's all for the setup :)
 
 ## Screens
-**Last**:`theme-battleship` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
+**Last**:`theme-tower` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/tower.jpg "tower")  
 
-:`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
+`theme-battleship` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
+![Battleship screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
+
+`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Anonymous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/anonymous.jpg "anonymous")  
 
 `theme-connected` [wm]:*awesome* [term]: *kitty* [vim-color] [darkness.vim](https://github.com/szorfein/darkness.vim), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
