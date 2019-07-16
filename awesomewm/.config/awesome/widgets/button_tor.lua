@@ -38,7 +38,6 @@ local popup_image = wibox.widget {
   widget = wibox.widget.imagebox
 }
 
-
 -- button (to use the systemd service) (restart tor change your ip address)
 local little_icon_size = 18
 

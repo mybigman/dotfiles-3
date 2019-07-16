@@ -43,7 +43,7 @@ local my_battery = widget.bg( battery_bg, battery_widget )
 
 local mail = require("widgets.mail")
 local email_bg = beautiful.widget_email_bg
-local my_email = widget.bg( email_bg, email_widget )
+local my_email = widget.bg( email_bg, mail )
 
 local date = require("widgets.date")
 local date_bg = beautiful.widget_date_bg

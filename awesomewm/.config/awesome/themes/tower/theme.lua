@@ -260,8 +260,9 @@ theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
 theme.widget_email_fg_read = theme.fg_grey
 theme.widget_email_fg_unread = theme.fg_primary
-theme.widget_email_bg = theme.xbackground .. "ff"
+theme.widget_email_bg = theme.grey
 theme.widget_email_layout = 'horizontal' -- horizontal or vertical
+theme.widget_email_type = 'button' -- button or text
 
 -- Network
 theme.widget_network_icon = ""

@@ -26,9 +26,9 @@ local pad = separators.pad
 
 local mpc = require("widgets.button_only_mpc")
 
---local mail = require("widgets.mail")
---local mail_bg = beautiful.widget_battery_bg
---local my_mail = email_widget
+local mail = require("widgets.mail")
+local mail_bg = beautiful.widget_battery_bg
+local my_mail = widget.bg(mail_bg, mail)
 
 --local ram = require("widgets.ram")
 --local ram_bg = beautiful.widget_ram_bg
@@ -169,6 +169,7 @@ s.mywibox:setup {
   {
     mpc,
     tor,
+    my_mail,
     layout = wibox.layout.fixed.horizontal
   },
   {
