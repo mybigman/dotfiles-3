@@ -37,7 +37,7 @@ show() {
   local mails_dir="$1" mails
   local mail_path="$mails_dir/*/INBOX/new/*"
   if [ -d $mails_dir ] ; then
-    if mails="$(grep -i "^from" $mail_path 2>/dev/null | sort -u )"; then
+    if mails="$(grep -i "^from" $mail_path 2>/dev/null | sort -u | sed -n -e 's/^.*From:/|/p')"; then
       if [ -z "$mails" ] ; then
         echo "No new mails from $mail_path"
       else

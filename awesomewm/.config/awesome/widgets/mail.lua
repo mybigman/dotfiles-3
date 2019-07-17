@@ -36,7 +36,12 @@ local text_margin = widget.text(text)
 local email_widget = w_type == 'button' and icon 
   or widget.box(l, icon_margin, text_margin)
 
-local popup_msg = widget.base_text()
+local popup_title = widget.create_text("Last messages:", fg_grey, "Iosevka Term 12")
+local popup_msg = {}
+for i = 1, 4 do
+  popup_msg[i] = widget.base_text()
+end
+
 local w = awful.popup {
   widget = {
     {
@@ -44,7 +49,14 @@ local w = awful.popup {
     },
     {
       {
-        popup_msg,
+        {
+          popup_title,
+          popup_msg[1],
+          popup_msg[2],
+          popup_msg[3],
+          popup_msg[4],
+          layout = wibox.layout.align.vertical
+        },
         layout = wibox.layout.align.horizontal
       },
       margins = 10,
@@ -101,11 +113,18 @@ local show_emails_script = [[
 "]]
 
 local function update_popup()
-  awful.widget.watch(show_emails_script, 150, function(widget, stdout)
-    local message = stdout:match('From[:]+%s*([%w%s@]*)')
-    local message = "From: "..message or 'No new messages'
+  awful.widget.watch(show_emails_script, 60, function(widget, stdout)
+    local msg = {}
+    msg[1], msg[2], msg[3], msg[4] = stdout:match('[|]*([%s%w@.]*)[|]*([%s%w@.]*)[|]*([%s%w@.]*)[|]*([%s%w@.]*)')
 
-    popup_msg.markup = helpers.colorize_text(message, fg_grey)
+    for i = 1, 4 do
+      msg[i] = tostring(msg[i]) or nil
+      if msg[i] ~= tostring(nil) and msg[i] ~= '' then
+        popup_msg[i].markup = helpers.colorize_text(i.." - From: "..msg[i], fg_grey)
+      else
+        popup_msg[i].markup = ''
+      end
+    end
 
   end)
 end
