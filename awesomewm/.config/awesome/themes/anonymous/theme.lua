@@ -15,6 +15,11 @@ local xrdb = xresources.get_current_theme()
 local wibox = require("wibox")
 local taglist_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/taglist/"
 
+-- screen size
+local ascreen = require("awful.screen")
+local screen_width = ascreen.focused().geometry.width
+local screen_height = ascreen.focused().geometry.height
+
 local theme = {}
 
 -- Get colors from .Xresources and set fallback colors
@@ -59,10 +64,11 @@ theme.border_focus  = "#222c36"
 theme.border_marked = "#4f322a"
 
 -- general padding
-theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+theme.general_padding = { left = dpi(6), right = dpi(6), top = dpi(6), bottom = dpi(6) }
 
 -- rounded corners
 theme.border_radius = dpi(8)
+theme.wibar_position = "top"
 
 -- {{{ TITLEBAR 
 
@@ -78,6 +84,8 @@ theme.titlebars_imitate_borders = false
 
 -- Top bar
 theme.wibar_height = dpi(42)
+theme.wibar_width = screen_width - dpi(99)
+
 theme.wibar_bg = theme.xbackground .. "00"
 theme.wibar_border_radius = dpi(0)
 
@@ -204,6 +212,9 @@ theme.tasklist_align = "center"
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
 theme.widget_text_font = "RobotoMono Nerd Font 8"
 
+-- popup
+theme.widget_popup_padding = dpi(3)
+
 -- Hostname
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 
@@ -213,8 +224,14 @@ theme.widget_tor_fg_enable = "#434f4a"
 theme.widget_tor_fg_disable = "#8a4e4a"
 theme.widget_tor_bg = theme.xbackground .. "00"
 theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
+theme.widget_tor_on = widget_icon_path .. "toron.png"
+theme.widget_tor_off = widget_icon_path .. "toroff.png"
+theme.widget_tor_start = widget_icon_path .. "torstart.png"
+theme.widget_tor_stop = widget_icon_path .. "torstop.png"
+theme.widget_tor_restart = widget_icon_path .. "torrestart.png"
 
 -- Mini ncmpcpp player
+--
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
 theme.widget_ncmpcpp_prev = '<span foreground="'..theme.xcolor1..'"> ≪ </span>'
 theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.xcolor1..'"> ⊡ </span>'
@@ -233,7 +250,7 @@ theme.widget_network_icon = ""
 theme.widget_network_fg = "#aa8787"
 theme.widget_network_fg_error = "#aa6644"
 theme.widget_network_bg = theme.xbackground .. "00"
-theme.widget_network_layout = 'vertical' -- horizontal or vertical
+theme.widget_network_layout = 'horizontal' -- horizontal or vertical
 
 -- Wifi str
 theme.widget_wifi_str_fg = "#87aaaa"
@@ -282,6 +299,15 @@ theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
+
+-- Change theme
+theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
+theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
+theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
+theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
+theme.widget_change_theme_bg = theme.xbackground
+theme.widget_change_theme_fg = "#ffffff"
+theme.widget_change_theme_layout = 'vertical' -- horizontal or vertical
 
 -- }}} End WIDGET
 

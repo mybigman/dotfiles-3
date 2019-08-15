@@ -148,7 +148,7 @@ awful.screen.connect_for_each_screen(function(s)
   awful.tag.add(tagnames[3], {
     layout = layouts[3],
     master_width_factor = 0.34,
-    gap = 4,
+    --gap = 4,
     column_count = 2,
     screen = s,
   })
@@ -353,11 +353,12 @@ awful.rules.rules = {
       "Sxiv",
       "mpv",
     },
-  }, properties = { floating = true, width = in_percent(60, 'x'), height = in_percent(65, 'y') },
-  callback = function(c)
-    awful.placement.centered(c, {honor_workarea=true})
-  end
-  },
+    name = {
+      "Save File"
+    },
+  }, properties = { floating = true }, callback = function (c)
+    awful.placement.centered(c, { honor_padding = true, honor_workarea=false })
+  end },
 
   -- Set Firefox to always map on the tag named "2" on screen 1.
   { rule = { class = "Brave-browser" },

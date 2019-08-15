@@ -11,6 +11,7 @@ local mpc = require("widgets.mpc")
 local volume_bar = require("widgets.volume-bar")
 
 -- beautiful vars
+local icon = beautiful.widget_mpc_button_icon or "  "
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
 
@@ -20,7 +21,7 @@ local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
-local text = widget.for_one_icon(fg, bg, "  ", "Iosevka Term 16")
+local text = widget.for_one_icon(fg, bg, icon, "Iosevka Term 16")
 local popup_time = widget.base_text()
 
 local function update_widget(volume)
@@ -35,13 +36,7 @@ awful.widget.watch(
   end
 )
 
-local popup_image = wibox.widget {
-  resize = true,
-  forced_height = 80,
-  forced_width = 83,
-  widget = wibox.widget.imagebox
-}
-
+local popup_image = widget.image_popup()
 local popup_title = widget.base_text()
 local popup_artist = widget.base_text()
 local popup_percbar = widget.base_text()
@@ -68,7 +63,7 @@ local w = awful.popup {
           popup_percbar,
           {
             {
-              mpc_widget,
+              mpc,
               top = 4, -- have to have similar value than bellow
               widget = wibox.container.margin
             },
@@ -127,15 +122,15 @@ local function update_popup()
     end
 
     if title ~= '' then
-      popup_title.markup = helpers.colorize_text("Title: "..title, "#ff66ff")
+      popup_title.markup = helpers.colorize_text(title, "#ff66ff")
     else
       popup_title.markup = helpers.colorize_text("Unknown", "#ff66ff")
     end
 
     if artist ~= '' then
-      popup_artist.markup = helpers.colorize_text("Artist: "..artist, "#ffff66")
+      popup_artist.markup = helpers.colorize_text("By "..artist, "#ffff66")
     else
-      popup_artist.markup = helpers.colorize_text("Artist: Jane Doe", "#ffff66")
+      popup_artist.markup = helpers.colorize_text("By Unknown", "#ffff66")
     end
 
     popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")

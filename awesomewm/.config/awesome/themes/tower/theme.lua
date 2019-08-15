@@ -240,7 +240,7 @@ theme.widget_popup_padding = dpi(3)
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 
 -- Tor
-theme.widget_tor_icon = " 﨩 "
+theme.widget_tor_icon = "  﨩  "
 theme.widget_tor_fg_enable = theme.fg_grey
 theme.widget_tor_fg_disable = theme.fg_error
 theme.widget_tor_bg = "#272f3b"
@@ -256,8 +256,8 @@ theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.secondary_light..'"> �
 theme.widget_ncmpcpp_next = '<span foreground="'..theme.secondary..'"> ≫ </span>'
 
 -- Mails
-theme.widget_email_read_icon = ""
-theme.widget_email_unread_icon = ""
+theme.widget_email_read_icon = "  "
+theme.widget_email_unread_icon = "  "
 theme.widget_email_fg_read = theme.fg_grey
 theme.widget_email_fg_unread = theme.fg_primary
 theme.widget_email_bg = theme.grey
@@ -318,6 +318,17 @@ theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
+
+-- Change theme
+theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
+theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
+theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
+theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
+theme.widget_change_theme_bg = theme.grey_dark
+theme.widget_change_theme_fg = theme.fg_grey
+
+-- Button mpc
+theme.widget_mpc_button_icon = "    "
 
 -- }}} End WIDGET
 

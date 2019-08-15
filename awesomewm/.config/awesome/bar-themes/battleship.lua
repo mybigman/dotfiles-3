@@ -54,6 +54,7 @@ local network_monitor = require("widgets.network_monitor")
 local my_network_monitor = network_monitor_widget
 
 local mpc_time = require("widgets.mpc_time")
+local change_theme = require("widgets.button_change_theme")
 
 -- {{{ Define music block
 local other_icon = widget.for_one_icon(fg_primary, primary_dark," ﲵ ","Iosevka Term 16")
@@ -208,6 +209,7 @@ s.mywibox:setup {
         layout = wibox.layout.fixed.horizontal
       },
       music_block_margin,
+      change_theme,
       spacing = dpi(6),
       s.mytasklist,
       --wifi_str_widget,

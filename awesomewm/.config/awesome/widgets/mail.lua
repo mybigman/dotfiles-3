@@ -93,12 +93,12 @@ local grab_emails_script = [[
 
 awful.widget.watch(grab_emails_script, 300, -- 5m
   function(widget, stdout, stderr, exitreason, exitcode)
-    local filter_mail = stdout:match('%d+')
+    local filter_mail = stdout:match('%d+') or 0
     local mail_num = tonumber(filter_mail) or 0
     if (mail_num > 0) then
       icon.markup = helpers.colorize_text(read_icon, fg_read)
-      text.markup = helpers.colorize_text(filter_mail, fg_read)
-      tt.markup = helpers.colorize_text("You got "..filter_mail.." messages", fg_read)
+      text.markup = helpers.colorize_text(mail_num, fg_read)
+      tt.markup = helpers.colorize_text("You got "..mail_num.." messages", fg_read)
     else
       icon.markup = helpers.colorize_text(unread_icon, fg_unread)
       text.markup = helpers.colorize_text(0, fg_read)
@@ -115,7 +115,7 @@ local show_emails_script = [[
 local function update_popup()
   awful.widget.watch(show_emails_script, 60, function(widget, stdout)
     local msg = {}
-    msg[1], msg[2], msg[3], msg[4] = stdout:match('[|]*([%s%w@.]*)[|]*([%s%w@.]*)[|]*([%s%w@.]*)[|]*([%s%w@.]*)')
+    msg[1], msg[2], msg[3], msg[4] = stdout:match('[|]*([%s%w@."]*)[|]*([%s%w@."]*)[|]*([%s%w@."]*)[|]*([%s%w@."]*)')
 
     for i = 1, 4 do
       msg[i] = tostring(msg[i]) or nil

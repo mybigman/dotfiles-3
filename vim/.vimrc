@@ -155,5 +155,11 @@ set t_Co=256
 " plugins
 source ~/.vim/plugin-configs.vim
 
+" if there are a custom lightline setting by theme
+let x = "~/.vim/lightline-theme.vim"
+if filereadable(expand(x))
+  execute 'source' x
+endif
+
 " Colorscheme
 source ~/.vim/colorscheme

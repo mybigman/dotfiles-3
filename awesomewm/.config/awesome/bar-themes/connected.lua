@@ -11,43 +11,46 @@ local widget = require('util.widgets')
 local hostname = require("widgets.hostname")
 local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
-local mpc = require("widgets.mpc")
 local pad = separators.pad
 local arrow = separators.arrow_left
 
--- {{{ Redefine widgets with a background
+-- gradient colors (dark to light)
+local g0 = beautiful.grey_dark
+local g1 = beautiful.grey
+local g2 = beautiful.primary_dark
+local g3 = beautiful.secondary_dark
+
+-- {{{ Add a background to the widgets
 
 local tor = require("widgets.button_tor")
-local tor_bg = beautiful.widget_tor_bg
-local my_tor = widget.bg( tor_bg, tor )
+local my_tor = widget.bg( g1, tor )
 
 local network = require("widgets.network")
-local network_bg = beautiful.widget_network_bg
-local my_network = widget.bg( network_bg, network_widget )
+local my_network = widget.bg( g2, network_widget )
 
 local wifi_str = require("widgets.wifi_str")
-local wifi_bg = beautiful.widget_wifi_str_bg
-local my_wifi_str = widget.bg( wifi_bg, wifi_str_widget )
+local my_wifi_str = widget.bg( g3, wifi_str_widget )
+
+local mpc = require("widgets.mpc")
+local my_mpc_widget = widget.bg( g1, mpc )
 
 local volume = require("widgets.volume")
-local volume_bg = beautiful.widget_volume_bg
-local my_volume = widget.bg( volume_bg, volume_widget )
+local my_volume = widget.bg( g2, volume_widget )
+
+local change_theme = require("widgets.button_change_theme")
+local my_change_theme = widget.bg( g1, change_theme )
 
 local ram = require("widgets.ram")
-local ram_bg = beautiful.widget_ram_bg
-local my_ram = widget.bg( ram_bg, ram_widget )
+local my_ram = widget.bg( g1, ram_widget )
 
 local battery = require("widgets.battery")
-local battery_bg = beautiful.widget_battery_bg
-local my_battery = widget.bg( battery_bg, battery_widget )
+local my_battery = widget.bg( g3, battery_widget )
 
 local mail = require("widgets.mail")
-local email_bg = beautiful.widget_email_bg
-local my_email = widget.bg( email_bg, mail )
+local my_email = widget.bg( g2, mail )
 
 local date = require("widgets.date")
-local date_bg = beautiful.widget_date_bg
-local my_date = widget.bg( date_bg, date_widget )
+local my_date = widget.bg( g1, date_widget )
 
 -- }}} End widget
 
@@ -117,7 +120,6 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_height, bg = beautiful.wibar_bg })
-  --position = "top", bg = beautiful.wibar_bg, height = beautiful.wibar_height, screen = s, border_width = 1, height = beautiful.wibar_height, shape = helpers.rrect(beautiful.wibar_border_radius) })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -131,32 +133,34 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- More or less Middle
       pad(5),
-      arrow(beautiful.xbackground, "#202724"),
+      arrow(g0, g1),
       my_tor,
-      arrow("#202724", "#29322e"),
+      arrow(g1, g2),
       my_network,
-      arrow("#29322e", "#202724"),
+      arrow(g2, g3),
       my_wifi_str,
-      arrow("#202724", beautiful.xbackground),
+      arrow(g3, g0),
       layout = wibox.layout.fixed.horizontal,
       pad(32),
-      arrow(beautiful.xbackground, "#29322e"),
-      mpc_widget,
-      arrow("#29322e", "#202724"),
+      arrow(g0, g1),
+      my_mpc_widget,
+      arrow(g1, g2),
       my_volume,
-      arrow("#202724", beautiful.xbackground),
+      arrow(g2, g1),
+      my_change_theme,
+      arrow(g1, g0)
     },
     { -- Right widgets
       mykeyboardlayout,
-      arrow(beautiful.xbackground, "#202724"),
+      arrow(g0, g1),
       my_ram,
-      arrow("#202724", "#29322e"),
+      arrow(g1, g3),
       my_battery,
-      arrow("#29322e", "#323d38"),
+      arrow(g3, g2),
       my_email,
-      arrow("#323d38", "#202724"),
+      arrow(g2, g1),
       my_date,
-      arrow("#202724", beautiful.xbackground),
+      arrow(g1, g0),
       scrot,
       wibox.widget.systray(),
       --s.mylayoutbox,

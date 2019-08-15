@@ -18,7 +18,7 @@ method = ncurses
 style = stereo
 
 [color]
-gradient = 3
+gradient = 0
 gradient_color_1 = '#202724' #base
 gradient_color_2 = '#323d38' #top
 

@@ -35,22 +35,31 @@ for i = 1, ntags do
     ))
 end
 
+local xresources = require('beautiful.xresources')
+local dpi = xresources.apply_dpi
+
 local icon_taglist = wibox.widget{
-  tag_icons[1],
-  tag_icons[2],
-  tag_icons[3],
-  tag_icons[4],
-  tag_icons[5],
-  tag_icons[6],
-  tag_icons[7],
-  tag_icons[8],
-  tag_icons[9],
-  tag_icons[10],
-  --layout = beautiful.taglist_layout
-  expand = true,
-  forced_num_rows = 2,
-  forced_num_cols = 5,
-  layout = wibox.layout.grid,
+  {
+    tag_icons[1],
+    tag_icons[2],
+    tag_icons[3],
+    tag_icons[4],
+    tag_icons[5],
+    tag_icons[6],
+    tag_icons[7],
+    tag_icons[8],
+    tag_icons[9],
+    tag_icons[10],
+    --layout = beautiful.taglist_layout
+    expand = true,
+    forced_num_rows = 2,
+    forced_num_cols = 5,
+    layout = wibox.layout.grid,
+  },
+  --horizontal_offset = -49,
+  forced_width = dpi(128),
+  spacing = dpi(1),
+  layout  = wibox.layout.stack
 }
 
 icon_taglist:buttons(

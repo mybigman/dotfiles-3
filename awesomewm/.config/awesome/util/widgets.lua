@@ -5,6 +5,7 @@ local gshape = require("gears.shape")
 local gtable = require("gears.table")
 local awful = require("awful")
 local env = require("env-config")
+local naughty = require("naughty")
 
 local widgets = {}
 
@@ -212,7 +213,7 @@ end
 function widgets.add_left_click_action(w, action, shell)
   local s = shell or 'noshell' -- noshell (or any word) to launch a terminal directly
   if s == 'shell' then
-    s = awful.spawn.with_shell
+    s = awful.spawn
   else
     s = awful.spawn
   end
@@ -226,6 +227,15 @@ function widgets.add_left_click_action(w, action, shell)
       end
     end)
   ))
+end
+
+function widgets.image_popup()
+  return wibox.widget {
+    resize = true,
+    forced_height = 80,
+    forced_width = 83,
+    widget = wibox.widget.imagebox
+  }
 end
 
 return widgets

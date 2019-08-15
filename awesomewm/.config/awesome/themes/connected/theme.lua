@@ -44,30 +44,57 @@ theme.bg_focus      = theme.xcolor0
 --theme.bg_minimize   = "#444444"
 --theme.bg_systray    = theme.xbackground
 
-theme.fg_normal     = "#666666"
-theme.fg_focus      = theme.xcolor7
-theme.fg_urgent     = "#222222"
+-- Material theme
+theme.grey_dark = theme.xbackground
+theme.grey = theme.xcolor0
+theme.grey_light = theme.xcolor8
+
+theme.primary_dark = theme.xcolor6 -- cyan D
+theme.primary = theme.xcolor2 -- cyan
+theme.primary_light = theme.xcolor14 -- cyan L
+
+theme.secondary_dark = theme.xcolor5 -- magenta D
+theme.secondary = theme.xcolor4 -- magenta
+theme.secondary_light = theme.xcolor13 -- magenta L
+
+theme.alert_dark = theme.xcolor1
+theme.alert = theme.xcolor9
+theme.alert_light = theme.xcolor3
+
+theme.fg_grey = theme.xforeground
+theme.fg_alert = theme.xcolor11
+
+theme.fg_primary = theme.xcolor10
+theme.fg_primary_focus = theme.xcolor7
+
+theme.fg_secondary = theme.xcolor12
+theme.fg_secondary_focus = theme.xcolor15
+-- End Material theme
+
+theme.fg_normal     = theme.fg_primary
+theme.fg_focus      = theme.fg_primary_focus
+theme.fg_urgent     = theme.fg_alert
 theme.fg_minimize   = "#222222"
 
-theme.border_width  = dpi(5)
+theme.border_width  = dpi(2)
 theme.screen_margin = dpi(6)
 theme.useless_gap   = dpi(0)
-theme.border_normal = theme.xbackground
-theme.border_focus  = theme.xcolor8
-theme.border_marked = "#723218"
+theme.border_normal = theme.grey
+theme.border_focus  = theme.grey_light
+theme.border_marked = theme.secondary
 
 -- general padding
 theme.general_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- rounded corners
-theme.border_radius = dpi(8)
+theme.border_radius = dpi(4)
 
 -- {{{ TITLEBAR 
 
-theme.titlebar_fg_normal = "#434e4a"
-theme.titlebar_bg_normal = theme.xbackground
-theme.titlebar_fg_focus = "#4d5955"
-theme.titlebar_bg_focus = theme.xbackground
+theme.titlebar_fg_normal = theme.fg_grey
+theme.titlebar_bg_normal = theme.grey
+theme.titlebar_fg_focus = theme.fg_primary_focus
+theme.titlebar_bg_focus = theme.grey
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = false
@@ -76,8 +103,9 @@ theme.titlebars_imitate_borders = false
 
 -- Top bar
 theme.wibar_height = dpi(22)
-theme.wibar_bg = theme.xbackground
+theme.wibar_bg = theme.grey_dark .. "ff"
 theme.wibar_border_radius = dpi(0)
+theme.wibar_position = "top"
 
 -- Edge snap
 theme.snap_bg = theme.bg_focus
@@ -95,7 +123,7 @@ theme.tagnames = {" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10 "}
 theme.taglist_text_occupied = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
 theme.taglist_text_focused = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
 theme.taglist_text_urgent = {"","","ﲵ","ﱘ","","","","","","ﮊ"}
-theme.taglist_text_empty = {"","","","","","","","","",""}
+theme.taglist_text_empty = {".",".",".",".",".",".",".",".",".","."}
 
 -- different color on each taglists
 theme.taglist_text_color_empty = { theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8 }
@@ -105,14 +133,14 @@ theme.taglist_text_color_urgent = { theme.xcolor9, theme.xcolor10, theme.xcolor1
 
 -- Text Taglist (default)
 theme.taglist_font = "RobotoMono Nerd Font Mono 12"
-theme.taglist_bg_normal = theme.xbackground
+theme.taglist_bg_normal = theme.grey
 theme.taglist_fg_focus = "#565b5e"
-theme.taglist_bg_focus = theme.xbackground
-theme.taglist_bg_occupied = theme.xbackground
+theme.taglist_bg_focus = theme.grey_light
+theme.taglist_bg_occupied = theme.grey
 theme.taglist_fg_occupied = "#434e4a"
-theme.taglist_bg_empty = theme.xbackground
+theme.taglist_bg_empty = theme.grey_dark
 theme.taglist_fg_empty = "#192429"
-theme.taglist_bg_urgent = theme.xbackground
+theme.taglist_bg_urgent = theme.grey_light
 theme.taglist_fg_urgent = "#3e3433"
 theme.taglist_disable_icon = true
 theme.taglist_spacing = dpi(0)
@@ -171,53 +199,61 @@ theme.icon_theme = nil
 
 -- {{{ WIDGET
 
+-- popup 
+theme.widget_popup_padding = dpi(3)
+
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
 theme.widget_text_font = "RobotoMono Nerd Font 8"
 
 -- Hostname
-theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
+theme.widget_hostname_text_icon = '<span foreground="'..theme.fg_primary..'">  </span>'
 
 -- Tor
-theme.widget_tor_icon = "﨩"
-theme.widget_tor_fg_enable = "#434f4a"
-theme.widget_tor_fg_disable = "#8a4e4a"
-theme.widget_tor_bg = "#202724"
+theme.widget_tor_icon = " 﨩 "
+theme.widget_tor_fg_enable = theme.fg_primary
+theme.widget_tor_fg_disable = theme.fg_alert
+theme.widget_tor_bg = theme.grey
+theme.widget_tor_on = widget_icon_path .. "toron.png"
+theme.widget_tor_off = widget_icon_path .. "toroff.png"
+theme.widget_tor_start = widget_icon_path .. "torstart.png"
+theme.widget_tor_stop = widget_icon_path .. "torstop.png"
+theme.widget_tor_restart = widget_icon_path .. "torrestart.png"
 
 -- Mini ncmpcpp player
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
-theme.widget_ncmpcpp_prev = '<span foreground="#334932"> &lt; </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="#334932">  </span>'
-theme.widget_ncmpcpp_next = '<span foreground="#334932"> &gt; </span>'
+theme.widget_ncmpcpp_prev = '<span foreground="'..theme.alert..'"> &lt; </span>'
+theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.alert..'">  </span>'
+theme.widget_ncmpcpp_next = '<span foreground="'..theme.alert..'"> &gt; </span>'
 
 -- Mails
 theme.widget_email_read_icon = ""
 theme.widget_email_unread_icon = ""
-theme.widget_email_fg_read = "#888888"
-theme.widget_email_fg_unread = "#666666"
-theme.widget_email_bg = "#323d38"
+theme.widget_email_fg_read = theme.fg_grey
+theme.widget_email_fg_unread = theme.fg_alert
+theme.widget_email_bg = theme.grey_light
 
 -- Network
 theme.widget_network_icon = ""
-theme.widget_network_fg = "#878787"
-theme.widget_network_fg_error = "#aa6644"
-theme.widget_network_bg = "#29322e"
+theme.widget_network_fg = theme.fg_grey
+theme.widget_network_fg_error = theme.fg_alert
+theme.widget_network_bg = theme.grey_light
 
 -- Wifi str
-theme.widget_wifi_str_fg = "#878787"
-theme.widget_wifi_str_bg = "#202724"
+theme.widget_wifi_str_fg = theme.fg_primary
+theme.widget_wifi_str_bg = theme.primary_dark
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = "#898989"
-theme.widget_ram_bg = "#202724"
+theme.widget_ram_fg = theme.fg_grey
+theme.widget_ram_bg = theme.grey
 
 -- Battery
 theme.widget_battery_icon_discharging = ""
 theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
-theme.widget_battery_fg = "#898989"
-theme.widget_battery_bg = "#29322e"
+theme.widget_battery_fg = theme.fg_primary
+theme.widget_battery_bg = theme.primary_dark
 
 -- mpc
 theme.widget_mpc_prev_icon = ""
@@ -225,24 +261,34 @@ theme.widget_mpc_pause_icon = ""
 theme.widget_mpc_play_icon = ""
 theme.widget_mpc_stop_icon = ""
 theme.widget_mpc_next_icon = ""
-theme.widget_mpc_fg = "#aaaaaa"
-theme.widget_mpc_bg = "#29322e"
+theme.widget_mpc_fg = theme.primary
+theme.widget_mpc_bg = theme.grey
 
 -- volume
 theme.widget_volume_icon = ""
-theme.widget_volume_fg = "#878787"
-theme.widget_volume_bg = "#202724"
+theme.widget_volume_fg = theme.fg_grey
+theme.widget_volume_bg = theme.grey_light
 
 -- Date
 theme.widget_date_icon = ""
-theme.widget_date_fg = "#898989"
-theme.widget_date_bg = "#202724"
+theme.widget_date_fg = theme.fg_grey
+theme.widget_date_bg = theme.grey
 
 -- mpc time
 theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
-theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
+theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
+
+-- change theme
+theme.widget_change_theme_icon = " 嗀"
+theme.widget_change_theme_icon_reload = " 勒 "
+theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
+theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
+theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
+theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
+theme.widget_change_theme_fg = theme.fg_grey
+theme.widget_change_theme_bg = theme.grey
 
 -- }}} End WIDGET
 

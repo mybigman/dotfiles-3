@@ -22,7 +22,7 @@ local icon_3 = widget.base_icon()
 local icon_margin_1 = widget.icon(icon_1)
 local icon_margin_2 = widget.icon(icon_2) 
 local icon_margin_3 = widget.icon(icon_3)
-mpc_widget = widget.box(l, icon_margin_1, icon_margin_2, icon_margin_3)
+local mpc_widget = widget.box(l, icon_margin_1, icon_margin_2, icon_margin_3)
 
 local status
 local GET_MPD_CMD = "mpc status" 
@@ -89,3 +89,5 @@ icon_3:connect_signal("button::press", function(_, _, _, button)
     end
   end -- left click
 end)
+
+return mpc_widget

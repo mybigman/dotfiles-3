@@ -30,6 +30,8 @@ local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
 local my_mail = widget.bg(mail_bg, mail)
 
+local change_theme = require("widgets.button_change_theme")
+
 --local ram = require("widgets.ram")
 --local ram_bg = beautiful.widget_ram_bg
 --local my_ram = ram_widget
@@ -170,6 +172,7 @@ s.mywibox:setup {
     mpc,
     tor,
     my_mail,
+    change_theme,
     layout = wibox.layout.fixed.horizontal
   },
   {

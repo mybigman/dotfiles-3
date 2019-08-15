@@ -307,6 +307,17 @@ theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
 
+-- Change theme
+theme.widget_change_theme_icon = " 嗀"
+theme.widget_change_theme_icon_reload = " 勒 "
+theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
+theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
+theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
+theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
+theme.widget_change_theme_layout = 'vertical'
+theme.widget_change_theme_fg = theme.fg_grey
+theme.widget_change_theme_bg = theme.grey
+
 -- }}} End WIDGET
 
 return theme
