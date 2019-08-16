@@ -1,5 +1,4 @@
 colorscheme darkest-space
-let g:lightline = {
-  \ 'colorscheme': 'Anonymous',
-  \ 'separator': { 'left': '', 'right': '' },
-  \ }
+
+" update colorscheme with F8
+map <F8> :update<CR>:colorscheme darkest-space<CR>
