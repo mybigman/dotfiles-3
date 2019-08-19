@@ -84,7 +84,7 @@ theme.titlebars_imitate_borders = false
 
 -- Top bar
 theme.wibar_height = dpi(42)
-theme.wibar_width = screen_width - dpi(99)
+theme.wibar_width = screen_width - dpi(126)
 
 theme.wibar_bg = theme.xbackground .. "00"
 theme.wibar_border_radius = dpi(0)
@@ -197,7 +197,7 @@ theme.icon_theme = nil
 -- {{{ Tasklist
 
 theme.tasklist_disable_task_name = false
-theme.tasklist_disable_icon = true 
+theme.tasklist_disable_icon = true
 theme.tasklist_shape = function(cr, width, height) gears.shape.transform(gears.shape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
 theme.tasklist_shape_border_width = 2
 theme.tasklist_shape_border_color = "#8a0050"

@@ -9,7 +9,7 @@ local widget = require('util.widgets')
 
 -- widgets load
 local hostname = require("widgets.hostname")
-local text_taglist = require("widgets.mini_taglist")
+local text_taglist = require("taglists.connected")
 local scrot = require("widgets.scrot")
 local pad = separators.pad
 local arrow = separators.arrow_left

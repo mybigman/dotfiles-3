@@ -14,7 +14,7 @@ local tor = require("widgets.button_tor")
 local scrot = require("widgets.scrot")
 local wifi_str = require("widgets.wifi_str")
 local pad = separators.pad
-local tagslist = require("widgets.icon_taglist")
+local tagslist = require("taglists.anonymous")
 
 -- {{{ Redefine widgets with a background
 
