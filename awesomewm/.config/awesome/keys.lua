@@ -120,6 +120,10 @@ keys.globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
     awful.key({ modkey,           }, "Escape", function() exit_screen_show() end,
         {description = "exit", group = "awesome"}),
+    awful.key({ modkey }, "F4", function()
+      sidebar.visible = not sidebar.visible 
+    end,
+      {description = "show or toggle sidebar", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
