@@ -92,6 +92,19 @@ pcm.ain {
 }
 
 # --------------------------
+# Pulseaudio
+# --------------------------
+# https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/PerfectSetup/
+# to test: speaker-test -D pulse -l2 -c2 -twav
+pcm.pulse {
+  type pulse
+}
+
+ctl.pulse {
+  type pulse
+}
+
+# --------------------------
 # Downmix 
 # --------------------------
 
@@ -214,10 +227,12 @@ pcm.headphones {
 # --------------------------
 
 # speaker-test -D default -l2 -c2 -twav
-pcm.!default {
-  type plug
-  slave.pcm "softvol"
-}
+#pcm.default {
+  #type plug
+  #slave.pcm "softvol"
+#}
+pcm.default pulse
+ctl.default pulse
 
 # speaker-test -D surround20 -l1 -c2 -twav
 pcm.!surround20 {

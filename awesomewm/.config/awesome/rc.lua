@@ -26,6 +26,9 @@ local env = require("env-config")
 local smartBorders = require("util.smart-borders")
 local double_border = beautiful.double_border or false
 
+-- Start daemons
+require("daemons")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
