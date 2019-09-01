@@ -1,5 +1,5 @@
 local awful = require("awful")
-local gears = require("gears")
+local gtable = require("gears.table")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local helpers = require("helpers")
@@ -16,7 +16,7 @@ local titlebars = {}
 awful.titlebar.enable_tooltip = false
 
 -- buttons for the titlebar
-titlebars.buttons = gears.table.join(
+titlebars.buttons = gtable.join(
   awful.button({ }, 1, function()
     local c = mouse.object_under_pointer()
     client.focus = c

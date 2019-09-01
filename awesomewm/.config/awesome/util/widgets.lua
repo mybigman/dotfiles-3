@@ -51,33 +51,24 @@ function widgets.text(w)
   }
 end
 
-function widgets.box(l, w1, w2, w3)
-  local widget
-  local _layout
+function widgets.box(l, widgets)
+  local _layout, w
+
   if ( l ~= nil and l == "vertical" ) then
     _layout = wibox.layout.fixed.vertical
   else
     _layout = wibox.layout.fixed.horizontal
   end
 
-  if ( w3 ~= nil ) then
-    widget = wibox.widget {
-      w1, w2, w3,
-      layout = _layout
-    }
-  elseif ( w2 ~= nil ) then
-    widget = wibox.widget {
-      w1, w2,
-      layout = _layout
-    }
-  else
-    widget = wibox.widget {
-      w1,
-      layout = _layout
-    }
+  w = wibox.widget {
+    layout = _layout
+  }
+
+  for _, widget in ipairs(widgets) do
+    w:add(widget)
   end
 
-  return widget
+  return w
 end
 
 local function icon_plus_text_size(w)

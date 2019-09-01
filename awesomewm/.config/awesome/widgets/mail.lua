@@ -34,7 +34,7 @@ local text = widget.base_text()
 local text_margin = widget.text(text)
 
 local email_widget = w_type == 'button' and icon 
-  or widget.box(l, icon_margin, text_margin)
+  or widget.box(l, { icon_margin, text_margin })
 
 local popup_title = widget.create_text("Last messages:", fg_grey, "Iosevka Term 12")
 local popup_msg = {}

@@ -19,7 +19,7 @@ local icon = widget.base_icon()
 local text = widget.base_text()
 local icon_margin = widget.icon(icon)
 local text_margin = widget.text(text)
-network_monitor_widget = widget.box(l, icon_margin, text_margin)
+network_monitor_widget = widget.box(l, { icon_margin, text_margin })
 
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/network.sh monitor", 4,

@@ -14,6 +14,7 @@ local volume_bar = require("widgets.volume-bar")
 local icon = beautiful.widget_mpc_button_icon or "  "
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
+local font_button = beautiful.widget_icon_font_button or 'Iosevka Term 16'
 
 -- for the popup
 local fg_p = beautiful.fg_grey or "#aaaaaa"
@@ -21,7 +22,7 @@ local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
-local text = widget.for_one_icon(fg, bg, icon, "Iosevka Term 16")
+local text = widget.for_one_icon(fg, bg, icon, font_button)
 local popup_time = widget.base_text()
 
 local function update_widget(volume)

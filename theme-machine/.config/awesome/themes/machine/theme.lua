@@ -43,6 +43,7 @@ theme.taglist_font = "SpaceMono Nerd Font Bold 10"
 theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
 theme.widget_text_font = "SpaceMono Nerd Font Regular 8"
 theme.widget_font = 'SpaceMono Nerd Font Mono 15'
+theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 10"
 
 theme.bg_normal     = theme.xbackground
 theme.bg_focus      = theme.xcolor0
@@ -51,8 +52,8 @@ theme.bg_focus      = theme.xcolor0
 --theme.bg_systray    = theme.xbackground
 
 -- Material theme
-theme.grey_dark = "#050a13"
-theme.grey = theme.xbackground
+theme.grey_dark = theme.xbackground
+theme.grey = theme.xcolor0
 theme.grey_light = theme.xcolor8
 
 theme.primary_dark = theme.xcolor6 -- cyan D
@@ -92,29 +93,28 @@ theme.border_radius = dpi(11)
 theme.general_padding = { left = 3, right = 3, top = 9, bottom = 3 }
 
 -- smart border
-theme.double_border = true
+theme.double_border = false
 theme.double_border_normal = theme.primary
 theme.double_border_focus = theme.alert_dark
 
 -- {{{ TITLEBAR 
 
 theme.titlebar_fg_normal = theme.fg_primary
-theme.titlebar_bg_normal = theme.grey_dark
+theme.titlebar_bg_normal = theme.grey
 theme.titlebar_fg_focus = theme.fg_primary_focus
-theme.titlebar_bg_focus = theme.grey_dark
+theme.titlebar_bg_focus = theme.grey_light
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = true 
 theme.titlebars_imitate_borders_size = 2
-theme.titlebar_size = 25
-
+theme.titlebar_size = 20
 -- }}} End TITLEBAR
 
 -- Top bar
 theme.wibar_height = dpi(42)
 theme.wibar_bg = theme.grey_dark .. "ff"
 theme.wibar_border_radius = dpi(0)
-theme.wibar_position = "top"
+theme.wibar_position = "left"
 
 -- Edge snap
 theme.snap_bg = theme.bg_focus
@@ -165,27 +165,15 @@ for i = 1, theme.ntags do
 end
 
 -- different color on each taglists
-theme.taglist_text_color_empty = { theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8, theme.xcolor8 }
-theme.taglist_text_color_occupied = { theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4, theme.xcolor5, theme.xcolor6, theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4 }
-theme.taglist_text_color_focused = { theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4, theme.xcolor5, theme.xcolor6, theme.xcolor1, theme.xcolor2, theme.xcolor3, theme.xcolor4 }
-theme.taglist_text_color_urgent = { theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12, theme.xcolor13, theme.xcolor14, theme.xcolor9, theme.xcolor10, theme.xcolor11, theme.xcolor12 }
+theme.taglist_text_color_empty = { theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark, theme.grey_dark }
 
--- Text Taglist (default)
-theme.taglist_bg_normal = theme.grey
-theme.taglist_fg_focus = "#565b5e"
-theme.taglist_bg_focus = theme.grey_light
-theme.taglist_bg_occupied = theme.grey
-theme.taglist_fg_occupied = "#434e4a"
-theme.taglist_bg_empty = theme.grey_dark
-theme.taglist_fg_empty = "#192429"
-theme.taglist_bg_urgent = theme.grey_light
-theme.taglist_fg_urgent = "#3e3433"
-theme.taglist_disable_icon = true
-theme.taglist_spacing = dpi(1)
-theme.taglist_item_roundness = dpi(5)
-theme.taglist_layout = wibox.layout.fixed.horizontal -- horizontal or vertical
+theme.taglist_text_color_occupied = { theme.xcolor0, theme.xcolor2, theme.xcolor4, theme.xcolor0, theme.xcolor2, theme.xcolor4, theme.xcolor0, theme.xcolor2, theme.xcolor4, theme.xcolor0 }
 
-theme.taglist_squares = "false"
+theme.taglist_text_color_focused = { theme.xcolor8, theme.xcolor14, theme.xcolor13, theme.xcolor8, theme.xcolor14, theme.xcolor13, theme.xcolor8, theme.xcolor14, theme.xcolor13, theme.xcolor8 }
+
+theme.taglist_text_color_urgent = { theme.xcolor1, theme.xcolor9, theme.xcolor3, theme.xcolor1, theme.xcolor9, theme.xcolor3, theme.xcolor1, theme.xcolor9, theme.xcolor3, theme.xcolor1 }
+
+theme.taglist_layout = wibox.layout.fixed.vertical -- horizontal or vertical
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(0)
@@ -306,7 +294,7 @@ theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 -- volume
 theme.widget_volume_icon = ""
 theme.widget_volume_fg = theme.fg_secondary
-theme.widget_volume_bg = "#47534e"
+theme.widget_volume_bg = theme.grey_dark
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
 
 -- Date
@@ -328,6 +316,7 @@ theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png
 theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
 theme.widget_change_theme_bg = theme.grey_dark
 theme.widget_change_theme_fg = theme.fg_grey
+theme.widget_change_theme_layout = "vertical"
 
 -- Button mpc
 theme.widget_mpc_button_icon = "    "

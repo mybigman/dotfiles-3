@@ -18,7 +18,7 @@ local icon = widget.base_icon()
 local text = widget.base_text()
 local icon_margin = widget.icon(icon)
 local text_margin = widget.text(text)
-battery_widget = widget.box(l, icon_margin, text_margin)
+battery_widget = widget.box(l, { icon_margin, text_margin })
 
 local function update_widget(name, state, value)
   if (name == "AC") then

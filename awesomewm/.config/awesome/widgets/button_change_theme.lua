@@ -22,7 +22,7 @@ local padding = beautiful.widget_popup_padding or 1
 -- widget creation
 local text = widget.for_one_icon(fg, bg, icon, "Iosevka Term 16")
 local rld = widget.for_one_icon(fg, bg, icon_reload, "Iosevka Term 16")
-local wi = widget.box(l, text, rld)
+local wi = widget.box(l, { text, rld })
 
 local popup_title = widget.create_text("Change theme", fg, beautiful.widget_text_font)
 

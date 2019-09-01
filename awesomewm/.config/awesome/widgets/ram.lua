@@ -15,7 +15,7 @@ local icon = widget.base_icon()
 local text = widget.base_text()
 local icon_margin = widget.icon(icon)
 local text_margin = widget.text(text)
-ram_widget = widget.box(l, icon_margin, text_margin)
+ram_widget = widget.box(l, { icon_margin, text_margin })
 
 local function update_widget(used_ram_percentage)
   icon.markup = helpers.colorize_text(ram_icon, fg)

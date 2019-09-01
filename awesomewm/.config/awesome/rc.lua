@@ -17,9 +17,15 @@ require("awful.hotkeys_popup.keys")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 local theme = require("loaded-theme")
+naughty.notify({ text = "theme "..theme.name.." is loaded" })
 
 -- Custom stuff
-local titlebars = require("titlebars")
+if theme.name == "machine" then
+  local titlebars = require("titlebars.minimal")
+else
+  local titlebars = require("titlebars.generic")
+end
+
 local keys = require("keys")
 local helpers = require("helpers")
 local env = require("env-config")

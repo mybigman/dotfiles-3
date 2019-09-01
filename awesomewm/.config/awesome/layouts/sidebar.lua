@@ -3,6 +3,8 @@ local awful = require("awful")
 local gtable = require("gears.table")
 local widget = require("util.widgets")
 local separator = require("util.separators")
+local beautiful = require("beautiful")
+local dpi = require("beautiful").xresources.apply_dpi
 
 -- beautiful var
 local font = "sans 16"
@@ -26,10 +28,11 @@ end)
 
 -- sidebar creation
 sidebar = wibox({ visible = false, ontop = true, type = "dock" })
-sidebar.bg = "#00000022"
-sidebar.width = 300
-sidebar.height = awful.screen.focused().geometry.height - 120
-awful.placement.right(sidebar)
+sidebar.bg = beautiful.grey
+sidebar.width = dpi(250)
+sidebar.height = awful.screen.focused().geometry.height
+sidebar.x = dpi(30)
+--awful.placement.left(sidebar)
 
 -- a middle click to hide the sidebar
 sidebar:buttons(gtable.join(

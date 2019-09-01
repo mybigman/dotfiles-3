@@ -22,7 +22,7 @@ end
 
 local poweroff_icon = widgets.create_text("⭘", "#7d4c73", font_icon)
 local poweroff_text = widgets.create_text("Poweroff", "#aaaaaa", font_text)
-local poweroff = widgets.box("vertical", poweroff_icon, poweroff_text)
+local poweroff = widgets.box("vertical", { poweroff_icon, poweroff_text })
 poweroff:buttons(gears.table.join(
   awful.button({ }, 1, function() 
     poweroff_command()
@@ -37,7 +37,7 @@ end
 
 local exit_icon = widgets.create_text("ﴙ", "#6f5485", font_icon_2)
 local exit_text = widgets.create_text("Exit", "#aaaaaa", font_text)
-local exit = widgets.box("vertical", exit_icon, exit_text)
+local exit = widgets.box("vertical", { exit_icon, exit_text })
 exit:buttons(gears.table.join(
   awful.button({ }, 1, function() 
     exit_command()
@@ -53,7 +53,7 @@ end
 
 local lock_icon = widgets.create_text("", "#42446e", font_icon)
 local lock_text = widgets.create_text("Lock", "#aaaaaa", font_text)
-local lock = widgets.box("vertical", lock_icon, lock_text)
+local lock = widgets.box("vertical", { lock_icon, lock_text })
 lock:buttons(gears.table.join(
   awful.button({ }, 1, function() 
     lock_command()

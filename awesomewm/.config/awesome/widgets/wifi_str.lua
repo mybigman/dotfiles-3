@@ -13,7 +13,7 @@ local l = beautiful.widget_wifi_layout or 'horizontal'
 -- widget creation
 local text = widget.base_text()
 local text_margin = widget.text(text)
-wifi_str_widget = widget.box(l, text_margin)
+wifi_str_widget = widget.box(l, { text_margin })
 
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/network.sh wifi", 60,
