@@ -18,7 +18,7 @@ local bar = wibox.widget {
   widget = wibox.widget.progressbar
 }
 
-awesome.connect_signal("daemon::volume", function(volume, is_muted, index)
+awesome.connect_signal("daemon::volume", function(volume, is_muted)
   bar.value = volume
 end)
 

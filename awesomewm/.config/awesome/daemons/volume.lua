@@ -1,5 +1,5 @@
 -- return a signal named: daemon::volume
--- with args: volume, is_muted, index_default_card
+-- with args: volume, is_muted
 local aspawn = require("awful.spawn")
 local naughty = require("naughty")
 
@@ -7,12 +7,12 @@ local function emit_volume_info()
   aspawn.easy_async("pacmd list-sinks", function(stdout)
     local volume = stdout:match('(%d+)%%') or nil
     local is_muted = stdout:match('muted:%s+yes') and true or false
-    local index_card = stdout:match('%*%s*index:%s+(%d+)') or nil
+    --local index_card = stdout:match('*%s+index:%s+(%d+)') or nil
 
-    if volume ~= nil and index_card ~= nil then
-      awesome.emit_signal("daemon::volume", tonumber(volume), is_muted, index_card)
+    if volume ~= nil then
+      awesome.emit_signal("daemon::volume", tonumber(volume), is_muted)
     else
-      naughty.notify({ title = "Warning!", text = "Can't find volume or your default card" })
+      naughty.notify({ title = "Warning!", text = "Can't find volume: "..volume })
     end
   end
   )

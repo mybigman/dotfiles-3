@@ -23,7 +23,7 @@ local function print_volume(volume, fg)
   text.markup = helpers.colorize_text(volume..'%', fg)
 end
 
-awesome.connect_signal("daemon::volume", function(volume, is_muted, index)
+awesome.connect_signal("daemon::volume", function(volume, is_muted)
   if is_muted then
     print_volume(volume, fg_err)
   else

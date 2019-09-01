@@ -187,11 +187,15 @@ keys.globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() awful.spawn.with_shell("launcher") end,
               {description = "rofi launcher", group = "launcher"}),
 
-    -- Music Control
-    awful.key({ altkey, "Control" }, "Up", function() awful.spawn.with_shell("volume.sh -i 1") end,
-              {description = "increase volume", group = "music"}),
-    awful.key({ altkey, "Control" }, "Down", function() awful.spawn.with_shell("volume.sh -d 1") end,
-              {description = "lower volume", group = "music"}),
+    -- Music Control (volume)
+    awful.key({ altkey, "Control" }, "Up", function() 
+      awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +1%")
+    end, {description = "increase volume", group = "music"}),
+    awful.key({ altkey, "Control" }, "Down", function() 
+      awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -1%")
+    end, {description = "Lower volume", group = "music"}),
+
+    -- Music Control (mpc)
     awful.key({ altkey, "Control" }, "Right", function() awful.spawn.with_shell("mpc next") end,
               {description = "music next", group = "music"}),
     awful.key({ altkey, "Control" }, "Left", function() awful.spawn.with_shell("mpc prev") end,
