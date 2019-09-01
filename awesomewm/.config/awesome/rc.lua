@@ -25,6 +25,10 @@ local helpers = require("helpers")
 local env = require("env-config")
 local smartBorders = require("util.smart-borders")
 local double_border = beautiful.double_border or false
+local sidebar = require("layouts.sidebar")
+
+-- Start daemons
+require("daemons")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
