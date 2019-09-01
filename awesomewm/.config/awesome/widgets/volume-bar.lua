@@ -18,13 +18,8 @@ local bar = wibox.widget {
   widget = wibox.widget.progressbar
 }
 
-awful.widget.watch(
-  -- you can change <Pro> with your card name if non detected
-  os.getenv("HOME").."/.config/awesome/widgets/audio.sh volume Pro", 4,
-  function(widget, stdout, stderr, exitreason, exitcode)
-    local volume = stdout:match('%w+:%s?(%d+)') or 0
-    bar.value = tonumber(volume)
-  end
-)
+awesome.connect_signal("daemon::volume", function(volume, is_muted, index)
+  bar.value = volume
+end)
 
 return bar
