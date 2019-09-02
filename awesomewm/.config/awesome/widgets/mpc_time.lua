@@ -7,7 +7,7 @@ local helpers = require("helpers")
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
-local volume_bar = require("widgets.volume-bar")
+local volume_bar = require("widgets.volume-slider")
 
 -- beautiful vars
 local fg = beautiful.widget_volume_fg

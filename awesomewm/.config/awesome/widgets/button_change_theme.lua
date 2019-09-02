@@ -20,8 +20,8 @@ local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
-local text = widget.for_one_icon(fg, bg, icon, "Iosevka Term 16")
-local rld = widget.for_one_icon(fg, bg, icon_reload, "Iosevka Term 16")
+local text = widget.create_button(fg, icon)
+local rld = widget.create_button(fg, icon_reload)
 local wi = widget.box(l, { text, rld })
 
 local popup_title = widget.create_text("Change theme", fg, beautiful.widget_text_font)
@@ -38,12 +38,8 @@ popup_battleship.image = beautiful.widget_change_theme_battleship
 local popup_tower = widget.image_popup()
 popup_tower.image = beautiful.widget_change_theme_tower
 
-local w_position -- the postion of the popup depend of the wibar
-if beautiful.wibar_position == 'top' then
-  w_position = 'bottom' 
-else 
-  w_position = 'top'
-end
+local w_position -- the position of the popup depend of the wibar
+w_position = widget.check_popup_position(beautiful.wibar_position)
 
 local w = awful.popup {
   widget = {

@@ -16,6 +16,7 @@ local icon = beautiful.widget_mpc_button_icon or "  "
 local fg = beautiful.widget_volume_fg
 local bg = beautiful.widget_volume_bg
 local font_button = beautiful.widget_icon_font_button or 'Iosevka Term 16'
+local l = beautiful.widget_button_music_layout or 'horizontal'
 
 -- for the popup
 local fg_p = beautiful.fg_grey or "#aaaaaa"
@@ -23,7 +24,9 @@ local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
-local text = widget.for_one_icon(fg, bg, icon, font_button)
+local text = widget.create_button(fg, icon)
+local wi = widget.box(l, { text })
+
 local popup_time = widget.base_text()
 
 local function update_widget(volume)
@@ -44,11 +47,7 @@ local popup_artist = widget.base_text()
 local popup_percbar = widget.base_text()
 
 local w_position -- the postion of the popup depend of the wibar
-if beautiful.wibar_position == 'top' then
-  w_position = 'bottom' 
-else 
-  w_position = 'top'
-end
+w_position = widget.check_popup_position(beautiful.wibar_position)
 
 local w = awful.popup {
   widget = {
@@ -141,4 +140,4 @@ end
 
 update_popup()
 
-return text
+return wi

@@ -36,7 +36,6 @@ local volume = require("widgets.volume")
 local my_volume = widget.bg( g2, volume_widget )
 
 local change_theme = require("widgets.button_change_theme")
-local my_change_theme = widget.bg( g1, change_theme )
 
 local ram = require("widgets.ram")
 local my_ram = widget.bg( g1, ram_widget )
@@ -83,7 +82,7 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- Right widgets
       mpc,
-      my_change_theme,
+      change_theme,
       s.mylayoutbox,
       scrot,
       --s.mylayoutbox,

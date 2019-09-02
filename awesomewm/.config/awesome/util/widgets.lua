@@ -160,6 +160,14 @@ function widgets.border_bottom(w, colour)
   }
 end
 
+function widgets.create_button(fg, icon, fg_hover)
+  local font = beautiful.widget_icon_font_button or 'Iosevka Term 16'
+  local w = widgets.create_text(icon, fg, font)
+  w.align = 'left'
+  w.valign = 'center'
+  return w
+end
+
 function widgets.for_one_icon(fg, bg, icon, font)
   local w = widgets.create_text(icon, fg, font)
   return wibox.widget {
@@ -261,6 +269,20 @@ function widgets.add_icon_to_slider(slider, icon, fg_icon, layout)
   local ic = widgets.base_icon()
   ic.markup = helpers.colorize_text(icon, fg_icon)
   return widgets.box(layout, { ic, pad, slider })
+end
+
+-- check popup position
+function widgets.check_popup_position(wibar_position)
+  local wpos = wibar_position or 'top'
+  local position = 'top' -- default is top
+  if wpos == 'top' then
+    position = 'bottom' 
+  elseif wpos == 'left' then
+    position = 'right'
+  elseif wpos == 'right' then
+    position = 'left'
+  end
+  return position
 end
 
 return widgets

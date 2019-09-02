@@ -42,6 +42,12 @@ theme.xcolor13    = xrdb.color13    or "#825ECE"
 theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
+-- minimal material colors dependencie
+theme.fg_grey = theme.xcolor11
+theme.primary = theme.xcolor6
+theme.secondary = theme.xcolor5
+theme.alert = theme.xcolor9
+
 --theme.font          = "sans 8"
 theme.font          = "RobotoMono Nerd Font 8"
 

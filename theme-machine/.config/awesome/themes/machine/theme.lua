@@ -43,7 +43,7 @@ theme.taglist_font = "SpaceMono Nerd Font Bold 10"
 theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
 theme.widget_text_font = "SpaceMono Nerd Font Regular 8"
 theme.widget_font = 'SpaceMono Nerd Font Mono 15'
-theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 10"
+theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 16"
 theme.widget_title_font = "SpaceMono Nerd Font Bold 10"
 
 theme.bg_normal     = theme.xbackground
@@ -309,6 +309,9 @@ theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
 theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
+
+-- button music
+theme.widget_button_music_layout = 'horizontal'
 
 -- Change theme
 theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"

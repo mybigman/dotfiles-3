@@ -4,7 +4,7 @@ file=".config/awesome/loaded-theme.lua"
 dotsdir="$(file $file | awk '{print $5}')"
 debug=false
 
-awesomeThemes="connected tower anonymous battleship"
+awesomeThemes="connected tower anonymous battleship machine"
 oldTheme=""
 oldPath=""
 dotfiles_dir=""

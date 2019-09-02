@@ -32,17 +32,15 @@ keys.globalkeys = gears.table.join(
         {description = "go back", group = "tag"}),
 
     -- {{{ Focus by direction
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.bydirection("down")
-        end,
-        {description = "focus down", group = "client"}
+    awful.key({ modkey,           }, "j", function()
+      awful.client.focus.byidx(-1)
+    end,
+      { description = "focus down", group = "client" }
     ),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.bydirection("up")
-        end,
-        {description = "focus up", group = "client"}
+    awful.key({ modkey,           }, "k", function()
+      awful.client.focus.byidx(1)
+    end,
+      { description = "focus up", group = "client" }
     ),
     awful.key({ modkey,           }, "h",
         function ()
