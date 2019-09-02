@@ -1,10 +1,12 @@
 local wibox = require("wibox")
 local awful = require("awful")
 local gtable = require("gears.table")
+local gshape = require("gears.shape")
 local widget = require("util.widgets")
 local separator = require("util.separators")
 local beautiful = require("beautiful")
 local dpi = require("beautiful").xresources.apply_dpi
+local helpers = require("helpers")
 
 -- beautiful var
 local font = "sans 16"
@@ -12,13 +14,17 @@ local fg = "#ffffff"
 local bg = "#651030"
 local l = "horizontal"
 
-local pad = separator.pad(1)
+local pad = separator.pad(2)
 
--- add title
+-- Settings title
+local settings_title = widget.create_title('Settings', beautiful.fg_grey)
+
+-- volume slider
+local vol = require("widgets.volume-slider")
 
 -- add exit menu
 local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
-local exit = widget.box(l, exit_icon)
+local exit = widget.box(l, { exit_icon })
 exit:buttons(gtable.join(
 awful.button({ }, 1, function ()
   exit_screen_show()
@@ -31,7 +37,7 @@ sidebar = wibox({ visible = false, ontop = true, type = "dock" })
 sidebar.bg = beautiful.grey
 sidebar.width = dpi(250)
 sidebar.height = awful.screen.focused().geometry.height
-sidebar.x = dpi(30)
+sidebar.x = beautiful.wibar_size
 --awful.placement.left(sidebar)
 
 -- a middle click to hide the sidebar
@@ -43,25 +49,42 @@ sidebar:buttons(gtable.join(
 
 -- setup
 sidebar:setup {
-  { -- top
-    layout = wibox.layout.align.horizontal
+  {
+    layout = wibox.layout.fixed.vertical
   },
-  { -- middle
-    layout = wibox.layout.align.horizontal
+  { -- center
+    { 
+      align = "left",
+      { 
+        pad,
+        settings_title,
+        layout = wibox.layout.align.horizontal
+      },
+      layout = wibox.layout.align.horizontal
+    },
+    {
+      {
+        pad,
+        vol,
+        pad,
+        layout = wibox.layout.align.horizontal
+      },
+      --expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    layout = wibox.layout.fixed.vertical
   },
   { -- bottom
     {
       nil,
-      {
-        exit,
-        layout = wibox.layout.align.horizontal,
-      },
+      exit,
       nil,
       layout = wibox.layout.align.horizontal,
       expand = "none"
     },
     pad,
-    layout = wibox.layout.align.vertical
+    layout = wibox.layout.fixed.vertical
   },
+  expand = "none",
   layout = wibox.layout.align.vertical
 }

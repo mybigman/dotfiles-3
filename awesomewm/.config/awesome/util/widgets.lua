@@ -6,6 +6,8 @@ local gtable = require("gears.table")
 local awful = require("awful")
 local env = require("env-config")
 local naughty = require("naughty")
+local separator = require("util.separators")
+local dpi = require("beautiful").xresources.apply_dpi
 
 local widgets = {}
 
@@ -32,6 +34,13 @@ end
 function widgets.base_text()
   local font = beautiful.widget_text_font or "Iosevka Term Regular 9" 
   return widgets.create_base_text(font)
+end
+
+function widgets.create_title(text, fg)
+  local font = beautiful.widget_title_font or "Iosevka Term Bold 10" 
+  local w = widgets.create_base_text(font)
+  w.markup = helpers.colorize_text(text, fg)
+  return w
 end
 
 function widgets.icon(w)
@@ -227,6 +236,31 @@ function widgets.image_popup()
     forced_width = 83,
     widget = wibox.widget.imagebox
   }
+end
+
+-- Create a slider
+function widgets.make_a_slider(default_value)
+  local v = default_value or 15
+  return wibox.widget {
+    forced_height = dpi(8),
+    bar_shape = gshape.rounded_rect,
+    bar_height = dpi(5),
+    bar_color = beautiful.primary,
+    handle_color = beautiful.alert,
+    handle_shape = gshape.circle,
+    handle_border_color = '#00000012',
+    handle_border_width = dpi(3),
+    value = v,
+    widget = wibox.widget.slider
+  }
+end
+
+-- add icon, padding and layout to a slider
+function widgets.add_icon_to_slider(slider, icon, fg_icon, layout)
+  local pad = separator.pad(2)
+  local ic = widgets.base_icon()
+  ic.markup = helpers.colorize_text(icon, fg_icon)
+  return widgets.box(layout, { ic, pad, slider })
 end
 
 return widgets

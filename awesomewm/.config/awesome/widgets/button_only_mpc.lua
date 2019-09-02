@@ -8,7 +8,8 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
-local volume_bar = require("widgets.volume-bar")
+local volume_bar = require("widgets.volume-slider")
+volume_bar.forced_width = dpi(40) -- set a max width
 
 -- beautiful vars
 local icon = beautiful.widget_mpc_button_icon or "  "

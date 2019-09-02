@@ -7,7 +7,7 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
-local gears = require("gears")
+local gshape = require("gears.shape")
 local themes_path = gfs.get_themes_dir()
 local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/layouts/"
 local widget_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/widgets/"
@@ -44,10 +44,11 @@ theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
 theme.widget_text_font = "SpaceMono Nerd Font Regular 8"
 theme.widget_font = 'SpaceMono Nerd Font Mono 15'
 theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 10"
+theme.widget_title_font = "SpaceMono Nerd Font Bold 10"
 
 theme.bg_normal     = theme.xbackground
 theme.bg_focus      = theme.xcolor0
---theme.bg_urgent     = theme.xbackground
+theme.bg_urgent     = theme.alert
 --theme.bg_minimize   = "#444444"
 --theme.bg_systray    = theme.xbackground
 
@@ -107,11 +108,11 @@ theme.titlebars_enabled = true
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = true 
 theme.titlebars_imitate_borders_size = 2
-theme.titlebar_size = 20
+theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_height = dpi(42)
+theme.wibar_size = dpi(42)
 theme.wibar_bg = theme.grey_dark .. "ff"
 theme.wibar_border_radius = dpi(0)
 theme.wibar_position = "left"
@@ -134,11 +135,11 @@ theme.taglist_text_focused = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","�
 theme.taglist_text_urgent = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
 theme.taglist_text_empty = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
 
-theme.taglist_shape = gears.shape.circle
-theme.taglist_shape_empty = gears.shape.circle
-theme.taglist_shape_focus = gears.shape.circle
-theme.taglist_shape_urgent = gears.shape.circle
-theme.taglist_shape_volatile = gears.shape.circle
+theme.taglist_shape = gshape.circle
+theme.taglist_shape_empty = gshape.circle
+theme.taglist_shape_focus = gshape.circle
+theme.taglist_shape_urgent = gshape.circle
+theme.taglist_shape_volatile = gshape.circle
 theme.taglist_shape_border_width = 1
 theme.taglist_shape_border_color = "#8f1f2f"
 theme.taglist_shape_border_width_empty = 0
@@ -211,7 +212,7 @@ theme.icon_theme = nil
 
 theme.tasklist_disable_task_name = false
 theme.tasklist_disable_icon = true 
-theme.tasklist_shape = function(cr, width, height) gears.shape.transform(gears.shape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
+theme.tasklist_shape = function(cr, width, height) gshape.transform(gshape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
 theme.tasklist_shape_border_width = 2
 theme.tasklist_shape_border_color = theme.primary_dark
 theme.tasklist_shape_border_color_focus = theme.secondary_dark
