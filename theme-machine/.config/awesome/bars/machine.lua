@@ -50,6 +50,13 @@ local date = require("widgets.date")
 local my_date = widget.bg( g1, date_widget )
 
 local layoutbox = require("widgets.layout")
+
+local sidebar_arrow = widget.create_button("#daeda1", " >")
+sidebar_arrow:buttons(gtable.join(
+  awful.button({}, 1, function()
+    sidebar.visible = not sidebar.visible
+  end)
+))
 -- }}} End widget
 
 -- {{{ Wibar
@@ -66,10 +73,11 @@ awful.screen.connect_for_each_screen(function(s)
   -- Add widgets to the wibox
   s.mywibox:setup {
     { -- Left widgets
-      text_taglist,
+      sidebar_arrow,
       layout = wibox.layout.fixed.vertical
     },
     { -- More or less Middle
+      text_taglist,
       layout = wibox.layout.fixed.vertical  
     },
     { -- Right widgets
@@ -77,9 +85,10 @@ awful.screen.connect_for_each_screen(function(s)
       change_theme,
       layoutbox,
       scrot,
+      spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.vertical
     },
-    --expand = "none",
+    expand ="none",
     layout = wibox.layout.align.vertical
   }
 end)

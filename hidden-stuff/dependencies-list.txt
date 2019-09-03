@@ -1,31 +1,42 @@
 app-admin/pscircle
 app-admin/pwgen
-app-editors/vim +X
 app-misc/ranger
 app-misc/tmux
 app-shells/zsh
 app-text/zathura
 app-text/zathura-pdf-mupdf
+app-editors/vim +X
+
+# vim plugins
 app-vim/gnupg
 app-vim/lightline
 app-vim/gitgutter
 app-vim/nerdtree
 app-vim/pathogen
-dev-python/pillow +jpeg +zlib
+
 mail-client/neomutt +gpgme
 mail-mta/msmtp +mta +sasl +ssl
+
+# All fonts that i use
 media-fonts/dina
 media-fonts/material-icons
 media-fonts/nerd-font-iosevka
 media-fonts/nerd-font-roboto-mono
 media-fonts/sfmono
+
 media-gfx/feh
-media-gfx/imagemagick +jpeg +png
 media-gfx/scrot
+
+# sounds 
+media-sound/pulseaudio # for awesomewm
+media-libs/alsa-lib # for configs with polybar
+
+# musics
 media-sound/cava
 media-sound/mpc
 media-sound/mpd
 media-sound/ncmpcpp +clock +unicode +taglib
+
 media-video/ffmpeg +ladspa +network +openssl +webp +x264
 media-video/mpv
 net-irc/weechat +ssl +irc
@@ -37,18 +48,32 @@ net-misc/wget
 net-mist/youtube-dl
 net-vpn/tor +seccomp +tor-hardening
 sys-apps/firejail +seccomp +suid
-sys-power/acpilight 
 www-client/brave-bin
 x11-apps/xdpyinfo
 x11-apps/xinit
 x11-apps/xwininfo
 x11-misc/compton +pcre
-x11-misc/dunst
 x11-misc/i3lock
 x11-misc/polybar
 x11-misc/rofi
 x11-misc/xclip
-x11-terms/kitty +imagemagick
+
+# terminals
 x11-terms/xst
+x11-terms/kitty +imagemagick # for the image preview
+
+# kitty for the image preview
+dev-python/pillow +jpeg +zlib
+media-gfx/imagemagick +jpeg +png
+
+# wm that i use
 x11-wm/awesome
 x11-wm/subtle +xft
+x11-wm/i3-gaps
+
+# brightness
+dev-libs/light +udev # for awesomewm
+sys-power/acpilight # for configs with polybar
+
+# notify
+sys-fs/inotify-tools

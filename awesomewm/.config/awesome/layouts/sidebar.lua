@@ -22,6 +22,9 @@ local settings_title = widget.create_title('Settings', beautiful.fg_grey)
 -- volume slider
 local vol = require("widgets.volume-slider")
 
+-- brightness slider
+local brightness = require("widgets.brightness-slider")
+
 -- add exit menu
 local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
 local exit = widget.box(l, { exit_icon })
@@ -66,6 +69,12 @@ sidebar:setup {
       {
         pad,
         vol,
+        pad,
+        layout = wibox.layout.align.horizontal
+      },
+      {
+        pad,
+        brightness,
         pad,
         layout = wibox.layout.align.horizontal
       },

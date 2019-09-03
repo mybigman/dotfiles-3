@@ -1,4 +1,4 @@
-local gears = require("gears")
+local gtable = require("gears.table")
 local awful = require("awful")
 local helpers = require("helpers")
 local xresources = require("beautiful.xresources")
@@ -21,7 +21,7 @@ local function updateScreenPadding(nb)
 end
 
 -- {{{ Key bindings
-keys.globalkeys = gears.table.join(
+keys.globalkeys = gtable.join(
     --awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
     --          {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -215,7 +215,7 @@ keys.globalkeys = gears.table.join(
     --)
 )
 
-keys.clientkeys = gears.table.join(
+keys.clientkeys = gtable.join(
   -- Move floating client (relative)
   awful.key({ altkey, "Shift" }, "Down", function (c) c:relative_move( 0, 40, 0, 0 ) end),
   awful.key({ altkey, "Shift" }, "Up", function (c) c:relative_move( 0, -40, 0, 0 ) end),
@@ -291,7 +291,7 @@ keys.clientkeys = gears.table.join(
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
-    keys.globalkeys = gears.table.join(keys.globalkeys,
+    keys.globalkeys = gtable.join(keys.globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
@@ -337,7 +337,7 @@ for i = 1, 9 do
     )
 end
 
-keys.clientbuttons = gears.table.join(
+keys.clientbuttons = gtable.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))

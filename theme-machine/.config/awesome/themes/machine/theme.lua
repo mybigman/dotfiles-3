@@ -224,6 +224,7 @@ theme.tasklist_fg_normal = theme.xforeground
 
 -- {{{ WIDGETS
 
+theme.widget_spacing = dpi(5) -- space between each widgets
 -- popup (distance between the bar and the popup, 0 is pasted at the bar)
 theme.widget_popup_padding = dpi(3)
 

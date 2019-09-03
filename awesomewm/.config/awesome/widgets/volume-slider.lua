@@ -1,16 +1,13 @@
-local wibox = require("wibox")
 local aspawn = require("awful.spawn")
-local gshape = require("gears.shape")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
 
--- Colors
-local primary = beautiful.primary or '#ff66ff'
-local secondary = beautiful.grey_light or '#6f6fff'
+-- beautiful vars
+local fg = beautiful.widget_volume_fg or beautiful.fg_grey
 
 -- widget creation
 local volume = widget.make_a_slider(15)
-local vol = widget.add_icon_to_slider(volume, beautiful.widget_volume_icon, beautiful.fg_grey, 'horizontal')
+local vol = widget.add_icon_to_slider(volume, beautiful.widget_volume_icon, fg, 'horizontal')
 
 -- signal 
 volume:connect_signal('property::value', function()

@@ -69,10 +69,7 @@ function widgets.box(l, widgets)
     _layout = wibox.layout.fixed.horizontal
   end
 
-  w = wibox.widget {
-    layout = _layout
-  }
-
+  w = wibox.widget { layout = _layout } -- init a widget
   for _, widget in ipairs(widgets) do
     w:add(widget)
   end

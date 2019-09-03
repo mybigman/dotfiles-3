@@ -1,5 +1,5 @@
--- return a signal named: daemon::volume
--- with args: volume, is_muted
+-- Create a signal: daemon::volume
+-- return values: volume, is_muted
 local aspawn = require("awful.spawn")
 local naughty = require("naughty")
 
