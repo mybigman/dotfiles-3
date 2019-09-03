@@ -91,7 +91,7 @@ theme.border_marked = theme.grey
 theme.border_radius = dpi(11)
 
 -- general padding
-theme.general_padding = { left = 3, right = 3, top = 9, bottom = 3 }
+theme.general_padding = { left = dpi(15), right = dpi(15), top = dpi(15), bottom = dpi(15) }
 
 -- smart border
 theme.double_border = false
@@ -308,7 +308,8 @@ theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
-theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
+theme.widget_scrot_fg = theme.fg_grey
+theme.widget_scrot_icon = '  '
 
 -- button music
 theme.widget_button_music_layout = 'horizontal'

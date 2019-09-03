@@ -278,7 +278,8 @@ theme.widget_date_bg = theme.grey
 theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
-theme.widget_scrot_text_icon = '<span foreground="'..theme.fg_grey..'">  </span>'
+theme.widget_scrot_fg = theme.fg_grey
+theme.widget_scrot_icon = '  '
 
 -- change theme
 theme.widget_change_theme_icon = " 嗀"

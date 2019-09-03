@@ -1,36 +1,27 @@
-local wibox = require("wibox")
 local awful = require("awful")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
-local gears = require("gears")
+local gtable = require("gears.table")
+local widget = require('util.widgets')
 
-local font_icon = beautiful.widget_icon_font or 'RobotoMono Nerd Font Mono 18'
-local markup_icon = beautiful.widget_scrot_text_icon or '<span foreground="#4c534d">  </span>'
+-- beautiful vars
+local fg = beautiful.widget_scrot_fg or '#c0ffee'
+local icon = beautiful.widget_scrot_icon or '  '
 
-local scrot_icon = wibox.widget {
-  markup = markup_icon,
-  --align = 'left',
-  --valign = 'top',
-  widget = wibox.widget.textbox,
-  font = font_icon
-}
+-- widget creation
+local scrot_icon = widget.create_button( fg , icon )
 
 function take_scrot() 
-  awful.spawn.easy_async("scrot -d 3 -q 100", 
-  function() 
-    naughty.notify{
-      text = "SHOT!",
-      title = "Taking screenshot in 3 sec...",
-      timeout = 2,
-      position = "top_right",
-    }
-  end
-  )
+  naughty.notify{
+    title = "Taking screenshot in 3 sec...",
+    timeout = 2
+  }
+  awful.spawn.with_shell("scrot -d 3 -q 100")
 end
 
-scrot_icon:buttons(gears.table.join(
+scrot_icon:buttons(gtable.join(
   -- Left click - Take screenshot
-  awful.button({ }, 1, function ()
+  awful.button({ }, 1, function()
     take_scrot() 
   end)
 ))

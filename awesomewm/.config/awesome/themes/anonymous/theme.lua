@@ -304,7 +304,8 @@ theme.widget_date_layout = 'vertical' -- horizontal or vertical
 theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
 
 -- Screenshot
-theme.widget_scrot_text_icon = '<span foreground="#4c534d">  </span>'
+theme.widget_scrot_fg = "#4c534d"
+theme.widget_scrot_icon = '  '
 
 -- Change theme
 theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
