@@ -48,6 +48,8 @@ local my_email = widget.bg( g2, mail )
 
 local date = require("widgets.date")
 local my_date = widget.bg( g1, date_widget )
+
+local layoutbox = require("widgets.layout")
 -- }}} End widget
 
 -- {{{ Wibar
@@ -57,16 +59,6 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
-
-  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-  -- We need one layoutbox per screen.
-  s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(gtable.join(
-    awful.button({}, 1, function () awful.layout.inc( 1) end),
-    awful.button({}, 3, function () awful.layout.inc(-1) end),
-    awful.button({}, 4, function () awful.layout.inc( 1) end),
-    awful.button({}, 5, function () awful.layout.inc(-1) end)
-  ))
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, width = beautiful.wibar_size, bg = beautiful.wibar_bg })
@@ -83,9 +75,8 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
       mpc,
       change_theme,
-      s.mylayoutbox,
+      layoutbox,
       scrot,
-      --s.mylayoutbox,
       layout = wibox.layout.fixed.vertical
     },
     --expand = "none",

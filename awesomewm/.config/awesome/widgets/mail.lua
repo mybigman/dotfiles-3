@@ -23,7 +23,7 @@ local fg_grey = beautiful.fg_grey or "#a9a9a9"
 -- widget creation
 local icon
 if w_type == 'button' then
-  icon = widget.create_text(unread_icon, fg_unread, "Iosevka Term 16")
+  icon = widget.create_title(unread_icon, fg_unread)
 else
   icon = widget.base_icon()
   icon.markup = helpers.colorize_text(unread_icon, fg_unread)
@@ -36,7 +36,7 @@ local text_margin = widget.text(text)
 local email_widget = w_type == 'button' and icon 
   or widget.box(l, { icon_margin, text_margin })
 
-local popup_title = widget.create_text("Last messages:", fg_grey, "Iosevka Term 12")
+local popup_title = widget.create_title("Last messages:", fg_grey)
 local popup_msg = {}
 for i = 1, 4 do
   popup_msg[i] = widget.base_text()
