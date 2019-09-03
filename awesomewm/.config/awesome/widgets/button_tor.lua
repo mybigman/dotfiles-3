@@ -31,23 +31,18 @@ local sep = widget.base_text()
 sep.markup = helpers.colorize_text("---", g_light)
 
 -- popup
-local popup_image = wibox.widget {
-  resize = true,
-  forced_height = 80,
-  forced_width = 80,
-  widget = wibox.widget.imagebox
-}
+local popup_image = widget.imagebox(80)
 
 -- button (to use the systemd service) (restart tor change your ip address)
-local little_icon_size = 18
+local little_size = 18
 
-local button_start = widget.imagebox(torstart_img, little_icon_size) 
+local button_start = widget.imagebox(little_size, torstart_img)
 widget.add_left_click_action(button_start, "sudo systemctl start tor")
 
-local button_stop = widget.imagebox(torstop_img, little_icon_size)
+local button_stop = widget.imagebox(little_size, torstop_img)
 widget.add_left_click_action(button_stop, "sudo systemctl stop tor")
 
-local button_restart = widget.imagebox(torrestart_img, little_icon_size)
+local button_restart = widget.imagebox(little_size, torrestart_img)
 widget.add_left_click_action(button_restart, "sudo systemctl restart tor")
 
 -- To display informations about your ip

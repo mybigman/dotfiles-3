@@ -323,7 +323,7 @@ theme.widget_change_theme_fg = theme.fg_grey
 theme.widget_change_theme_layout = "vertical"
 
 -- Button mpc
-theme.widget_mpc_button_icon = "    "
+theme.widget_mpc_button_icon = "  "
 
 -- }}} End WIDGET
 

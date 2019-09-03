@@ -88,7 +88,7 @@ awful.screen.connect_for_each_screen(function(s)
       --s.mylayoutbox,
       layout = wibox.layout.fixed.vertical
     },
-    expand = "none",
+    --expand = "none",
     layout = wibox.layout.align.vertical
   }
 end)

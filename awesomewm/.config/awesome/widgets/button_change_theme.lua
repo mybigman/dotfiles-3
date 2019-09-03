@@ -24,19 +24,12 @@ local text = widget.create_button(fg, icon)
 local rld = widget.create_button(fg, icon_reload)
 local wi = widget.box(l, { text, rld })
 
-local popup_title = widget.create_text("Change theme", fg, beautiful.widget_text_font)
+local popup_title = widget.create_title("Change theme", fg)
 
-local popup_anonymous = widget.image_popup()
-popup_anonymous.image = beautiful.widget_change_theme_anonymous
-
-local popup_connected = widget.image_popup()
-popup_connected.image = beautiful.widget_change_theme_connected
-
-local popup_battleship = widget.image_popup()
-popup_battleship.image = beautiful.widget_change_theme_battleship
-
-local popup_tower = widget.image_popup()
-popup_tower.image = beautiful.widget_change_theme_tower
+local popup_anonymous = widget.imagebox(80, beautiful.widget_change_theme_anonymous)
+local popup_connected = widget.imagebox(80, beautiful.widget_change_theme_connected)
+local popup_battleship = widget.imagebox(80, beautiful.widget_change_theme_battleship)
+local popup_tower = widget.imagebox(80, beautiful.widget_change_theme_tower)
 
 local w_position -- the position of the popup depend of the wibar
 w_position = widget.check_popup_position(beautiful.wibar_position)

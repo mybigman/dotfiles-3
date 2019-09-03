@@ -24,8 +24,7 @@ local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
 
 -- widget creation
-local text = widget.create_button(fg, icon)
-local wi = widget.box(l, { text })
+local button = widget.create_button(fg, icon)
 
 local popup_time = widget.base_text()
 
@@ -41,7 +40,7 @@ awful.widget.watch(
   end
 )
 
-local popup_image = widget.image_popup()
+local popup_image = widget.imagebox(80)
 local popup_title = widget.base_text()
 local popup_artist = widget.base_text()
 local popup_percbar = widget.base_text()
@@ -98,7 +97,7 @@ local w = awful.popup {
 }
 
 -- attach popup to widget
-w:bind_to_widget(text)
+w:bind_to_widget(button)
 
 -- audio.sh arguments are: [music_details] [path of your music directory]
 local mpc_details_script = [[
@@ -140,4 +139,4 @@ end
 
 update_popup()
 
-return wi
+return button

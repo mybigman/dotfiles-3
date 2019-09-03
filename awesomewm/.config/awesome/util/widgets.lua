@@ -209,17 +209,20 @@ function widgets.update_background(w, background)
   w:set_shape_border_color(background)
 end
 
--- used to create icon
-function widgets.imagebox(image, size)
-  local w = wibox.widget.imagebox(image)
-  w.resize = true
-  w.forced_height = size
-  w.forced_width = size
+-- used to create an imagebox, argument image is optionnal
+function widgets.imagebox(size, image)
+  local w = wibox.widget {
+    resize = true,
+    forced_height = size,
+    forced_width = size,
+    widget = wibox.widget.imagebox
+  }
+  if image ~= nil then w.image = image end
   return w
 end
 
 function widgets.add_left_click_action(w, action, shell)
-  local s = shell or 'noshell' -- noshell (or any word) to launch a terminal directly
+  local s = shell or 'noshell' -- noshell (or any word) will prompt a terminal
   if s == 'shell' then
     s = awful.spawn
   else
@@ -235,15 +238,6 @@ function widgets.add_left_click_action(w, action, shell)
       end
     end)
   ))
-end
-
-function widgets.image_popup()
-  return wibox.widget {
-    resize = true,
-    forced_height = 80,
-    forced_width = 83,
-    widget = wibox.widget.imagebox
-  }
 end
 
 -- Create a slider
