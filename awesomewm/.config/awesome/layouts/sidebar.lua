@@ -25,6 +25,9 @@ local vol = require("widgets.volume-slider")
 -- brightness slider
 local brightness = require("widgets.brightness-slider")
 
+-- cpu
+local cpu = require("widgets.cpu")
+
 -- add exit menu
 local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
 local exit = widget.box(l, { exit_icon })
@@ -53,6 +56,7 @@ sidebar:buttons(gtable.join(
 -- setup
 sidebar:setup {
   {
+    cpu,
     layout = wibox.layout.fixed.vertical
   },
   { -- center

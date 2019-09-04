@@ -53,9 +53,9 @@ theme.bg_urgent     = theme.alert
 --theme.bg_systray    = theme.xbackground
 
 -- Material theme
-theme.grey_dark = theme.xbackground
-theme.grey = theme.xcolor0
-theme.grey_light = theme.xcolor8
+theme.grey_dark = "#070c15"
+theme.grey = theme.xbackground
+theme.grey_light = theme.xcolor0
 
 theme.primary_dark = theme.xcolor6 -- cyan D
 theme.primary = theme.xcolor2 -- cyan
@@ -101,14 +101,14 @@ theme.double_border_focus = theme.alert_dark
 -- {{{ TITLEBAR 
 
 theme.titlebar_fg_normal = theme.fg_primary
-theme.titlebar_bg_normal = theme.grey
+theme.titlebar_bg_normal = theme.primary_dark
 theme.titlebar_fg_focus = theme.fg_primary_focus
-theme.titlebar_bg_focus = theme.grey_light
+theme.titlebar_bg_focus = theme.alert_dark
 theme.titlebars_enabled = true 
 theme.titlebar_title_enabled = true 
 theme.titlebars_imitate_borders = true 
 theme.titlebars_imitate_borders_size = 2
-theme.titlebar_size = dpi(20)
+theme.titlebar_size = dpi(14)
 -- }}} End TITLEBAR
 
 -- Top bar
