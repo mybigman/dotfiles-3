@@ -1,3 +1,4 @@
+-- function from vicious lib :)
 local awidget = require("awful.widget")
 
 local cpu_linux = {}

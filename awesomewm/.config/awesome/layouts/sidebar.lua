@@ -1,7 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
 local gtable = require("gears.table")
-local gshape = require("gears.shape")
 local widget = require("util.widgets")
 local separator = require("util.separators")
 local beautiful = require("beautiful")
@@ -18,6 +17,7 @@ local pad = separator.pad(2)
 
 -- Settings title
 local settings_title = widget.create_title('Settings', beautiful.fg_grey)
+local monitor_title = widget.create_title('Monitors', beautiful.fg_grey)
 
 -- volume slider
 local vol = require("widgets.volume-slider")
@@ -55,35 +55,29 @@ sidebar:buttons(gtable.join(
 
 -- setup
 sidebar:setup {
-  {
-    cpu,
+  { -- top
+    widget.box('horizontal', { pad, monitors_title }), -- Really? this  shit doesn't print...
+    {
+      pad,
+      cpu,
+      pad,
+      layout = wibox.layout.align.horizontal
+    },
     layout = wibox.layout.fixed.vertical
   },
   { -- center
-    { 
-      align = "left",
-      { 
-        pad,
-        settings_title,
-        layout = wibox.layout.align.horizontal
-      },
+    widget.box('horizontal', { pad, settings_title }),
+    {
+      pad,
+      vol,
+      pad,
       layout = wibox.layout.align.horizontal
     },
     {
-      {
-        pad,
-        vol,
-        pad,
-        layout = wibox.layout.align.horizontal
-      },
-      {
-        pad,
-        brightness,
-        pad,
-        layout = wibox.layout.align.horizontal
-      },
-      --expand = "none",
-      layout = wibox.layout.align.vertical
+      pad,
+      brightness,
+      pad,
+      layout = wibox.layout.align.horizontal
     },
     layout = wibox.layout.fixed.vertical
   },
