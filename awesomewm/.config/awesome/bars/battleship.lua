@@ -49,7 +49,6 @@ local launcher = awful.widget.launcher(
 local network_monitor = require("widgets.network_monitor")
 local my_network_monitor = network_monitor_widget
 
-local mpc_time = require("widgets.mpc_time")
 local change_theme = require("widgets.button_change_theme")
 
 -- {{{ Define music block
@@ -77,7 +76,6 @@ local music_icon = require("widgets.button_only_mpc")
 -- Group multiple widgets
 local music_block = wibox.widget {
   mpc_widget,
-  mpc_time,
   volume_widget,
   music_icon,
   spacing = dpi(9),

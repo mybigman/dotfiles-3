@@ -1,5 +1,4 @@
-local awful = require("awful")
-local wibox = require("wibox")
+local aspawn = require("awful.spawn")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
@@ -30,16 +29,13 @@ local TOGGLE_MPD_CMD = "mpc toggle"
 local NEXT_MPD_CMD = "mpc next"
 local PREV_MPD_CMD = "mpc prev"
 
-awful.widget.watch(GET_MPD_CMD, 3, function(widget, stdout, exitreason, exitcode)
-  stdout = string.gsub(stdout, "\n", "")
-  status = stdout:match('%[(.*)%]') or "void"
-  status = string.gsub(status, '^%s*(.-)%s*$', '%1')
+awesome.connect_signal("daemon::mpd", function(mpd)
   icon_1.markup = helpers.colorize_text(icon_prev, fg)
-  if (status == "playing") then
+  if (mpd.status == "playing") then
     icon_2.markup = helpers.colorize_text(icon_pause, fg)
-  elseif (status == "paused") then
+  elseif (mpd.status == "paused") then
     icon_2.markup = helpers.colorize_text(icon_play, fg)
-  elseif (status == "void") then
+  elseif (mpd.status == "void") then
     icon_2.markup = helpers.colorize_text(icon_play, fg)
   else
     icon_2.markup = helpers.colorize_text(icon_stop, fg)
@@ -65,7 +61,7 @@ icon_1:connect_signal("button::press", function(_, _, _, button)
     if status == 'void' then
       show_mpc_warning()
     else
-      awful.spawn(PREV_MPD_CMD, false) 
+      aspawn(PREV_MPD_CMD, false) 
     end
   end -- left click
 end)
@@ -75,7 +71,7 @@ icon_2:connect_signal("button::press", function(_, _, _, button)
     if status == 'void' then
       show_mpc_warning()
     else
-      awful.spawn(TOGGLE_MPD_CMD, false) 
+      aspawn(TOGGLE_MPD_CMD, false) 
     end
   end -- left click
 end)
@@ -85,7 +81,7 @@ icon_3:connect_signal("button::press", function(_, _, _, button)
     if status == 'void' then
       show_mpc_warning()
     else
-      awful.spawn(NEXT_MPD_CMD, false) 
+      aspawn(NEXT_MPD_CMD, false) 
     end
   end -- left click
 end)

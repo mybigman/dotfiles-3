@@ -4,7 +4,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
-local dpi = require('beautiful').xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
@@ -28,22 +28,13 @@ local button = widget.create_button(fg, icon)
 
 local popup_time = widget.base_text()
 
-local function update_widget(volume)
-  popup_time.markup = helpers.colorize_text("Time: "..volume, "#66ffff")
+local function update_widget(mpd)
+  popup_time.markup = helpers.colorize_text(mpd.full_time, "#66ffff")
 end
-
-awful.widget.watch(
-  os.getenv("HOME").."/.config/awesome/widgets/audio.sh music", 2,
-  function(widget, stdout, stderr, exitreason, exitcode)
-    local info = stdout:match('(%d+:%d+.%d+:%d+%s?%d+%%)') or 0
-    update_widget(info)
-  end
-)
 
 local popup_image = widget.imagebox(80)
 local popup_title = widget.base_text()
 local popup_artist = widget.base_text()
-local popup_percbar = widget.base_text()
 
 local w_position -- the postion of the popup depend of the wibar
 w_position = widget.check_popup_position(beautiful.wibar_position)
@@ -60,7 +51,6 @@ local w = awful.popup {
           popup_title,
           popup_artist,
           popup_time,
-          popup_percbar,
           {
             {
               mpc,
@@ -75,6 +65,7 @@ local w = awful.popup {
             },
             layout = wibox.layout.align.horizontal
           },
+          spacing = dpi(2),
           layout = wibox.layout.fixed.vertical
         },
         left = 10,
@@ -99,21 +90,13 @@ local w = awful.popup {
 -- attach popup to widget
 w:bind_to_widget(button)
 
--- audio.sh arguments are: [music_details] [path of your music directory]
-local mpc_details_script = [[
-  bash -c "
-  ~/.config/awesome/widgets/audio.sh music_details /opt/musics
-"]]
-
-local function update_popup()
-  awful.widget.watch(mpc_details_script, 15 ,function(widget, stdout)
-    local img, title, artist, percbar = stdout:match('img:%[(.*)%]%s?title:%[(.*)%]%s?artist:%[(.*)%]%s?percbar:%[(.*)%]*%]')
+local function update_popup(mpd)
+  local img, title, artist
 
     -- default value
-    img = img or ''
-    title = title or ''
-    artist = artist or ''
-    percbar = percbar or '----------------------------' -- 28
+    img = mpd.cover or ''
+    title = mpd.title or ''
+    artist = mpd.artist or ''
 
     if img ~= '' then
       popup_image.image = img
@@ -132,11 +115,15 @@ local function update_popup()
     else
       popup_artist.markup = helpers.colorize_text("By Unknown", "#ffff66")
     end
-
-    popup_percbar.markup = helpers.colorize_text(percbar, "#6f6fff")
-  end)
 end
 
-update_popup()
+-- signals
+awesome.connect_signal("daemon::mpd", function(mpd)
+  update_popup(mpd)
+end)
+
+awesome.connect_signal("daemon::mpd_time", function(mpd)
+  update_widget(mpd)
+end)
 
 return button
