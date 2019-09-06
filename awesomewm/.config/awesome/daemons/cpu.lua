@@ -1,8 +1,6 @@
 -- function from vicious lib :)
 local awidget = require("awful.widget")
 
-local cpu_linux = {}
-
 -- Initialize function tables
 local cpu_usage  = {}
 local cpu_total  = {}
@@ -55,9 +53,6 @@ local function cpu_info()
   --naughty.notify({ text = "call naughty", timeout = 2 })
   awesome.emit_signal("daemon::cpu", cpu_usage)
 end
-
--- initialize the signal
-cpu_info()
 
 awidget.watch('sh -c ":"', 6, function(widget, stdout)
   cpu_info()

@@ -16,21 +16,8 @@ local icon_margin = widget.icon(icon)
 local text_margin = widget.text(text)
 ram_widget = widget.box(l, { icon_margin, text_margin })
 
-local function update_widget(used_ram_percentage)
+-- connect to daemon::ram
+awesome.connect_signal("daemon::ram", function(mem)
   icon.markup = helpers.colorize_text(ram_icon, fg)
-  text.markup = helpers.colorize_text(used_ram_percentage, fg)
-end
-
-local used_ram_script = [[
-  bash -c "
-  free | grep -z 'Mem.*Swap.*'
-  "]]
-
-awful.widget.watch(used_ram_script, 20, function(widget, stdout)
-  local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
-  stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')
-
-  local used_ram_percentage = math.floor((total - available) / (total) * 100 + 0.5)
-
-  update_widget(used_ram_percentage)
+  text.markup = helpers.colorize_text(mem.inuse_percent.."%", fg)
 end)

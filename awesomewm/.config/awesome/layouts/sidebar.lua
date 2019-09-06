@@ -26,7 +26,10 @@ local vol = require("widgets.volume-slider")
 local brightness = require("widgets.brightness-slider")
 
 -- cpu
-local cpu = require("widgets.cpu")
+local cpu = require("widgets.cpu-monitor")
+
+-- ram
+local ram = require("widgets.ram-monitor")
 
 -- add exit menu
 local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
@@ -63,6 +66,13 @@ sidebar:setup {
       pad,
       layout = wibox.layout.align.horizontal
     },
+    {
+      pad,
+      ram,
+      pad,
+      layout = wibox.layout.align.horizontal
+    },
+    spacing = dpi(10),
     layout = wibox.layout.fixed.vertical
   },
   { -- center
