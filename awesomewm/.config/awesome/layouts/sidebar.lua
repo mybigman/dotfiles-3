@@ -17,7 +17,7 @@ local pad = separator.pad(2)
 
 -- Settings title
 local settings_title = widget.create_title('Settings', beautiful.fg_grey)
-local monitor_title = widget.create_title('Monitors', beautiful.fg_grey)
+local monitors_title = widget.create_title('Monitors', beautiful.fg_grey)
 
 -- volume slider
 local vol = require("widgets.volume-slider")
@@ -30,6 +30,9 @@ local cpu = require("widgets.cpu-monitor")
 
 -- ram
 local ram = require("widgets.ram-monitor")
+
+-- disk space
+local disks = require("widgets.disks-monitor")
 
 -- add exit menu
 local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
@@ -59,7 +62,10 @@ sidebar:buttons(gtable.join(
 -- setup
 sidebar:setup {
   { -- top
-    widget.box('horizontal', { pad, monitors_title }), -- Really? this  shit doesn't print...
+    layout = wibox.layout.fixed.vertical
+  },
+  { -- center
+    widget.box('horizontal', { pad, monitors_title }), 
     {
       pad,
       cpu,
@@ -72,10 +78,16 @@ sidebar:setup {
       pad,
       layout = wibox.layout.align.horizontal
     },
+    {
+      pad,
+      disks,
+      pad,
+      layout = wibox.layout.align.horizontal
+    },
     spacing = dpi(10),
     layout = wibox.layout.fixed.vertical
   },
-  { -- center
+  { -- bottom
     widget.box('horizontal', { pad, settings_title }),
     {
       pad,
@@ -89,9 +101,8 @@ sidebar:setup {
       pad,
       layout = wibox.layout.align.horizontal
     },
-    layout = wibox.layout.fixed.vertical
-  },
-  { -- bottom
+    pad,
+    pad,
     {
       nil,
       exit,

@@ -231,8 +231,8 @@ pcm.headphones {
   #type plug
   #slave.pcm "softvol"
 #}
-pcm.default pulse
-ctl.default pulse
+pcm.!default pulse
+ctl.!default pulse
 
 # speaker-test -D surround20 -l1 -c2 -twav
 pcm.!surround20 {

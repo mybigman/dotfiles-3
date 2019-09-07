@@ -276,4 +276,23 @@ function widgets.check_popup_position(wibar_position)
   return position
 end
 
+function widgets.make_arcchart(w)
+  local w = w or nil
+  return wibox.widget {
+    widget = wibox.container.arcchart,
+    bg = beautiful.primary,
+    border_color = beautiful.alert_dark,
+    colors = { beautiful.alert_light, beautiful.primary_light },
+    max_value = 99,
+    min_value = 0,
+    paddings = 2,
+    value = 1,
+    forced_height = dpi(150),
+    forced_width = dpi(150),
+    thickness = dpi(4),
+    start_angle = 4.71238898, -- 2pi*3/4
+    w
+  }
+end
+
 return widgets
