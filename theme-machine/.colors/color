@@ -9,38 +9,38 @@
 ! Grey bg (dark to light)
 ! no place but used by tmux and awesome #070c15
 *background:   #0c121b
-*color0:       #2a2d35
-*color8:       #474a52
+*color0:       #2c323b
+*color8:       #4a505a
 
 ! Primary bg (dark to light)
-*color6:       #005f5a
-*color2:       #1f4557
-*color14:      #2d586c
+*color6:       #093b46
+*color2:       #1d505d
+*color14:      #2a6472
 
 ! Secondary bg (dark to light)
-*color5:       #582333
-*color4:       #7b293f
-*color13:      #8f2e46
+*color5:       #1b4a5f
+*color4:       #295d75
+*color13:      #38718b
 
 ! Error bg (dark to light)
-*color1:       #a70033
-*color9:       #e74361
-*color3:       #ef627c
+*color1:       #ac2f44
+*color9:       #d03a49
+*color3:       #d84c60
 
 ! Text !
 
 ! Text Grey
-*foreground:   #a0aaac
+*foreground:   #b2ebf2
 
 ! Text Primary (normal - focus)
-*color10:      #a7bfcf
-*color7:       #b7cfde
+*color10:      #bbdefb
+*color7:       #b3e5fc
 
 ! Text Secondary (normal - focus)
-*color12:      #bfa2ab
-*color15:      #ccafb8
+*color12:      #c8e6c9
+*color15:      #e8f5e9
 
 ! Text Error
-*color11:      #fabac6
+*color11:      #ffe0b2
 
 st.font: SpaceMono Nerd Font:style=Regular:pixelsize=13

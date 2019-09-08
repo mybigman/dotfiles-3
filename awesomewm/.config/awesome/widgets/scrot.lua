@@ -11,18 +11,28 @@ local icon = beautiful.widget_scrot_icon or '  '
 -- widget creation
 local scrot_icon = widget.create_button( fg , icon )
 
-function take_scrot() 
+function take_scrot(time) 
+  local time = time or 0
+  local title = "Screenshot is taken." -- default
+  if time >= 1 then
+    title = "Screenshot taken in "..time.." sec(s)..."
+  end
   naughty.notify{
-    title = "Taking screenshot in 3 sec...",
+    text = title,
     timeout = 2
   }
-  awful.spawn.with_shell("scrot -d 3 -q 100")
+  awful.spawn.with_shell("scrot -d "..time.." -q 100")
 end
 
 scrot_icon:buttons(gtable.join(
-  -- Left click - Take screenshot
-  awful.button({ }, 1, function()
+  awful.button({ }, 1, function() -- left click
     take_scrot() 
+  end),
+  awful.button({}, 2, function() -- middle click
+    take_scrot(3)
+  end),
+  awful.button({}, 3, function() -- right 
+    take_scrot(1)
   end)
 ))
 

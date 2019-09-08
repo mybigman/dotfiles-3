@@ -27,7 +27,7 @@ local ram = require("widgets.ram-monitor")
 local disks = require("widgets.disks-monitor")
 
 -- add an exit button
-local exit_icon = widget.for_one_icon(beautiful.fg_secondary, beautiful.secondary, "    LOGOUT    ", font)
+local exit_icon = widget.for_one_icon(beautiful.fg_secondary, beautiful.alert_dark, "    LOGOUT    ", font)
 local exit = widget.box(l, { exit_icon })
 exit:buttons(gtable.join(
 awful.button({ }, 1, function ()

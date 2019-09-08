@@ -40,7 +40,7 @@ theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 theme.font          = "SpaceMono Nerd Font Mono Regular 8"
 theme.taglist_font = "SpaceMono Nerd Font Bold 10"
 theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
-theme.widget_text_font = "SpaceMono Nerd Font Regular 8"
+theme.widget_text_font = "SpaceMono Nerd Font Regular 9"
 theme.widget_font = 'SpaceMono Nerd Font Mono 15'
 theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 16"
 theme.widget_title_font = "SpaceMono Nerd Font Bold 10"
@@ -289,7 +289,7 @@ theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
 -- volume
 theme.widget_volume_icon = ""
-theme.widget_volume_fg = theme.fg_secondary
+theme.widget_volume_fg = theme.fg_grey
 theme.widget_volume_bg = theme.grey_dark
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
 

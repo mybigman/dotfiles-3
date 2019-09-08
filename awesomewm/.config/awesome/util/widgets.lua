@@ -239,7 +239,7 @@ function widgets.make_a_slider(default_value)
     forced_height = dpi(8),
     bar_shape = gshape.rounded_rect,
     bar_height = dpi(5),
-    bar_color = beautiful.primary,
+    bar_color = beautiful.primary_dark,
     handle_color = beautiful.alert,
     handle_shape = gshape.circle,
     handle_border_color = '#00000012',
@@ -275,7 +275,7 @@ function widgets.make_arcchart(w)
   local w = w or nil
   return wibox.widget {
     widget = wibox.container.arcchart,
-    bg = beautiful.primary,
+    bg = beautiful.primary_dark,
     border_color = beautiful.alert_dark,
     colors = { beautiful.alert_light, beautiful.primary_light },
     max_value = 99,
