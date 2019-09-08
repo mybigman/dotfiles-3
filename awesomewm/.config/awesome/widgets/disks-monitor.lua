@@ -5,8 +5,10 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
-local title = widget.create_title("Disks", "#cecece")
-local title_align = widget.box('horizontal', { title })
+-- beautiful vars
+local fg = beautiful.fg_primary
+
+local title = widget.create_title("Disks ", fg)
 local total_space = {} -- store all bars
 
 local function make_widget()
@@ -21,7 +23,17 @@ local function make_widget()
 end
 
 local disks = make_widget()
-local disks_widget = widget.box('vertical', { title_align, disks })
+local disks_widget = wibox.widget {
+  disks,
+  nil,
+  {
+    nil,
+    title,
+    nil,
+    layout = wibox.layout.align.vertical
+  },
+  layout = wibox.layout.align.horizontal
+}
 
 -- signal
 awesome.connect_signal("daemon::disks", function(fs_info)

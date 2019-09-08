@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local dpi = require('beautiful').xresources.apply_dpi
+local icons = require("icons")
 
 -- beautiful vars
 local tor_icon = beautiful.widget_tor_icon
@@ -11,13 +12,6 @@ local fg_enable = beautiful.widget_tor_fg_enable
 local fg_disable = beautiful.widget_tor_fg_disable
 local bg = beautiful.widget_tor_bg
 local padding = beautiful.widget_popup_padding or dpi(1)
-
--- images
-local toron_img = beautiful.widget_tor_on
-local toroff_img = beautiful.widget_tor_off
-local torstart_img = beautiful.widget_tor_start
-local torstop_img = beautiful.widget_tor_stop
-local torrestart_img = beautiful.widget_tor_restart
 
 -- material colors
 local g_dark = beautiful.grey_dark or "#222222"
@@ -36,13 +30,13 @@ local popup_image = widget.imagebox(80)
 -- button (to use the systemd service) (restart tor change your ip address)
 local little_size = 18
 
-local button_start = widget.imagebox(little_size, torstart_img)
+local button_start = widget.imagebox(little_size, icons["tor_start"])
 widget.add_left_click_action(button_start, "sudo systemctl start tor")
 
-local button_stop = widget.imagebox(little_size, torstop_img)
+local button_stop = widget.imagebox(little_size, icons["tor_stop"])
 widget.add_left_click_action(button_stop, "sudo systemctl stop tor")
 
-local button_restart = widget.imagebox(little_size, torrestart_img)
+local button_restart = widget.imagebox(little_size, icons["tor_restart"])
 widget.add_left_click_action(button_restart, "sudo systemctl restart tor")
 
 -- To display informations about your ip
@@ -114,10 +108,10 @@ function(widget, stdout, stderr, exitreason, exitcode)
   local code = tonumber(stdout) or 1
   if (code == 0) then
     tor_run = true
-    popup_image.image = toron_img
+    popup_image.image = icons["tor_on"]
   else
     tor_run = false
-    popup_image.image = toroff_img
+    popup_image.image = icons["tor_off"]
   end
 end)
 

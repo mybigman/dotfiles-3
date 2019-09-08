@@ -5,6 +5,7 @@ local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local dpi = beautiful.xresources.apply_dpi
+local icons = require("icons")
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
@@ -101,7 +102,7 @@ local function update_popup(mpd)
     if img ~= '' then
       popup_image.image = img
     else
-      popup_image.image = beautiful.widget_mpc_time_cover_album
+      popup_image.image = icons["default_cover"]
     end
 
     if title ~= '' then

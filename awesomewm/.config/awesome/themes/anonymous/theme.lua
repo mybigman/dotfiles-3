@@ -10,7 +10,6 @@ local gfs = require("gears.filesystem")
 local gears = require("gears")
 local themes_path = gfs.get_themes_dir()
 local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/layouts/"
-local widget_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/widgets/"
 local xrdb = xresources.get_current_theme()
 local wibox = require("wibox")
 local taglist_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/taglist/"
@@ -45,6 +44,8 @@ theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 -- minimal material colors dependencie
 theme.fg_grey = theme.xcolor11
 theme.primary = theme.xcolor6
+theme.fg_primary = theme.xcolor3
+theme.fg_secondary = theme.xcolor10
 theme.secondary = theme.xcolor5
 theme.alert = theme.xcolor9
 
@@ -230,11 +231,6 @@ theme.widget_tor_fg_enable = "#434f4a"
 theme.widget_tor_fg_disable = "#8a4e4a"
 theme.widget_tor_bg = theme.xbackground .. "00"
 theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
-theme.widget_tor_on = widget_icon_path .. "toron.png"
-theme.widget_tor_off = widget_icon_path .. "toroff.png"
-theme.widget_tor_start = widget_icon_path .. "torstart.png"
-theme.widget_tor_stop = widget_icon_path .. "torstop.png"
-theme.widget_tor_restart = widget_icon_path .. "torrestart.png"
 
 -- Mini ncmpcpp player
 --
@@ -300,18 +296,11 @@ theme.widget_date_fg = "#898989"
 theme.widget_date_bg = theme.xbackground .. "ff"
 theme.widget_date_layout = 'vertical' -- horizontal or vertical
 
--- mpc time
-theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
-
 -- Screenshot
 theme.widget_scrot_fg = "#4c534d"
 theme.widget_scrot_icon = '  '
 
 -- Change theme
-theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
-theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
-theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
-theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
 theme.widget_change_theme_bg = theme.xbackground
 theme.widget_change_theme_fg = "#ffffff"
 theme.widget_change_theme_layout = 'vertical' -- horizontal or vertical

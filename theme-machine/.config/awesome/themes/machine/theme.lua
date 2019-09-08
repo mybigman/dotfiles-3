@@ -10,7 +10,6 @@ local gfs = require("gears.filesystem")
 local gshape = require("gears.shape")
 local themes_path = gfs.get_themes_dir()
 local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/layouts/"
-local widget_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/widgets/"
 local xrdb = xresources.get_current_theme()
 local wibox = require("wibox")
 local taglist_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/taglist/"
@@ -236,11 +235,6 @@ theme.widget_tor_icon = "  﨩  "
 theme.widget_tor_fg_enable = theme.fg_grey
 theme.widget_tor_fg_disable = theme.fg_alert
 theme.widget_tor_bg = "#272f3b"
-theme.widget_tor_on = widget_icon_path .. "toron.png"
-theme.widget_tor_off = widget_icon_path .. "toroff.png"
-theme.widget_tor_start = widget_icon_path .. "torstart.png"
-theme.widget_tor_stop = widget_icon_path .. "torstop.png"
-theme.widget_tor_restart = widget_icon_path .. "torrestart.png"
 
 -- Mini ncmpcpp player
 theme.widget_ncmpcpp_prev = '<span foreground="'..theme.secondary..'"> ≪ </span>'
@@ -305,9 +299,6 @@ theme.widget_date_fg = theme.fg_grey
 theme.widget_date_bg = theme.xbackground .. "ff"
 theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 
--- mpc time
-theme.widget_mpc_time_cover_album = widget_icon_path .. "default_cover.png"
-
 -- Screenshot
 theme.widget_scrot_fg = theme.fg_grey
 theme.widget_scrot_icon = '  '
@@ -316,10 +307,6 @@ theme.widget_scrot_icon = '  '
 theme.widget_button_music_layout = 'horizontal'
 
 -- Change theme
-theme.widget_change_theme_anonymous = widget_icon_path .. "theme-anonymous.png"
-theme.widget_change_theme_connected = widget_icon_path .. "theme-connected.png"
-theme.widget_change_theme_battleship = widget_icon_path .. "theme-battleship.png"
-theme.widget_change_theme_tower = widget_icon_path .. "theme-tower.png"
 theme.widget_change_theme_bg = theme.grey_dark
 theme.widget_change_theme_fg = theme.fg_grey
 theme.widget_change_theme_layout = "vertical"

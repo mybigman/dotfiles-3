@@ -4,7 +4,7 @@ local gtable = require("gears.table")
 local widget = require("util.widgets")
 local separator = require("util.separators")
 local beautiful = require("beautiful")
-local dpi = require("beautiful").xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 
 -- beautiful var
@@ -13,29 +13,21 @@ local fg = "#ffffff"
 local bg = "#651030"
 local l = "horizontal"
 
-local pad = separator.pad(2)
+local pad = separator.pad(3)
 
--- Settings title
+-- Setting titles
 local settings_title = widget.create_title('Settings', beautiful.fg_grey)
 local monitors_title = widget.create_title('Monitors', beautiful.fg_grey)
 
--- volume slider
+-- import widgets
 local vol = require("widgets.volume-slider")
-
--- brightness slider
 local brightness = require("widgets.brightness-slider")
-
--- cpu
 local cpu = require("widgets.cpu-monitor")
-
--- ram
 local ram = require("widgets.ram-monitor")
-
--- disk space
 local disks = require("widgets.disks-monitor")
 
--- add exit menu
-local exit_icon = widget.for_one_icon(fg, bg, "    LOGOUT    ", font)
+-- add an exit button
+local exit_icon = widget.for_one_icon(beautiful.fg_secondary, beautiful.secondary, "    LOGOUT    ", font)
 local exit = widget.box(l, { exit_icon })
 exit:buttons(gtable.join(
 awful.button({ }, 1, function ()
@@ -44,13 +36,22 @@ awful.button({ }, 1, function ()
 end)
 ))
 
--- sidebar creation
+-- sidebar creation TODO: adapt for each awesome theme
 sidebar = wibox({ visible = false, ontop = true, type = "dock" })
 sidebar.bg = beautiful.grey
 sidebar.width = dpi(250)
 sidebar.height = awful.screen.focused().geometry.height
 sidebar.x = beautiful.wibar_size
 --awful.placement.left(sidebar)
+
+local textclock = wibox.widget {
+  format = '<span foreground="'..beautiful.fg_primary..'" font="22.5">%H:%M</span>',
+  refresh = 60,
+  timezone = "Europe/Paris",
+  widget = wibox.widget.textclock,
+  forced_height = dpi(88),
+  forced_width = dpi(90)
+}
 
 -- a middle click to hide the sidebar
 sidebar:buttons(gtable.join(
@@ -62,7 +63,11 @@ sidebar:buttons(gtable.join(
 -- setup
 sidebar:setup {
   { -- top
-    layout = wibox.layout.fixed.vertical
+    pad,
+    textclock,
+    pad,
+    expand = "none",
+    layout = wibox.layout.align.horizontal
   },
   { -- center
     widget.box('horizontal', { pad, monitors_title }), 
@@ -88,6 +93,7 @@ sidebar:setup {
     layout = wibox.layout.fixed.vertical
   },
   { -- bottom
+    pad,
     widget.box('horizontal', { pad, settings_title }),
     {
       pad,
@@ -113,6 +119,5 @@ sidebar:setup {
     pad,
     layout = wibox.layout.fixed.vertical
   },
-  expand = "none",
   layout = wibox.layout.align.vertical
 }

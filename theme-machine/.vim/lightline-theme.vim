@@ -1,5 +1,5 @@
 let g:lightline = {
-  \ 'colorscheme': 'Battleship',
+  \ 'colorscheme': 'Machine',
   \ 'active': {
   \   'left': [ ['linter'],
   \             [ 'gitbranch' ] ],
@@ -30,7 +30,7 @@ let g:lightline = {
   \ },
   \ 'tabline': {'left': [['buffers']], 'right': [['close']] },
   \ 'component': {
-  \   'close': 'ﴔ ',
+  \   'close': 'ﮊ ',
   \ },
-  \ 'separator': { 'left': '▊▌▎', 'right': '▎▌▊' },
+  \ 'separator': { 'right': '', 'left': '' },
   \ }

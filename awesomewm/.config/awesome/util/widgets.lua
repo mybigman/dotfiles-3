@@ -61,15 +61,10 @@ function widgets.text(w)
 end
 
 function widgets.box(l, widgets)
-  local _layout, w
+  local _layout = wibox.layout.fixed.horizontal -- default horiz
+  if l == "vertical" then _layout = wibox.layout.fixed.vertical end
 
-  if ( l ~= nil and l == "vertical" ) then
-    _layout = wibox.layout.fixed.vertical
-  else
-    _layout = wibox.layout.fixed.horizontal
-  end
-
-  w = wibox.widget { layout = _layout } -- init a widget
+  local w = wibox.widget { layout = _layout } -- init a widget
   for _, widget in ipairs(widgets) do
     w:add(widget)
   end
@@ -287,6 +282,7 @@ function widgets.make_arcchart(w)
     min_value = 0,
     paddings = 2,
     value = 1,
+    --rounded_edge = true,
     forced_height = dpi(150),
     forced_width = dpi(150),
     thickness = dpi(4),

@@ -16,6 +16,7 @@ end)
 
 -- get current level
 awesome.connect_signal("daemon::brightness", function(brightness)
+  slider.minimum = 1
   slider:set_value(brightness)
 end)
 

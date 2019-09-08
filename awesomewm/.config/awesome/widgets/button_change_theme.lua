@@ -4,8 +4,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
-local dpi = require('beautiful').xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 local gtable = require('gears.table')
+local icons = require("icons")
 
 -- beautiful vars
 local icon = beautiful.widget_change_theme_icon or ' 嗀'
@@ -26,10 +27,11 @@ local wi = widget.box(l, { text, rld })
 
 local popup_title = widget.create_title("Change theme", fg)
 
-local popup_anonymous = widget.imagebox(80, beautiful.widget_change_theme_anonymous)
-local popup_connected = widget.imagebox(80, beautiful.widget_change_theme_connected)
-local popup_battleship = widget.imagebox(80, beautiful.widget_change_theme_battleship)
-local popup_tower = widget.imagebox(80, beautiful.widget_change_theme_tower)
+local popup_anonymous = widget.imagebox(80, icons["anonymous"])
+local popup_connected = widget.imagebox(80, icons["connected"])
+local popup_battleship = widget.imagebox(80, icons["battleship"])
+local popup_tower = widget.imagebox(80, icons["tower"])
+local popup_machine = widget.imagebox(80, icons["machine"])
 
 local w_position -- the position of the popup depend of the wibar
 w_position = widget.check_popup_position(beautiful.wibar_position)
@@ -48,8 +50,9 @@ local w = awful.popup {
             popup_connected,
             popup_battleship,
             popup_tower,
+            popup_machine,
             forced_num_rows = 2,
-            forced_num_cols = 2,
+            forced_num_cols = 3,
             layout = wibox.layout.grid,
           },
           layout = wibox.layout.align.vertical
@@ -74,6 +77,10 @@ w:bind_to_widget(text)
 local tower_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change tower" ]]
 widget.add_left_click_action(popup_tower, tower_change_script, 'shell')
+
+local machine_change_script = [[
+  bash -c "~/.config/awesome/widgets/change-theme.sh --change machine" ]]
+widget.add_left_click_action(popup_machine, machine_change_script, 'shell')
 
 local connected_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change connected" ]]
