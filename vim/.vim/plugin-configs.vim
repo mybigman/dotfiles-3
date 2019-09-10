@@ -19,7 +19,7 @@ map <F3> :NERDTreeToggle<CR>
 "" gnupg.vim, http://www.vim.org/scripts/script.php?script_id=3645
 "" wiki here http://pig-monkey.com/2013/04/password-management-vim-gnupg/
 if has("autocmd")
-  let g:GPGDefaultRecipients = ["0xE2ADD2080A6B28AE"]
+  let g:GPGDefaultRecipients=["szorfein@protonmail.com"]
   let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)'
 
   augroup GnuPGExtra
@@ -55,9 +55,9 @@ let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = ' '
 let g:ale_sign_warning = ' '
-let g:ale_open_list = 1
+"let g:ale_open_list = 1
 let g:ale_list_window_size = 3
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_text_changed = 'never'
 highlight ALEErrorSign ctermbg=0 ctermfg=magenta
 
 "" Lightline.vim, http://git.io/lightline
@@ -65,6 +65,34 @@ set laststatus=2
 
 " show lightline-bufferline
 set showtabline=2
+
+" default lightline configuration
+let g:lightline = {
+  \ 'component_function': {
+  \   'filename': 'FileName',
+  \   'gitbranch': 'GitBranch',
+  \   'filencode': 'FileEncoding',
+  \   'readonly': 'LightLineReadonly',
+  \   'filename_active': 'LightlineFilenameActive',
+  \   'filetype': 'LightLineFiletype',
+  \   'fileformat': 'LightLineFileformat',
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'WizChecking',
+  \   'linter_warnings': 'WizWarnings',
+  \   'linter_errors': 'WizErrors',
+  \   'linter_ok': 'WizOk',
+  \   'buffers': 'lightline#bufferline#buffers',
+  \ },
+  \ 'component_type': {
+  \   'readonly': 'error',
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'left',
+  \   'buffers': 'tabsel',
+  \ }
+  \}
 
 " lighline functions
 function! FileName()
@@ -91,15 +119,51 @@ function! LightLineFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
-function! WizErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  " ×   
-  return l:counts.total == 0 ? '' : printf(' %d', l:counts.total)
-endfunction
-
 function! IsTree()
   let l:name = expand('%:t')
   return l:name =~ 'NetrwTreeListing\|undotree\|NERD' ? 1 : 0
+endfunction
+
+""""""""""""""""
+let s:indicator_checking = get(g:, 'lightline#ale#indicator_checking', ' ')
+let s:indicator_ok = get(g:, 'lightline#ale#indicator_ok', ' ')
+
+function! WizWarnings() abort
+  if !WizLinted()
+    return ''
+  endif
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:all_non_errors == 0 ? '' : printf(' %d', all_non_errors)
+endfunction
+
+function! WizErrors() abort
+  if !WizLinted()
+    return ''
+  endif
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  " ×   
+  return l:all_errors == 0 ? '' : printf(' %d', all_errors)
+endfunction
+
+function! WizOk() abort
+  if !WizLinted()
+    return ''
+  endif
+  let l:counts = ale#statusline#Count(bufnr(''))
+  return l:counts.total == 0 ? s:indicator_ok : ''
+endfunction
+
+function! WizChecking() abort
+  return ale#engine#IsCheckingBuffer(bufnr('')) ? s:indicator_checking : ''
+endfunction
+
+function! WizLinted() abort
+  return get(g:, 'ale_enabled', 0) == 1
+        \ && getbufvar(bufnr(''), 'ale_linted', 0) > 0
+        \ && ale#engine#IsCheckingBuffer(bufnr('')) == 0
 endfunction
 
 let g:lightline#bufferline#show_number  = 2
@@ -122,3 +186,11 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+augroup alestatus
+  autocmd!
+  autocmd User ALEJobStarted call lightline#update()
+  autocmd User ALELintPost call lightline#update()
+  autocmd User ALEFixPost call lightline#update()
+augroup END
+
