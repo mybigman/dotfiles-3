@@ -51,23 +51,17 @@ ncmpcpp_next_icon:buttons(gtable.join(
 
 local ncmpcpp_widget = wibox.widget {
   nil,
-  {
-    nil,
-    { -- music player
-      ncmpcpp_prev_icon,
-      pad,
-      ncmpcpp_toggle_icon,
-      pad,
-      ncmpcpp_next_icon,
-      layout  = wibox.layout.fixed.horizontal
-    },
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.vertical
+  { -- music player
+    ncmpcpp_prev_icon,
+    pad,
+    ncmpcpp_toggle_icon,
+    pad,
+    ncmpcpp_next_icon,
+    layout  = wibox.layout.fixed.horizontal
   },
   nil,
   expand = "none",
-  layout = wibox.layout.align.horizontal
+  layout = wibox.layout.align.vertical
 } 
 
 return ncmpcpp_widget

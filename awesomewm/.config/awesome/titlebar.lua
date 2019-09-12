@@ -26,7 +26,7 @@ local mbuttons = function(c)
 end
 
 local function if_titlebar_is_off(c)
-  local client_off = { 'Brave-browser', 'Lutris' } -- from the rc.lua
+  local client_off = { 'Brave-browser', 'Lutris', 'music_n' } -- from the rc.lua
   for _,v in pairs(client_off) do
     if v == c.class then
       return true 
@@ -117,13 +117,17 @@ client.connect_signal("request::titlebars", function(c)
   -- bottom bar for ncmpcpp
   if c.class == "music_n" then
     awful.titlebar(c, {
-      font = beautiful.titlebar_font, position = "bottom", size= dpi(50)
+      font = beautiful.titlebar_font, position = "bottom", size = dpi(50)
     }) : setup { 
-      ncmpcpp
+      nil,
+      ncmpcpp,
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.horizontal
       }
   end
 
-  -- add a titlebar if titlebars_enabled is set to true in the rules.
+  -- add a titlebar if titlebars_enabled is true
   if beautiful.titlebars_enabled then
     awful.titlebar(c, { size = beautiful.titlebar_size, position = position }) : setup {
       { -- Left

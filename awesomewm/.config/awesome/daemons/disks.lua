@@ -1,10 +1,8 @@
 local aspawn = require("awful.spawn")
 local awidget = require("awful.widget")
+local env = require("env-config")
 
--- Add files system you want to track, the line bellow match with:
--- /home/yagdra, /opt/musics and /opt/torrents for me :)
-local myfs = { "yagdra", "musics", "torrents" } 
-
+local myfs = env.disks
 local fs_info = {}
 
 local function sformat_in_giga(value)

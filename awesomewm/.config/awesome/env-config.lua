@@ -19,4 +19,8 @@ end
 
 env.editor_cmd = env.term .. env.term_call[2] .. env.editor
 
+-- Add files system you want to track, the line bellow match with:
+-- /home/yagdra, /opt/musics and /opt/torrents for me :)
+env.disks = { "yagdra", "musics", "torrents" }
+
 return env

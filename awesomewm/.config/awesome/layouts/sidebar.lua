@@ -39,9 +39,19 @@ end)
 -- sidebar creation TODO: adapt for each awesome theme
 sidebar = wibox({ visible = false, ontop = true, type = "dock" })
 sidebar.bg = beautiful.grey
+
+local wibar_pos = beautiful.wibar_position or "top"
+-- place the sidebar at the right position
+if wibar_pos == "top" or wibar_pos == "bottom" then
+  sidebar.height = awful.screen.focused().geometry.height - beautiful.wibar_size
+  sidebar.x = 0 
+  sidebar.y = beautiful.wibar_size
+elseif wibar_pos == "left" or wibar_pos == "right" then
+  sidebar.height = awful.screen.focused().geometry.height
+  sidebar.x = beautiful.wibar_size
+end
+
 sidebar.width = dpi(250)
-sidebar.height = awful.screen.focused().geometry.height
-sidebar.x = beautiful.wibar_size
 --awful.placement.left(sidebar)
 
 local textclock = wibox.widget {
