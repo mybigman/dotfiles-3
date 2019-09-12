@@ -74,7 +74,7 @@ theme.border_radius = dpi(8)
 theme.general_padding = { left = dpi(10), right = dpi(10), top = dpi(10), bottom = dpi(10) }
 
 -- smart border
-theme.double_border = true 
+theme.double_border = true
 theme.double_border_normal = theme.primary
 theme.double_border_focus = theme.alert_dark
 
@@ -85,10 +85,11 @@ theme.titlebar_bg_normal = theme.grey_dark
 theme.titlebar_fg_focus = theme.fg_primary_focus
 theme.titlebar_bg_focus = theme.grey_dark
 theme.titlebars_enabled = true 
-theme.titlebar_title_enabled = false
+theme.titlebar_title_enabled = true
+theme.titlebar_buttons_enabled = true
 theme.titlebars_imitate_borders = true 
 theme.titlebars_imitate_borders_size = 2
-theme.titlebar_size = dpi(14)
+theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
 
 -- Top bar

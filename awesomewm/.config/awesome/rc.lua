@@ -19,18 +19,9 @@ require("awful.hotkeys_popup.keys")
 local theme = require("loaded-theme")
 naughty.notify({ text = "theme "..theme.name.." is loaded" })
 
--- Custom stuff
-if theme.name == "machine" then
-  local titlebars = require("titlebars.minimal")
-else
-  local titlebars = require("titlebars.generic")
-end
-
 local keys = require("keys")
 local helpers = require("helpers")
 local env = require("env-config")
-local smartBorders = require("util.smart-borders")
-local double_border = beautiful.double_border or false
 local sidebar = require("layouts.sidebar")
 
 -- Start daemons
@@ -461,10 +452,7 @@ end
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-if double_border then
-  client.connect_signal("request::titlebars", function(c) smartBorders.set(c, true) end)
-  client.connect_signal("property::size", smartBorders.set)
-end
+require("titlebar")
 
 -- Autostart
 local autostart = require("autostart")

@@ -104,10 +104,12 @@ theme.titlebar_bg_normal = theme.primary_dark
 theme.titlebar_fg_focus = theme.fg_primary_focus
 theme.titlebar_bg_focus = theme.alert_dark
 theme.titlebars_enabled = true 
-theme.titlebar_title_enabled = true 
-theme.titlebars_imitate_borders = true 
+theme.titlebar_title_enabled = false
+theme.titlebar_buttons_enabled = false
+theme.titlebar_position = 'left'
+theme.titlebars_imitate_borders = false
 theme.titlebars_imitate_borders_size = 2
-theme.titlebar_size = dpi(14)
+theme.titlebar_size = dpi(15)
 -- }}} End TITLEBAR
 
 -- Top bar
