@@ -175,13 +175,11 @@ theme.icon_theme = nil
 
 theme.tasklist_disable_task_name = false
 theme.tasklist_disable_icon = true 
-theme.tasklist_shape = function(cr, width, height) gshape.transform(gshape.rounded_rect) : translate(0,40) (cr, width, -1, 4) end 
-theme.tasklist_shape_border_width = 2
-theme.tasklist_shape_border_color = theme.primary_dark
-theme.tasklist_shape_border_color_focus = theme.secondary_dark
 theme.tasklist_spacing = dpi(4)
 theme.tasklist_align = "center"
 theme.tasklist_fg_normal = theme.fg_grey
+theme.tasklist_bg_focus = theme.primary
+theme.tasklist_bg_normal = theme.grey
 
 -- }}} End Tasklist
 

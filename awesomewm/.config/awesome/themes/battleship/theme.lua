@@ -61,13 +61,15 @@ theme.primary_light = theme.xcolor14 -- cyan L
 theme.secondary_dark = theme.xcolor5 -- magenta D
 theme.secondary = theme.xcolor4 -- magenta
 theme.secondary_light = theme.xcolor13 -- magenta L
+-- fg
+theme.fg_grey = xrdb.color8 or "#f1fcf0"
+theme.fg_grey_light = xrdb.foreground or "#ffffff"
+theme.fg_primary = xrdb.color10 or "#4BC66D"
+theme.fg_primary_focus = xrdb.color7 or "#F1FCF9"
+theme.fg_secondary = xrdb.color12 or "#3DBAC2"
+theme.fg_secondary_focus = xrdb.color15 or "#E0E5E5"
+theme.fg_alert = xrdb.color11 or "#DB695B"
 
-theme.fg_grey = theme.xforeground
-theme.fg_primary = theme.xcolor10
-theme.fg_primary_focus = theme.xcolor7
-theme.fg_secondary = theme.xcolor12
-theme.fg_secondary_focus = theme.xcolor15
-theme.fg_error = theme.xcolor11
 -- End Material theme
 
 theme.fg_normal     = theme.fg_primary
@@ -105,7 +107,7 @@ theme.titlebar_size = 25
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_height = dpi(42)
+theme.wibar_size = dpi(42)
 theme.wibar_bg = theme.xbackground .. "00"
 theme.wibar_border_radius = dpi(0)
 theme.wibar_position = 'bottom'
@@ -254,7 +256,7 @@ theme.widget_email_layout = 'horizontal' -- horizontal or vertical
 -- Network
 theme.widget_network_icon = ""
 theme.widget_network_fg = theme.fg_primary
-theme.widget_network_fg_error = theme.fg_error
+theme.widget_network_fg_error = theme.fg_alert
 theme.widget_network_bg = theme.xbackground .. "00"
 theme.widget_network_layout = 'horizontal' -- horizontal or vertical
 
@@ -265,7 +267,7 @@ theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = theme.fg_error
+theme.widget_ram_fg = theme.fg_alert
 theme.widget_ram_bg = theme.xbackground .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 
@@ -296,7 +298,7 @@ theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
 
 -- Date
 theme.widget_date_icon = ""
-theme.widget_date_fg = theme.fg_grey
+theme.widget_date_fg = theme.fg_grey_light
 theme.widget_date_bg = theme.xbackground .. "ff"
 theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 
@@ -308,7 +310,7 @@ theme.widget_scrot_icon = '  '
 theme.widget_change_theme_icon = " 嗀"
 theme.widget_change_theme_icon_reload = " 勒 "
 theme.widget_change_theme_layout = 'vertical'
-theme.widget_change_theme_fg = theme.fg_grey
+theme.widget_change_theme_fg = theme.fg_grey_light
 theme.widget_change_theme_bg = theme.grey
 
 -- }}} End WIDGET

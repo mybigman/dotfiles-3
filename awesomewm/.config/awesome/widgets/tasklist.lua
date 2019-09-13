@@ -33,24 +33,15 @@ function tasklist_widget:template()
   local t = {
     {
       {
-        {
-          {
-            id     = 'icon_role',
-            widget = wibox.widget.imagebox,
-          },
-          margins = 2,
-          widget  = wibox.container.margin,
-        },
+        nil,
         {
           id     = 'text_role',
           widget = wibox.widget.textbox,
         },
-        layout = wibox.layout.fixed.horizontal,
+        nil,
+        layout = wibox.layout.align.horizontal,
       },
-      left  = 5,
-      right = 5,
-      top = 5,
-      bottom = 5,
+      margins = 5,
       widget = wibox.container.margin
     },
     id     = 'background_role',

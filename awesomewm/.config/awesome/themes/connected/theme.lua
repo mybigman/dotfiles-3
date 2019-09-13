@@ -101,7 +101,7 @@ theme.titlebars_imitate_borders = false
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_height = dpi(22)
+theme.wibar_size = dpi(22)
 theme.wibar_bg = theme.grey_dark .. "ff"
 theme.wibar_border_radius = dpi(0)
 theme.wibar_position = "top"

@@ -41,13 +41,19 @@ theme.xcolor13    = xrdb.color13    or "#825ECE"
 theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
--- minimal material colors dependencie
-theme.fg_grey = theme.xcolor11
+-- material colors dependencies
+-- bg
 theme.primary = theme.xcolor6
-theme.fg_primary = theme.xcolor3
-theme.fg_secondary = theme.xcolor10
 theme.secondary = theme.xcolor5
 theme.alert = theme.xcolor9
+-- fg
+theme.fg_grey = xrdb.color8 or "#f1fcf0"
+theme.fg_grey_light = xrdb.foreground or "#ffffff"
+theme.fg_primary = xrdb.color10 or "#4BC66D"
+theme.fg_primary_focus = xrdb.color7 or "#F1FCF9"
+theme.fg_secondary = xrdb.color12 or "#3DBAC2"
+theme.fg_secondary_focus = xrdb.color15 or "#E0E5E5"
+theme.fg_alert = xrdb.color11 or "#DB695B"
 
 --theme.font          = "sans 8"
 theme.font          = "RobotoMono Nerd Font 8"
@@ -90,7 +96,7 @@ theme.titlebars_imitate_borders = false
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_height = dpi(42)
+theme.wibar_size = dpi(42)
 theme.wibar_width = screen_width - dpi(126)
 
 theme.wibar_bg = theme.xbackground .. "00"
