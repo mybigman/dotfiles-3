@@ -71,70 +71,14 @@ end
 
 -- {{{ Wibar
 
-local tasklist_buttons = gears.table.join(
-  awful.button({ }, 1, function (c)
-    if c == client.focus then
-      c.minimized = true
-    else
-      -- Without this, the following
-      -- :isvisible() makes no sense
-      c.minimized = false
-      if not c:isvisible() and c.first_tag then
-        c.first_tag:view_only()
-      end
-      -- This will also un-minimize
-      -- the client, if needed
-      client.focus = c
-      c:raise()
-    end
-  end),
-  awful.button({ }, 3, client_menu_toggle_fn()),
-  awful.button({ }, 4, function ()
-    awful.client.focus.byidx(1)
-  end),
-  awful.button({ }, 5, function ()
-    awful.client.focus.byidx(-1)
-  end))
-
 -- Add the bar on each screen
 awful.screen.connect_for_each_screen(function(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
 
-  -- Create a tasklist widget
-  --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
-  s.mytasklist = awful.widget.tasklist {
-    screen = s,
-    filter = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons,
-    widget_template = {
-      {
-        {
-          {
-            {
-              id     = 'icon_role',
-              widget = wibox.widget.imagebox,
-            },
-            margins = 2,
-            widget  = wibox.container.margin,
-          },
-        {
-          id     = 'text_role',
-          widget = wibox.widget.textbox,
-        },
-        layout = wibox.layout.fixed.horizontal,
-      },
-      left  = 5,
-      right = 5,
-      top = 5,
-      bottom = 5,
-      widget = wibox.container.margin
-    },
-    id     = 'background_role',
-    widget = wibox.container.background
-  }
-}
+  -- Create a tasklist widget for each screen
+  s.mytasklist = require("widgets.tasklist")(s)
 
 -- For look like a detached bar, we have to add a fake invisible bar...
 s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })

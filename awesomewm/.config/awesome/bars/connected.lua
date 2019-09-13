@@ -74,39 +74,11 @@ end
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
-local tasklist_buttons = gears.table.join(
-  awful.button({ }, 1, function (c)
-    if c == client.focus then
-      c.minimized = true
-    else
-      -- Without this, the following
-      -- :isvisible() makes no sense
-      c.minimized = false
-      if not c:isvisible() and c.first_tag then
-        c.first_tag:view_only()
-      end
-      -- This will also un-minimize
-      -- the client, if needed
-      client.focus = c
-      c:raise()
-    end
-  end),
-  awful.button({ }, 3, client_menu_toggle_fn()),
-  awful.button({ }, 4, function ()
-    awful.client.focus.byidx(1)
-  end),
-  awful.button({ }, 5, function ()
-    awful.client.focus.byidx(-1)
-  end))
-
 -- Add the bar on each screen
 awful.screen.connect_for_each_screen(function(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
-
-  -- Create a tasklist widget
-  --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_height, bg = beautiful.wibar_bg })

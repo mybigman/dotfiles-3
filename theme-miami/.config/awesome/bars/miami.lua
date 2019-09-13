@@ -30,6 +30,9 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
 
+  -- Create a tasklist widget for each screen
+  s.mytasklist = require("widgets.tasklist")(s)
+
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
 
@@ -37,12 +40,10 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywibox:setup {
     { -- Left widgets
       wibox.container.rotate(sidebar_arrow, "west"),
+      text_taglist,
       layout = wibox.layout.align.horizontal
     },
-    { -- More or less Middle
-      text_taglist,
-      layout = wibox.layout.fixed.horizontal
-    },
+    s.mytasklist, -- More or less Middle
     { -- Right widgets
       mpc,
       change_theme,
