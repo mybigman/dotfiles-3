@@ -47,6 +47,7 @@ local mytitle = function(c)
             align = "center", widget = awful.titlebar.widget.titlewidget(c) 
           },
           buttons = mbuttons(c),
+          forced_width = dpi(100),
           layout  = wibox.layout.flex.horizontal,
         },
         top = dpi(30), -- TODO: test on other themes with other font
@@ -141,7 +142,7 @@ client.connect_signal("request::titlebars", function(c)
     --awful.titlebar.widget.maximizedbutton(c),
     --awful.titlebar.widget.stickybutton   (c),
     --awful.titlebar.widget.ontopbutton    (c),
-    gen_button(c, 'X', beautiful.fg_alert, window_close),
+    gen_button(c, '', beautiful.fg_alert, window_close),
     layout = wibox.layout.fixed.horizontal
   },
   layout = wibox.layout.align.horizontal

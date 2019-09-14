@@ -2,6 +2,7 @@ local gtable = require("gears.table")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 -- remove few symbols
 beautiful.tasklist_plain_task_name=true
@@ -41,7 +42,9 @@ function tasklist_widget:template()
         nil,
         layout = wibox.layout.align.horizontal,
       },
-      margins = 5,
+      forced_width = dpi(200),
+      left = dpi(15), right = dpi(15),
+      top = dpi(6), bottom = dpi(6),
       widget = wibox.container.margin
     },
     id     = 'background_role',

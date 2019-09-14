@@ -9,7 +9,7 @@
 ! Grey bg (dark to light)
 ! no place but used by tmux and awesome #1c1a20
 *background:   #242228
-*color0:       #45434a
+*color0:       #392f35
 
 ! Primary bg (dark to light)
 *color6:       #a04547

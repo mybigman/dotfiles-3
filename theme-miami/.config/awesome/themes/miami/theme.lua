@@ -75,8 +75,8 @@ theme.general_padding = { left = dpi(10), right = dpi(10), top = dpi(10), bottom
 
 -- smart border
 theme.double_border = true
-theme.double_border_normal = theme.primary
-theme.double_border_focus = theme.alert_dark
+theme.double_border_normal = theme.grey
+theme.double_border_focus = theme.grey_light
 
 -- {{{ TITLEBAR 
 
@@ -103,10 +103,10 @@ theme.wibar_position = "top"
 -- Nerd Font icon here
 theme.tagnames = {" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10 "}
 -- mini_taglist
-theme.taglist_text_occupied = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
-theme.taglist_text_focused = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
-theme.taglist_text_urgent = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
-theme.taglist_text_empty = {"⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘","⭘"}
+theme.taglist_text_occupied = {"-","-","-","-","-","-","-","-","-","-"}
+theme.taglist_text_focused = {"-","-","-","-","-","-","-","-","-","-"}
+theme.taglist_text_urgent = {"-","-","-","-","-","-","-","-","-","-"}
+theme.taglist_text_empty = {"-","-","-","-","-","-","-","-","-","-"}
 
 theme.taglist_shape = gshape.circle
 theme.taglist_shape_empty = gshape.circle
@@ -178,8 +178,8 @@ theme.tasklist_disable_icon = true
 theme.tasklist_spacing = dpi(4)
 theme.tasklist_align = "center"
 theme.tasklist_fg_normal = theme.fg_grey
-theme.tasklist_bg_focus = theme.primary
-theme.tasklist_bg_normal = theme.grey
+theme.tasklist_bg_focus = theme.grey
+theme.tasklist_bg_normal = theme.grey_dark
 
 -- }}} End Tasklist
 

@@ -227,9 +227,9 @@ pcm.headphones {
 # --------------------------
 
 # speaker-test -D default -l2 -c2 -twav
-#pcm.default {
-  #type plug
-  #slave.pcm "softvol"
+#pcm.!default {
+#  type plug
+#  slave.pcm "softvol"
 #}
 pcm.!default pulse
 ctl.!default pulse

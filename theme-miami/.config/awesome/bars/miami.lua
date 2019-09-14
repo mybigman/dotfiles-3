@@ -35,12 +35,12 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
+  s.mywibox_tags = awful.wibar({ position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
     { -- Left widgets
       wibox.container.rotate(sidebar_arrow, "west"),
-      text_taglist,
       layout = wibox.layout.align.horizontal
     },
     s.mytasklist, -- More or less Middle
@@ -53,6 +53,14 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal
     },
     expand ="none",
+    layout = wibox.layout.align.horizontal
+  }
+
+  s.mywibox_tags:setup {
+    nil,
+    text_taglist,
+    nil,
+    expand = "none",
     layout = wibox.layout.align.horizontal
   }
 end)
