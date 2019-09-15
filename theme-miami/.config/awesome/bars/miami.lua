@@ -49,6 +49,7 @@ awful.screen.connect_for_each_screen(function(s)
       change_theme,
       layoutbox,
       scrot,
+      wibox.widget.textbox(" "),
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.horizontal
     },

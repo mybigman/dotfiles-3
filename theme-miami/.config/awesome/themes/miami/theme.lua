@@ -54,13 +54,10 @@ theme.bg_urgent     = theme.alert
 --theme.bg_minimize   = "#444444"
 --theme.bg_systray    = theme.xbackground
 
--- Material theme
--- End Material theme
-
 theme.fg_normal     = theme.fg_primary
 theme.fg_focus      = theme.fg_primary_focus
 theme.fg_urgent     = theme.fg_alert
---theme.fg_minimize   = "#222222"
+theme.fg_minimize   = theme.fg_primary
 
 theme.border_width  = dpi(3)
 theme.screen_margin = dpi(6)
@@ -93,8 +90,8 @@ theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_size = dpi(42)
-theme.wibar_bg = theme.grey_dark .. "ff"
+theme.wibar_size = dpi(38)
+theme.wibar_bg = theme.grey_dark .. "ef"
 theme.wibar_border_radius = dpi(0)
 theme.wibar_position = "top"
 
@@ -185,7 +182,7 @@ theme.tasklist_bg_normal = theme.grey_dark
 
 -- {{{ WIDGETS
 
-theme.widget_spacing = dpi(8) -- space between each widgets
+theme.widget_spacing = dpi(19) -- space between each widgets
 -- popup (distance between the bar and the popup, 0 is pasted at the bar)
 theme.widget_popup_padding = dpi(3)
 
@@ -263,7 +260,7 @@ theme.widget_date_layout = 'horizontal' -- horizontal or vertical
 
 -- Screenshot
 theme.widget_scrot_fg = theme.fg_grey
-theme.widget_scrot_icon = '  '
+theme.widget_scrot_icon = ''
 
 -- button music
 theme.widget_button_music_layout = 'horizontal'
@@ -274,7 +271,7 @@ theme.widget_change_theme_fg = theme.fg_grey
 theme.widget_change_theme_layout = "horizontal"
 
 -- Button mpc
-theme.widget_mpc_button_icon = "  "
+theme.widget_mpc_button_icon = "ﱘ"
 
 -- }}} End WIDGET
 

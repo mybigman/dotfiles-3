@@ -55,12 +55,10 @@ local w = awful.popup {
           {
             {
               mpc,
-              top = 4, -- have to have similar value than bellow
               widget = wibox.container.margin
             },
             {
               volume_bar,
-              top = 4, -- same above
               left = 14,
               widget = wibox.container.margin
             },
@@ -75,7 +73,8 @@ local w = awful.popup {
       },
       layout = wibox.layout.align.horizontal
     },
-    margins = 10,
+    margins = dpi(10),
+    forced_width = dpi(340),
     widget = wibox.container.margin
   },
   visible = false, -- do not show at start
@@ -127,4 +126,6 @@ awesome.connect_signal("daemon::mpd_time", function(mpd)
   update_widget(mpd)
 end)
 
-return button
+local button_widget = widget.box(layout, { button })
+
+return button_widget

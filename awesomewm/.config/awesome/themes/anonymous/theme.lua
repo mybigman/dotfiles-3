@@ -47,7 +47,7 @@ theme.primary = theme.xcolor6
 theme.secondary = theme.xcolor5
 theme.alert = theme.xcolor9
 -- fg
-theme.fg_grey = xrdb.color8 or "#f1fcf0"
+theme.fg_grey = "#808e8a" or "#f1fcf0"
 theme.fg_grey_light = xrdb.foreground or "#ffffff"
 theme.fg_primary = xrdb.color10 or "#4BC66D"
 theme.fg_primary_focus = xrdb.color7 or "#F1FCF9"

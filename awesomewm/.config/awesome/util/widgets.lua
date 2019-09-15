@@ -60,11 +60,12 @@ function widgets.text(w)
   }
 end
 
-function widgets.box(l, widgets)
+function widgets.box(l, widgets, space)
+  local spacing = space or 0
   local _layout = wibox.layout.fixed.horizontal -- default horiz
   if l == "vertical" then _layout = wibox.layout.fixed.vertical end
 
-  local w = wibox.widget { layout = _layout } -- init a widget
+  local w = wibox.widget { layout = _layout, spacing = spacing } -- init a widget
   for _, widget in ipairs(widgets) do
     w:add(widget)
   end

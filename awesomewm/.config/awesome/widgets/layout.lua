@@ -8,11 +8,11 @@ local beautiful = require("beautiful")
 local floating_color = beautiful.desktop_mode_color_floating or "#1D8CD2"
 local tile_color = beautiful.desktop_mode_color_tile or "#2DD283"
 local max_color = beautiful.desktop_mode_color_max or "#D21D43"
-local floating_text = beautiful.desktop_mode_text_floating or "(fl)"
-local tile_text = beautiful.desktop_mode_text_tile or "(ti)"
-local max_text = beautiful.desktop_mode_text_max or "(ma)"
+local floating_text = beautiful.desktop_mode_text_floating or ""
+local tile_text = beautiful.desktop_mode_text_tile or ""
+local max_text = beautiful.desktop_mode_text_max or "类"
 
-local layoutbox = widget.base_text()
+local layoutbox = widget.create_button(tile_color, tile_text)
 layoutbox:buttons(gtable.join(
   awful.button({}, 1, function () awful.layout.inc( 1) end),
   awful.button({}, 3, function () awful.layout.inc(-1) end),
@@ -49,4 +49,5 @@ awful.tag.attached_connect_signal(s, "property::layout", function()
   update_widget()
 end)
 
-return layoutbox
+local layoutbox_widget = widget.box('horizontal', {layoutbox})
+return layoutbox_widget

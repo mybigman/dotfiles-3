@@ -9,11 +9,12 @@ local gtable = require('gears.table')
 local icons = require("icons")
 
 -- beautiful vars
-local icon = beautiful.widget_change_theme_icon or ' 嗀'
-local icon_reload = beautiful.widget_change_theme_icon_reload or ' 勒'
+local icon = beautiful.widget_change_theme_icon or '嗀'
+local icon_reload = beautiful.widget_change_theme_icon_reload or '勒'
 local fg = beautiful.widget_change_theme_fg or '#a9a9a9'
 local bg = beautiful.widget_change_theme_bg or '#232323'
 local l = beautiful.widget_change_theme_layout or 'horizontal'
+local space = beautiful.widget_spacing or dpi(10)
 
 -- for the popup
 local fg_p = beautiful.fg_grey or "#aaaaaa"
@@ -23,7 +24,7 @@ local padding = beautiful.widget_popup_padding or 1
 -- widget creation
 local text = widget.create_button(fg, icon)
 local rld = widget.create_button(fg, icon_reload)
-local wi = widget.box(l, { text, rld })
+local wi = widget.box(l, { text, rld }, space)
 
 local popup_title = widget.create_title("Change theme", fg)
 

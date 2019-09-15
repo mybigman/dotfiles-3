@@ -44,3 +44,4 @@
 *color11:      #f6cb90
 
 st.font: SpaceMono Nerd Font:style=Regular:pixelsize=13
+st.opacity: 250
