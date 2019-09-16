@@ -24,7 +24,7 @@ local taglist_root = class()
 
 function taglist_root:init(args)
   self.mode = args.mode or 'line' -- possible values: icon , line , shape , text
-  self.want_layout = args.want_layout -- possible values: grid , horizontal , vertical
+  self.want_layout = args.want_layout -- possible values: grid , horizontal , vertical, flex (horiz)
   self.template = self:select_template()
   self.buttons = self:make_buttons()
   self.layout = self:select_layout()
@@ -35,6 +35,8 @@ function taglist_root:select_layout()
     return wibox.layout.fixed.vertical
   elseif self.want_layout == 'grid' then
     return { spacing = 10, expand = true, forced_num_rows = 2, forced_num_cols = 5, layout = wibox.layout.grid }
+  elseif self.want_layout == 'flex' then
+    return wibox.layout.flex.horizontal
   else
     return wibox.layout.fixed.horizontal -- default
   end
@@ -204,6 +206,7 @@ function taglist_root:template_icon()
     }
     return t
 end
+
 -- herit
 local taglist_widget = class(taglist_root)
 

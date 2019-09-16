@@ -14,7 +14,6 @@ local fg_primary = beautiful.fg_primary_focus
 -- widgets load
 --local hostname = require("widgets.hostname")
 local tor = require("widgets.button_tor")
---local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
 local scrot_circle = widget.circle(scrot, beautiful.grey, beautiful.primary)
 
@@ -64,10 +63,6 @@ local launcher = awful.widget.launcher(
 --  spacing = dpi(9),
 -- }}} End Define other block
 
--- Remove space between taglist icon
-local tagslist = require("taglists.battleship")
-local my_tagslist = tagslist
-
 -- widget redefined }}}
 
 -- {{{ Helper functions
@@ -92,6 +87,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
+  s.mytaglist = require("widgets.taglist")(s, { mode = "shape", want_layout = "grid" })
 
 -- Create the wibox with default options
 s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
@@ -107,7 +103,7 @@ s.mywibox:setup {
   },
   {
     {
-      my_tagslist,
+      s.mytaglist,
       top = 2,
       bottom = 5,
       widget = wibox.container.margin

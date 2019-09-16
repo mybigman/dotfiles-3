@@ -33,7 +33,7 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytasklist = require("widgets.tasklist")(s)
 
   -- Create a taglist widget for each screen
-  s.mytaglist = require("widgets.taglist")(s, { mode = "line" })
+  s.mytaglist = require("widgets.taglist")(s, { mode = "line", want_layout = 'flex' })
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })

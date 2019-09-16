@@ -30,7 +30,8 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
 
-  s.mytaglist = require("widgets.taglist")(s, { mode = "text", layout = "vertical" })
+  -- Create a taglist for each screen
+  s.mytaglist = require("widgets.taglist")(s, { mode = "text", want_layout = "vertical" })
 
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, width = beautiful.wibar_size, bg = beautiful.wibar_bg })
