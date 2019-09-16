@@ -7,7 +7,6 @@ local separators = require('util.separators')
 local widget = require('util.widgets')
 
 -- widgets load
-local text_taglist = require("taglists.connected")
 local pad = separators.pad
 local mpc = require("widgets.button_only_mpc")
 local change_theme = require("widgets.button_change_theme")
@@ -33,9 +32,11 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a tasklist widget for each screen
   s.mytasklist = require("widgets.tasklist")(s)
 
+  -- Create a taglist widget for each screen
+  s.mytaglist = require("widgets.taglist")(s, { mode = "line" })
+
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
-  s.mywibox_tags = awful.wibar({ position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -57,11 +58,10 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.align.horizontal
   }
 
+  s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
+  awful.placement.maximize_horizontally(s.mywibox_tags)
+
   s.mywibox_tags:setup {
-    nil,
-    text_taglist,
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.horizontal
+    widget = s.mytaglist
   }
 end)

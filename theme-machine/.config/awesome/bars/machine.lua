@@ -7,7 +7,7 @@ local separators = require('util.separators')
 local widget = require('util.widgets')
 
 -- widgets load
-local text_taglist = require("taglists.connected")
+--local text_taglist = require("taglists.connected")
 local pad = separators.pad
 local mpc = require("widgets.button_only_mpc")
 local change_theme = require("widgets.button_change_theme")
@@ -30,6 +30,8 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
 
+  s.mytaglist = require("widgets.taglist")(s, { mode = "text", layout = "vertical" })
+
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = beautiful.wibar_position, width = beautiful.wibar_size, bg = beautiful.wibar_bg })
 
@@ -40,16 +42,17 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.vertical
     },
     { -- More or less Middle
-      text_taglist,
+      --text_taglist,
+      s.mytaglist,
       layout = wibox.layout.fixed.vertical  
     },
     { -- Right widgets
       mpc,
-      change_theme,
-      layoutbox,
+      widget.left_margin(change_theme, 13),
+      widget.left_margin(layoutbox, 13),
       scrot,
       spacing = beautiful.widget_spacing,
-      layout = wibox.layout.fixed.vertical
+      layout = wibox.layout.fixed.vertical,
     },
     expand ="none",
     layout = wibox.layout.align.vertical

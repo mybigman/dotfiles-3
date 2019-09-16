@@ -119,6 +119,8 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a tasklist widget for each screen
   s.mytasklist = require("widgets.tasklist")(s)
 
+  s.mytaglist = require("widgets.taglist")(s, { mode = 'shape', want_layout = 'grid' })
+
 -- For look like a detached bar, we have to add a fake invisible bar...
 s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
 
@@ -140,7 +142,8 @@ s.mywibox:setup {
       s.mytasklist,
       layout = wibox.layout.fixed.horizontal
     },
-    my_tagslist,
+    --my_tagslist,
+    s.mytaglist,
     other_block_margin,
     expand = "none",
     layout = wibox.layout.align.horizontal

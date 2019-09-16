@@ -153,6 +153,15 @@ function widgets.border_bottom(w, colour)
   }
 end
 
+function widgets.left_margin(w, size)
+  local size = size or 10
+  return wibox.widget {
+    w,
+    left = dpi(size),
+    widget = wibox.container.margin
+  }
+end
+
 function widgets.create_button(fg, icon, fg_hover)
   local font = beautiful.widget_icon_font_button or 'Iosevka Term 16'
   local w = widgets.create_text(icon, fg, font)
@@ -182,6 +191,7 @@ function widgets.circle(w, background, color_shape)
     bg = background,
     shape_clip = true,
     shape = gshape.circle,
+    spacing = 4,
     shape_border_color = w_shape,
     shape_border_width = w_width,
     widget = wibox.container.background

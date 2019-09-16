@@ -9,7 +9,6 @@ local widget = require('util.widgets')
 
 -- widgets load
 local hostname = require("widgets.hostname")
-local text_taglist = require("taglists.connected")
 local scrot = require("widgets.scrot")
 local pad = separators.pad
 local arrow = separators.arrow_left
@@ -80,6 +79,8 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
 
+  s.mytaglist = require("widgets.taglist")(s, { mode = "text" })
+
   -- Create the wibox with default options
   s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
 
@@ -91,7 +92,7 @@ awful.screen.connect_for_each_screen(function(s)
       --mylauncher,
       s.mypromptbox,
       distrib_icon,
-      text_taglist,
+      s.mytaglist,
     },
     { -- More or less Middle
       pad(5),
