@@ -38,6 +38,7 @@ end
 local xresources = require('beautiful.xresources')
 local dpi = xresources.apply_dpi
 
+-- TODO: was unable to create the same thing with template
 local icon_taglist = wibox.widget{
   {
     tag_icons[1],

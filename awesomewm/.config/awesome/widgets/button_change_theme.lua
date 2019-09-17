@@ -14,7 +14,7 @@ local icon_reload = beautiful.widget_change_theme_icon_reload or '勒'
 local fg = beautiful.widget_change_theme_fg or '#a9a9a9'
 local bg = beautiful.widget_change_theme_bg or '#232323'
 local l = beautiful.widget_change_theme_layout or 'horizontal'
-local space = beautiful.widget_spacing or dpi(10)
+local space = beautiful.widget_spacing or dpi(1)
 
 -- for the popup
 local fg_p = beautiful.fg_grey or "#aaaaaa"

@@ -87,10 +87,6 @@ local music_block = wibox.widget {
 local music_block_margin = widget.border_bottom(music_block, primary_dark)
 --- }}} End Define music block
 
--- Remove space between taglist icon
-local tagslist = require("taglists.battleship")
-local my_tagslist = tagslist
-
 -- widget redefined }}}
 
 -- {{{ Helper functions
@@ -119,6 +115,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a tasklist widget for each screen
   s.mytasklist = require("widgets.tasklist")(s)
 
+  -- Create a taglist for each screen
   s.mytaglist = require("widgets.taglist")(s, { mode = 'shape', want_layout = 'grid' })
 
 -- For look like a detached bar, we have to add a fake invisible bar...

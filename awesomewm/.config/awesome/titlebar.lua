@@ -6,6 +6,7 @@ local dpi = beautiful.xresources.apply_dpi
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local smartBorders = require("util.smart-borders")
+local theme = require("loaded-theme")
 
 local smart_border = beautiful.double_border or false
 
@@ -44,10 +45,13 @@ local mytitle = function(c)
       return wibox.widget {
         {
           {
-            align = "center", widget = awful.titlebar.widget.titlewidget(c) 
+            {
+              align = "center", widget = awful.titlebar.widget.titlewidget(c),
+            },
+            right = dpi(100), left = dpi(100),
+            widget = wibox.container.margin,
           },
           buttons = mbuttons(c),
-          forced_width = dpi(100),
           layout  = wibox.layout.flex.horizontal,
         },
         top = dpi(30), -- TODO: test on other themes with other font
@@ -57,7 +61,11 @@ local mytitle = function(c)
     else -- display the default bar
       return wibox.widget { 
         {
-          align = "center", widget = awful.titlebar.widget.titlewidget(c) 
+          {
+            align = "center", widget = awful.titlebar.widget.titlewidget(c) 
+          },
+          right = dpi(100), left = dpi(100),
+          widget = wibox.container.margin,
         },
         buttons = buttons,
         layout  = wibox.layout.flex.horizontal
@@ -91,6 +99,7 @@ local gen_button = function(c, icon, fg, cmd)
         nil,
         {
           button,
+          top = dpi(4),
           right = dpi(11), -- TODO: test with other font
           widget = wibox.container.margin
         },
@@ -116,7 +125,7 @@ client.connect_signal("request::titlebars", function(c)
   end
 
   -- bottom bar for ncmpcpp
-  if c.class == "music_n" then
+  if c.class == "music_n" and theme.name ~= "machine" then
     awful.titlebar(c, {
       font = beautiful.titlebar_font, position = "bottom", size = dpi(50)
     }) : setup { 

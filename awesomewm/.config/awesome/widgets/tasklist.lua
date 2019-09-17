@@ -42,9 +42,9 @@ function tasklist_widget:template()
         nil,
         layout = wibox.layout.align.horizontal,
       },
-      forced_width = dpi(200),
+      forced_width = beautiful.tasklist_width or dpi(200),
       left = dpi(15), right = dpi(15),
-      top = dpi(6), bottom = dpi(6),
+      top = dpi(10), bottom = dpi(10), -- adjust in order to limit the name to one line
       widget = wibox.container.margin
     },
     id     = 'background_role',

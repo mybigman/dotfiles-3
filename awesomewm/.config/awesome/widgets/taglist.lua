@@ -37,6 +37,8 @@ function taglist_root:select_layout()
     return { spacing = 10, expand = true, forced_num_rows = 2, forced_num_cols = 5, layout = wibox.layout.grid }
   elseif self.want_layout == 'flex' then
     return wibox.layout.flex.horizontal
+  elseif self.want_layout == 'none' then
+    return nil
   else
     return wibox.layout.fixed.horizontal -- default
   end
@@ -190,18 +192,25 @@ function taglist_root:update_icon(item, tag, index)
   end
 end
 
--- TODO: icon too small, help accept !
+-- TODO: icon too small, help wanted ( used in the theme-anonymous ).
 function taglist_root:template_icon() 
   local t = {
-    widget = wibox.widget.imagebox,
+      { 
+        id = "img_tag",
+        widget = wibox.widget.imagebox,
+      },
+      expand = true,
+      homonogeous = false,
+      --forced_num_rows = 2,
+      --forced_num_cols = 5,
+      --forced_heigth = 128,
+      --forced_width = 128,
+      layout = wibox.layout.grid,
     create_callback = function(item, tag, index, _)
-      item.forced_width = dpi(30)
-      item.forced_height = dpi(30)
-      item.resize = true
-      self:update_icon(item, tag, index)
+      self:update_icon(item.img_tag, tag, index)
     end,
     update_callback = function(item, tag, index, _)
-      self:update_icon(item, tag, index)
+      self:update_icon(item.img_tag, tag, index)
     end,
     }
     return t
