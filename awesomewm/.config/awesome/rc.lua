@@ -23,6 +23,7 @@ local keys = require("keys")
 local helpers = require("helpers")
 local env = require("env-config")
 local sidebar = require("layouts.sidebar")
+local start_screen = require("layouts.start_screen")
 
 -- Start daemons
 require("daemons")

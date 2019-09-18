@@ -122,6 +122,10 @@ keys.globalkeys = gtable.join(
       sidebar.visible = not sidebar.visible 
     end,
       {description = "show or toggle sidebar", group = "awesome"}),
+    awful.key({ modkey }, "F1", function()
+      start_screen.visible = not start_screen.visible 
+    end,
+      {description = "show or toggle start_screen", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
