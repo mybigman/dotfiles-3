@@ -43,6 +43,7 @@ theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
 -- material colors dependencies
 -- bg
+theme.grey = theme.xbackground
 theme.primary = theme.xcolor6
 theme.secondary = theme.xcolor5
 theme.alert = theme.xcolor9

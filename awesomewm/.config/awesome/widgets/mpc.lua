@@ -13,15 +13,13 @@ local icon_next = beautiful.widget_mpc_next_icon
 local fg = beautiful.widget_mpc_fg
 local bg = beautiful.widget_mpc_bg
 local l = beautiful.widget_mpc_layout or 'horizontal'
+local spacing = beautiful.widget_spacing
 
 -- widget creation
 local icon_1 = widget.base_icon()
 local icon_2 = widget.base_icon()
 local icon_3 = widget.base_icon()
-local icon_margin_1 = widget.icon(icon_1)
-local icon_margin_2 = widget.icon(icon_2) 
-local icon_margin_3 = widget.icon(icon_3)
-local mpc_widget = widget.box(l, { icon_margin_1, icon_margin_2, icon_margin_3 })
+local mpc_widget = widget.box_with_margin(l, { icon, icon, icon }, spacing)
 
 local status
 local GET_MPD_CMD = "mpc status" 

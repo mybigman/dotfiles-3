@@ -9,13 +9,12 @@ local date_icon = beautiful.widget_date_icon
 local fg = beautiful.widget_date_fg
 local bg = beautiful.widget_date_bg
 local l = beautiful.widget_date_layout or 'horizontal'
+local spacing = beautiful.widget_spacing or 1
 
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-local icon_margin = widget.icon(icon)
-local text_margin = widget.text(text)
-date_widget = widget.box(l, { icon_margin, text_margin })
+date_widget = widget.box_with_margin(l, { icon, text }, spacing)
 
 local date_script = [[
   bash -c "

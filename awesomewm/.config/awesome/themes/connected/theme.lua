@@ -198,6 +198,8 @@ theme.icon_theme = nil
 
 -- {{{ WIDGET
 
+theme.widget_spacing = dpi(6)
+
 -- popup 
 theme.widget_popup_padding = dpi(3)
 

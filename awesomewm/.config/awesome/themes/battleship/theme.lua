@@ -231,6 +231,8 @@ theme.tasklist_fg_normal = theme.xforeground
 
 -- {{{ WIDGETS
 
+theme.widget_spacing = dpi(5)
+
 -- Hostname
 theme.widget_hostname_text_icon = '<span foreground="#948a77">  </span>'
 

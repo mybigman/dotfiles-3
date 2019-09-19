@@ -43,23 +43,6 @@ function widgets.create_title(text, fg)
   return w
 end
 
-function widgets.icon(w)
-  return wibox.widget {
-    w,
-    right = 4,
-    left = 2,
-    widget = wibox.container.margin
-  }
-end
-
-function widgets.text(w)
-  return wibox.widget {
-    w,
-    right = 2,
-    widget = wibox.container.margin
-  }
-end
-
 function widgets.box(l, widgets, space)
   local spacing = space or 0
   local _layout = wibox.layout.fixed.horizontal -- default horiz
@@ -71,6 +54,15 @@ function widgets.box(l, widgets, space)
   end
 
   return w
+end
+
+function widgets.box_with_margin(l, ws, space)
+  local w = widgets.box(l, ws, space)
+  return wibox.widget {
+    w,
+    left = 5, right = 5,
+    widget = wibox.container.margin
+  }
 end
 
 local function icon_plus_text_size(w)

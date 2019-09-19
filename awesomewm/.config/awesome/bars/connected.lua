@@ -103,7 +103,6 @@ awful.screen.connect_for_each_screen(function(s)
       arrow(g2, g3),
       my_wifi_str,
       arrow(g3, g0),
-      layout = wibox.layout.fixed.horizontal,
       pad(32),
       arrow(g0, g1),
       my_mpc_widget,
@@ -111,7 +110,8 @@ awful.screen.connect_for_each_screen(function(s)
       my_volume,
       arrow(g2, g1),
       my_change_theme,
-      arrow(g1, g0)
+      arrow(g1, g0),
+      layout = wibox.layout.fixed.horizontal
     },
     { -- Right widgets
       mykeyboardlayout,

@@ -1,5 +1,4 @@
 local awful = require("awful")
-local wibox = require("wibox")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
@@ -12,13 +11,12 @@ local icon_ac = beautiful.widget_battery_icon_ac
 local fg = beautiful.widget_battery_fg
 local bg_widget = beautiful.widget_battery_bg
 local l = beautiful.widget_battery_layout or 'horizontal'
+local spacing = beautiful.widget_spacing or 1
 
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-local icon_margin = widget.icon(icon)
-local text_margin = widget.text(text)
-battery_widget = widget.box(l, { icon_margin, text_margin })
+battery_widget = widget.box_with_margin(l, { icon, text }, spacing)
 
 local function update_widget(name, state, value)
   if (name == "AC") then

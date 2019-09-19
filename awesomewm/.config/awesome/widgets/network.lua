@@ -1,7 +1,5 @@
-local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
-local naughty = require("naughty")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 
@@ -11,13 +9,12 @@ local fg = beautiful.widget_network_fg
 local fg_error = beautiful.widget_network_fg_error
 local bg = beautiful.widget_network_bg
 local l = beautiful.widget_network_layout or 'horizontal'
+local spacing = beautiful.widget_spacing or 1
 
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-local icon_margin = widget.icon(icon)
-local text_margin = widget.text(text)
-network_widget = widget.box(l, icon_margin, text_margin)
+network_widget = widget.box_with_margin(l, { icon, text }, spacing)
 
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/network.sh net", 60,

@@ -11,6 +11,7 @@ local bg = beautiful.widget_email_bg
 local l = beautiful.widget_email_layout or 'horizontal'
 local w_type = beautiful.widget_email_type or 'text'
 local padding = beautiful.widget_popup_padding or 1
+local spacing = beautiful.widget_spacing or 1
 
 local read_icon = w_type == 'button' and " "..beautiful.widget_email_read_icon.." "
   or beautiful.widget_email_read_icon
@@ -29,12 +30,10 @@ else
   icon.markup = helpers.colorize_text(unread_icon, fg_unread)
 end
 
-local icon_margin = widget.icon(icon)
 local text = widget.base_text()
-local text_margin = widget.text(text)
 
 local email_widget = w_type == 'button' and icon 
-  or widget.box(l, { icon_margin, text_margin })
+  or widget.box_with_margin(l, { icon, text }, spacing)
 
 local popup_title = widget.create_title("Last messages:", fg_grey)
 local popup_msg = {}
