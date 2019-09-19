@@ -10,7 +10,6 @@ local widget = require('util.widgets')
 -- widgets load
 local hostname = require("widgets.hostname")
 local tor = require("widgets.button_tor")
---local text_taglist = require("widgets.mini_taglist")
 local scrot = require("widgets.scrot")
 local wifi_str = require("widgets.wifi_str")
 local pad = separators.pad

@@ -1,5 +1,4 @@
 local awful = require("awful")
-local gtable = require("gears.table")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -10,20 +9,11 @@ local widget = require('util.widgets')
 local pad = separators.pad
 local mpc = require("widgets.button_only_mpc")
 local change_theme = require("widgets.button_change_theme")
-local layoutbox = require("widgets.layout")
+local desktop_ctrl = require("widgets.desktop-control")
 local scrot = require("widgets.scrot")
-
-local sidebar_arrow = widget.create_button("#daeda1", " >")
-sidebar_arrow:buttons(gtable.join(
-  awful.button({}, 1, function()
-    sidebar.visible = not sidebar.visible
-  end)
-))
--- }}} End widget
+local layouts = require("widgets.layouts")
 
 -- {{{ Wibar
-
--- Add the bar on each screen
 awful.screen.connect_for_each_screen(function(s)
 
   -- Create a promptbox for each screen
@@ -41,14 +31,14 @@ awful.screen.connect_for_each_screen(function(s)
   -- Add widgets to the wibox
   s.mywibox:setup {
     { -- Left widgets
-      wibox.container.rotate(sidebar_arrow, "west"),
+      layouts,
       layout = wibox.layout.align.horizontal
     },
     s.mytasklist, -- More or less Middle
     { -- Right widgets
       mpc,
       change_theme,
-      layoutbox,
+      desktop_ctrl,
       scrot,
       wibox.widget.textbox(" "),
       spacing = beautiful.widget_spacing,
@@ -58,6 +48,7 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.align.horizontal
   }
 
+  -- tagslist bar
   s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
   awful.placement.maximize_horizontally(s.mywibox_tags)
 

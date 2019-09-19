@@ -69,6 +69,7 @@ theme.alert = theme.xcolor9
 theme.alert_light = theme.xcolor3
 
 theme.fg_grey = theme.xforeground
+theme.fg_grey_light = theme.xforeground
 theme.fg_primary = theme.xcolor10
 theme.fg_primary_focus = theme.xcolor7
 theme.fg_secondary = theme.xcolor12

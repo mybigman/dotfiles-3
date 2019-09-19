@@ -177,6 +177,7 @@ theme.tasklist_align = "center"
 theme.tasklist_fg_normal = theme.fg_grey
 theme.tasklist_bg_focus = theme.grey
 theme.tasklist_bg_normal = theme.grey_dark
+theme.tasklist_bg_urgent = theme.grey_light
 
 -- }}} End Tasklist
 
