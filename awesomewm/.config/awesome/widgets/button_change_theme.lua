@@ -26,8 +26,6 @@ local text = widget.create_button(fg, icon)
 local rld = widget.create_button(fg, icon_reload)
 local wi = widget.box(l, { text, rld }, space)
 
-local popup_title = widget.create_title("Change theme", fg)
-
 local popup_anonymous = widget.imagebox(80, icons["anonymous"])
 local popup_connected = widget.imagebox(80, icons["connected"])
 local popup_battleship = widget.imagebox(80, icons["battleship"])
@@ -43,7 +41,7 @@ local w = awful.popup {
       {
         {
           {
-            popup_title,
+            widget.create_title("Change theme", fg),
             layout = wibox.layout.align.vertical
           },
           {

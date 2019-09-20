@@ -346,7 +346,13 @@ awful.rules.rules = {
     class = {
       "miniterm", -- i use this when i need to enter password with sudo
     },
-  }, properties = like_subtle(33, 33, 33, 33) },
+  }, properties = like_subtle(33, 33, 33, 33) }, -- center33
+
+  { rule_any = {
+    class = {
+      "shellweb", -- rss popup
+    },
+  }, properties = like_subtle(25, 25, 50, 50) }, -- center66
 
   -- Centered windows
   { rule_any = {

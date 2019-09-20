@@ -48,17 +48,17 @@ local function treat_rss()
   end)
 end
 
-local function poe_rss()
-  local url = "https://www.pathofexile.com/news/rss"
-  local file = "/tmp/poe.feed"
+local function ycombinator_rss()
+  local url = "https://news.ycombinator.com/rss"
+  local file = "/tmp/ycombinator.feed"
   local command = curl .. '"' .. url .. '" -o ' .. file
   aspawn.easy_async_with_shell(command, function()
-    rss['poe'] = rss_grab("item", { "title", "link" }, file)
+    rss['ycombinator'] = rss_grab("item", { "title", "link" }, file)
     awesome.emit_signal("daemon::rss", rss)
   end)
 end
 
 awidget.watch('sh -c ":"', 900 , function(widget, stdout) -- 15 min
   treat_rss() 
-  poe_rss()
+  ycombinator_rss()
 end)
