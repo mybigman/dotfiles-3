@@ -4,10 +4,9 @@ local aspawn = require("awful.spawn")
 local rss = {}
 local curl = "curl -A 'Mozilla/4.0' -fsm 5 --connect-timeout 3 "
 
-local function rss_grab(object, fields, url)
+local function rss_grab(object, fields, file)
   local object = object or "item"
   local fields = fields or {"title", "link"} -- link, title, or description
-  local url = url or "https://threatpost.com/feed/"
 
   local out = {}
 
@@ -18,9 +17,10 @@ local function rss_grab(object, fields, url)
   local ob = nil
   local i,j,k = 1, 1, 0
 
-  -- code don't work with async method
-  local f = io.popen(curl .. '"' .. url .. '"')
-  local feed = f:read("*all")
+  local f = io.open(file, "rb")
+  if f == nil then return end
+
+  local feed = f:read("*a")
   f:close()
 
   while true do
@@ -40,14 +40,22 @@ end
 
 local function treat_rss() 
   local url = "https://threatpost.com/feed/"
-  rss['treatpost'] = rss_grab("item", { "title", "link" }, url)
-  awesome.emit_signal("daemon::rss", rss)
+  local file = "/tmp/threatpost.feed"
+  local command = curl .. '"' .. url .. '" -o ' .. file
+  aspawn.easy_async_with_shell(command, function()
+    rss['treatpost'] = rss_grab("item", { "title", "link" }, file)
+    awesome.emit_signal("daemon::rss", rss)
+  end)
 end
 
 local function poe_rss()
   local url = "https://www.pathofexile.com/news/rss"
-  rss['poe'] = rss_grab("item", { "title", "link" }, url)
-  awesome.emit_signal("daemon::rss", rss)
+  local file = "/tmp/poe.feed"
+  local command = curl .. '"' .. url .. '" -o ' .. file
+  aspawn.easy_async_with_shell(command, function()
+    rss['poe'] = rss_grab("item", { "title", "link" }, file)
+    awesome.emit_signal("daemon::rss", rss)
+  end)
 end
 
 awidget.watch('sh -c ":"', 900 , function(widget, stdout) -- 15 min
