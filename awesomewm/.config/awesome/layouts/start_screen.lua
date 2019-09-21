@@ -41,7 +41,7 @@ local function add_link(w, url)
   w:buttons(gtable.join(
      awful.button({ }, 1, function()
       awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web .. " " ..tostring(url))
-      start_screen_hide()
+      --start_screen_hide()
     end)
   ))
 end
@@ -116,14 +116,42 @@ end
 local threatpost_widget = make_rss_widget("threatpost", text_rss.threatpost)
 local ycombinator_widget = make_rss_widget("ycombinator", text_rss.ycombinator)
 
+-- image
+local user_picture_container = wibox.container.background()
+--user_picture_container.shape = gears.shape.circle
+user_picture_container.forced_height = dpi(200)
+user_picture_container.forced_width = dpi(200)
+local user_picture = wibox.widget {
+  wibox.widget.imagebox(os.getenv("HOME").."/.config/awesome/profile.png"),
+  widget = user_picture_container
+}
+
+local quotes = {
+  "Change is neither good nor bad. It simply is.",
+  "Fear stimulates my imagination.",
+  "You're good. Get better. Stop asking for things.",
+  "Why does everybody need to talk about everything?",
+  "Today's a good day for Armageddon.",
+  "In the highest level a man has the look of knowing nothing.",
+  "Even if it seems certain that you will lose, retaliate.",
+  "The end is important in all things.",
+  "Having only wisdom and talent is the lowest tier of usefulness.",
+  "By being impatient, matters are damaged and great works cannot be done.",
+  "I'm living like there's no tomorrow, cause there isn't one."
+}
+
+local quote_title = widget.create_title("", beautiful.fg_grey_light)
+local quote = wibox.widget.textbox(quotes[math.random(#quotes)])
+local quote_widget = widget.box("vertical", {quote_title, quote}, dpi(10))
+
+-- the start_screen
 start_screen = wibox({ visible = false, ontop = true, type = "dock" })
 start_screen.bg = beautiful.grey .. "00"
 awful.placement.maximize(start_screen)
 
 start_screen:buttons(gtable.join(
-  awful.button({}, 3, function()
-    start_screen_hide()
-  end)
+  awful.button({}, 1, function() start_screen_hide() end),
+  awful.button({}, 3, function() start_screen_hide() end)
 ))
 
 start_screen:setup {
@@ -131,10 +159,18 @@ start_screen:setup {
   {
     nil,
     {
-      boxes(widget.create_title("RSS Feeds", beautiful.fg_grey), feed_width, 30, 0),
-      boxes(threatpost_widget, feed_width, feed_height, 0),
-      boxes(ycombinator_widget, feed_width, feed_height, 0),
-      layout = wibox.layout.fixed.vertical
+      {
+        boxes(user_picture, 250, 250, 1),
+        boxes(quote_widget, 200, 200, 1),
+        layout = wibox.layout.fixed.vertical
+      },
+      {
+        boxes(widget.create_title("RSS Feeds", beautiful.fg_grey), feed_width, 30, 0),
+        boxes(threatpost_widget, feed_width, feed_height, 0),
+        boxes(ycombinator_widget, feed_width, feed_height, 0),
+        layout = wibox.layout.fixed.vertical
+      },
+      layout = wibox.layout.fixed.horizontal
     },
     nil,
     expand = "none",
