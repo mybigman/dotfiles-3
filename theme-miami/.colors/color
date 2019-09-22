@@ -7,9 +7,9 @@
 ! Bg !
 
 ! Grey bg (dark to light)
-! no place but used by tmux and awesome #1c1a20
-*background:   #242228
-*color0:       #392f35
+! no place but used by tmux and awesome #1e1a20
+*background:   #262228
+*color0:       #3f3a41
 
 ! Primary bg (dark to light)
 *color6:       #a04547
@@ -22,15 +22,15 @@
 *color13:      #e46548
 
 ! Error bg (dark to light)
-*color1:       #d77435
-*color9:       #e08139
-*color3:       #e78f3d
+*color1:       #ca5f31
+*color9:       #d77335
+*color3:       #df8038
 
 ! Text !
 
 ! Text Grey
-*color8:       #ded8e0 
-*foreground:   #ede7f0
+*color8:       #c4bec6 
+*foreground:   #e6e1e9
 
 ! Text Primary (normal - focus)
 *color10:      #d69fa4

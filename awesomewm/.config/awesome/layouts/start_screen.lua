@@ -1,5 +1,6 @@
 local wibox = require("wibox")
 local gtable = require("gears.table")
+local gshape = require("gears.shape")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
@@ -117,10 +118,16 @@ local threatpost_widget = make_rss_widget("threatpost", text_rss.threatpost)
 local ycombinator_widget = make_rss_widget("ycombinator", text_rss.ycombinator)
 
 -- image
+local newshape = function(radius)
+  return function(cr, width, height)
+    gshape.partially_rounded_rect(cr, width, height, true, true, false, true, radius)
+  end
+end
 local user_picture_container = wibox.container.background()
 --user_picture_container.shape = gears.shape.circle
 user_picture_container.forced_height = dpi(200)
 user_picture_container.forced_width = dpi(200)
+user_picture_container.shape = newshape(30)
 local user_picture = wibox.widget {
   wibox.widget.imagebox(os.getenv("HOME").."/.config/awesome/profile.png"),
   widget = user_picture_container
@@ -136,13 +143,19 @@ local quotes = {
   "Even if it seems certain that you will lose, retaliate.",
   "The end is important in all things.",
   "Having only wisdom and talent is the lowest tier of usefulness.",
-  "By being impatient, matters are damaged and great works cannot be done.",
   "I'm living like there's no tomorrow, cause there isn't one."
 }
-
 local quote_title = widget.create_title("", beautiful.fg_grey_light)
 local quote = wibox.widget.textbox(quotes[math.random(#quotes)])
 local quote_widget = widget.box("vertical", {quote_title, quote}, dpi(10))
+
+-- date
+local day = wibox.widget.textclock("%d")
+day.markup = helpers.colorize_text(day.text, beautiful.fg_primary)
+local month = wibox.widget.textclock("%B")
+month.markup = helpers.colorize_text(month.text, beautiful.fg_secondary)
+
+local date_widget = widget.box("vertical", { day, month }, dpi(10))
 
 -- the start_screen
 start_screen = wibox({ visible = false, ontop = true, type = "dock" })
@@ -159,6 +172,10 @@ start_screen:setup {
   {
     nil,
     {
+      {
+        boxes(date_widget, 100, 100, 1),
+        layout = wibox.layout.fixed.vertical
+      },
       {
         boxes(user_picture, 250, 250, 1),
         boxes(quote_widget, 200, 200, 1),
