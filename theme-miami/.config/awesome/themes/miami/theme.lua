@@ -40,13 +40,14 @@ theme.fg_secondary_focus = xrdb.color15 or "#E0E5E5"
 theme.fg_alert = xrdb.color11 or "#DB695B"
 
 -- Regroup fonts
-theme.font          = "SpaceMono Nerd Font Mono Regular 8"
-theme.taglist_font = "SpaceMono Nerd Font Bold 10"
-theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
-theme.widget_text_font = "SpaceMono Nerd Font Regular 9"
-theme.widget_font = 'SpaceMono Nerd Font Mono 15'
-theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 16"
-theme.widget_title_font = "SpaceMono Nerd Font Bold 10"
+theme.myfont = "SpaceMono Nerd Font"
+theme.font          = theme.myfont.." Regular 8"
+theme.taglist_font = theme.myfont.." Bold 10"
+theme.widget_icon_font = theme.myfont.." Mono 13"
+theme.widget_text_font = theme.myfont.." Regular 9"
+theme.widget_font = theme.myfont.." Mono 15"
+theme.widget_icon_font_button = theme.myfont.." Mono 16"
+theme.widget_title_font = theme.myfont.." Bold 10"
 
 theme.bg_normal     = theme.grey
 theme.bg_focus      = theme.secondary
