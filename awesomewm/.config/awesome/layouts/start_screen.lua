@@ -143,7 +143,7 @@ local quotes = {
   "I'm living like there's no tomorrow, cause there isn't one."
 }
 local quote_title = widget.create_title("", beautiful.fg_grey_light)
-local quote = wibox.widget.textbox(quotes[math.random(#quotes)])
+local quote = wibox.widget.textbox(quotes[math.random(1,#quotes)])
 local quote_widget = widget.box("vertical", {quote_title, quote}, dpi(10))
 
 -- date
@@ -175,36 +175,68 @@ local buttons_widget = widget.box('vertical', { gimp,game,pentest })
 
 -- Minimal TodoList
 local todo_textbox = wibox.widget.textbox() -- to store the prompt
-local history_file = os.getenv("HOME").."/.todo_history"
+local history_file = os.getenv("HOME").."/.todoslist"
+
+local todo_max = 7
+local todos = {
+  ttexts = {},
+  tbuttons = {},
+  del_line = {},
+  tlayout = {}
+}
 
 local function update_history()
-  local w = {}
+  local i = 1
   local history = io.open(history_file, "r")
   if history == nil then return end
   for line in history:lines() do
-    table.insert(w, wibox.widget.textbox(line))
+    local text = line or ""
+    todos.ttexts[i].markup = helpers.colorize_text(text, "#aaaffe")
+    i = i+1
   end
   history:close()
-  return w
+
+  if i < todo_max then -- clear the rest
+    for o = i, todo_max do
+      todos.ttexts[o].markup = helpers.colorize_text("", "#aaaffe")
+    end
+  end
 end
 
 local function exec_prompt()
   awful.prompt.run {
     prompt = " New task: ", 
     fg = beautiful.fg_grey , 
-    history_path = history_file,
+    history_path = os.getenv("HOME").."/.history_todo",
     textbox = todo_textbox,
     exe_callback = function(input)
       if not input or #input == 0 then return end
-      todos = update_history()
+      local command = "echo "..input.." >> "..history_file
+      awful.spawn.easy_async_with_shell(command, function()
+        update_history()
+      end)
     end
   }
 end
 
-local todos = update_history()
+local function remove_todo(line)
+  local line = line or 0
+  local command = "[ -f "..history_file.." ] && sed -i "..line.."d "..history_file
+  awful.spawn.easy_async_with_shell(command, function()
+    update_history()
+  end)
+end
+
+for i=1, todo_max do
+  todos.ttexts[i] = widget.base_text()
+  todos.del_line[i] = function() remove_todo(i) end
+  todos.tbuttons[i] = make_button("x ", "#bb56f0", "#9e66b1", todos.del_line[i], 10)
+  todos.tlayout[i] = widget.box('horizontal', { todos.tbuttons[i], todos.ttexts[i] })
+end
+update_history()
 local todo_new = make_button("", "#bbffee", "#8adeaa", exec_prompt, 10)
 local todo_widget = widget.box("horizontal", { todo_new, todo_textbox })
-local todo_list = widget.box("vertical", todos)
+local todo_list = widget.box("vertical", todos.tlayout)
 
 -- the start_screen
 start_screen = wibox({ visible = false, ontop = true, type = "dock" })
