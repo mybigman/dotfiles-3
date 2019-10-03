@@ -11,6 +11,9 @@ export GPG_TTY=$(tty)
 export EDITOR='vim'
 export SUDO_EDITOR='vim'
 
+# nnn, require perl-file-mimeinfo
+export NNN_OPENER="mimeopen"
+
 # Proxy
 #export http_proxy="http://127.0.0.1:45411"
 #export https_proxy=${http_proxy}

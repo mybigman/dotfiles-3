@@ -270,6 +270,19 @@ awful.rules.rules = {
     }
   }, properties = { floating = true }},
 
+  -- On top
+  {
+    rule_any = {
+      class = {
+        "Rofi",
+        "mpv",
+      },
+    },
+    properties = {
+      ontop = true,
+    },
+  },
+
   -- Add titlebars to normal clients and dialogs
   { rule_any = {type = { "normal", "dialog" }
     }, properties = { titlebars_enabled = true }
@@ -348,25 +361,18 @@ awful.rules.rules = {
     },
   }, properties = like_subtle(33, 33, 33, 33) }, -- center33
 
-  { rule_any = {
-    class = {
-      "shellweb", -- rss popup
-    },
-  }, properties = like_subtle(25, 25, 50, 50) }, -- center66
-
   -- Centered windows
   { rule_any = {
     class = {
       "feh",
       "Sxiv",
       "mpv",
+      "shellweb", -- rss popup
     },
     name = {
       "Save File"
     },
-  }, properties = { floating = true }, callback = function (c)
-    awful.placement.centered(c, { honor_padding = true, honor_workarea=false })
-  end },
+  }, properties = like_subtle(25, 25, 50, 50) }, -- center66
 
   -- Set Firefox to always map on the tag named "2" on screen 1.
   { rule = { class = "Brave-browser" },

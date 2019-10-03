@@ -17,10 +17,11 @@ function widgets.create_text(text, fg, font)
   return w
 end
 
-function widgets.create_base_text(font)
+function widgets.create_base_text(font, alignment)
+  local alignment = alignment or 'center'
   return wibox.widget {
-    align  = 'center',
-    valign = 'center',
+    align  = alignment,
+    valign = alignment,
     font = font,
     widget = wibox.widget.textbox
   }
@@ -31,9 +32,9 @@ function widgets.base_icon()
   return widgets.create_base_text(font)
 end
 
-function widgets.base_text()
+function widgets.base_text(alignment)
   local font = beautiful.widget_text_font or "Iosevka Term Regular 9" 
-  return widgets.create_base_text(font)
+  return widgets.create_base_text(font, alignment)
 end
 
 function widgets.create_title(text, fg)

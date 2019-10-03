@@ -1,31 +1,49 @@
-app-admin/pscircle
-app-admin/pwgen
-app-misc/ranger
-app-misc/tmux
+# Shell
 app-shells/zsh
+
+# Editor file
+app-editors/vim +X # X is needed to support copy/paste
+
+# PDF viewer
 app-text/zathura
 app-text/zathura-pdf-mupdf
-app-editors/vim +X
+
+# file browser
+app-misc/nnn with dev-perl/File-MimeInfo
+app-misc/ranger
 
 # vim plugins
-app-vim/gnupg
+app-vim/gnupg with app-admin/pwgen to create secure password
 app-vim/lightline
 app-vim/gitgutter
 app-vim/nerdtree
 app-vim/pathogen
+app-vim/lightline-bufferline
+app-vim/indentline
+app-vim/colorizer
+app-vim/ale
+app-vim/devicons
+app-vim/vim-tmux-navigator
 
+# mails
 mail-client/neomutt +gpgme
 mail-mta/msmtp +mta +sasl +ssl
+net-mail/offlineimap +ssl
 
 # All fonts that i use
-media-fonts/dina
-media-fonts/material-icons
-media-fonts/nerd-font-iosevka
+media-fonts/dina # for the theme-city
+media-fonts/material-icons # all themes with polybar
+media-fonts/nerd-font-noto # all themes with polybar
+media-fonts/nerd-font-iosevka 
 media-fonts/nerd-font-roboto-mono
+media-fonts/nerd-font-space-mono
 media-fonts/sfmono
+media-fonts/anka-coder # theme-sombra
 
+# images
 media-gfx/feh
 media-gfx/scrot
+media-gfx/sxiv
 
 # sounds 
 media-sound/pulseaudio # for awesomewm
@@ -37,25 +55,38 @@ media-sound/mpc
 media-sound/mpd
 media-sound/ncmpcpp +clock +unicode +taglib
 
-media-video/ffmpeg +ladspa +network +openssl +webp +x264
+# video
 media-video/mpv
+
+# chat
 net-irc/weechat +ssl +irc
-net-mail/offlineimap +ssl
+
+# downloader
 net-misc/aria2 +ssl +metalink +libxml2 +adns +bittorent
-net-misc/autossh
-net-misc/keychain
-net-misc/wget
 net-mist/youtube-dl
+rtorrent
+
+# SSH/GPG agent
+net-misc/keychain
+
+# privacy/sec
 net-vpn/tor +seccomp +tor-hardening
 sys-apps/firejail +seccomp +suid
+
+# browser
 www-client/brave-bin
-x11-apps/xdpyinfo
-x11-apps/xinit
-x11-apps/xwininfo
+
+# compositor
 x11-misc/compton +pcre
-x11-misc/i3lock
+
+# bars
 x11-misc/polybar
+x11-wm/awesome
+
+# Exec
 x11-misc/rofi
+
+# copy/paste
 x11-misc/xclip
 
 # terminals
@@ -66,7 +97,7 @@ x11-terms/kitty +imagemagick # for the image preview
 dev-python/pillow +jpeg +zlib
 media-gfx/imagemagick +jpeg +png
 
-# wm that i use
+# wm
 x11-wm/awesome
 x11-wm/subtle +xft
 x11-wm/i3-gaps
@@ -76,4 +107,9 @@ dev-libs/light +udev # for awesomewm
 sys-power/acpilight # for configs with polybar
 
 # notify
+x11-wm/awesome # called naughty
 sys-fs/inotify-tools
+
+# extra
+app-admin/pscircle
+app-misc/tmux

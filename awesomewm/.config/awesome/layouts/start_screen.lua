@@ -19,10 +19,8 @@ local feed_width = 400
 local feed_height = 240
 
 for i = 1, max_feeds do
-  text_rss['threatpost'][i] = widget.base_text()
-  text_rss['threatpost'][i].align = "left"
-  text_rss['ycombinator'][i] = widget.base_text()
-  text_rss['ycombinator'][i].align = "left"
+  text_rss['threatpost'][i] = widget.base_text('left')
+  text_rss['ycombinator'][i] = widget.base_text('left')
 end
 
 local function start_screen_hide()
@@ -143,7 +141,7 @@ local quotes = {
   "I'm living like there's no tomorrow, cause there isn't one."
 }
 local quote_title = widget.create_title("", beautiful.fg_grey_light)
-local quote = wibox.widget.textbox(quotes[math.random(1,#quotes)])
+local quote = wibox.widget.textbox(quotes[math.random(#quotes)])
 local quote_widget = widget.box("vertical", {quote_title, quote}, dpi(10))
 
 -- date
@@ -228,9 +226,9 @@ local function remove_todo(line)
 end
 
 for i=1, todo_max do
-  todos.ttexts[i] = widget.base_text()
+  todos.ttexts[i] = widget.base_text('left')
   todos.del_line[i] = function() remove_todo(i) end
-  todos.tbuttons[i] = make_button("x ", "#bb56f0", "#9e66b1", todos.del_line[i], 10)
+  todos.tbuttons[i] = make_button("x ", "#fb56f0", "#8e66c1", todos.del_line[i], 10)
   todos.tlayout[i] = widget.box('horizontal', { todos.tbuttons[i], todos.ttexts[i] })
 end
 update_history()
