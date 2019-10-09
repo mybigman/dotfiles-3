@@ -10,7 +10,7 @@ local icon_name = {
   "battleship",
   "connected",
   "machine",
-  "tower",
+  "miami",
   "anonymous"
 }
 

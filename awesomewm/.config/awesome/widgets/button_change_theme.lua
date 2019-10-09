@@ -29,7 +29,7 @@ local wi = widget.box(l, { text, rld }, space)
 local popup_anonymous = widget.imagebox(80, icons["anonymous"])
 local popup_connected = widget.imagebox(80, icons["connected"])
 local popup_battleship = widget.imagebox(80, icons["battleship"])
-local popup_tower = widget.imagebox(80, icons["tower"])
+local popup_miami = widget.imagebox(80, icons["miami"])
 local popup_machine = widget.imagebox(80, icons["machine"])
 
 local w_position -- the position of the popup depend of the wibar
@@ -48,8 +48,8 @@ local w = awful.popup {
             popup_anonymous,
             popup_connected,
             popup_battleship,
-            popup_tower,
             popup_machine,
+            popup_miami,
             forced_num_rows = 2,
             forced_num_cols = 3,
             layout = wibox.layout.grid,
@@ -73,9 +73,9 @@ local w = awful.popup {
 w:bind_to_widget(text)
 
 -- audio.sh arguments are: [music_details] [path of your music directory]
-local tower_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change tower" ]]
-widget.add_left_click_action(popup_tower, tower_change_script, 'shell')
+local miami_change_script = [[
+  bash -c "~/.config/awesome/widgets/change-theme.sh --change miami" ]]
+widget.add_left_click_action(popup_miami, miami_change_script, 'shell')
 
 local machine_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change machine" ]]
