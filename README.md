@@ -69,9 +69,6 @@ It's all for the setup :)
 `theme-machine` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/machine.jpg "machine")  
 
-`theme-tower` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/tower.jpg "tower")  
-
 `theme-battleship` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Battleship screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
 

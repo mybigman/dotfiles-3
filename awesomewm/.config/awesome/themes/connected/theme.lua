@@ -60,7 +60,10 @@ theme.alert_dark = theme.xcolor1
 theme.alert = theme.xcolor9
 theme.alert_light = theme.xcolor3
 
+-- fg
 theme.fg_grey = theme.xforeground
+theme.fg_grey_light = theme.xforeground
+
 theme.fg_alert = theme.xcolor11
 
 theme.fg_primary = theme.xcolor10
@@ -203,6 +206,7 @@ theme.widget_spacing = dpi(6)
 -- popup 
 theme.widget_popup_padding = dpi(3)
 
+theme.myfont = "RobotoMono Nerd Font"
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
 theme.widget_text_font = "RobotoMono Nerd Font 8"
 

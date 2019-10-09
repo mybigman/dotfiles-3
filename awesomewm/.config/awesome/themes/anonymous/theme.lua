@@ -41,22 +41,29 @@ theme.xcolor13    = xrdb.color13    or "#825ECE"
 theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
--- material colors dependencies
+-- material colors
 -- bg
-theme.grey = theme.xbackground
-theme.primary = theme.xcolor6
-theme.secondary = theme.xcolor5
-theme.alert = theme.xcolor9
+theme.grey_dark = xrdb.background
+theme.grey = xrdb.background
+theme.grey_light = xrdb.color0
+theme.primary_dark = xrdb.color6
+theme.primary = xrdb.color6
+theme.primary_light = xrdb.color14
+theme.secondary_dark = xrdb.color5
+theme.secondary = xrdb.color5
+theme.secondary_light = xrdb.color13
+theme.alert_dark = xrdb.color1
+theme.alert = xrdb.color9
+theme.alert_light = xrdb.color3
 -- fg
-theme.fg_grey = "#808e8a" or "#f1fcf0"
-theme.fg_grey_light = xrdb.foreground or "#ffffff"
-theme.fg_primary = xrdb.color10 or "#4BC66D"
-theme.fg_primary_focus = xrdb.color7 or "#F1FCF9"
-theme.fg_secondary = xrdb.color12 or "#3DBAC2"
-theme.fg_secondary_focus = xrdb.color15 or "#E0E5E5"
-theme.fg_alert = xrdb.color11 or "#DB695B"
+theme.fg_grey = "#808e8a"
+theme.fg_grey_light = xrdb.foreground
+theme.fg_primary = xrdb.color10
+theme.fg_primary_focus = xrdb.color7
+theme.fg_secondary = xrdb.color12
+theme.fg_secondary_focus = xrdb.color15
+theme.fg_alert = xrdb.color11
 
---theme.font          = "sans 8"
 theme.font          = "RobotoMono Nerd Font 8"
 
 theme.bg_normal     = theme.xbackground
@@ -224,6 +231,7 @@ theme.tasklist_align = "center"
 
 -- {{{ WIDGET
 
+theme.myfont = "RobotoMono Nerd Font"
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
 theme.widget_text_font = "RobotoMono Nerd Font 8"
 

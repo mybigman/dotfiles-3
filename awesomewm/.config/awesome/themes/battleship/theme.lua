@@ -37,6 +37,7 @@ theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
 -- Regroup fonts
+theme.myfont          = "RobotoMono Nerd Font"
 theme.font          = "RobotoMono Nerd Font 8"
 theme.taglist_font = "Iosevka Term Heavy Oblique 10"
 theme.widget_icon_font = "RobotoMono Nerd Font Mono 13"
@@ -61,6 +62,10 @@ theme.primary_light = theme.xcolor14 -- cyan L
 theme.secondary_dark = theme.xcolor5 -- magenta D
 theme.secondary = theme.xcolor4 -- magenta
 theme.secondary_light = theme.xcolor13 -- magenta L
+
+theme.alert_dark = theme.xcolor1
+theme.alert = theme.xcolor9
+theme.alert_light = theme.xcolor3
 -- fg
 theme.fg_grey = xrdb.color8 or "#f1fcf0"
 theme.fg_grey_light = xrdb.foreground or "#ffffff"
