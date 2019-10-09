@@ -37,6 +37,7 @@ theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
 -- Regroup fonts
+theme.myfont        = "SpaceMono Nerd Font Mono"
 theme.font          = "SpaceMono Nerd Font Mono Regular 8"
 theme.taglist_font = "SpaceMono Nerd Font Bold 10"
 theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"

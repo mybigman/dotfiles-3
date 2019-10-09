@@ -8,15 +8,16 @@ local naughty = require("naughty")
 local dpi = beautiful.xresources.apply_dpi
 local env = require("env-config")
 local helpers = require("helpers")
+local theme = require("loaded-theme")
 
 local text_rss = {
   threatpost = {},
   ycombinator = {}
 }
 
-local max_feeds = 5
+local max_feeds = 4
 local feed_width = 400
-local feed_height = 240
+local feed_height = 248
 
 for i = 1, max_feeds do
   text_rss['threatpost'][i] = widget.base_text('left')
@@ -84,6 +85,7 @@ local function boxes(w, width, height, margin)
       bg = beautiful.grey_dark,
       forced_height = dpi(height),
       forced_width = dpi(width),
+      shape = helpers.rrect(8),
       widget = wibox.container.background
     },
     margins = dpi(margin),
@@ -98,7 +100,7 @@ local function make_rss_widget(title, w)
     {
       {
         align = "left",
-        widget = widget.create_title(title, beautiful.fg_grey),
+        widget = widget.create_title(title, beautiful.primary),
       },
       left = 5, bottom = 8, top = 5,
       layout = wibox.container.margin
@@ -116,16 +118,18 @@ end
 local threatpost_widget = make_rss_widget("threatpost", text_rss.threatpost)
 local ycombinator_widget = make_rss_widget("ycombinator", text_rss.ycombinator)
 
--- images, TODO: create a widget to change the wallpaper rather than this
-local user_picture_container = wibox.container.background()
-user_picture_container.forced_height = dpi(160)
-user_picture_container.forced_width = dpi(160)
-user_picture_container.shape = gshape.circle
+-- images
+local theme_picture_container = wibox.container.background()
+theme_picture_container.forced_height = dpi(100)
+theme_picture_container.forced_width = dpi(160)
 
-local user_picture = wibox.widget {
-  wibox.widget.imagebox(os.getenv("HOME").."/.config/awesome/profile.png"),
-  widget = user_picture_container
+local theme_picture = wibox.widget {
+  wibox.widget.imagebox(beautiful.wallpaper),
+  widget = theme_picture_container
 }
+
+local theme_name = widget.create_title(theme.name, beautiful.fg_primary, 17)
+local picture_widget = widget.box('vertical', { theme_picture, theme_name })
 
 -- quotes
 local quotes = {
@@ -140,17 +144,17 @@ local quotes = {
   "Having only wisdom and talent is the lowest tier of usefulness.",
   "I'm living like there's no tomorrow, cause there isn't one."
 }
-local quote_title = widget.create_title("", beautiful.fg_grey_light)
+local quote_title = widget.create_title("", beautiful.fg_grey_light, 17)
 local quote = wibox.widget.textbox(quotes[math.random(#quotes)])
 local quote_widget = widget.box("vertical", {quote_title, quote}, dpi(10))
 
 -- date
 local day = wibox.widget.textclock("%d")
-day.markup = helpers.colorize_text(day.text, beautiful.fg_primary)
+day.markup = helpers.colorize_text(day.text, beautiful.primary)
 local month = wibox.widget.textclock("%B")
-month.markup = helpers.colorize_text(month.text, beautiful.fg_secondary)
+month.markup = helpers.colorize_text(month.text, beautiful.secondary)
 
-local date_widget = widget.box("vertical", { day, month }, dpi(10))
+local date_widget = widget.box("vertical", { day, month }, dpi(14))
 
 -- shortcut icon
 local function make_button(icon, color_up, color_down, cmd, fsize)
@@ -162,20 +166,57 @@ local function make_button(icon, color_up, color_down, cmd, fsize)
   return w
 end
 
-local gimp_cmd = function() awful.spawn("gimp") end
-local gimp = make_button("", beautiful.fg_grey_light, beautiful.fg_grey, gimp_cmd)
-local game_cmd = function() awful.spawn("lutris") end
-local game = make_button("", beautiful.fg_grey_light, beautiful.fg_grey, game_cmd)
-local pentest_cmd = function() awful.spawn("msf") end -- TODO no work like this
-local pentest = make_button("ﮊ", beautiful.fg_grey_light, beautiful.fg_grey, pentest_cmd)
+-- function for buttons
+local launch_term = function(cmd)
+ awful.spawn.with_shell(env.term .. env.term_call[2] .. cmd)
+ start_screen_hide()
+end
+
+local exec_prog = function(cmd)
+  awful.spawn(cmd)
+  start_screen_hide()
+end
+
+-- buttons apps
+local gimp_cmd = function() exec_prog("gimp") end
+local gimp = make_button("", beautiful.primary_light, beautiful.primary, gimp_cmd)
+local game_cmd = function() exec_prog("lutris") end
+local game = make_button("", beautiful.secondary_light, beautiful.secondary, game_cmd)
+local pentest_cmd = function() launch_term("msf") end
+local pentest = make_button("ﮊ", beautiful.alert_light, beautiful.alert, pentest_cmd)
 
 local buttons_widget = widget.box('vertical', { gimp,game,pentest })
+
+-- buttons path
+local image_cmd = function() launch_term("nnn ~/images") end
+local image = make_button("IMAGES", beautiful.primary_light, beautiful.primary, image_cmd, 12)
+
+local torrent_cmd = function() launch_term("nnn ~/torrents") end
+local torrent = make_button("TORRENTS", beautiful.secondary_light, beautiful.secondary, torrent_cmd, 12)
+
+local movie_cmd = function() launch_term("nnn ~/videos") end
+local movie = make_button("MOVIES", beautiful.alert_light, beautiful.alert, movie_cmd, 12)
+
+local buttons_path_1_widget = widget.box('horizontal', { image,torrent }, 25)
+local buttons_path_2_widget = widget.box('horizontal', { movie }, 25)
+
+-- buttons url
+local github_cmd = function() exec_prog("/opt/brave/brave https://github.com") end
+local github = make_button("", beautiful.primary_light, beautiful.primary, github_cmd)
+
+local twitter_cmd = function() exec_prog("/opt/brave/brave https://twitter.com") end
+local twitter = make_button("", beautiful.secondary_light, beautiful.secondary, twitter_cmd)
+
+local reddit_cmd = function() exec_prog("/opt/brave/brave https://reddit.com") end
+local reddit = make_button("", beautiful.alert_light, beautiful.alert, reddit_cmd)
+
+local buttons_url_widget = widget.box('vertical', { github, twitter, reddit })
 
 -- Minimal TodoList
 local todo_textbox = wibox.widget.textbox() -- to store the prompt
 local history_file = os.getenv("HOME").."/.todoslist"
 
-local todo_max = 7
+local todo_max = 6
 local todos = {
   ttexts = {},
   tbuttons = {},
@@ -189,14 +230,14 @@ local function update_history()
   if history == nil then return end
   for line in history:lines() do
     local text = line or ""
-    todos.ttexts[i].markup = helpers.colorize_text(text, "#aaaffe")
+    todos.ttexts[i].markup = helpers.colorize_text(text, beautiful.fg_primary)
     i = i+1
   end
   history:close()
 
   if i < todo_max then -- clear the rest
     for o = i, todo_max do
-      todos.ttexts[o].markup = helpers.colorize_text("", "#aaaffe")
+      todos.ttexts[o].markup = helpers.colorize_text("", beautiful.fg_primary)
     end
   end
 end
@@ -227,12 +268,12 @@ end
 
 for i=1, todo_max do
   todos.ttexts[i] = widget.base_text('left')
-  todos.del_line[i] = function() remove_todo(i) end
-  todos.tbuttons[i] = make_button("x ", "#fb56f0", "#8e66c1", todos.del_line[i], 10)
+  todos.del_line[i] = function() remove_todo(i) end -- serve to store the actual line
+  todos.tbuttons[i] = make_button("x ", beautiful.alert_light, beautiful.alert, todos.del_line[i], 10)
   todos.tlayout[i] = widget.box('horizontal', { todos.tbuttons[i], todos.ttexts[i] })
 end
 update_history()
-local todo_new = make_button("", "#bbffee", "#8adeaa", exec_prompt, 10)
+local todo_new = make_button("", beautiful.primary_light, beautiful.primary, exec_prompt, 10)
 local todo_widget = widget.box("horizontal", { todo_new, todo_textbox })
 local todo_list = widget.box("vertical", todos.tlayout)
 
@@ -251,21 +292,15 @@ start_screen:setup {
     nil,
     {
       {
-        nil,
-        {
-          boxes(date_widget, 100, 100, 1),
-          boxes(buttons_widget, 100, 250, 1),
-          layout = wibox.layout.fixed.vertical
-        },
-        nil,
-        expand = "none",
-        layout = wibox.layout.align.vertical
+        boxes(date_widget, 100, 100, 1),
+        boxes(buttons_widget, 100, 300, 1),
+        layout = wibox.layout.fixed.vertical
       },
       {
         nil,
         {
-          boxes(user_picture, 210, 210, 1),
-          boxes(quote_widget, 200, 200, 1),
+          boxes(picture_widget, 210, 200, 1),
+          boxes(quote_widget, 210, 200, 1),
           layout = wibox.layout.fixed.vertical
         },
         nil,
@@ -280,13 +315,19 @@ start_screen:setup {
       {
         nil,
         {
-          boxes(todo_widget, 30, 30, 0),
-          boxes(todo_list, 200, 200, 1),
+          boxes(todo_widget, 210, 30, 0),
+          boxes(todo_list, 210, 200, 1),
+          boxes(buttons_path_1_widget, 210, 85, 1),
+          boxes(buttons_path_2_widget, 210, 85, 1),
           layout = wibox.layout.fixed.vertical
         },
         nil,
         expand = "none",
         layout = wibox.layout.align.vertical
+      },
+      {
+        boxes(buttons_url_widget, 100, 350, 1),
+        layout = wibox.layout.fixed.vertical
       },
       layout = wibox.layout.fixed.horizontal
     },

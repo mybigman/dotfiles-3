@@ -18,7 +18,7 @@ local theme = {}
 
 -- Get colors from .Xresources and set fallback colors
 -- bg
-theme.grey_dark = "#1c1a20" 
+theme.grey_dark = "#241c22" 
 theme.grey = xrdb.background or "#282f37"
 theme.grey_light = xrdb.color0 or "#29262C"
 theme.primary_dark = xrdb.color6 or "#9EE9EA" -- cyan D
@@ -91,7 +91,7 @@ theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
 
 -- Top bar
-theme.wibar_size = dpi(38)
+theme.wibar_size = dpi(30)
 theme.wibar_bg = theme.grey_dark .. "ef"
 theme.wibar_border_radius = dpi(0)
 theme.wibar_position = "top"

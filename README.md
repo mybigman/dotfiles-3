@@ -24,7 +24,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 - [screenshots](#screens)
 
 ## Installation for the last theme
-For the last [theme-tower](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
+For the last [theme-miami](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
 
 <!--
 ### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
@@ -63,7 +63,10 @@ You can install theses repos with:
 It's all for the setup :)
 
 ## Screens
-**Last**:`theme-machine` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+**Last**:`theme-miami` **wm**:*awesome* **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/miami.png "miami")  
+
+`theme-machine` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/machine.jpg "machine")  
 
 `theme-tower` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   

@@ -37,9 +37,10 @@ function widgets.base_text(alignment)
   return widgets.create_base_text(font, alignment)
 end
 
-function widgets.create_title(text, fg)
+function widgets.create_title(text, fg, size)
   local margin = margin or 0
-  local font = beautiful.widget_title_font or "Iosevka Term Bold 10" 
+  local size = size or 10
+  local font = beautiful.myfont.." Bold "..size or "Iosevka Term Bold "..size
   local w = widgets.create_base_text(font)
   w.markup = helpers.colorize_text(text, fg)
   return w
