@@ -19,7 +19,7 @@ function take_scrot(time)
   end
   naughty.notify{
     text = title,
-    timeout = 2
+    timeout = 1
   }
   awful.spawn.with_shell("scrot -d "..time.." -q 100")
 end

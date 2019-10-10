@@ -62,7 +62,7 @@ theme.fg_minimize   = theme.fg_primary
 
 theme.border_width  = dpi(3)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(5)
+theme.useless_gap   = dpi(14)
 theme.border_normal = theme.grey_dark
 theme.border_focus  = theme.grey_dark
 theme.border_marked = theme.grey
