@@ -1,0 +1,47 @@
+! Material theme
+
+! theme https://www.colorspire.com/
+! material color: https://material.io/inline-tools/color/
+! material: https://material.io/tools/color 
+
+! Bg !
+
+! Grey bg (dark to light)
+! no place but used by tmux and awesome #16151e
+*background:   #1a1726
+*color0:       #221f2f
+
+! Primary bg (dark to light)
+*color6:       #43234f
+*color2:       #5c2c63
+*color14:      #6a316d
+
+! Secondary bg (dark to light)
+*color5:       #332661
+*color4:       #403778
+*color13:      #474184
+
+! Error bg (dark to light)
+*color1:       #845eb1
+*color9:       #987cbb
+*color3:       #b4a2cc
+
+! Text !
+
+! Text Grey
+*color8:       #dac5fe
+*foreground:   #f1e7ff
+
+! Text Primary (normal - focus)
+*color10:      #f0f4c3
+*color7:       #f9fbe7
+
+! Text Secondary (normal - focus)
+*color12:      #b2dfdb
+*color15:      #e0f2f1
+
+! Text Error
+*color11:      #263238
+
+st.font: SpaceMono Nerd Font:style=Regular:pixelsize=13
+st.opacity: 250
