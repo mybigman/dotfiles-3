@@ -1,10 +1,10 @@
 #!/bin/sh
 
 file=".config/awesome/loaded-theme.lua"
-dotsdir="$(file $file | awk '{print $5}')"
+dotsdir="$(file ~/$file | awk '{print $5}')"
 debug=false
 
-awesomeThemes="connected anonymous battleship machine miami"
+awesomeThemes="connected anonymous battleship machine miami beta"
 oldTheme=""
 oldPath=""
 dotfiles_dir=""
@@ -79,7 +79,7 @@ while [ "$#" -gt 0 ] ; do
     -c | --change) wantTheme="$2" && trap change_theme EXIT
       shift ; shift ;;
     -d | --debug) debug=true ; shift ;;
-    *) die "Unknown args $1, usage: $0 [--change] [theme-name]\nthemes available: connected anonymous miami galactic" ;;
+    *) die "Unknown args $1, usage: $0 [--change] [theme-name]\nthemes available: connected anonymous galactic machine miami" ;;
   esac
 done
 

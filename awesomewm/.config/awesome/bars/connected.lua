@@ -28,13 +28,13 @@ local network = require("widgets.network")
 local my_network = widget.bg( g2, network_widget )
 
 local wifi_str = require("widgets.wifi_str")
-local my_wifi_str = widget.bg( g3, wifi_str_widget )
+local my_wifi_str = widget.bg( g3, wifi_str )
 
 local mpc = require("widgets.mpc")
 local my_mpc_widget = widget.bg( g1, mpc )
 
 local volume = require("widgets.volume")
-local my_volume = widget.bg( g2, volume_widget )
+local my_volume = widget.bg( g2, volume )
 
 local change_theme = require("widgets.button_change_theme")
 local my_change_theme = widget.bg( g1, change_theme )

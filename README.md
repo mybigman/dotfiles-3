@@ -64,19 +64,19 @@ It's all for the setup :)
 
 ## Screens
 **Last**:`theme-miami` **wm**:*awesome* **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/miami.png "miami")  
+![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami")  
 
 `theme-machine` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/machine.jpg "machine")  
+![Machine screenshot](https://github.com/szorfein/unix-portfolio/raw/master/machine/monitoring.png "machine")  
 
 `theme-battleship` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Battleship screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
 
 `theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
-![Anonymous screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/anonymous.jpg "anonymous")  
+![Anonymous screenshot](https://github.com/szorfein/unix-portfolio/blob/master/anonymous/music.png "anonymous")  
 
 `theme-connected` **wm**: awesome, **term**: xst, **vim-color**: [gruvbox material](https://github.com/sainnhe/gruvbox-material), **font**: [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
-![Connected screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/connected.jpg "connected")  
+![Connected screenshot](https://github.com/szorfein/unix-portfolio/blob/master/connected/ncmpcpp.png "connected")  
 
 `theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Lost screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  

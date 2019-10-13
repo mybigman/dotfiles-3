@@ -4,6 +4,7 @@ local helpers = require("helpers")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local mymainmenu = require("menu")
+local env = require("env-config")
 
 local keys = {}
 
@@ -191,10 +192,18 @@ keys.globalkeys = gtable.join(
 
     -- Music Control (volume)
     awful.key({ altkey, "Control" }, "Up", function() 
-      awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +1%")
+      if env.sound_system == "alsa" then
+        awful.spawn.with_shell("amixer -D "..env.sound_card_alsa.." sset Master 1%+")
+      else
+        awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +1%")
+      end
     end, {description = "increase volume", group = "music"}),
     awful.key({ altkey, "Control" }, "Down", function() 
-      awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -1%")
+      if env.sound_system == "alsa" then
+        awful.spawn.with_shell("amixer -D "..env.sound_card_alsa.." sset Master 1%-")
+      else
+        awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -1%")
+      end
     end, {description = "Lower volume", group = "music"}),
 
     -- Music Control (mpc)

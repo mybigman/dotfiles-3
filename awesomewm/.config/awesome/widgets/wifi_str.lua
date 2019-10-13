@@ -11,7 +11,7 @@ local spacing = beautiful.widget_spacing or 1
 
 -- widget creation
 local text = widget.base_text()
-wifi_str_widget = widget.box_with_margin(l, { text_margin }, spacing)
+local wifi_str_widget = widget.box_with_margin(l, { text }, spacing)
 
 awful.widget.watch(
   os.getenv("HOME").."/.config/awesome/widgets/network.sh wifi", 60,
@@ -23,3 +23,5 @@ awful.widget.watch(
     end
   end
 )
+
+return wifi_str_widget

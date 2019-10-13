@@ -13,7 +13,7 @@ local spacing = beautiful.widget_spacing or 1
 -- widget creation
 local icon = widget.base_icon()
 local text = widget.base_text()
-volume_widget = widget.box(l, { icon, text }, spacing)
+local volume_widget = widget.box_with_margin(l, { icon, text }, spacing)
 
 local function print_volume(volume, fg)
   icon.markup = helpers.colorize_text(volume_icon, fg)
@@ -27,3 +27,5 @@ awesome.connect_signal("daemon::volume", function(volume, is_muted)
     print_volume(volume, fg)
   end
 end)
+
+return volume_widget

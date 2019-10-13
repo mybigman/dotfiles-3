@@ -21,7 +21,15 @@ end
 env.editor_cmd = env.term .. env.term_call[2] .. env.editor
 
 -- Add files system you want to track, the line bellow match with:
--- /home/yagdra, /opt/musics and /opt/torrents for me :)
+-- /home/yagdra, /opt/musics and /opt/torrents, look with the tool 'df'
 env.disks = { "yagdra", "musics", "torrents" }
+
+-- {{{ Sound settings
+-- choose alsa or pulseaudio, alsa will use amixer and pulseaudio pactl
+env.sound_system = "alsa" -- if you use pulse, the default card @DEFAULT_SINK@ is used
+env.sound_card_alsa = "hw:Pro" -- your card here, use only if sound_system is alsa, example usage: amixer -D hw:Pro sget Master
+-- Your card name can be found with: cat /proc/asound/cards
+
+-- }}} End Sound Setting
 
 return env

@@ -20,7 +20,7 @@ local spacing = dpi(7)
 local icon_1 = widget.base_icon()
 local icon_2 = widget.base_icon()
 local icon_3 = widget.base_icon()
-local mpc_widget = widget.box(l, { icon_1, icon_2, icon_3 }, spacing)
+local mpc_widget = widget.box_with_margin(l, { icon_1, icon_2, icon_3 }, spacing)
 
 local status
 local GET_MPD_CMD = "mpc status" 

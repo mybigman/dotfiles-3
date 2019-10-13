@@ -26,7 +26,7 @@ local my_mpc = widget.bg_rounded( mpc_bg, "#3b6f6f", mpc )
 
 local volume = require("widgets.volume")
 local volume_bg = beautiful.widget_volume_bg
-local my_vol = widget.bg_rounded( volume_bg, "#5b8f94", volume_widget )
+local my_vol = widget.bg_rounded( volume_bg, "#5b8f94", volume )
 
 local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
