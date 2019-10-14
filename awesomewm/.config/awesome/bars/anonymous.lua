@@ -24,7 +24,7 @@ local mpc = require("widgets.mpc")
 local mpc_bg = beautiful.widget_mpc_bg
 local my_mpc = widget.bg_rounded( mpc_bg, "#3b6f6f", mpc )
 
-local volume = require("widgets.volume")
+local volume = require("widgets.volume")({})
 local volume_bg = beautiful.widget_volume_bg
 local my_vol = widget.bg_rounded( volume_bg, "#5b8f94", volume )
 

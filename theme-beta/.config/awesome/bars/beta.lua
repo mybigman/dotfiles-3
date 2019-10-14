@@ -14,7 +14,8 @@ local scrot = require("widgets.scrot")
 local layouts = require("widgets.layouts")
 
 -- for the top
-local ram = require("widgets.ram")({ mode = "progressbar", want_layout = "horizontal" })
+local ram = require("widgets.ram")({ mode = "progressbar" })
+local volume = require("widgets.volume")({ mode = "progressbar" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -35,6 +36,8 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywibox:setup {
     nil,
     {
+      volume,
+      pad(4),
       ram,
       layout = wibox.layout.fixed.horizontal
     },

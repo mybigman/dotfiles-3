@@ -33,7 +33,7 @@ local my_wifi_str = widget.bg( g3, wifi_str )
 local mpc = require("widgets.mpc")
 local my_mpc_widget = widget.bg( g1, mpc )
 
-local volume = require("widgets.volume")
+local volume = require("widgets.volume")({})
 local my_volume = widget.bg( g2, volume )
 
 local change_theme = require("widgets.button_change_theme")

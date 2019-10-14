@@ -9,7 +9,7 @@ local icons = require("icons")
 
 -- widget for the popup
 local mpc = require("widgets.mpc")
-local volume_bar = require("widgets.volume-slider")
+local volume_bar = require("widgets.volume")({ mode = "slider" })
 volume_bar.forced_width = dpi(40) -- set a max width
 
 -- beautiful vars
