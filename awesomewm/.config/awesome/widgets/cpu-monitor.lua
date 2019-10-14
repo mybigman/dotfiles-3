@@ -9,22 +9,6 @@ local gshape = require("gears.shape")
 
 local pbars = {} -- store all progressbars (one by cpu core)
 
-local function make_progressbar() 
-  return wibox.widget {
-    max_value     = 100,
-    value         = 10,
-    forced_height = dpi(6),
-    forced_width  = dpi(10),
-    paddings      = 1,
-    border_width  = 0,
-    bar_shape     = gshape.rounded_bar,
-    shape         = gshape.rounded_bar,
-    background_color = beautiful.primary,
-    color         = beautiful.alert,
-    widget        = wibox.widget.progressbar
-  }
-end
-
 local function make_all_progressbar(nb_cpu)
   for i = 1, nb_cpu do
     if i >= 2 then

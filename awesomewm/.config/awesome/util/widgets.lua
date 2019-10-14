@@ -297,4 +297,24 @@ function widgets.make_arcchart(w)
   }
 end
 
+function widgets.make_progressbar(value, width)
+  local value = value or 10
+  local width = width or 100
+  return wibox.widget {
+    max_value     = 100,
+    value         = value,
+    --forced_height = dpi(2),
+    --forced_width  = dpi(100),
+    forced_width  = width,
+    paddings      = 1,
+    border_width  = 1,
+    border_color  = beautiful.grey,
+    bar_shape     = gshape.rounded_bar,
+    shape         = gshape.rounded_bar,
+    background_color = beautiful.primary,
+    color         = beautiful.alert,
+    widget        = wibox.widget.progressbar
+  }
+end
+
 return widgets

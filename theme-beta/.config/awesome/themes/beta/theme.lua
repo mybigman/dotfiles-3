@@ -184,7 +184,7 @@ theme.tasklist_bg_urgent = theme.grey_light
 
 -- {{{ WIDGETS
 
-theme.widget_spacing = dpi(19) -- space between each widgets
+theme.widget_spacing = dpi(12) -- space between each widgets
 -- popup (distance between the bar and the popup, 0 is pasted at the bar)
 theme.widget_popup_padding = dpi(3)
 
@@ -225,7 +225,7 @@ theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = theme.fg_alert
+theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.grey .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 

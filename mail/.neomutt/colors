@@ -132,7 +132,6 @@ color index color13 color8 ~P
 color index color13 color8 ~T
 color index color13 color8 ~O
 color index color1 color8 ~F
-color index color1 color8 ~N
 
 # add some nice custom coloring to the message list
 # thanks to new neomutt features
@@ -142,8 +141,12 @@ color index_subject color109 color8 "~P !~T !~D"
 color index_author color109 color8 "~P !~T !~D"
 color index_subject color243 color8 "~Q !~T !~D"
 color index_author color243 color8 "~Q !~T !~D"
-color index_subject brightcyan color8 "~N !~T !~D"
-color index_author  brightcyan color8 "~N !~T !~D"
+
+# new message
+color index color7 color6 ~N
+color index_subject color10 color6 "~N !~T !~D"
+color index_author  color10 color6 "~N !~T !~D"
+
 color index_subject color142 color8 "~O !~T !~D"
 color index_author color142 color8 "~O !~T !~D"
 color index_subject color214 color8 "~F !~T !~D"

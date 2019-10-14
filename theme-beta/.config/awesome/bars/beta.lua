@@ -13,6 +13,9 @@ local desktop_ctrl = require("widgets.desktop-control")
 local scrot = require("widgets.scrot")
 local layouts = require("widgets.layouts")
 
+-- for the top
+local ram = require("widgets.ram")({ mode = "progressbar", want_layout = "horizontal" })
+
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
 
@@ -30,6 +33,28 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.mywibox:setup {
+    nil,
+    {
+      ram,
+      layout = wibox.layout.fixed.horizontal
+    },
+    nil,
+    expand ="none",
+    layout = wibox.layout.align.horizontal
+  }
+
+  -- tagslist bar
+  s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
+  awful.placement.maximize_horizontally(s.mywibox_tags)
+
+  s.mywibox_tags:setup {
+    widget = s.mytaglist
+  }
+
+  -- bottom bar
+  s.mywiboxbottom = awful.wibar({ position = "bottom", height = dpi(80), bg = beautiful.wibar_bg })
+
+  s.mywiboxbottom:setup {
     { -- Left widgets
       layouts,
       layout = wibox.layout.align.horizontal
@@ -47,12 +72,5 @@ awful.screen.connect_for_each_screen(function(s)
     expand ="none",
     layout = wibox.layout.align.horizontal
   }
-
-  -- tagslist bar
-  s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
-  awful.placement.maximize_horizontally(s.mywibox_tags)
-
-  s.mywibox_tags:setup {
-    widget = s.mytaglist
-  }
+  
 end)

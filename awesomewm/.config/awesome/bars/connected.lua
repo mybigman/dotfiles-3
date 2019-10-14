@@ -39,8 +39,8 @@ local my_volume = widget.bg( g2, volume )
 local change_theme = require("widgets.button_change_theme")
 local my_change_theme = widget.bg( g1, change_theme )
 
-local ram = require("widgets.ram")
-local my_ram = widget.bg( g1, ram_widget )
+local ram = require("widgets.ram")({})
+local my_ram = widget.bg( g1, ram )
 
 local battery = require("widgets.battery")
 local my_battery = widget.bg( g3, battery_widget )

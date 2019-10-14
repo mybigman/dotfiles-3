@@ -23,7 +23,7 @@ local monitors_title = widget.create_title('Monitors', beautiful.fg_grey)
 local vol = require("widgets.volume-slider")
 local brightness = require("widgets.brightness-slider")
 local cpu = require("widgets.cpu-monitor")
-local ram = require("widgets.ram-monitor")
+local ram = require("widgets.ram")({ mode = "arcchart" })
 local disks = require("widgets.disks-monitor")
 
 -- add an exit button

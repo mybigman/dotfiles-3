@@ -32,9 +32,9 @@ local mail = require("widgets.mail")
 local mail_bg = beautiful.widget_battery_bg
 local my_mail = widget.bg_rounded( mail_bg, "#567092", mail )
 
-local ram = require("widgets.ram")
+local ram = require("widgets.ram")({})
 local ram_bg = beautiful.widget_ram_bg
-local my_ram = widget.bg_rounded( ram_bg, "#524e87", ram_widget )
+local my_ram = widget.bg_rounded( ram_bg, "#524e87", ram )
 
 local battery = require("widgets.battery")
 local bat_bg = beautiful.widget_battery_bg
