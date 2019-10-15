@@ -33,9 +33,9 @@ end)
 -- emit a second signal to capture the pasted time on music
 awidget.watch('sh -c "mpc"', 2, function(widget, stdout)
   local mpd = {}
-  mpd.time_total = stdout:match('%/([0-9]+:[0-9]+)')
-  mpd.past_time = stdout:match('([0-9]+:[0-9]+)%/')
-  mpd.past_time_percent = stdout:match('%(([0-9]+)%%%)')
+  mpd.time_total = stdout:match('%/([0-9]+:[0-9]+)') or 0
+  mpd.past_time = stdout:match('([0-9]+:[0-9]+)%/') or 0
+  mpd.past_time_percent = stdout:match('%(([0-9]+)%%%)') or 0
   mpd.full_time = mpd.past_time .. "/"..mpd.time_total .. " ("..mpd.past_time_percent.."%)"
 
   awesome.emit_signal("daemon::mpd_time", mpd)

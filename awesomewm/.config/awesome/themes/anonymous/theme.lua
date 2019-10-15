@@ -188,9 +188,9 @@ theme.widget_tor_layout = 'horizontal' -- horizontal or vertical
 -- Mini ncmpcpp player
 --
 theme.widget_font = 'RobotoMono Nerd Font Mono 15'
-theme.widget_ncmpcpp_prev = '<span foreground="'..theme.alert_dark..'"> ≪ </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.alert..'"> ⊡ </span>'
-theme.widget_ncmpcpp_next = '<span foreground="'..theme.alert_dark..'"> ≫ </span>'
+theme.widget_ncmpcpp_prev = ' ≪ '
+theme.widget_ncmpcpp_toggle = ' ⊡ '
+theme.widget_ncmpcpp_next = ' ≫ '
 
 -- Mails
 theme.widget_email_read_icon = ""

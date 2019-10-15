@@ -4,6 +4,7 @@ local gshape = require("gears.shape")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
+local button = require("util.buttons")
 local naughty = require("naughty")
 local dpi = beautiful.xresources.apply_dpi
 local env = require("env-config")
@@ -28,16 +29,6 @@ local function start_screen_hide()
   start_screen.visible = false
 end
 
-local function add_hover(w, text, color_up, color_down)
-  w.markup = helpers.colorize_text(text, color_down)
-  w:connect_signal("mouse::enter", function()
-    w.markup = helpers.colorize_text(text, color_up)
-  end)
-  w:connect_signal("mouse::leave", function()
-    w.markup = helpers.colorize_text(text, color_down)
-  end)
-end
-
 local function add_link(w, url)
   w:buttons(gtable.join(
      awful.button({ }, 1, function()
@@ -50,13 +41,13 @@ end
 local function update_feeds(rss) 
   if rss.treatpost then
     for i = 1, max_feeds do
-      add_hover(text_rss['threatpost'][i], rss.treatpost.title[i], beautiful.fg_grey_light, beautiful.fg_grey)
+      button.add_hover(text_rss['threatpost'][i], rss.treatpost.title[i], beautiful.fg_grey_light, beautiful.fg_grey)
       add_link(text_rss['threatpost'][i], rss.treatpost.link[i])
     end
   end
   if rss.ycombinator then
     for i = 1, max_feeds do
-      add_hover(text_rss['ycombinator'][i], rss.ycombinator.title[i], beautiful.fg_grey_light, beautiful.fg_grey)
+      button.add_hover(text_rss['ycombinator'][i], rss.ycombinator.title[i], beautiful.fg_grey_light, beautiful.fg_grey)
       add_link(text_rss['ycombinator'][i], rss.ycombinator.link[i])
     end
   end
@@ -156,16 +147,6 @@ month.markup = helpers.colorize_text(month.text, beautiful.secondary)
 
 local date_widget = widget.box("vertical", { day, month }, dpi(14))
 
--- shortcut icon
-local function make_button(icon, color_up, color_down, cmd, fsize)
-  local font = beautiful.myfont or "Iosevka Term"
-  local font_size = fsize or "35"
-  local w = widget.create_text(icon, color_down, font.." "..font_size)
-  add_hover(w, icon, color_up, color_down)
-  w:buttons(gtable.join(awful.button({}, 1, function() cmd() end)))
-  return w
-end
-
 -- function for buttons
 local launch_term = function(cmd)
  awful.spawn.with_shell(env.term .. env.term_call[2] .. cmd)
@@ -179,36 +160,36 @@ end
 
 -- buttons apps
 local gimp_cmd = function() exec_prog("gimp") end
-local gimp = make_button("", beautiful.primary_light, beautiful.primary, gimp_cmd)
+local gimp = button.create("", beautiful.primary_light, beautiful.primary, gimp_cmd)
 local game_cmd = function() exec_prog("lutris") end
-local game = make_button("", beautiful.secondary_light, beautiful.secondary, game_cmd)
+local game = button.create("", beautiful.secondary_light, beautiful.secondary, game_cmd)
 local pentest_cmd = function() launch_term("msf") end
-local pentest = make_button("ﮊ", beautiful.alert_light, beautiful.alert, pentest_cmd)
+local pentest = button.create("ﮊ", beautiful.alert_light, beautiful.alert, pentest_cmd)
 
 local buttons_widget = widget.box('vertical', { gimp,game,pentest })
 
 -- buttons path
 local image_cmd = function() launch_term("nnn ~/images") end
-local image = make_button("IMAGES", beautiful.primary_light, beautiful.primary, image_cmd, 12)
+local image = button.create("IMAGES", beautiful.primary_light, beautiful.primary, image_cmd, 12)
 
 local torrent_cmd = function() launch_term("nnn ~/torrents") end
-local torrent = make_button("TORRENTS", beautiful.secondary_light, beautiful.secondary, torrent_cmd, 12)
+local torrent = button.create("TORRENTS", beautiful.secondary_light, beautiful.secondary, torrent_cmd, 12)
 
 local movie_cmd = function() launch_term("nnn ~/videos") end
-local movie = make_button("MOVIES", beautiful.alert_light, beautiful.alert, movie_cmd, 12)
+local movie = button.create("MOVIES", beautiful.alert_light, beautiful.alert, movie_cmd, 12)
 
 local buttons_path_1_widget = widget.box('horizontal', { image,torrent }, 25)
 local buttons_path_2_widget = widget.box('horizontal', { movie }, 25)
 
 -- buttons url
 local github_cmd = function() exec_prog("/opt/brave/brave https://github.com") end
-local github = make_button("", beautiful.primary_light, beautiful.primary, github_cmd)
+local github = button.create("", beautiful.primary_light, beautiful.primary, github_cmd)
 
 local twitter_cmd = function() exec_prog("/opt/brave/brave https://twitter.com") end
-local twitter = make_button("", beautiful.secondary_light, beautiful.secondary, twitter_cmd)
+local twitter = button.create("", beautiful.secondary_light, beautiful.secondary, twitter_cmd)
 
 local reddit_cmd = function() exec_prog("/opt/brave/brave https://reddit.com") end
-local reddit = make_button("", beautiful.alert_light, beautiful.alert, reddit_cmd)
+local reddit = button.create("", beautiful.alert_light, beautiful.alert, reddit_cmd)
 
 local buttons_url_widget = widget.box('vertical', { github, twitter, reddit })
 
@@ -269,11 +250,11 @@ end
 for i=1, todo_max do
   todos.ttexts[i] = widget.base_text('left')
   todos.del_line[i] = function() remove_todo(i) end -- serve to store the actual line
-  todos.tbuttons[i] = make_button("x ", beautiful.alert_light, beautiful.alert, todos.del_line[i], 10)
+  todos.tbuttons[i] = button.create("x ", beautiful.alert_light, beautiful.alert, todos.del_line[i], 10)
   todos.tlayout[i] = widget.box('horizontal', { todos.tbuttons[i], todos.ttexts[i] })
 end
 update_history()
-local todo_new = make_button("", beautiful.primary_light, beautiful.primary, exec_prompt, 10)
+local todo_new = button.create("", beautiful.primary_light, beautiful.primary, exec_prompt, 10)
 local todo_widget = widget.box("horizontal", { todo_new, todo_textbox })
 local todo_list = widget.box("vertical", todos.tlayout)
 

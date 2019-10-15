@@ -198,9 +198,9 @@ theme.widget_tor_fg_disable = theme.fg_alert
 theme.widget_tor_bg = "#272f3b"
 
 -- Mini ncmpcpp player
-theme.widget_ncmpcpp_prev = '<span foreground="'..theme.secondary..'"> ≪ </span>'
-theme.widget_ncmpcpp_toggle = '<span foreground="'..theme.secondary_light..'"> ⊡ </span>'
-theme.widget_ncmpcpp_next = '<span foreground="'..theme.secondary..'"> ≫ </span>'
+theme.widget_ncmpcpp_prev = ' ≪ '
+theme.widget_ncmpcpp_toggle = ' ⊡ '
+theme.widget_ncmpcpp_next = ' ≫ '
 
 -- Mails
 theme.widget_email_read_icon = "  "

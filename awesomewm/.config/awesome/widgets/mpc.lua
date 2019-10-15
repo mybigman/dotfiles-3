@@ -1,9 +1,10 @@
-local aspawn = require("awful.spawn")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local widget = require("util.widgets")
+local button = require("util.buttons")
 local helpers = require("helpers")
-local naughty = require("naughty")
+local aspawn = require("awful.spawn")
+local wibox = require("wibox")
 
 -- beautiful vars
 local icon_prev = beautiful.widget_mpc_prev_icon
@@ -11,78 +12,97 @@ local icon_pause = beautiful.widget_mpc_pause_icon
 local icon_play = beautiful.widget_mpc_play_icon
 local icon_stop = beautiful.widget_mpc_stop_icon
 local icon_next = beautiful.widget_mpc_next_icon
-local fg = beautiful.widget_mpc_fg
-local bg = beautiful.widget_mpc_bg
-local l = beautiful.widget_mpc_layout or 'horizontal'
-local spacing = dpi(7)
+-- for titlebar
+local icon_ncmpcpp_prev = beautiful.widget_ncmpcpp_prev
+local icon_ncmpcpp_toggle = beautiful.widget_ncmpcpp_toggle
+local icon_ncmpcpp_next = beautiful.widget_ncmpcpp_next
 
--- widget creation
-local icon_1 = widget.base_icon()
-local icon_2 = widget.base_icon()
-local icon_3 = widget.base_icon()
-local mpc_widget = widget.box_with_margin(l, { icon_1, icon_2, icon_3 }, spacing)
+-- command
+local prev_cmd = function() aspawn("mpc prev", false) end
+local toggle_cmd = function() aspawn("mpc toggle", false) end
+local next_cmd = function() aspawn("mpc next", false) end
 
-local status
-local GET_MPD_CMD = "mpc status" 
-local TOGGLE_MPD_CMD = "mpc toggle"
-local NEXT_MPD_CMD = "mpc next"
-local PREV_MPD_CMD = "mpc prev"
-
-awesome.connect_signal("daemon::mpd", function(mpd)
-  icon_1.markup = helpers.colorize_text(icon_prev, fg)
-  if (mpd.status == "playing") then
-    icon_2.markup = helpers.colorize_text(icon_pause, fg)
-  elseif (mpd.status == "paused") then
-    icon_2.markup = helpers.colorize_text(icon_play, fg)
-  elseif (mpd.status == "void") then
-    icon_2.markup = helpers.colorize_text(icon_play, fg)
-  else
-    icon_2.markup = helpers.colorize_text(icon_stop, fg)
-  end
-  icon_3.markup = helpers.colorize_text(icon_next, fg)
-end)
-
-local function show_mpc_warning()
-  naughty.notify{
-    icon_size=100,
-    title = "No playlist",
-    text = "Mpc has no playlist to read",
-    timeout = 5, hover_timeout = 0.5,
-    position = "bottom_right",
-    bg = "#F06060",
-    fg = "#EEE9EF",
-    width = 300,
-  }
+local function new(self, ...)
+  local instance = setmetatable({}, { __index = self })
+  return instance:init(...) or instance
 end
 
-icon_1:connect_signal("button::press", function(_, _, _, button)
-  if (button == 1) then 
-    if status == 'void' then
-      show_mpc_warning()
-    else
-      aspawn(PREV_MPD_CMD, false) 
-    end
-  end -- left click
-end)
+local function class(base)
+  return setmetatable({ new = new }, { __call = new, __index = base })
+end
 
-icon_2:connect_signal("button::press", function(_, _, _, button)
-  if (button == 1) then 
-    if status == 'void' then
-      show_mpc_warning()
-    else
-      aspawn(TOGGLE_MPD_CMD, false) 
-    end
-  end -- left click
-end)
+-- root
+local mpc_root = class()
 
-icon_3:connect_signal("button::press", function(_, _, _, button)
-  if (button == 1) then 
-    if status == 'void' then
-      show_mpc_warning()
+function mpc_root:init(args)
+  -- options
+  self.mode = args.mode or 'text' -- possible values: text, titlebar
+  self.size = args.size or beautiful.widget_icon_font:match('([0-9]+)') or 16 -- font size
+  self.size_ncmpcpp = args.size or 20 -- font size
+  self.colors = args.colors or { beautiful.fg_grey, beautiful.fg_grey_light } -- fg, fg light for the hover
+  self.colors_ncmpcpp = args.colors or { beautiful.alert, beautiful.alert_light } -- fg, fg light for the hover
+  self.spacing = args.spacing or dpi(7)
+  self.want_layout = args.layout or beautiful.widget_mpc_layout or 'horizontal' -- possible values: horizontal , vertical
+  -- base widgets
+  self:base_widget()
+  self.widget = self:make_widget()
+end
+
+function mpc_root:base_widget()
+  if self.mode == "titlebar" then
+    self.wicon_prev = button.create(icon_ncmpcpp_prev, self.colors_ncmpcpp[2], self.colors_ncmpcpp[1], prev_cmd, self.size_ncmpcpp)
+    self.wicon_toggle = button.create(icon_ncmpcpp_toggle, self.colors_ncmpcpp[2], self.colors_ncmpcpp[1], toggle_cmd, self.size_ncmpcpp)
+    self.wicon_next = button.create(icon_ncmpcpp_next, self.colors_ncmpcpp[2], self.colors_ncmpcpp[1], next_cmd, self.size_ncmpcpp)
+  else
+    self.wicon_prev = button.create(icon_prev, self.colors[2], self.colors[1], prev_cmd, self.size)
+    self.wicon_toggle = button.create(icon_play, self.colors[2], self.colors[1], toggle_cmd, self.size)
+    self.wicon_next = button.create(icon_next, self.colors[2], self.colors[1], next_cmd, self.size)
+  end
+end
+
+function mpc_root:make_widget()
+  if self.mode == "titlebar" then
+    return self:make_for_titlebar()
+  else
+    return self:make_text()
+  end
+end
+
+function mpc_root:make_text()
+  local w = widget.box_with_margin(self.want_layout, { self.wicon_prev, self.wicon_toggle, self.wicon_next }, self.spacing)
+
+  awesome.connect_signal("daemon::mpd", function(mpd)
+    if (mpd.status == "playing") then
+      self.wicon_toggle.markup = helpers.colorize_text(icon_pause, self.colors[1])
+    elseif (mpd.status == "paused") then
+      self.wicon_toggle.markup = helpers.colorize_text(icon_play, self.colors[1])
+    elseif (mpd.status == "void") then
+      self.wicon_toggle.markup = helpers.colorize_text(icon_play, self.colors[1])
     else
-      aspawn(NEXT_MPD_CMD, false) 
+      self.wicon_toggle.markup = helpers.colorize_text(icon_stop, self.colors[1])
     end
-  end -- left click
-end)
+  end)
+
+  return w
+end
+
+function mpc_root:make_for_titlebar()
+  local w = wibox.widget {
+    nil,
+    widget.box('horizontal', { self.wicon_prev, self.wicon_toggle, self.wicon_next }, self.spacing),
+    nil,
+    expand = "none",
+    layout = wibox.layout.align.vertical
+  }
+  return w
+end
+
+-- herit
+local mpc_widget = class(mpc_root)
+
+function mpc_widget:init(args)
+  mpc_root.init(self, args)
+  return self.widget
+end
 
 return mpc_widget

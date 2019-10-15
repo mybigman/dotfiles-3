@@ -30,7 +30,7 @@ local my_network = widget.bg( g2, network_widget )
 local wifi_str = require("widgets.wifi_str")
 local my_wifi_str = widget.bg( g3, wifi_str )
 
-local mpc = require("widgets.mpc")
+local mpc = require("widgets.mpc")({ colors = { beautiful.primary, beautiful.primary_light } })
 local my_mpc_widget = widget.bg( g1, mpc )
 
 local volume = require("widgets.volume")({})

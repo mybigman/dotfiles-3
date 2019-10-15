@@ -11,7 +11,7 @@ local theme = require("loaded-theme")
 local smart_border = beautiful.double_border or false
 
 -- import widget
-local ncmpcpp = require("widgets.ncmpcpp")
+local ncmpcpp = require("widgets.mpc")({ mode = "titlebar" })
 
 local mbuttons = function(c)
   return gtable.join(
