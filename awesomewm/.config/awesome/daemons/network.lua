@@ -47,7 +47,6 @@ local function network_info()
         local down = (recv - nets[name][1]) / interval
         local up   = (send - nets[name][2]) / interval
 
-
         args[name].down = string.format("%.1f", down/unit)
         args[name].up = string.format("%.1f", up/unit)
       end

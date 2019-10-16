@@ -54,7 +54,6 @@ end
 
 function network_root:make_text()
   local w = widget.box_with_margin(self.want_layout, { self.wicon_1, self.wtext_1, self.wicon_2, self.wtext_2 }, spacing)
-
   awesome.connect_signal("daemon::network", function(net)
     self.wicon_1.markup = helpers.colorize_text(up_icon, fg)
     self.wicon_2.markup = helpers.colorize_text(down_icon, fg)

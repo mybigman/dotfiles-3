@@ -21,7 +21,7 @@ local monitors_title = widget.create_title('Monitors', beautiful.fg_grey)
 
 -- import widgets
 local vol = require("widgets.volume")({ mode = "slider" })
-local brightness = require("widgets.brightness-slider")
+local brightness = require("widgets.brightness")({ mode = "slider" })
 local cpu = require("widgets.cpu-monitor")
 local ram = require("widgets.ram")({ mode = "arcchart" })
 local disks = require("widgets.disks-monitor")

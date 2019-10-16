@@ -16,6 +16,7 @@ local layouts = require("widgets.layouts")
 -- for the top
 local ram = require("widgets.ram")({ mode = "progressbar" })
 local volume = require("widgets.volume")({ mode = "progressbar" })
+local brightness = require("widgets.brightness")({ mode = "progressbar" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -39,6 +40,8 @@ awful.screen.connect_for_each_screen(function(s)
       volume,
       pad(4),
       ram,
+      pad(4),
+      brightness,
       layout = wibox.layout.fixed.horizontal
     },
     nil,
