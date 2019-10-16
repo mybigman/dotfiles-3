@@ -235,7 +235,6 @@ theme.widget_email_bg = theme.grey_light
 -- Network
 theme.widget_network_icon = ""
 theme.widget_network_fg = theme.fg_grey
-theme.widget_network_fg_error = theme.fg_alert
 theme.widget_network_bg = theme.grey_light
 
 -- Wifi str

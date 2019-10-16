@@ -46,8 +46,7 @@ local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
 
-local network_monitor = require("widgets.network_monitor")
-local my_network_monitor = network_monitor_widget
+local my_network_monitor = require("widgets.network")({})
 
 local change_theme = require("widgets.button_change_theme")
 

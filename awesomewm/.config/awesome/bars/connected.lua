@@ -24,8 +24,8 @@ local g3 = beautiful.secondary_dark
 local tor = require("widgets.button_tor")
 local my_tor = widget.bg( g1, tor )
 
-local network = require("widgets.network")
-local my_network = widget.bg( g2, network_widget )
+local network = require("widgets.network")({ mode = "ip" })
+local my_network = widget.bg( g2, network )
 
 local wifi_str = require("widgets.wifi_str")
 local my_wifi_str = widget.bg( g3, wifi_str )

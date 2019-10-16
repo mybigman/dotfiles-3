@@ -20,14 +20,19 @@ end
 
 env.editor_cmd = env.term .. env.term_call[2] .. env.editor
 
+-- {{{ Monitoring
+env.net_device = "wlp2s0" -- interface you want track, only one for now
+
 -- Add files system you want to track, the line bellow match with:
 -- /home/yagdra, /opt/musics and /opt/torrents, look with the tool 'df'
 env.disks = { "yagdra", "musics", "torrents" }
 
--- {{{ Sound settings
+-- }}} End Monitoring
+
+-- {{{ Sound Settings
 -- choose alsa or pulseaudio, alsa will use amixer and pulseaudio pactl
 env.sound_system = "alsa" -- if you use pulse, the default card @DEFAULT_SINK@ is used
-env.sound_card_alsa = "hw:Pro" -- your card here, use only if sound_system is alsa, example usage: amixer -D hw:Pro sget Master
+env.sound_card_alsa = "hw:Pro" -- your card here, used only if sound_system is alsa, example usage: amixer -D hw:Pro sget Master
 -- Your card name can be found with: cat /proc/asound/cards
 
 -- }}} End Sound Setting

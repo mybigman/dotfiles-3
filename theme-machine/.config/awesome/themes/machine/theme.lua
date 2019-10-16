@@ -257,7 +257,6 @@ theme.widget_email_type = 'button' -- button or text
 -- Network
 theme.widget_network_icon = ""
 theme.widget_network_fg = theme.fg_primary
-theme.widget_network_fg_error = theme.fg_alert
 theme.widget_network_bg = theme.xbackground .. "00"
 theme.widget_network_layout = 'horizontal' -- horizontal or vertical
 
