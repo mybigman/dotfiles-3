@@ -1,39 +1,72 @@
-local awful = require("awful")
+local wibox = require("wibox")
 local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 
 -- beautiful vars
-local icon_discharging = beautiful.widget_battery_icon_discharging
-local icon_charging = beautiful.widget_battery_icon_charging
-local icon_full = beautiful.widget_battery_icon_full
-local icon_ac = beautiful.widget_battery_icon_ac
 local fg = beautiful.widget_battery_fg
-local bg_widget = beautiful.widget_battery_bg
-local l = beautiful.widget_battery_layout or 'horizontal'
 local spacing = beautiful.widget_spacing or 1
 
--- widget creation
-local icon = widget.base_icon()
-local text = widget.base_text()
-battery_widget = widget.box_with_margin(l, { icon, text }, spacing)
-
-local function update_widget(name, state, value)
-  if (name == "AC") then
-    icon.markup = helpers.colorize_text(icon_ac, fg)
-  elseif (state == "Discharging") then
-    icon.markup = helpers.colorize_text(icon_discharging, fg)
-  elseif (state == "Charging") then
-    icon.markup = helpers.colorize_text(icon_charging, fg)
-  elseif (state == "Full") then
-    icon.markup = helpers.colorize_text(icon_full, fg)
-  end
-  text.markup = helpers.colorize_text(value..'%', fg)
+local function new(self, ...)
+  local instance = setmetatable({}, { __index = self })
+  return instance:init(...) or instance
 end
 
-awful.widget.watch(
-  os.getenv("HOME").."/.config/awesome/widgets/battery.sh", 10, 
-  function(widget, stdout)
-    local name, state, value = stdout:match('(%w+)%s?(%a*)%s?(%d+)')
-    update_widget(name, state, value)
-end)
+local function class(base)
+  return setmetatable({ new = new }, { __call = new, __index = base })
+end
+
+-- root
+local battery_root = class()
+
+function battery_root:init(args)
+  -- options
+  self.mode = args.mode or 'text' -- possible values: text, progressbar, slider
+  self.want_layout = args.layout or beautiful.widget_battery_layout or 'horizontal' -- possible values: horizontal , vertical
+  -- base widgets
+  self.wicon = widget.base_icon()
+  self.wtext = widget.base_text()
+  self.widget = self:make_widget()
+end
+
+function battery_root:make_widget()
+  if self.mode == "progressbar" then
+    return self:make_progressbar()
+  else
+    return self:make_text()
+  end
+end
+
+function battery_root:make_text()
+  local w = widget.box_with_margin(self.want_layout, { self.wicon, self.wtext }, spacing)
+  awesome.connect_signal("daemon::battery", function(state, percent)
+    self.wicon.markup = helpers.colorize_text(state[1], state[2])
+    self.wtext.markup = helpers.colorize_text(percent..'%', fg)
+  end)
+  return w
+end
+
+function battery_root:make_progressbar()
+  local p = widget.make_progressbar(_, 200)
+  local w = wibox.widget {
+    p,
+    top = 10,
+    bottom = 10,
+    layout = wibox.container.margin
+  }
+  awesome.connect_signal("daemon::battery", function(state, percent)
+    self.wicon.markup = helpers.colorize_text(state[1], state[2])
+    p.value = percent
+  end)
+  return widget.box_with_margin(self.want_layout, { self.wicon, w }, spacing)
+end
+
+-- herit
+local battery_widget = class(battery_root)
+
+function battery_widget:init(args)
+  battery_root.init(self, args)
+  return self.widget
+end
+
+return battery_widget

@@ -42,8 +42,8 @@ local my_change_theme = widget.bg( g1, change_theme )
 local ram = require("widgets.ram")({})
 local my_ram = widget.bg( g1, ram )
 
-local battery = require("widgets.battery")
-local my_battery = widget.bg( g3, battery_widget )
+local battery = require("widgets.battery")({})
+local my_battery = widget.bg( g3, battery )
 
 local mail = require("widgets.mail")
 local my_email = widget.bg( g2, mail )

@@ -22,8 +22,8 @@ cd $WORKDIR
 echo "Downloading $LINK_MUSIC..."
 TOR_PORT=$(grep -i socksport /etc/tor/torrc | head -n 1 | awk '{print $2}')
 
+  #--proxy "socks5://127.0.0.1:${TOR_PORT:-9050}" \
 youtube-dl \
-  --proxy "socks5://127.0.0.1:${TOR_PORT:-9050}" \
   --user-agent "$agent" \
   --add-metadata \
   -o '%(title)s.%(ext)s' \

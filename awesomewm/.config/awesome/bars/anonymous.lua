@@ -36,9 +36,9 @@ local ram = require("widgets.ram")({})
 local ram_bg = beautiful.widget_ram_bg
 local my_ram = widget.bg_rounded( ram_bg, "#524e87", ram )
 
-local battery = require("widgets.battery")
+local battery = require("widgets.battery")({})
 local bat_bg = beautiful.widget_battery_bg
-local my_battery = widget.bg_rounded( bat_bg, "#794298", battery_widget )
+local my_battery = widget.bg_rounded( bat_bg, "#794298", battery )
 
 local date = require("widgets.date")
 local date_bg = beautiful.widget_date_bg

@@ -44,4 +44,12 @@ function helpers.colorize_text(txt, fg)
   return '<span foreground="'..fg..'">'..txt..'</span>'
 end
 
+function helpers.ret_content(path)
+  local f = io.open(path, 'r')
+  if f == nil then return end
+  local s = f:read("*a")
+  f:close()
+  return s
+end
+
 return helpers

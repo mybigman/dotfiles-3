@@ -17,6 +17,7 @@ local layouts = require("widgets.layouts")
 local ram = require("widgets.ram")({ mode = "progressbar" })
 local volume = require("widgets.volume")({ mode = "progressbar" })
 local brightness = require("widgets.brightness")({ mode = "progressbar" })
+local battery = require("widgets.battery")({ mode = "progressbar" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -42,6 +43,8 @@ awful.screen.connect_for_each_screen(function(s)
       ram,
       pad(4),
       brightness,
+      pad(4),
+      battery,
       layout = wibox.layout.fixed.horizontal
     },
     nil,
@@ -50,7 +53,7 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- tagslist bar
-  s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
+  s.mywibox_tags = awful.wibar({ screen = s, position = "bottom", height = dpi(5), bg = beautiful.wibar_bg })
   awful.placement.maximize_horizontally(s.mywibox_tags)
 
   s.mywibox_tags:setup {
