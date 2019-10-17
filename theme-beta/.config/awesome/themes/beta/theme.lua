@@ -229,9 +229,9 @@ theme.widget_ram_bg = theme.grey .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 
 -- Battery
-theme.widget_battery_icon_discharging = ""
-theme.widget_battery_icon_charging = ""
-theme.widget_battery_icon_full = ""
+theme.widget_battery_icon_discharging = ""
+theme.widget_battery_icon_charging = ""
+theme.widget_battery_icon_full = ""
 theme.widget_battery_icon_ac = "臘"
 theme.widget_battery_fg = theme.fg_secondary
 theme.widget_battery_bg = theme.grey .. "ff"

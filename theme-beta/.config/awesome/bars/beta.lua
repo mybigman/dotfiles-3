@@ -19,6 +19,9 @@ local volume = require("widgets.volume")({ mode = "progressbar" })
 local brightness = require("widgets.brightness")({ mode = "progressbar" })
 local battery = require("widgets.battery")({ mode = "progressbar" })
 
+-- bottom
+local cpu = require("widgets.cpu-monitor")
+
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
 
@@ -66,6 +69,7 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywiboxbottom:setup {
     { -- Left widgets
       layouts,
+      cpu,
       layout = wibox.layout.align.horizontal
     },
     s.mytasklist, -- More or less Middle
