@@ -20,7 +20,7 @@ local brightness = require("widgets.brightness")({ mode = "progressbar" })
 local battery = require("widgets.battery")({ mode = "progressbar" })
 
 -- bottom
-local cpu = require("widgets.cpu-monitor")
+local cpu = require("widgets.cpu")({ mode = "progressbar" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
