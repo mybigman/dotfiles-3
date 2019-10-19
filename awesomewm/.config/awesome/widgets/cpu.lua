@@ -21,8 +21,8 @@ local cpu_root = class()
 
 function cpu_root:init(args)
   -- options
-  self.mode = args.mode or 'text' -- possible values: text, arcchart, progressbar
-  self.want_layout = args.layout or beautiful.widget_cpu_layout or 'horizontal' -- possible values: horizontal , vertical
+  self.mode = args.mode or 'text' -- possible values: text, arcchart, progressbar, dotsbar
+  self.want_layout = args.want_layout or beautiful.widget_cpu_layout or 'horizontal' -- possible values: horizontal , vertical
   self.cpus = args.cpus or 2 -- number of cpu / core
   -- base widgets
   self.wicon = widget.base_icon()
@@ -37,6 +37,8 @@ function cpu_root:make_widget()
     return self:make_arcchart()
   elseif self.mode == "progressbar" then
     return self:make_progressbar()
+  elseif self.mode == "dotsbar" then
+    return self:make_dotsbar()
   else
     return self:make_text()
   end
@@ -103,6 +105,32 @@ function cpu_root:make_progressbar()
   local w = widget.box('vertical', self.wbars )
   awesome.connect_signal("daemon::cpu", function(cpus)
     self:update_wbars(cpus)
+  end)
+  return w
+end
+
+function cpu_root:make_dotsbar()
+  local bar = { size = 6, divisor = 16 } 
+  for c = 1, self.cpus do
+    self.wbars[c] = {}
+    for i = 1, bar.size do
+      table.insert(self.wbars[c], widget.create_text("", beautiful.grey_dark, beautiful.myfont.." 13"))
+    end
+  end
+
+  local w = wibox.widget{ layout=wibox.layout.fixed.horizontal, spacing=4 }
+  for i = 1, self.cpus do
+    w:add(widget.box_with_bg('vertical', self.wbars[i], -10, beautiful.grey))
+  end
+
+  awesome.connect_signal("daemon::cpu", function(cpus)
+    for c = 1, self.cpus do
+      local val = math.ceil(cpus[c+1] / bar.divisor)
+      for i = 1, bar.size do
+        local color = (val >= i and beautiful.alert or beautiful.grey_light)
+        self.wbars[c][i].markup = helpers.colorize_text("", color)
+      end
+    end
   end)
   return w
 end

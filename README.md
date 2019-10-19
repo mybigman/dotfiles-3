@@ -63,21 +63,24 @@ You can install theses repos with:
 It's all for the setup :)
 
 ## Screens
-**Last**:`theme-miami` **wm**:*awesome* **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+
+### Awesome
+**Last**:`theme-miami` **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami")  
 
-`theme-machine` **wm**:*awesome* **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+`theme-machine` **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Machine screenshot](https://github.com/szorfein/unix-portfolio/raw/master/machine/monitoring.png "machine")  
 
-`theme-battleship` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
+`theme-battleship` [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Battleship screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
 
-`theme-anonymous` [wm]:*awesome* [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
+`theme-anonymous` [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Anonymous screenshot](https://github.com/szorfein/unix-portfolio/blob/master/anonymous/music.png "anonymous")  
 
-`theme-connected` **wm**: awesome, **term**: xst, **vim-color**: [gruvbox material](https://github.com/sainnhe/gruvbox-material), **font**: [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
+`theme-connected` **term**: xst, **vim-color**: [gruvbox material](https://github.com/sainnhe/gruvbox-material), **font**: [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Connected screenshot](https://github.com/szorfein/unix-portfolio/blob/master/connected/ncmpcpp.png "connected")  
 
+### Others wm
 `theme-lost` [wm]:*subtle* [term]: *kitty* [vim-color] [OceanicNext](https://github.com/mhartington/oceanic-next), [font] [Nerd Roboto Mono](http://nerdfonts.com/#downloads).   
 ![Lost screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/lost.jpg "lost")  
 

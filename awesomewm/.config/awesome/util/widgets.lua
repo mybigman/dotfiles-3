@@ -68,6 +68,15 @@ function widgets.box_with_margin(l, ws, space)
   }
 end
 
+function widgets.box_with_bg(l, ws, space, bg)
+  local w = widgets.box(l, ws, space)
+  return wibox.widget {
+    w,
+    bg = bg,
+    widget = wibox.container.background
+  }
+end
+
 local function icon_plus_text_size(w)
   return {
     w,
