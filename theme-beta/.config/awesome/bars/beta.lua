@@ -19,8 +19,9 @@ local volume = require("widgets.volume")({ mode = "progressbar" })
 local brightness = require("widgets.brightness")({ mode = "progressbar" })
 local battery = require("widgets.battery")({ mode = "progressbar" })
 
--- bottom
+-- bottom (monitor bar)
 local cpu = require("widgets.cpu")({ mode = "dotsbar" })
+local disk = require("widgets.disks-monitor")
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -66,14 +67,39 @@ awful.screen.connect_for_each_screen(function(s)
   -- bottom bar
   s.mywiboxbottom = awful.wibar({ position = "bottom", height = dpi(80), bg = beautiful.wibar_bg })
 
+  -- widget to decorate 
+  local boxes = function(w)
+    return wibox.widget {
+      { -- margin top, bottom
+        { -- left
+          widget.create_title("", beautiful.primary, 16), nil, nil, -- top
+          layout = wibox.layout.align.vertical
+        },
+        { -- center
+          w,
+          top = 10, left = 7, right = 7,
+          widget = wibox.container.margin
+        },
+        { -- right
+          widget.create_title("", beautiful.secondary, 16), nil, nil, -- top
+          layout = wibox.layout.align.vertical
+        },
+        layout = wibox.layout.align.horizontal
+      },
+      top = 2, bottom = 2,
+      widget = wibox.container.margin
+    }
+  end
+
   s.mywiboxbottom:setup {
     { -- Left widgets
       layouts,
-      cpu,
+      boxes(disk),
+      boxes(cpu),
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.horizontal
     },
-    s.mytasklist, -- More or less Middle
+    boxes(s.mytasklist), -- Middle
     { -- Right widgets
       mpc,
       change_theme,

@@ -118,9 +118,11 @@ function cpu_root:make_dotsbar()
     end
   end
 
-  local w = wibox.widget{ layout=wibox.layout.fixed.horizontal, spacing=4 }
+  local w = wibox.widget{ layout=wibox.layout.fixed.vertical, spacing=-2 }
   for i = 1, self.cpus do
-    w:add(widget.box_with_bg('vertical', self.wbars[i], -10, beautiful.grey))
+    local t = wibox.widget.textbox('Core '..i) -- title
+    local b = widget.box_with_bg('horizontal', self.wbars[i], 1, beautiful.grey) -- box
+    w:add(widget.box('horizontal', { t, b }, 12))
   end
 
   awesome.connect_signal("daemon::cpu", function(cpus)
@@ -132,7 +134,11 @@ function cpu_root:make_dotsbar()
       end
     end
   end)
-  return w
+  return wibox.widget {
+    nil, w, nil, -- centered
+    expand = "none",
+    layout = wibox.layout.align.vertical
+  }
 end
 
 -- herit
