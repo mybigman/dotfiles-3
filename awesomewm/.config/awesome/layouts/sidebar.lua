@@ -24,7 +24,7 @@ local vol = require("widgets.volume")({ mode = "slider" })
 local brightness = require("widgets.brightness")({ mode = "slider" })
 local cpu = require("widgets.cpu")({ mode = "arcchart" })
 local ram = require("widgets.ram")({ mode = "arcchart" })
-local disks = require("widgets.disks-monitor")
+local disks = require("widgets.disks")({ mode = "arcchart" })
 
 -- add an exit button
 local exit_icon = widget.for_one_icon(beautiful.fg_secondary, beautiful.alert_dark, "    LOGOUT    ", font)

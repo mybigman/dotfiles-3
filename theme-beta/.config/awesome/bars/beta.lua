@@ -21,7 +21,7 @@ local battery = require("widgets.battery")({ mode = "progressbar" })
 
 -- bottom (monitor bar)
 local cpu = require("widgets.cpu")({ mode = "dotsbar" })
-local disk = require("widgets.disks-monitor")
+local disk = require("widgets.disks")({ mode = "block" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
