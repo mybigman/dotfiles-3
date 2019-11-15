@@ -110,24 +110,32 @@ function cpu_root:make_progressbar()
 end
 
 function cpu_root:make_dotsbar()
-  local bar = { size = 6, divisor = 16 } 
+  local bar = { size = 4, divisor = 20 }
   for c = 1, self.cpus do
     self.wbars[c] = {}
     for i = 1, bar.size do
-      table.insert(self.wbars[c], widget.create_text("", beautiful.grey_dark, beautiful.myfont.." 13"))
+      table.insert(self.wbars[c], widget.create_text("", beautiful.grey_dark, beautiful.myfont.." 14"))
     end
   end
 
-  local w = wibox.widget{ layout=wibox.layout.fixed.vertical, spacing=-2 }
+  local t = wibox.widget.textbox(self.cpus.." Cores")
+  local freq = wibox.widget.textbox()
+  local y = wibox.widget {
+    nil,
+    widget.box('vertical', { t, freq }, 2),
+    nil,
+    expand = "none",
+    layout = wibox.layout.align.vertical
+  }
+  local w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 4 }
   for i = 1, self.cpus do
-    local t = wibox.widget.textbox('Core '..i) -- title
-    local b = widget.box_with_bg('horizontal', self.wbars[i], 1, beautiful.grey) -- box
-    w:add(widget.box('horizontal', { t, b }, 12))
+    w:add(widget.box_with_bg('vertical', self.wbars[i], -10, beautiful.grey))
   end
 
   awesome.connect_signal("daemon::cpu", function(cpus)
+    freq.markup = helpers.colorize_text(cpus[1].."%", beautiful.fg_grey)
     for c = 1, self.cpus do
-      local val = math.ceil(cpus[c+1] / bar.divisor)
+      local val = cpus[c+1] / bar.divisor
       for i = 1, bar.size do
         local color = (val >= i and beautiful.alert or beautiful.grey_light)
         self.wbars[c][i].markup = helpers.colorize_text("", color)
@@ -135,9 +143,11 @@ function cpu_root:make_dotsbar()
     end
   end)
   return wibox.widget {
-    nil, w, nil, -- centered
+    nil,
+    widget.box('horizontal', { y, w }, 16),
+    nil,
     expand = "none",
-    layout = wibox.layout.align.vertical
+    layout = wibox.layout.align.horizontal
   }
 end
 

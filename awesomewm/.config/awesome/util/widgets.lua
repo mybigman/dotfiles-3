@@ -7,7 +7,7 @@ local awful = require("awful")
 local env = require("env-config")
 local naughty = require("naughty")
 local separator = require("util.separators")
-local dpi = require("beautiful").xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 
 local widgets = {}
 
@@ -27,9 +27,14 @@ function widgets.create_base_text(font, alignment)
   }
 end
 
-function widgets.base_icon()
+-- optional parameters to make icon
+function widgets.base_icon(icon, fg)
   local font = beautiful.widget_icon_font or "Iosevka Term Regular 11" 
-  return widgets.create_base_text(font)
+  local w = widgets.create_base_text(font)
+  if icon and fg then
+    w.markup = helpers.colorize_text(icon, fg)
+  end
+  return w
 end
 
 function widgets.base_text(alignment)
@@ -267,8 +272,7 @@ end
 -- add icon, padding and layout to a slider
 function widgets.add_icon_to_slider(slider, icon, fg_icon, layout)
   local pad = separator.pad(2)
-  local ic = widgets.base_icon()
-  ic.markup = helpers.colorize_text(icon, fg_icon)
+  local ic = widgets.base_icon(icon, fg_icon)
   return widgets.box(layout, { ic, pad, slider })
 end
 

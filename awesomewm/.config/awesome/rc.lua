@@ -374,6 +374,13 @@ awful.rules.rules = {
     },
   }, properties = like_subtle(25, 25, 50, 50) }, -- center66
 
+  -- Maximised
+  { rule_any = {
+    class = {
+      "Zathura" 
+    },
+  }, properties = { maximized = true } },
+
   -- Set Firefox to always map on the tag named "2" on screen 1.
   { rule = { class = "Brave-browser" },
     properties = { screen = 1, tag = beautiful.tagnames[2] } },

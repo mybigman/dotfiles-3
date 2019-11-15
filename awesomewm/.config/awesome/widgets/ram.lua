@@ -25,6 +25,7 @@ function ram_root:init(args)
   self.title = args.title or 'Ram'
   self.mode = args.mode or 'text' -- possible values: text, progressbar, arcchart
   self.want_layout = args.layout or beautiful.widget_ram_layout or 'horizontal' -- possible values: horizontal , vertical
+  self.bar_size = args.bar_size or 200
   -- base widgets
   self.icon = widget.base_icon()
   self.text = widget.base_text()
@@ -78,7 +79,7 @@ function ram_root:make_arcchart()
 end
 
 function ram_root:make_progressbar()
-  local p = widget.make_progressbar(_, 200)
+  local p = widget.make_progressbar(_, self.bar_size)
   local w = wibox.widget {
     p,
     top = 10,

@@ -14,14 +14,15 @@ local scrot = require("widgets.scrot")
 local layouts = require("widgets.layouts")
 
 -- for the top
-local ram = require("widgets.ram")({ mode = "progressbar" })
-local volume = require("widgets.volume")({ mode = "progressbar" })
-local brightness = require("widgets.brightness")({ mode = "progressbar" })
-local battery = require("widgets.battery")({ mode = "progressbar" })
+local ram = require("widgets.ram")({ mode = "progressbar", bar_size = 100 })
+local volume = require("widgets.volume")({ mode = "progressbar", bar_size = 100 })
+local brightness = require("widgets.brightness")({ mode = "progressbar", bar_size = 100 })
+local battery = require("widgets.battery")({ mode = "progressbar", bar_size = 100 })
 
 -- bottom (monitor bar)
 local cpu = require("widgets.cpu")({ mode = "dotsbar" })
 local disk = require("widgets.disks")({ mode = "block" })
+local network = require("widgets.network")({ mode = "block" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -40,18 +41,9 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.mywibox:setup {
-    nil,
-    {
-      volume,
-      pad(4),
-      ram,
-      pad(4),
-      brightness,
-      pad(4),
-      battery,
-      layout = wibox.layout.fixed.horizontal
-    },
-    nil,
+    layouts, -- left
+    s.mytasklist, -- middle
+    change_theme, -- right
     expand ="none",
     layout = wibox.layout.align.horizontal
   }
@@ -68,7 +60,8 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywiboxbottom = awful.wibar({ position = "bottom", height = dpi(80), bg = beautiful.wibar_bg })
 
   -- widget to decorate 
-  local boxes = function(w)
+  local boxes = function(w, size)
+    local s = size or 200
     return wibox.widget {
       { -- margin top, bottom
         { -- left
@@ -77,7 +70,8 @@ awful.screen.connect_for_each_screen(function(s)
         },
         { -- center
           w,
-          top = 10, left = 7, right = 7,
+          top = 7, left = 17, right = 17,
+          forced_width = dpi(s),
           widget = wibox.container.margin
         },
         { -- right
@@ -90,23 +84,29 @@ awful.screen.connect_for_each_screen(function(s)
       widget = wibox.container.margin
     }
   end
+  local w1 = wibox.widget {
+    ram,
+    brightness,
+    forced_height = 30,
+    layout = wibox.layout.fixed.horizontal
+  }
+  local w2 = wibox.widget {
+    volume,
+    battery,
+    forced_height = 30,
+    layout = wibox.layout.fixed.horizontal
+  }
 
   s.mywiboxbottom:setup {
     { -- Left widgets
-      layouts,
-      boxes(disk),
       boxes(cpu),
+      boxes(disk, 250),
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.horizontal
     },
-    boxes(s.mytasklist), -- Middle
+    boxes(widget.box('vertical', { w1, w2 }), 300),
     { -- Right widgets
-      mpc,
-      change_theme,
-      desktop_ctrl,
-      scrot,
-      wibox.widget.textbox(" "),
-      spacing = beautiful.widget_spacing,
+      boxes(network),
       layout = wibox.layout.fixed.horizontal
     },
     expand ="none",

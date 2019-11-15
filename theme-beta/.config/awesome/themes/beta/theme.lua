@@ -18,7 +18,7 @@ local theme = {}
 
 -- Get colors from .Xresources and set fallback colors
 -- bg
-theme.grey_dark = "#16151e" 
+theme.grey_dark = "#161525"
 theme.grey = xrdb.background or "#282f37"
 theme.grey_light = xrdb.color0 or "#29262C"
 theme.primary_dark = xrdb.color6 or "#9EE9EA" -- cyan D
@@ -43,7 +43,7 @@ theme.fg_alert = xrdb.color11 or "#DB695B"
 theme.myfont = "Iosevka Term"
 theme.font          = theme.myfont.." Regular 8"
 theme.taglist_font = theme.myfont.." Bold 10"
-theme.widget_icon_font = theme.myfont.." Mono 13"
+theme.widget_icon_font = theme.myfont.." Mono 12"
 theme.widget_text_font = theme.myfont.." Regular 9"
 theme.widget_font = theme.myfont.." Mono 15"
 theme.widget_icon_font_button = theme.myfont.." Mono 16"
@@ -171,14 +171,14 @@ theme.icon_theme = nil
 
 -- {{{ Tasklist
 
-theme.tasklist_disable_task_name = false
-theme.tasklist_disable_icon = true 
+--theme.tasklist_disable_task_name = true
+--theme.tasklist_disable_icon = false
 theme.tasklist_spacing = dpi(4)
 theme.tasklist_align = "center"
 theme.tasklist_fg_normal = theme.fg_grey
-theme.tasklist_bg_focus = theme.grey
-theme.tasklist_bg_normal = theme.grey_dark
-theme.tasklist_bg_urgent = theme.grey_light
+theme.tasklist_bg_normal = theme.grey_dark.."29"
+theme.tasklist_bg_focus = theme.grey_dark.."29"
+theme.tasklist_bg_urgent = theme.grey.."29"
 
 -- }}} End Tasklist
 

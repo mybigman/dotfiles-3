@@ -1,6 +1,5 @@
 local widget = require("util.widgets")
 local helpers = require("helpers")
-local naughty = require("naughty")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -23,6 +22,7 @@ local disks_root = class()
 
 function disks_root:init(args)
   -- options
+  self.icon = widget.base_icon("", beautiful.primary)
   self.mode = args.mode or 'text' -- possible values: text, arcchart, block
   self.want_layout = args.want_layout or beautiful.widget_cpu_layout or 'horizontal' -- possible values: horizontal , vertical
   -- base widgets
@@ -60,7 +60,7 @@ function disks_root:make_arcchart()
     nil,
     {
       nil,
-      wtitle,
+      self.wtitle,
       nil,
       layout = wibox.layout.align.vertical
     },
@@ -69,7 +69,6 @@ function disks_root:make_arcchart()
   -- signal
   awesome.connect_signal("daemon::disks", function(fs_info)
     if fs_info ~= nil and fs_info[1] ~= nil then
-      --naughty.notify({ text = "call daemon::disks3 "..tostring(fs_info[3].mountpoint) })
       for i=1, #env.disks do
         self.wbars[i].value = fs_info[i].used_percent
       end
@@ -82,22 +81,29 @@ function disks_root:make_block()
   for i = 1, #env.disks do
     self.wbars[i] = {}
     self.wbars[i]["title"] = wibox.widget.textbox(env.disks[i])
-    self.wbars[i]["used_percent"] = wibox.widget.textbox()
+    self.wbars[i]["used_percent"] = widget.make_progressbar(_, 100)
     self.wbars[i]["size"] = wibox.widget.textbox()
   end
 
-  local w = wibox.widget{ layout=wibox.layout.fixed.vertical, spacing=2 }
+  local w = wibox.widget{ layout=wibox.layout.fixed.vertical, spacing = 1 }
   for i=1, #env.disks do
     local t = self.wbars[i].title -- box
     local u = self.wbars[i].used_percent -- box
+    u.forced_height = 2
     local s = self.wbars[i].size -- title
-    w:add(widget.box('horizontal', { t, u, s }, 12))
+    local m = wibox.widget { -- used to correct the height of the progressbar
+      u,
+      top = 4,
+      bottom = 4,
+      widget = wibox.container.margin
+    }
+    w:add(widget.box('horizontal', { self.icon, t, m, s }, 12))
   end
 
   awesome.connect_signal("daemon::disks", function(fs_info)
     if fs_info ~= nil and fs_info[1] ~= nil then
       for i=1, #env.disks do
-        self.wbars[i].used_percent.markup = helpers.colorize_text(fs_info[i].used_percent.."%", beautiful.alert)
+        self.wbars[i].used_percent.value = fs_info[i].used_percent
         self.wbars[i].size.markup = helpers.colorize_text(fs_info[i].size, beautiful.primary_light)
       end
     end

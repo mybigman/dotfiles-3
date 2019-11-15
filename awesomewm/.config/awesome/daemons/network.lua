@@ -33,7 +33,7 @@ local function network_info()
       local output = assert(io.popen(cmd, 'r'))
       local ip = assert(output:read('*a')) or tostring(nil)
       output:close()
-      args[name].ip = args[name].carrier == 0 or ip
+      args[name].ip = args[name].carrier == 0 or ip:match('([0-9]+.[0-9]+.[0-9]+.[0-9]+)')
 
       local now = os.time()
       if nets[name] == nil then -- first call, default value
@@ -55,7 +55,6 @@ local function network_info()
       -- store total
       nets[name][1] = recv
       nets[name][2] = send
-
     end
   end
 

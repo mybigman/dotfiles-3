@@ -23,6 +23,7 @@ function battery_root:init(args)
   -- options
   self.mode = args.mode or 'text' -- possible values: text, progressbar, slider
   self.want_layout = args.layout or beautiful.widget_battery_layout or 'horizontal' -- possible values: horizontal , vertical
+  self.bar_size = args.bar_size or 200
   -- base widgets
   self.wicon = widget.base_icon()
   self.wtext = widget.base_text()
@@ -47,7 +48,7 @@ function battery_root:make_text()
 end
 
 function battery_root:make_progressbar()
-  local p = widget.make_progressbar(_, 200)
+  local p = widget.make_progressbar(_, self.bar_size)
   local w = wibox.widget {
     p,
     top = 10,

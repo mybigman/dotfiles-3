@@ -2,8 +2,8 @@ set font                        "Iosevka Term 9"
 set default-bg                  "#000000" #00
 set default-fg                  "#1f1b3f" #01
 
-set statusbar-fg                "#bbdefb" #04
-set statusbar-bg                "#2c323b" #01
+set statusbar-fg                "#f1e7ff" #04
+set statusbar-bg                "#161525" #01
 
 set inputbar-bg                 "#dbe2ec" #00 currently not used
 set inputbar-fg                 "#2a4f81" #02
@@ -26,8 +26,8 @@ set completion-fg               "#1f1b3f" #0C
 set notification-bg             "#ee8109" #0B
 set notification-fg             "#1f1b3f" #00
 
-set recolor-lightcolor          "#2a2228" #00
-set recolor-darkcolor           "#ffe0b2" #06
+set recolor-lightcolor          "#1a1728" #00
+set recolor-darkcolor           "#dac5fe" #06
 set recolor                     "true"
 
 # setting recolor-keep true will keep any color your pdf has.
