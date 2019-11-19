@@ -17,7 +17,7 @@ local tagslist = require("taglists.anonymous")
 
 -- {{{ Redefine widgets with a background
 
-local mpc_button = require('widgets.button_only_mpc')
+local mpc_button = require('widgets.music-player')({})
 local my_mpc_button = widget.bg_rounded( beautiful.xbackground, "#873076", mpc_button )
 
 local mpc = require("widgets.mpc")({ colors = { beautiful.primary, beautiful.primary_light } })

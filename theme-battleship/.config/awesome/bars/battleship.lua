@@ -70,7 +70,7 @@ local other_block_margin = widget.add_margin(other_block, { bottom = 2 }, primar
 -- }}} End Define other block
 
 -- {{{ Define music block
-local music_icon = require("widgets.button_only_mpc")
+local music_icon = require("widgets.music-player")({})
 
 -- Group multiple widgets
 local music_block = wibox.widget {

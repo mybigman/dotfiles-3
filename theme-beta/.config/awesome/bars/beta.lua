@@ -23,6 +23,7 @@ local battery = require("widgets.battery")({ mode = "progressbar", bar_size = 10
 local cpu = require("widgets.cpu")({ mode = "dotsbar" })
 local disk = require("widgets.disks")({ mode = "block" })
 local network = require("widgets.network")({ mode = "block" })
+local music_player = require("widgets.music-player")({ mode = "block" })
 
 -- {{{ Wibar
 awful.screen.connect_for_each_screen(function(s)
@@ -99,7 +100,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   s.mywiboxbottom:setup {
     { -- Left widgets
-      boxes(cpu),
+      boxes(music_player),
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.horizontal
     },
@@ -111,6 +112,7 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal
     },
     { -- Right widgets
+      boxes(cpu),
       layout = wibox.layout.fixed.horizontal
     },
     expand ="none",
