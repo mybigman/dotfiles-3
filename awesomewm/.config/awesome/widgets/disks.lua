@@ -91,12 +91,7 @@ function disks_root:make_block()
     local u = self.wbars[i].used_percent -- box
     u.forced_height = 2
     local s = self.wbars[i].size -- title
-    local m = wibox.widget { -- used to correct the height of the progressbar
-      u,
-      top = 4,
-      bottom = 4,
-      widget = wibox.container.margin
-    }
+    local m = widget.add_margin(u, { top = 4, bottom = 4 }) -- used to correct the height of the progressbar
     w:add(widget.box('horizontal', { self.icon, t, m, s }, 12))
   end
 

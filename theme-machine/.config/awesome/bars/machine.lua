@@ -39,8 +39,8 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- Right widgets
       mpc,
-      widget.left_margin(change_theme, 13),
-      widget.left_margin(desktop_ctrl, 13),
+      widget.add_margin(change_theme, { left = 13 }),
+      widget.add_margin(desktop_ctrl, { left = 13 }),
       scrot,
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.vertical,

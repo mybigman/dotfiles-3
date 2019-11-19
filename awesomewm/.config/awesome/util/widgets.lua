@@ -64,13 +64,24 @@ function widgets.box(l, widgets, space)
   return w
 end
 
-function widgets.box_with_margin(l, ws, space)
-  local w = widgets.box(l, ws, space)
+function widgets.add_margin(w, t, colour)
+  local top = t.top or 0
+  local bottom = t.bottom or 0
+  local right = t.right or 0
+  local left = t.left or 0
+  local colour = colour or "#00000000"
   return wibox.widget {
     w,
-    left = 5, right = 5,
+    top = dpi(top), bottom = dpi(bottom),
+    right = dpi(right), left = dpi(left),
+    color = colour,
     widget = wibox.container.margin
   }
+end
+
+function widgets.box_with_margin(l, ws, space)
+  local w = widgets.box(l, ws, space)
+  return widgets.add_margin(w, { left = 5, right = 5 })
 end
 
 function widgets.box_with_bg(l, ws, space, bg)
@@ -82,32 +93,21 @@ function widgets.box_with_bg(l, ws, space, bg)
   }
 end
 
-local function icon_plus_text_size(w)
-  return {
-    w,
-    left = 10, right = 10, top = 3, bottom = 3,
-    widget = wibox.container.margin
-  }
-end
-
-local function icon_size(w)
-  return {
-    w,
-    left = 9, right = 9, top = 9, bottom = 9,
-    widget = wibox.container.margin
-  }
-end
-
-function widgets.bg_rounded(bg_color, border_color, w, widget_type)
-  local mtype
-  if ( widget_type ~= nil and widget_type == "button" ) then
-    mtype = icon_size(w)
+function widgets.margin_for_icon_or_button(w, wtype)
+  local m
+  if ( wtype ~= nil and wtype == "button" ) then
+    m = widgets.add_margin(w, { left = 9, right = 9, top = 9, bottom = 9 })
   else
-    mtype = icon_plus_text_size(w)
+    m = widgets.add_margin(w, { left = 10, right = 10, top = 3, bottom = 3 })
   end
+  return m
+end
+
+function widgets.bg_rounded(bg_color, border_color, w, wtype)
+  local m = widgets.margin_for_icon_or_button(w, wtype)
   return wibox.widget {
     {
-      mtype,
+      m,
       shape = gshape.rounded_rect,
       bg = bg_color,
       shape_border_color = border_color,
@@ -118,19 +118,14 @@ function widgets.bg_rounded(bg_color, border_color, w, widget_type)
   }
 end
 
-function widgets.bg_border_line(bg_color, border_color, w, widget_type)
-  local mtype
+function widgets.bg_border_line(bg_color, border_color, w, wtype)
+  local m = widgets.margin_for_icon_or_button(w, wtype)
   local shape_line = function(cr, width, height) 
     gshape.transform(gshape.rounded_rect) : translate(0,20) (cr,width, -1, 2) 
   end
-  if ( widget_type ~= nil and widget_type == "button" ) then
-    mtype = icon_size(w)
-  else
-    mtype = icon_plus_text_size(w)
-  end
   return wibox.widget {
     {
-      mtype,
+      m,
       shape = shape_line,
       bg = bg_color,
       shape_border_color = border_color,
@@ -150,24 +145,6 @@ function widgets.bg(bg_color, w)
     },
     spacing = 10,
     layout  = wibox.layout.fixed.horizontal
-  }
-end
-
-function widgets.border_bottom(w, colour)
-  return wibox.widget {
-    w,
-    bottom = 2,
-    color = colour,
-    widget = wibox.container.margin
-  }
-end
-
-function widgets.left_margin(w, size)
-  local size = size or 10
-  return wibox.widget {
-    w,
-    left = dpi(size),
-    widget = wibox.container.margin
   }
 end
 

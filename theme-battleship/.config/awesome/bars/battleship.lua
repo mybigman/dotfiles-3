@@ -65,7 +65,7 @@ local other_block = wibox.widget {
   --forced_width = dpi(200),
   layout = wibox.layout.fixed.horizontal
 }
-local other_block_margin = widget.border_bottom(other_block, primary_dark)
+local other_block_margin = widget.add_margin(other_block, { bottom = 2 }, primary_dark)
 
 -- }}} End Define other block
 
@@ -83,7 +83,7 @@ local music_block = wibox.widget {
 }
 
 -- Draw a border bottom line
-local music_block_margin = widget.border_bottom(music_block, primary_dark)
+local music_block_margin = widget.add_margin(music_block, { bottom = 2 }, primary_dark)
 --- }}} End Define music block
 
 -- widget redefined }}}

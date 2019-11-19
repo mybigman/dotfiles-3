@@ -100,17 +100,20 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywiboxbottom:setup {
     { -- Left widgets
       boxes(cpu),
-      boxes(disk, 250),
       spacing = beautiful.widget_spacing,
       layout = wibox.layout.fixed.horizontal
     },
-    boxes(widget.box('vertical', { w1, w2 }), 300),
+    {
+      boxes(disk, 250),
+      boxes(widget.box('vertical', { w1, w2 }), 300),
+      boxes(network, 250),
+      spacing = beautiful.widget_spacing,
+      layout = wibox.layout.fixed.horizontal
+    },
     { -- Right widgets
-      boxes(network),
       layout = wibox.layout.fixed.horizontal
     },
     expand ="none",
     layout = wibox.layout.align.horizontal
   }
-  
 end)
