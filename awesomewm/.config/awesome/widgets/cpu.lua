@@ -29,6 +29,7 @@ function cpu_root:init(args)
   self.wtext = widget.base_text()
   self.wtitle = widget.create_title("CPU ", beautiful.fg_grey)
   self.wbars = {} -- store all bars (one by cpu/core)
+  self.wfreqs = {} -- store all freqs (one by cpu/core)
   self.widget = self:make_widget()
 end
 
@@ -110,45 +111,78 @@ function cpu_root:make_progressbar()
 end
 
 function cpu_root:make_dotsbar()
-  local bar = { size = 4, divisor = 20 }
+  local bar = self.want_layout == 'vertical'
+    and { size = 4, divisor = 20 }
+    or { size = 8, divisor = 12 }
+
   for c = 1, self.cpus do
     self.wbars[c] = {}
     for i = 1, bar.size do
-      table.insert(self.wbars[c], widget.create_text("", beautiful.grey_dark, beautiful.myfont.." 14"))
+      table.insert(self.wbars[c], widget.create_text("", beautiful.grey_dark, beautiful.myfont.." 12"))
     end
   end
 
   local t = wibox.widget.textbox(self.cpus.." Cores")
   local freq = wibox.widget.textbox()
-  local y = wibox.widget {
-    nil,
-    widget.box('vertical', { t, freq }, 2),
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.vertical
-  }
-  local w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 4 }
-  for i = 1, self.cpus do
-    w:add(widget.box_with_bg('vertical', self.wbars[i], -10, beautiful.grey))
+  local y, w, z
+  if self.want_layout == 'vertical' then
+    y = wibox.widget {
+      nil,
+      widget.box(self.want_layout, { t, freq }, 2),
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    }
+    w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 4 }
+    for i = 1, self.cpus do
+      fs[i] = widget.base_text()
+      w:add(widget.box_with_bg('vertical', self.wbars[i], -10, beautiful.grey))
+    end
+  else
+    y = widget.box(self.want_layout, { t })
+    w = wibox.widget{ layout = wibox.layout.fixed.vertical, spacing = 1 }
+    z = wibox.widget{ layout = wibox.layout.fixed.vertical, spacing = 12 } -- adjust spacing, depend of the symbol used
+    for i = 1, self.cpus do
+      self.wfreqs[i] = widget.base_text()
+      w:add(widget.box_with_bg(self.want_layout, self.wbars[i], 2, beautiful.grey))
+      z:add(widget.box(self.want_layout, { self.wfreqs[i]} ))
+    end
   end
 
   awesome.connect_signal("daemon::cpu", function(cpus)
     freq.markup = helpers.colorize_text(cpus[1].."%", beautiful.fg_grey)
     for c = 1, self.cpus do
       local val = cpus[c+1] / bar.divisor
+      self.wfreqs[c].markup = helpers.colorize_text(cpus[c+1].."%", beautiful.fg_grey_light)
       for i = 1, bar.size do
         local color = (val >= i and beautiful.alert or beautiful.grey_light)
-        self.wbars[c][i].markup = helpers.colorize_text("", color)
+        --self.wbars[c][i].markup = helpers.colorize_text("", color)
+        --self.wbars[c][i].markup = helpers.colorize_text("", color)
+        self.wbars[c][i].markup = helpers.colorize_text("", color)
       end
     end
   end)
-  return wibox.widget {
-    nil,
-    widget.box('horizontal', { y, w }, 16),
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.horizontal
-  }
+  if self.want_layout == 'vertical' then
+    return wibox.widget {
+      nil,
+      widget.box('horizontal', { y, w }, 16),
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.horizontal
+    }
+  else
+    return wibox.widget {
+      nil,
+      {
+        y,
+        widget.box('horizontal', { w, z }, 10),
+        layout = wibox.layout.fixed.vertical
+      },
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    }
+  end
 end
 
 -- herit

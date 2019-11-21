@@ -90,7 +90,7 @@ function ram_root:make_progressbar()
     self.icon.markup = helpers.colorize_text(ram_icon, fg)
     p.value = mem.inuse_percent
   end)
-  return widget.box_with_margin(self.want_layout, { self.icon, w }, spacing)
+  return widget.box_with_margin(self.want_layout, { self.icon, w }, 8)
 end
 
 -- herit

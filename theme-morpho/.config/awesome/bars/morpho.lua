@@ -7,7 +7,6 @@ local widget = require('util.widgets')
 
 -- widgets load
 local pad = separators.pad
-local mpc = require("widgets.button_only_mpc")
 local change_theme = require("widgets.button_change_theme")
 local desktop_ctrl = require("widgets.desktop-control")
 local scrot = require("widgets.scrot")
@@ -42,15 +41,15 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.mywibox:setup {
-    layouts, -- left
+    widget.box('horizontal', { pad(2), layouts }), -- left
     s.mytasklist, -- middle
-    change_theme, -- right
-    expand ="none",
+    widget.box('horizontal', { change_theme, pad(2) }), -- right
+    --expand ="none",
     layout = wibox.layout.align.horizontal
   }
 
   -- tagslist bar
-  s.mywibox_tags = awful.wibar({ screen = s, position = "bottom", height = dpi(5), bg = beautiful.wibar_bg })
+  s.mywibox_tags = awful.wibar({ screen = s, position = "top", height = dpi(4), bg = beautiful.wibar_bg })
   awful.placement.maximize_horizontally(s.mywibox_tags)
 
   s.mywibox_tags:setup {

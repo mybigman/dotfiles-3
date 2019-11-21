@@ -78,7 +78,7 @@ function brightness_root:make_progressbar()
     self.wicon.markup = helpers.colorize_text(icon, fg)
     p.value = brightness
   end)
-  return widget.box_with_margin(self.want_layout, { self.wicon, w }, spacing)
+  return widget.box_with_margin(self.want_layout, { self.wicon, w }, 8)
 end
 
 -- herit

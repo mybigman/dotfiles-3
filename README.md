@@ -66,7 +66,8 @@ It's all for the setup :)
 
 ### Awesome
 **Last**:`theme-miami` **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
-![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami")  
+| --- | --- |
+|![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami") | ![terms]( https://github.com/szorfein/unix-portfolio/raw/master/miami/terms.png "miami terms") |
 
 `theme-machine` **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Machine screenshot](https://github.com/szorfein/unix-portfolio/raw/master/machine/monitoring.png "machine")  

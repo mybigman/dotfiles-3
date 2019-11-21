@@ -13,6 +13,7 @@ export SUDO_EDITOR='vim'
 
 # nnn, require perl-file-mimeinfo
 export NNN_OPENER="mimeopen"
+export NNN_PLUG="s:sxiv"
 
 # Proxy
 #export http_proxy="http://127.0.0.1:45411"

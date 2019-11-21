@@ -1,8 +1,8 @@
 ---------------------------
--- Beta awesome theme --
+-- Morpho awesome theme --
 ---------------------------
 
-local theme_name = "beta"
+local theme_name = "morpho"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -62,11 +62,11 @@ theme.fg_minimize   = theme.fg_primary
 
 theme.border_width  = dpi(3)
 theme.screen_margin = dpi(6)
-theme.useless_gap   = dpi(14)
+theme.useless_gap   = dpi(4)
 theme.border_normal = theme.grey_dark
 theme.border_focus  = theme.grey_dark
 theme.border_marked = theme.grey
-theme.border_radius = dpi(8)
+theme.border_radius = dpi(18)
 
 -- general padding
 theme.general_padding = { left = dpi(0), right = dpi(0), top = dpi(0), bottom = dpi(0) }
@@ -89,6 +89,11 @@ theme.titlebars_imitate_borders = true
 theme.titlebars_imitate_borders_size = 2
 theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
+
+-- Gravities
+theme.gravity_ncmpcpp = { 16, 10, 32, 49 }
+theme.gravity_cava = { 16, 63, 32, 20 }
+theme.gravity_music_term = { 51, 10, 32, 73 }
 
 -- Top bar
 theme.wibar_size = dpi(30)
@@ -184,7 +189,7 @@ theme.tasklist_bg_urgent = theme.grey.."29"
 
 -- {{{ WIDGETS
 
-theme.widget_spacing = dpi(12) -- space between each widgets
+theme.widget_spacing = dpi(20) -- space between each widgets
 -- popup (distance between the bar and the popup, 0 is pasted at the bar)
 theme.widget_popup_padding = dpi(3)
 

@@ -25,6 +25,7 @@ function autostart.run()
 
   run_once({ env.term .. env.term_call[1] .. 'music_n' .. env.term_call[2] .. 'ncmpcpp'})
   run_once({ env.term .. env.term_call[1] .. 'music_c' .. env.term_call[2] .. 'cava'})
+  run_once({ env.term .. env.term_call[1] .. 'music_t' .. env.term_call[2] .. 'tmux'})
   run_once({ env.term .. env.term_call[1] .. 'mail' .. env.term_call[2] .. 'neomutt'})
   run_once({ env.term .. env.term_call[1] .. 'chat' .. env.term_call[2] .. 'weechat'})
 end

@@ -8,3 +8,4 @@ gnupg/.gnupg/rand*
 gnupg/.gnupg/trust*
 gnupg/.passwords/*.gpg
 mutt/.mutt/gpg.rc
+config/.config/nnn/.history

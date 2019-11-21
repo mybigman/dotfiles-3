@@ -212,13 +212,13 @@ local function in_percent(size, coord)
   return value
 end
 
--- create the gravity system like subtlewm
-function like_subtle(x, y, width, height)
-  local _x = in_percent(x, 'x')
-  local _y = in_percent(y, 'y')
-  local _width = in_percent(width, 'x')
-  local _height = in_percent(height, 'y')
-  return  { floating = true, width = _width, height = _height, x = _x, y = _y }
+-- Create the gravity system like subtlewm
+function like_subtle(gravities) -- args: x, y, width, height
+  local x = in_percent(gravities[1], 'x')
+  local y = in_percent(gravities[2], 'y')
+  local width = in_percent(gravities[3], 'x')
+  local height = in_percent(gravities[4], 'y')
+  return  { floating = true, width = width, height = height, x = x, y = y }
 end
 
 -- {{{ Rules
@@ -310,56 +310,20 @@ awful.rules.rules = {
     },
   }, properties = { fullscreen = true }},
   
-  -- Padding OFF
-  { rule_any = {
-    class = {
-      --"Brave-browser",
-    },
-  }, properties = like_subtle(0, 5, 100, 96),
-  },
+  { rule = { class = "music_n" },
+    properties = like_subtle(beautiful.gravity_ncmpcpp or {4, 14, 30, 49}) },
 
-  -- Musics place at 4% x y like subtlewm :)
-  { rule_any = {
-    class = {
-      "music_n", -- ncmpcpp
-    },
-  }, properties = like_subtle(4, 14, 30, 49),
-    -- callback = function (c)
-    -- awful.placement.centered(c,{honor_workarea=true})
-    -- end
-  },
-  { rule_any = {
-    class = {
-      "music_t",
-    },
-  }, properties = like_subtle(35, 15, 30, 70),
-    -- callback = function (c)
-    -- awful.placement.centered(c,{honor_workarea=true})
-    -- end
-  },
+  { rule = { class = "music_c" },
+    properties = like_subtle(beautiful.gravity_cava or { 4, 67, 30, 20 }) },
 
-  { rule_any = {
-    class = {
-      "music_c", -- cava
-    },
-  }, properties = like_subtle(4, 67, 30, 20),
-    -- callback = function (c)
-    -- awful.placement.centered(c,{honor_workarea=true})
-    -- end
-  },
-
-  { rule_any = {
-    class = {
-      "music_r",
-    },
-  }, properties = like_subtle(66, 15, 30, 70),
-  },
+  { rule = { class = "music_t" },
+    properties = like_subtle(beautiful.gravity_music_term or { 40, 67, 30, 20 }) },
 
   { rule_any = {
     class = {
       "miniterm", -- i use this when i need to enter password with sudo
     },
-  }, properties = like_subtle(33, 33, 33, 33) }, -- center33
+  }, properties = like_subtle({33, 33, 33, 33}) }, -- center33
 
   -- Centered windows
   { rule_any = {
@@ -372,7 +336,7 @@ awful.rules.rules = {
     name = {
       "Save File"
     },
-  }, properties = like_subtle(25, 25, 50, 50) }, -- center66
+  }, properties = like_subtle({25, 25, 50, 50}) }, -- center66
 
   -- Maximised
   { rule_any = {
@@ -411,8 +375,8 @@ client.connect_signal("manage", function (c)
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
 
-    if awesome.startup and
-      not c.size_hints.user_position
+    if awesome.startup
+      and not c.size_hints.user_position
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
@@ -427,18 +391,34 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
--- Rounded Corner
+-- Enforce floating mode on layout.suit.floating and enable floating on layout.tile
+client.connect_signal("property::floating", function(c)
+  -- on floating
+  local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
+  if layout_is_floating then
+    c.floating = true
+  end
+  -- on tile
+  local layout_is_tile = (awful.layout.get(mouse.screen) == awful.layout.suit.tile)
+  if layout_is_tile and c.floating then
+    c.shape = helpers.rrect(beautiful.border_radius)
+  else
+    c.shape = gears.shape.rectangle
+  end
+end)
+
+-- Rounded Corner only on floating client
 if beautiful.border_radius ~= 0 then
   client.connect_signal("manage", function (c, startup)
-    if not c.fullscreen then
+    if not c.fullscreen and not c.maximized and c.floating then
       c.shape = helpers.rrect(beautiful.border_radius)
     end
   end)
 
   -- Fullscreen & maximised clients should not have rounded corners
   local function no_round_corners(c)
-    if c.fullscreen or c.maximized or c.class == "kitty" then
-      c.shape = helpers.rect()
+    if c.fullscreen or c.maximized or not c.floating then
+      c.shape = gears.shape.rectangle
     else
       c.shape = helpers.rrect(beautiful.border_radius)
     end
@@ -448,9 +428,20 @@ if beautiful.border_radius ~= 0 then
   client.connect_signal("property::maximized", no_round_corners)
 end
 
--- Floating: restore geometry
-tag.connect_signal('property::layout',
-function(t)
+-- No borders if only one tiled client
+screen.connect_signal("arrange", function(s)
+  for _, c in pairs(s.clients) do
+    if #s.tiled_clients == 1 and c.floating == false and c.first_tag.layout.name ~= "floating" then
+      c.border_width = 0
+    elseif #s.tiled_clients > 1 or c.first_tag.layout.name == "floating" then
+      c.border_width = beautiful.border_width
+    end
+  end
+end)
+
+-- Restore geometry for floating clients
+-- (for example after swapping from tiling mode to floating mode)
+tag.connect_signal('property::layout', function(t)
   for k, c in ipairs(t:clients()) do
     if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
       -- Geometry x = 0 and y = 0 most probably means that the
@@ -466,11 +457,17 @@ function(t)
       --c:geometry(awful.client.property.get(c, 'floating_geometry'))
     end
   end
-end
-)
+end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- Enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+  c:emit_signal("request::activate", "mouse_enter", { raise = true })
+end)
+
+if beautiful.border_width > 0 then
+  client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+  client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+end
 
 require("titlebar")
 

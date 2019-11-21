@@ -26,11 +26,12 @@ magenta=$'\e[1;35m'
 cyan=$'\e[1;36m'
 green=$'\e[1;92m'
 dgreen=$'\e[1;32m'
+white=$'\e[1;39m'
 
 # colors for the display
-logo=$green
+logo=$magenta
 title=$red
-info=$dgreen
+info=$white
 
 function little_skull() {
 cat << EOF
@@ -54,13 +55,31 @@ cat << EOF
   $logo      | | | | | | |$t   $title music >$t$info $(mpc|head -n1)
 EOF
 }
+
+function papilio() {
+cat << EOF
+                                         $logo.;;,$t
+                     $logo.,.               .,;;;;;,$t
+                    $logo;;;;;;;,,        ,;;%%%%%;;$t
+                     $logo\`;;;%%%%;;,.  ,;;%%;;%%%;;$t
+ $title os     $info$distro$t        $logo\`;%%;;%%%;;,;;%%%%%%%;;'$t
+ $title wm     $info$wm$t          $logo\`;;%%;;%:,;%%%%%;;%%;;,$t
+ $title res    $info$res$t           $logo\`;;%%%,;%%%%%%%%%;;;$t
+ $title font $info$font$t          $logo\`;:%%%%%%;;%%;;;'$t
+ $title theme  $info$theme$t                $logo.:::::::.$t
+                                  $logo s.$t
+EOF
+}
+
 function display_help() {
-  echo "call $0 with -b or -l"
+  echo "call $0 with -b or -l or -p"
   exit 0
 }
+
 case $1 in 
   -b | --big-skull) big_skull ; shift ;;
   -l | --little-skull) little_skull ; shift ;;
+  -p | --papilio) papilio ; shift ;;
   -h | --help) display_help ; shift ;;
 esac
 #$title music >$t$info MASTER BOOT RECORD - Direct Memory Access

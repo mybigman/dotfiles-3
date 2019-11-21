@@ -67,10 +67,10 @@ end
 function network_root:make_block()
   local pu = widget.make_progressbar(_, 100)
   pu.max_value = 80000
-  pu.forced_height = 2
+  pu.forced_height = 1
   local pd = widget.make_progressbar(_, 100)
   pd.max_value = 80000
-  pd.forced_height = 2
+  pd.forced_height = 1
   local ip = widget.base_text()
   local rx = widget.base_text()
   local tx = widget.base_text()
@@ -80,7 +80,6 @@ function network_root:make_block()
     widget.box("horizontal", { self.wicon_net, ip }, 8),
     widget.box("horizontal", { self.wicon_up, m1, self.wtext_1 }, 8), -- upload
     widget.box("horizontal", { self.wicon_down, m2, self.wtext_2 }, 8), -- download
-    spacing = -2,
     layout = wibox.layout.fixed.vertical
   }
   awesome.connect_signal("daemon::network", function(net)
@@ -90,7 +89,11 @@ function network_root:make_block()
     self.wtext_1.markup = helpers.colorize_text(net[env.net_device].up.." B/s", fg)
     self.wtext_2.markup = helpers.colorize_text(net[env.net_device].down.." B/s", fg)
   end)
-  return w
+  return wibox.widget {
+    nil, w, nil,
+    expand = "none",
+    layout = wibox.layout.align.vertical
+  }
 end
 
 -- herit

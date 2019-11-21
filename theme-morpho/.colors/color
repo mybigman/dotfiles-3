@@ -29,19 +29,18 @@
 ! Text !
 
 ! Text Grey
-*color8:       #dac5fe
-*foreground:   #f1e7ff
+*color8:       #bfa8da
+*foreground:   #d8cbe8
 
 ! Text Primary (normal - focus)
 *color10:      #f0f4c3
 *color7:       #f9fbe7
 
 ! Text Secondary (normal - focus)
-*color12:      #b2dfdb
-*color15:      #e0f2f1
+*color12:      #e0e0e0
+*color15:      #eeeeee
 
 ! Text Error
-*color11:      #263238
+*color11:      #ffffff
 
-st.font: SpaceMono Nerd Font:style=Regular:pixelsize=13
 st.opacity: 250

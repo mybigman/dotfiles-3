@@ -215,9 +215,9 @@ keys.globalkeys = gtable.join(
               {description = "delete current playlist", group = "music"}),
 
     -- Brightness
-    awful.key({ altgrkey }, "F9", function() awful.spawn.with_shell("xbacklight +1") end,
+    awful.key({ altgrkey }, "F9", function() awful.spawn.with_shell("light -A 1") end,
               {description = "light mode", group = "brightness"}),
-    awful.key({ altgrkey }, "F8", function() awful.spawn.with_shell("xbacklight -1") end,
+    awful.key({ altgrkey }, "F8", function() awful.spawn.with_shell("light -U 1") end,
               {description = "dark mode", group = "brightness"})
 
     -- Gap
@@ -247,26 +247,19 @@ keys.clientkeys = gtable.join(
   end,
   {description = "set tiled layout", group = "tag"}),
       
-  -- Set or toggle/floating on client focus
+  -- Toggle floating client
   awful.key({ modkey }, "s", function(c) 
-    local current_layout = awful.layout.getname(awful.layout.get(awful.screen.focused()))
-    if current_layout == "floating" then
-      awful.client.floating.toggle()
-    else
-      c.width = screen_width * 0.7
-      c.height = screen_height * 0.75
-      c.floating = true
-      awful.placement.centered(c,{honor_workarea=true})
-      c:raise()
+    local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
+    if not layout_is_floating then
+      c.floating = not c.floating
     end
+    c:raise()
   end,
-  {description = "focus mode floating", group = "client"}),
+  {description = "toggle floating", group = "client"}),
 
     awful.key({ modkey }, "z",      function (c) c:kill() end,
               {description = "close", group = "client"}),
 
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
-              {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,

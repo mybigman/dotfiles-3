@@ -59,7 +59,7 @@ function battery_root:make_progressbar()
     self.wicon.markup = helpers.colorize_text(state[1], state[2])
     p.value = percent
   end)
-  return widget.box_with_margin(self.want_layout, { self.wicon, w }, spacing)
+  return widget.box_with_margin(self.want_layout, { self.wicon, w }, 8)
 end
 
 -- herit

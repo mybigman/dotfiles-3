@@ -31,6 +31,7 @@ local popup_connected = widget.imagebox(80, icons["connected"])
 local popup_battleship = widget.imagebox(80, icons["battleship"])
 local popup_miami = widget.imagebox(80, icons["miami"])
 local popup_machine = widget.imagebox(80, icons["machine"])
+local popup_morpho = widget.imagebox(80, icons["morpho"])
 
 local w_position -- the position of the popup depend of the wibar
 w_position = widget.check_popup_position(beautiful.wibar_position)
@@ -50,6 +51,7 @@ local w = awful.popup {
             popup_battleship,
             popup_machine,
             popup_miami,
+            popup_morpho,
             forced_num_rows = 2,
             forced_num_cols = 3,
             layout = wibox.layout.grid,
@@ -92,6 +94,10 @@ widget.add_left_click_action(popup_battleship, battleship_change_script, 'shell'
 local anonymous_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change anonymous" ]]
 widget.add_left_click_action(popup_anonymous, anonymous_change_script, 'shell')
+
+local morpho_change_script = [[
+  bash -c "~/.config/awesome/widgets/change-theme.sh --change morpho" ]]
+widget.add_left_click_action(popup_morpho, morpho_change_script, 'shell')
 
 rld:buttons(gtable.join(
   awful.button({ }, 1, function()
