@@ -1,3 +1,0 @@
-colorscheme darkest-space
-" update colors with F8 with this colorscheme
-map <F8> :update<CR>:colorscheme darkest-space<CR>

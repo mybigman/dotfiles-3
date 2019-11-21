@@ -28,7 +28,6 @@ local wi = widget.box(l, { text, rld }, space)
 
 local popup_anonymous = widget.imagebox(80, icons["anonymous"])
 local popup_connected = widget.imagebox(80, icons["connected"])
-local popup_battleship = widget.imagebox(80, icons["battleship"])
 local popup_miami = widget.imagebox(80, icons["miami"])
 local popup_machine = widget.imagebox(80, icons["machine"])
 local popup_morpho = widget.imagebox(80, icons["morpho"])
@@ -48,7 +47,6 @@ local w = awful.popup {
           {
             popup_anonymous,
             popup_connected,
-            popup_battleship,
             popup_machine,
             popup_miami,
             popup_morpho,
@@ -86,10 +84,6 @@ widget.add_left_click_action(popup_machine, machine_change_script, 'shell')
 local connected_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change connected" ]]
 widget.add_left_click_action(popup_connected, connected_change_script, 'shell')
-
-local battleship_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change battleship" ]]
-widget.add_left_click_action(popup_battleship, battleship_change_script, 'shell')
 
 local anonymous_change_script = [[
   bash -c "~/.config/awesome/widgets/change-theme.sh --change anonymous" ]]

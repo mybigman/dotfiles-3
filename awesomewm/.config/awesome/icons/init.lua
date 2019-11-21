@@ -7,7 +7,6 @@ local icon_name = {
   "tor_stop",
   "tor_restart",
   "default_cover",
-  "battleship",
   "connected",
   "machine",
   "miami",

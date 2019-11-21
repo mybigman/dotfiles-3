@@ -66,14 +66,12 @@ It's all for the setup :)
 
 ### Awesome
 **Last**:`theme-miami` **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+| start\_screen widget | terms (xst) - lightline.vim - tmux |
 | --- | --- |
-|![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami") | ![terms]( https://github.com/szorfein/unix-portfolio/raw/master/miami/terms.png "miami terms") |
+|![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami start screen") | ![terms]( https://github.com/szorfein/unix-portfolio/raw/master/miami/terms.png "miami terms") |
 
 `theme-machine` **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Machine screenshot](https://github.com/szorfein/unix-portfolio/raw/master/machine/monitoring.png "machine")  
-
-`theme-battleship` [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
-![Battleship screenshot](https://raw.githubusercontent.com/szorfein/dotfiles/master/screenshots/battleship.jpg "battleship")  
 
 `theme-anonymous` [term]: *xst* [vim-color] [darkest-space](https://github.com/szorfein/darkest-space), [font] [Nerd Font Iosevka](http://nerdfonts.com/#downloads).   
 ![Anonymous screenshot](https://github.com/szorfein/unix-portfolio/blob/master/anonymous/music.png "anonymous")  
