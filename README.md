@@ -24,29 +24,22 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 - [screenshots](#screens)
 
 ## Installation for the last theme
-For the last [theme-miami](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
+For the last [theme-morpho](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
 
-<!--
-### Gentoo (with [ninjatools](https://github.com/szorfein/ninjatools) overlay)
-    sudo emerge -av app-admin/stow nerd-fonts-roboto-mono nerd-fonts-iosevka xst x11-wm/awesome x11-apps/xinit feh compton dev-vcs/git rofi
--->
 ## Stow
 If you are blocked with `stow` or need more explanations, see the [wiki page](https://github.com/szorfein/dotfiles/wiki/stow) before post an issue.  
 
 ## Vim
-If you want the same vim setup, you need:
+Here all the vim plugins i use:
 
-> [ale](https://github.com/w0rp/ale), 
-[colorizer](https://github.com/lilydjwg/colorizer), 
-[indentLine](https://github.com/Yggdroot/indentLine), 
-[lightline](https://github.com/itchyny/lightline.vim), 
-[lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline), 
-[nerdtree](https://github.com/scrooloose/nerdtree), 
-[pathogen](https://github.com/tpope/vim-pathogen) to load vim plugins, 
-[vim-devicons](https://github.com/ryanoasis/vim-devicons), 
-[vim-gitgutter](https://github.com/airblade/vim-gitgutter),  
-[vim-gpg](https://github.com/jamessan/vim-gnupg) to encrypt password,  
-[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator).  
+| name | description | name | description
+| --- | --- | --- | --- |
+|[ale](https://github.com/w0rp/ale) | asynchronous check |[vim-devicons](https://github.com/ryanoasis/vim-devicons) | add icon to vim |
+|[colorizer](https://github.com/lilydjwg/colorizer) | colorize hexa code |[vim-gpg](https://github.com/jamessan/vim-gnupg) | used like a password manager |
+|[indentLine](https://github.com/Yggdroot/indentLine) | display indentation level |[nerdtree](https://github.com/scrooloose/nerdtree) | tree explorer |
+|[lightline](https://github.com/itchyny/lightline.vim) | top, bottom bar |[vim-gitgutter](https://github.com/airblade/vim-gitgutter) | git diff in sign column |[nerdtree](https://github.com/scrooloose/nerdtree) | tree explorer |
+|[lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline) | extend lightline |[pathogen](https://github.com/tpope/vim-pathogen) | load vim plugins
+|[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) | used with tmux |
 
 #### On gentoo (with [ninjatools](https://github.com/szorfein/ninjatools)):
     sudo emerge -av app-vim/gnupg app-vim/lightline gitgutter nerdtree pathogen app-vim/ale vim-devicons app-vim/colorizer vim-tmux-navigator indentline lightline-bufferline
