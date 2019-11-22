@@ -65,10 +65,17 @@ It's all for the setup :)
 ## Screens
 
 ### Awesome
-**Last**:`theme-miami` **term**:*xst*, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
+**Last**:`theme-morpho` **term**: xst, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Iosevka Term Nerd Font](http://nerdfonts.com/#downloads).
+
+| clean | start screen | tiling | 
+| --- | --- | --- |
+| ![clean](https://github.com/szorfein/unix-portfolio/raw/master/morpho/clean.png "morpho clean")| ![start\_screen](https://github.com/szorfein/unix-portfolio/raw/master/morpho/start_screen.png "morpho start screen")| ![tiling](https://github.com/szorfein/unix-portfolio/raw/master/morpho/tiling.png "morpho tiling")|
+
+`theme-miami` **term**: xst, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).
+
 | start\_screen widget | terms (xst) - lightline.vim - tmux |
 | --- | --- |
-|![Last screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami start screen") | ![terms]( https://github.com/szorfein/unix-portfolio/raw/master/miami/terms.png "miami terms") |
+| ![miami screenshot](https://github.com/szorfein/unix-portfolio/raw/master/miami/start_screen.png "miami start screen")| ![terms](https://github.com/szorfein/unix-portfolio/raw/master/miami/terms.png "miami terms")|
 
 `theme-machine` **term**:*xst*, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).   
 ![Machine screenshot](https://github.com/szorfein/unix-portfolio/raw/master/machine/monitoring.png "machine")  

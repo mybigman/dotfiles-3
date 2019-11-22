@@ -7,40 +7,40 @@
 ! Bg !
 
 ! Grey bg (dark to light)
-! no place but used by tmux and awesome #161525
-*background:   #1a1728
-*color0:       #221f3f
+! no place but used by tmux and awesome #161325
+*background:   #1a1729
+*color0:       #221f3a
 
 ! Primary bg (dark to light)
-*color6:       #43234f
-*color2:       #5c2c63
-*color14:      #6a316d
+*color6:       #4c2777
+*color2:       #5c308a
+*color14:      #6b35a3
 
 ! Secondary bg (dark to light)
-*color5:       #332661
-*color4:       #403778
-*color13:      #474184
+*color5:       #463c8f
+*color4:       #504397
+*color13:      #5b4ba0
 
 ! Error bg (dark to light)
-*color1:       #845eb1
-*color9:       #987cbb
-*color3:       #b4a2cc
+*color1:       #796ac2
+*color9:       #9184cd
+*color3:       #b1a7db
 
 ! Text !
 
 ! Text Grey
-*color8:       #bfa8da
-*foreground:   #d8cbe8
+*color8:       #9791b0
+*foreground:   #b7b0d1
 
 ! Text Primary (normal - focus)
-*color10:      #f0f4c3
-*color7:       #f9fbe7
+*color10:      #b499f0
+*color7:       #d3c0f5
 
 ! Text Secondary (normal - focus)
-*color12:      #e0e0e0
-*color15:      #eeeeee
+*color12:      #a5a6d2
+*color15:      #c8c9e4
 
 ! Text Error
-*color11:      #ffffff
+*color11:      #e9eaf4
 
 st.opacity: 250

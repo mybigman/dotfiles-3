@@ -18,7 +18,7 @@ local theme = {}
 
 -- Get colors from .Xresources and set fallback colors
 -- bg
-theme.grey_dark = "#161525"
+theme.grey_dark = "#161325"
 theme.grey = xrdb.background or "#282f37"
 theme.grey_light = xrdb.color0 or "#29262C"
 theme.primary_dark = xrdb.color6 or "#9EE9EA" -- cyan D
@@ -48,6 +48,7 @@ theme.widget_text_font = theme.myfont.." Regular 9"
 theme.widget_font = theme.myfont.." Mono 15"
 theme.widget_icon_font_button = theme.myfont.." Mono 16"
 theme.widget_title_font = theme.myfont.." Bold 10"
+theme.widget_big_button_font_size = "46"
 
 theme.bg_normal     = theme.grey
 theme.bg_focus      = theme.secondary
@@ -91,9 +92,9 @@ theme.titlebar_size = dpi(20)
 -- }}} End TITLEBAR
 
 -- Gravities
-theme.gravity_ncmpcpp = { 16, 10, 32, 49 }
-theme.gravity_cava = { 16, 63, 32, 20 }
-theme.gravity_music_term = { 51, 10, 32, 73 }
+theme.gravity_ncmpcpp = { 16, 12, 31, 45 }
+theme.gravity_cava = { 16, 61, 31, 19 }
+theme.gravity_music_term = { 49, 12, 34, 68 }
 
 -- Top bar
 theme.wibar_size = dpi(30)

@@ -1,7 +1,7 @@
 # Erase default options
 
 # Colour
-COLOUR_BG="#241c22"
+COLOUR_BG="#161328"
 
 set-option -g status-position bottom
 setw -g window-status-format "#[fg=colour0,bg=$COLOUR_BG]#[fg=colour10,bg=colour0] #I #[fg=colour10,bg=colour0] #W #[fg=colour0,bg=$COLOUR_BG]"

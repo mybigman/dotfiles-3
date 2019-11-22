@@ -125,7 +125,6 @@ local picture_widget = widget.box('vertical', { theme_picture, theme_name })
 -- quotes
 local quotes = {
   "Change is neither good nor bad. It simply is.",
-  "Fear stimulates my imagination.",
   "You're good. Get better. Stop asking for things.",
   "Why does everybody need to talk about everything?",
   "Today's a good day for Armageddon.",
@@ -133,6 +132,7 @@ local quotes = {
   "Even if it seems certain that you will lose, retaliate.",
   "The end is important in all things.",
   "Having only wisdom and talent is the lowest tier of usefulness.",
+  "Fear stimulates my imagination.",
   "I'm living like there's no tomorrow, cause there isn't one."
 }
 local quote_title = widget.create_title("", beautiful.fg_grey_light, 17)
@@ -158,13 +158,14 @@ local exec_prog = function(cmd)
   start_screen_hide()
 end
 
+local button_font_size = beautiful.widget_big_button_font_size or "35"
 -- buttons apps
 local gimp_cmd = function() exec_prog("gimp") end
-local gimp = button.create("", beautiful.primary_light, beautiful.primary, gimp_cmd)
+local gimp = button.create("", beautiful.primary_light, beautiful.primary, gimp_cmd, button_font_size)
 local game_cmd = function() exec_prog("lutris") end
-local game = button.create("", beautiful.secondary_light, beautiful.secondary, game_cmd)
+local game = button.create("", beautiful.secondary_light, beautiful.secondary, game_cmd, button_font_size)
 local pentest_cmd = function() launch_term("msf") end
-local pentest = button.create("ﮊ", beautiful.alert_light, beautiful.alert, pentest_cmd)
+local pentest = button.create("ﮊ", beautiful.alert_light, beautiful.alert, pentest_cmd, button_font_size)
 
 local buttons_widget = widget.box('vertical', { gimp,game,pentest })
 
@@ -183,13 +184,13 @@ local buttons_path_2_widget = widget.box('horizontal', { movie }, 25)
 
 -- buttons url
 local github_cmd = function() exec_prog("/opt/brave/brave https://github.com") end
-local github = button.create("", beautiful.primary_light, beautiful.primary, github_cmd)
+local github = button.create("", beautiful.primary_light, beautiful.primary, github_cmd, button_font_size)
 
 local twitter_cmd = function() exec_prog("/opt/brave/brave https://twitter.com") end
-local twitter = button.create("", beautiful.secondary_light, beautiful.secondary, twitter_cmd)
+local twitter = button.create("", beautiful.secondary_light, beautiful.secondary, twitter_cmd, button_font_size)
 
 local reddit_cmd = function() exec_prog("/opt/brave/brave https://reddit.com") end
-local reddit = button.create("", beautiful.alert_light, beautiful.alert, reddit_cmd)
+local reddit = button.create("", beautiful.alert_light, beautiful.alert, reddit_cmd, button_font_size)
 
 local buttons_url_widget = widget.box('vertical', { github, twitter, reddit })
 
