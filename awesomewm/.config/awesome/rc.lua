@@ -19,6 +19,8 @@ require("awful.hotkeys_popup.keys")
 local theme = require("loaded-theme")
 naughty.notify({ text = "theme "..theme.name.." is loaded" })
 
+require("notifications")
+
 local keys = require("keys")
 local helpers = require("helpers")
 local env = require("env-config")
@@ -28,31 +30,6 @@ require("layouts.sidebar")
 
 -- Start daemons
 require("daemons")
-
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
-
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
-        in_error = false
-    end)
-end
--- }}}
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -369,6 +346,8 @@ awful.rules.rules = {
 }
 -- }}}
 
+require("titlebar")
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
@@ -461,8 +440,6 @@ if beautiful.border_width > 0 then
   client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
   client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 end
-
-require("titlebar")
 
 -- Autostart
 local autostart = require("autostart")
