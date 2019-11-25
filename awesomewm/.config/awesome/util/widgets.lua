@@ -4,7 +4,6 @@ local helpers = require("helpers")
 local gshape = require("gears.shape")
 local gtable = require("gears.table")
 local awful = require("awful")
-local env = require("env-config")
 local naughty = require("naughty")
 local separator = require("util.separators")
 local dpi = beautiful.xresources.apply_dpi

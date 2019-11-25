@@ -1,6 +1,5 @@
 local awful = require("awful")
 local filesystem = require('gears.filesystem')
-local env = require("env-config")
 
 local autostart = {}
 

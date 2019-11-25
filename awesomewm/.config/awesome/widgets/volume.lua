@@ -2,7 +2,6 @@ local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local wibox = require("wibox")
-local env = require("env-config")
 local aspawn = require("awful.spawn")
 
 -- beautiful vars

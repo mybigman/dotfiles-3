@@ -37,4 +37,6 @@ env.sound_card_alsa = "hw:Pro" -- your card here, used only if sound_system is a
 
 -- }}} End Sound Setting
 
+env.password = "awesome" -- password for the lock screen
+
 return env

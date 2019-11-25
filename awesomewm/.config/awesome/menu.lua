@@ -1,7 +1,6 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-local env = require("env-config")
 local exit_screen = require("layouts.logout")
 
 -- {{{ Menu

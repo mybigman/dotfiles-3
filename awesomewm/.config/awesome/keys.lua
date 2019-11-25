@@ -4,7 +4,6 @@ local helpers = require("helpers")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local mymainmenu = require("menu")
-local env = require("env-config")
 
 local keys = {}
 

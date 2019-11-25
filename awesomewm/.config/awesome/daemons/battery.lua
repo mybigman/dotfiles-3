@@ -1,7 +1,6 @@
 local awidget = require("awful.widget")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
-local env = require("env-config")
 
 local function battery_info()
   local path_power="/sys/class/power_supply/"

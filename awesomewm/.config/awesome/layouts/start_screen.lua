@@ -7,7 +7,6 @@ local widget = require("util.widgets")
 local button = require("util.buttons")
 local naughty = require("naughty")
 local dpi = beautiful.xresources.apply_dpi
-local env = require("env-config")
 local helpers = require("helpers")
 local theme = require("loaded-theme")
 

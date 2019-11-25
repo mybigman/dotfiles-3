@@ -30,6 +30,13 @@ start_screen_button:buttons(gtable.join(
   end)
 ))
 
+local lock_screen_button = widget.create_button(fg, " ")
+lock_screen_button:buttons(gtable.join(
+  awful.button({}, 1, function()
+    lock_screen_show()
+  end)
+))
+
 local function set_tooltip(w, text)
   local tooltip = awful.tooltip({ objects = { w } })
   w:connect_signal('mouse::enter', function()
@@ -39,12 +46,29 @@ end
 
 set_tooltip(monitoring_button, 'Show/Hide monitor bar')
 set_tooltip(start_screen_button, 'Show/Hide start_screen')
+set_tooltip(lock_screen_button, 'Lock screen')
+
+local function add_margin()
+  local c = wibox.container.margin()
+  if wibar_pos == 'top' or wibar_pos == 'bottom' then
+    c.top = 7
+    c.bottom = 7
+  else
+    c.left = 7
+    c.right = 7
+  end
+  return c
+end
 
 local layouts_widget = wibox.widget {
-  monitoring_button,
-  start_screen_button,
-  spacing = beautiful.widget_spacing or 1,
-  layout = fixed_position(ob)
+  {
+    lock_screen_button,
+    monitoring_button,
+    start_screen_button,
+    spacing = beautiful.widget_spacing or 1,
+    layout = fixed_position(ob)
+  },
+  widget = add_margin()
 }
 
 return layouts_widget

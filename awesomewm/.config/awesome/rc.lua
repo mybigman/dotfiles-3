@@ -15,6 +15,8 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.hotkeys_popup.keys")
 
 -- {{{ Variable definitions
+env = require("env-config") -- user settings globally
+
 -- Themes define colours, icons, font and wallpapers.
 local theme = require("loaded-theme")
 naughty.notify({ text = "theme "..theme.name.." is loaded" })
@@ -23,10 +25,10 @@ require("notifications")
 
 local keys = require("keys")
 local helpers = require("helpers")
-local env = require("env-config")
 local start_screen = require("layouts.start_screen")
 
 require("layouts.sidebar")
+require("layouts.lock_screen")
 
 -- Start daemons
 require("daemons")

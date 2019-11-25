@@ -3,7 +3,6 @@ local dpi = beautiful.xresources.apply_dpi
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local wibox = require("wibox")
-local env = require("env-config")
 
 -- beautiful vars
 local net_icon = beautiful.widget_network_icon
