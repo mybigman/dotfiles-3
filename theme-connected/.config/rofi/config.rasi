@@ -136,7 +136,7 @@
 }
 #prompt {
     spacing:    0;
-    text-color: @normal-foreground;
+    text-color: @foreground;
 }
 #inputbar {
     children: [prompt, textbox-prompt-colon, entry, case-indicator];

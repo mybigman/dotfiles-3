@@ -45,12 +45,12 @@ secondary_fg_light=$(get_color color15 $XRE)
 alert_fg=$(get_color color11 $XRE)
 
 # check files
-[ -f "$XRE" ] || die "colorscheme .colors/color found"
-[ -f "$ZRC" ] || die "no zathura/zathurarc found"
-[ -f "$RFI" ] || die "no rofi/colors.rasi found"
-[ -f "$TMX" ] || die "no tmux/status found"
-[ -f "$KTY" ] || die "no kitty/theme.conf found"
-[ -f "$CVA" ] || die "no cava/config found"
+[ -s "$XRE" ] || die "no colors/color found"
+[ -s "$ZRC" ] || die "no zathura/zathurarc found"
+[ -s "$RFI" ] || die "no rofi/colors.rasi found"
+[ -s "$TMX" ] || die "no tmux/status found"
+[ -s "$KTY" ] || die "no kitty/theme.conf found"
+[ -s "$CVA" ] || die "no cava/config found"
 
 apply_color() {
   str="$2" new="$3"
@@ -59,7 +59,7 @@ apply_color() {
   new_line=$(echo "$old_line" | sed "s:#[a-zA-Z0-9]\{6\}:$new:")
   [ -z "$new_line" ] && die "new_line is void - $0 called with args: $file , $str , $new"
   echo "apply s/$old_line/$new_line/ on $str to $1"
-  sed -i "s/$old_line/$new_line/" $1
+  sed --follow-symlinks -i "s/$old_line/$new_line/" $1
   [ $? -ne 0 ] && die "fail to apply s:$old_line:$new_line at $str on the file $1"
   old_line= new= str= new_line=
 }
@@ -122,6 +122,7 @@ apply_color $KTY "color7 " $primary_fg_light
 apply_color $KTY color12 $secondary_fg_dark
 apply_color $KTY color15 $secondary_fg_light
 apply_color $KTY color11 $alert_fg
+apply_color $KTY cursor $grey_fg_dark
 
 # cava
 apply_color $CVA gradient_color_1 $primary_dark

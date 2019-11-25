@@ -32,6 +32,3 @@
 
 ! fg error
 *color11: #ece8be
-
-rofi.color-normal: argb:00000000, #47473d, argb:00000000, #181f1c, #505047
-rofi.color-window: #181f1c, #000000, #832757
