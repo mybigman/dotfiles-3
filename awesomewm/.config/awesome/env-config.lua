@@ -4,8 +4,12 @@ local env = {}
 env.term = os.getenv("TERMINAL") or "xst"
 env.editor = os.getenv("EDITOR") or "vim"
 
-env.web_browser = "brave-sec" -- normal web browser
+-- web browser
+env.web_browser = "brave-sec" -- normal web browser, firefox, brave, chromium...
 env.web_browser_term = "w3m" -- a terminal app, used to launch rss feeds from the start_screen widget
+
+-- file browser
+env.file_browser = "nnn" -- terminal app only, nnn, ranger...
 
 -- Bellow are arguments to call a <class> and <exec> a program by terminal
 -- post an issue if your terminal is not listed or to add new
@@ -39,6 +43,7 @@ env.sound_card_alsa = "hw:Pro" -- your card here, used only if sound_system is a
 
 -- }}} End Sound Setting
 
+-- Lock screen
 env.password = "awesome" -- password for the lock screen
 
 return env

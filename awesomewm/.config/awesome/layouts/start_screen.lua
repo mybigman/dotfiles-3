@@ -169,13 +169,13 @@ local pentest = button.create("ﮊ", beautiful.alert_light, beautiful.alert, pen
 local buttons_widget = widget.box('vertical', { gimp,game,pentest })
 
 -- buttons path
-local image_cmd = function() launch_term("nnn ~/images") end
+local image_cmd = function() launch_term(env.file_browser .. " ~/images") end
 local image = button.create("IMAGES", beautiful.primary_light, beautiful.primary, image_cmd, 12)
 
-local torrent_cmd = function() launch_term("nnn ~/torrents") end
+local torrent_cmd = function() launch_term(env.file_browser .. " ~/torrents") end
 local torrent = button.create("TORRENTS", beautiful.secondary_light, beautiful.secondary, torrent_cmd, 12)
 
-local movie_cmd = function() launch_term("nnn ~/videos") end
+local movie_cmd = function() launch_term(env.file_browser .. " ~/videos") end
 local movie = button.create("MOVIES", beautiful.alert_light, beautiful.alert, movie_cmd, 12)
 
 local buttons_path_1_widget = widget.box('horizontal', { image,torrent }, 25)
