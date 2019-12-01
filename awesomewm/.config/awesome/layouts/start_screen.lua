@@ -31,7 +31,7 @@ end
 local function add_link(w, url)
   w:buttons(gtable.join(
      awful.button({ }, 1, function()
-      awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web .. " " ..tostring(url))
+      awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web_browser_term .. " " ..tostring(url))
       start_screen_hide()
     end)
   ))
@@ -182,13 +182,13 @@ local buttons_path_1_widget = widget.box('horizontal', { image,torrent }, 25)
 local buttons_path_2_widget = widget.box('horizontal', { movie }, 25)
 
 -- buttons url
-local github_cmd = function() exec_prog("/opt/brave/brave https://github.com") end
+local github_cmd = function() exec_prog(env.web_browser .. " https://github.com/szorfein") end
 local github = button.create("", beautiful.primary_light, beautiful.primary, github_cmd, button_font_size)
 
-local twitter_cmd = function() exec_prog("/opt/brave/brave https://twitter.com") end
+local twitter_cmd = function() exec_prog(env.web_browser .. " https://twitter.com/szorfein") end
 local twitter = button.create("", beautiful.secondary_light, beautiful.secondary, twitter_cmd, button_font_size)
 
-local reddit_cmd = function() exec_prog("/opt/brave/brave https://reddit.com") end
+local reddit_cmd = function() exec_prog(env.web_browser .. " https://reddit.com/user/szorfein") end
 local reddit = button.create("", beautiful.alert_light, beautiful.alert, reddit_cmd, button_font_size)
 
 local buttons_url_widget = widget.box('vertical', { github, twitter, reddit })

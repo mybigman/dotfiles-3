@@ -17,4 +17,4 @@ agent="${agentsList[$rand]}"
 # -user-agent="${agent}" --disk-cache-dir=/tmp/brave-cache --incognito
 /usr/bin/firejail \
   /opt/brave/brave -no-sandbox \
-  -user-agent="${agent}" --incognito --disk-cache-dir=/tmp/brave-cache --incognito
+  -user-agent="${agent}" --incognito --disk-cache-dir=/tmp/brave-cache --incognito $@

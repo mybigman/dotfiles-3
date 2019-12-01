@@ -3,7 +3,9 @@ local env = {}
 
 env.term = os.getenv("TERMINAL") or "xst"
 env.editor = os.getenv("EDITOR") or "vim"
-env.web = "w3m" -- a terminal app if possible
+
+env.web_browser = "brave-sec" -- normal web browser
+env.web_browser_term = "w3m" -- a terminal app, used to launch rss feeds from the start_screen widget
 
 -- Bellow are arguments to call a <class> and <exec> a program by terminal
 -- post an issue if your terminal is not listed or to add new
