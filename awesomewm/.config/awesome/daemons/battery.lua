@@ -2,6 +2,8 @@ local awidget = require("awful.widget")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
 
+local unknown_icon = beautiful.widget_battery_icon_unknown or ""
+
 local function battery_info()
   local path_power="/sys/class/power_supply/"
   local bat = env.battery or "BAT0"
@@ -9,7 +11,8 @@ local function battery_info()
 
   local battery_state = {
     ["Full\n"]        = { beautiful.widget_battery_icon_full, beautiful.fg_grey },
-    ["Unknown\n"]     = { "unknown", beautiful.alert_light },
+    ["Unknown\n"]     = { unknown_icon, beautiful.alert_light },
+
     ["Charged\n"]     = { beautiful.widget_battery_icon_charging, beautiful.primary_light },
     ["Charging\n"]    = { beautiful.widget_battery_icon_charging, beautiful.secondary_light },
     ["Discharging\n"] = { beautiful.widget_battery_icon_discharging, beautiful.alert }
