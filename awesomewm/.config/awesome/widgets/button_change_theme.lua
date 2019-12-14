@@ -11,7 +11,7 @@ local icons = require("icons")
 -- beautiful vars
 local icon = beautiful.widget_change_theme_icon or '嗀'
 local icon_reload = beautiful.widget_change_theme_icon_reload or '勒'
-local fg = beautiful.widget_change_theme_fg or '#a9a9a9'
+local fg = beautiful.widget_change_theme_fg or beautiful.fg_grey_light or '#a9a9a9'
 local bg = beautiful.widget_change_theme_bg or '#232323'
 local l = beautiful.widget_change_theme_layout or 'horizontal'
 local space = beautiful.widget_spacing or dpi(1)

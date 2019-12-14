@@ -8,15 +8,6 @@ local ram_icon = beautiful.widget_ram_icon
 local fg = beautiful.widget_ram_fg
 local spacing = beautiful.widget_spacing or 1
 
-local function new(self, ...)
-  local instance = setmetatable({}, { __index = self })
-  return instance:init(...) or instance
-end
-
-local function class(base)
-  return setmetatable({ new = new }, { __call = new, __index = base })
-end
-
 -- root
 local ram_root = class()
 

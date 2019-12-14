@@ -14,12 +14,22 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Function to create object in lua - used globally
+local function new(self, ...)
+  local instance = setmetatable({}, { __index = self })
+  return instance:init(...) or instance
+end
+
+-- Function to create object in lua - used globally
+function class(base)
+  return setmetatable({ new = new }, { __call = new, __index = base })
+end
+
 -- {{{ Variable definitions
 env = require("env-config") -- user settings globally
 
 -- Themes define colours, icons, font and wallpapers.
 local theme = require("loaded-theme")
-naughty.notify({ text = "theme "..theme.name.." is loaded" })
 
 require("notifications")
 
@@ -48,19 +58,19 @@ screen_height = awful.screen.focused().geometry.height
 awful.layout.layouts = {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
-  awful.layout.suit.tile.left,
-  awful.layout.suit.tile.bottom,
-  awful.layout.suit.tile.top,
-  awful.layout.suit.fair.horizontal,
-  awful.layout.suit.spiral,
-  awful.layout.suit.spiral.dwindle,
+  -- awful.layout.suit.tile.left,
+  -- awful.layout.suit.tile.bottom,
+  -- awful.layout.suit.tile.top,
+  -- awful.layout.suit.fair.horizontal,
+  -- awful.layout.suit.spiral,
+  -- awful.layout.suit.spiral.dwindle,
   awful.layout.suit.max,
-  awful.layout.suit.max.fullscreen,
+  -- awful.layout.suit.max.fullscreen,
   awful.layout.suit.magnifier,
-  awful.layout.suit.corner.nw,
-  awful.layout.suit.corner.ne,
-  awful.layout.suit.corner.sw,
-  awful.layout.suit.corner.se,
+  -- awful.layout.suit.corner.nw,
+  -- awful.layout.suit.corner.ne,
+  -- awful.layout.suit.corner.sw,
+  -- awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -169,8 +179,13 @@ awful.screen.connect_for_each_screen(function(s)
     layout = layouts[10],
     screen = s,
   })
+
+  -- Create the wibox
+  require("bars."..theme.name)(s)
 end)
 -- }}}
+
+naughty.notify({ text = "theme "..theme.name.." is loaded" })
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(

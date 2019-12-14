@@ -13,8 +13,11 @@ local desktop_ctrl = require("widgets.desktop-control")
 local scrot = require("widgets.scrot")
 local layouts = require("widgets.layouts")
 
+-- init tables
+local mybar = class()
+
 -- {{{ Wibar
-awful.screen.connect_for_each_screen(function(s)
+function mybar:init(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
@@ -26,7 +29,7 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytaglist = require("widgets.taglist")(s, { mode = "line", want_layout = 'flex' })
 
   -- Create the wibox with default options
-  s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
+  s.mywibox = awful.wibar({ position = beautiful.wibar_position, height = beautiful.wibar_size, bg = beautiful.wibar_bg, screen = s })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -49,10 +52,15 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- tagslist bar
-  s.mywibox_tags = awful.wibar({ screen = s, position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg })
+  s.mywibox_tags = awful.wibar({ position = beautiful.wibar_position, height = dpi(5), bg = beautiful.wibar_bg, screen = s })
   awful.placement.maximize_horizontally(s.mywibox_tags)
 
   s.mywibox_tags:setup {
     widget = s.mytaglist
   }
-end)
+end
+
+-- return the bar
+return function(...)
+  mybar.init(self, ...)
+end

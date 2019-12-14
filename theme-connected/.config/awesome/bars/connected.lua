@@ -73,8 +73,10 @@ end
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
+local mybar = class()
+
 -- Add the bar on each screen
-awful.screen.connect_for_each_screen(function(s)
+function mybar:init(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
@@ -82,7 +84,7 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytaglist = require("widgets.taglist")(s, { mode = "text" })
 
   -- Create the wibox with default options
-  s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_size, bg = beautiful.wibar_bg })
+  s.mywibox = awful.wibar({ position = top, height = beautiful.wibar_size, bg = beautiful.wibar_bg, screen = s })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -129,4 +131,8 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal,
     },
   }
-end)
+end
+
+return function(...)
+  mybar.init(self, ...)
+end

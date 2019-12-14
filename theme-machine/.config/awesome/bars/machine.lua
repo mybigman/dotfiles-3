@@ -15,8 +15,10 @@ local layouts = require("widgets.layouts")
 
 -- {{{ Wibar
 
+local mybar = class()
+
 -- Add the bar on each screen
-awful.screen.connect_for_each_screen(function(s)
+function mybar:init(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
@@ -25,7 +27,7 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytaglist = require("widgets.taglist")(s, { mode = "text", want_layout = "vertical" })
 
   -- Create the wibox with default options
-  s.mywibox = awful.wibar({ position = beautiful.wibar_position, width = beautiful.wibar_size, bg = beautiful.wibar_bg })
+  s.mywibox = awful.wibar({ position = beautiful.wibar_position, width = beautiful.wibar_size, bg = beautiful.wibar_bg, screen = s })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -48,4 +50,9 @@ awful.screen.connect_for_each_screen(function(s)
     expand ="none",
     layout = wibox.layout.align.vertical
   }
-end)
+end
+
+-- return the bar
+return function(...)
+  mybar.init(self, ...)
+end

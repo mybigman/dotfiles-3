@@ -9,15 +9,6 @@ local icon = beautiful.widget_brightness_icon  or ""
 local fg = beautiful.widget_brightness_fg or beautiful.fg_grey
 local spacing = beautiful.widget_spacing or 1
 
-local function new(self, ...)
-  local instance = setmetatable({}, { __index = self })
-  return instance:init(...) or instance
-end
-
-local function class(base)
-  return setmetatable({ new = new }, { __call = new, __index = base })
-end
-
 -- root
 local brightness_root = class()
 

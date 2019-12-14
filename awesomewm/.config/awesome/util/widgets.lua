@@ -55,7 +55,7 @@ function widgets.box(l, widgets, space)
   local _layout = wibox.layout.fixed.horizontal -- default horiz
   if l == "vertical" then _layout = wibox.layout.fixed.vertical end
 
-  local w = wibox.widget { layout = _layout, spacing = spacing } -- init a widget
+  local w = wibox.widget { layout = _layout, spacing = dpi(spacing) } -- init a widget
   for _, widget in ipairs(widgets) do
     w:add(widget)
   end

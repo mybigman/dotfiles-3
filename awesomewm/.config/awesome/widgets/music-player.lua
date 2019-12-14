@@ -8,7 +8,7 @@ local dpi = beautiful.xresources.apply_dpi
 local icons = require("icons")
 
 -- widget for the popup
-local mpc = require("widgets.mpc")({})
+local mpc = require("widgets.mpc")({ size = 16 })
 local volume_bar = require("widgets.volume")({ mode = "slider" })
 volume_bar.forced_width = dpi(40) -- set a max width
 
@@ -23,15 +23,6 @@ local l = beautiful.widget_button_music_layout or 'horizontal'
 local fg_p = beautiful.fg_grey or "#aaaaaa"
 local bg_p = beautiful.grey_dark or "#222222" -- same than the wibar
 local padding = beautiful.widget_popup_padding or 1
-
-local function new(self, ...)
-  local instance = setmetatable({}, { __index = self })
-  return instance:init(...) or instance
-end
-
-local function class(base)
-  return setmetatable({ new = new }, { __call = new, __index = base })
-end
 
 local music_player_root = class()
 

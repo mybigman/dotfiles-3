@@ -272,11 +272,6 @@ theme.widget_scrot_icon = ''
 -- button music
 theme.widget_button_music_layout = 'horizontal'
 
--- Change theme
-theme.widget_change_theme_bg = theme.grey_dark
-theme.widget_change_theme_fg = theme.fg_grey
-theme.widget_change_theme_layout = "horizontal"
-
 -- Button mpc
 theme.widget_mpc_button_icon = "ﱘ"
 

@@ -68,10 +68,10 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
--- {{{ Wibar
+local mybar = class()
 
--- Add the bar on each screen
-awful.screen.connect_for_each_screen(function(s)
+-- {{{ Wibar
+function mybar:init(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
@@ -83,10 +83,10 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytaglist = require("taglists.anonymous")
 
 -- For look like a detached bar, we have to add a fake invisible bar...
-s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0 })
+s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0, screen = s })
 
 -- Create the wibox with default options
-s.mywibox = awful.wibar({ height = beautiful.wibar_size, bg = beautiful.wibar_bg, width = beautiful.wibar_width })
+s.mywibox = awful.wibar({ height = beautiful.wibar_size, bg = beautiful.wibar_bg, width = beautiful.wibar_width, screen = s })
 
 -- Add widgets to the wibox
 s.mywibox:setup {
@@ -129,4 +129,9 @@ s.mywibox:setup {
       scrot
     }
   }
-end)
+end
+
+-- return the bar
+return function(...)
+  mybar.init(self, ...)
+end

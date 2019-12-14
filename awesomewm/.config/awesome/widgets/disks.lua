@@ -7,15 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 -- beautiful vars
 local fg = beautiful.fg_primary
 
-local function new(self, ...)
-  local instance = setmetatable({}, { __index = self })
-  return instance:init(...) or instance
-end
-
-local function class(base)
-  return setmetatable({ new = new }, { __call = new, __index = base })
-end
-
 -- root
 local disks_root = class()
 

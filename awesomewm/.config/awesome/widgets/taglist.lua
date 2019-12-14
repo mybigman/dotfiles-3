@@ -10,15 +10,6 @@ local naughty = require("naughty")
 
 local modkey = "Mod4"
 
-local function new(self, ...)
-  local instance = setmetatable({}, { __index = self })
-  return instance:init(...) or instance
-end
-
-local function class(base)
-  return setmetatable({ new = new }, { __call = new, __index = base })
-end
-
 -- root
 local taglist_root = class()
 
