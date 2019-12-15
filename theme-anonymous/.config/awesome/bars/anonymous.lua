@@ -44,7 +44,7 @@ local date = require("widgets.date")
 local date_bg = beautiful.widget_date_bg
 local my_date = widget.bg_rounded( date_bg, "#873075", date_widget )
 
-local my_menu = require("menu")
+local my_menu = require("module.menu")
 local launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = my_menu }
 )
@@ -131,7 +131,4 @@ s.mywibox:setup {
   }
 end
 
--- return the bar
-return function(...)
-  mybar.init(self, ...)
-end
+return mybar

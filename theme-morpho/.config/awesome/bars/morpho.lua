@@ -124,7 +124,4 @@ function mybar:init(s)
   }
 end
 
--- return the bar
-return function(...)
-  mybar.init(self, ...)
-end
+return mybar

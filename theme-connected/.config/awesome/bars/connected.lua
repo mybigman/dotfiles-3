@@ -133,6 +133,4 @@ function mybar:init(s)
   }
 end
 
-return function(...)
-  mybar.init(self, ...)
-end
+return mybar

@@ -1,7 +1,7 @@
 local awful = require("awful")
 local filesystem = require('gears.filesystem')
 
-local autostart = {}
+local autostart = class()
 
 -- Autostart windowless processes
 local function run_once(cmd_arr)
@@ -18,7 +18,7 @@ local function run_once(cmd_arr)
   end
 end
 
-function autostart.run()
+function autostart:init()
   run_once({'compton -b'})
   run_once({'brave-sec'})
 

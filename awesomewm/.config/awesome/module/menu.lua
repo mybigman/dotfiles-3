@@ -1,7 +1,11 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
+local gtable = require("gears.table")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local exit_screen = require("layouts.logout")
+-- Enable hotkeys help widget for VIM and other apps
+-- -- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -45,5 +49,12 @@ local mymainmenu = awful.menu({ items =
     { "games", mygamemenu }
   }
 })
+
+-- Mouse bindings
+root.buttons(gtable.join(
+  awful.button({}, 3, function () mymainmenu:toggle() end),
+  awful.button({}, 4, awful.tag.viewnext),
+  awful.button({}, 5, awful.tag.viewprev)
+))
 
 return mymainmenu
