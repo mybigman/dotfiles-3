@@ -24,6 +24,7 @@ client.connect_signal("property::floating", function(c)
   local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
   if layout_is_floating then
     c.floating = true
+    c.shape = helpers.rrect(beautiful.border_radius)
   end
   -- on tile
   local layout_is_tile = (awful.layout.get(mouse.screen) == awful.layout.suit.tile)

@@ -1,7 +1,4 @@
 local awful = require("awful")
-local filesystem = require('gears.filesystem')
-
-local autostart = class()
 
 -- Autostart windowless processes
 local function run_once(cmd_arr)
@@ -18,15 +15,10 @@ local function run_once(cmd_arr)
   end
 end
 
-function autostart:init()
-  run_once({'compton -b'})
-  run_once({'brave-sec'})
-
-  run_once({ env.term .. env.term_call[1] .. 'music_n' .. env.term_call[2] .. 'ncmpcpp'})
-  run_once({ env.term .. env.term_call[1] .. 'music_c' .. env.term_call[2] .. 'cava'})
-  run_once({ env.term .. env.term_call[1] .. 'music_t' .. env.term_call[2] .. 'tmux'})
-  run_once({ env.term .. env.term_call[1] .. 'mail' .. env.term_call[2] .. 'neomutt'})
-  run_once({ env.term .. env.term_call[1] .. 'chat' .. env.term_call[2] .. 'weechat'})
-end
-
-return autostart
+run_once({'compton -b'})
+run_once({'brave-sec'})
+run_once({ env.term .. env.term_call[1] .. 'music_n' .. env.term_call[2] .. 'ncmpcpp'})
+run_once({ env.term .. env.term_call[1] .. 'music_c' .. env.term_call[2] .. 'cava'})
+run_once({ env.term .. env.term_call[1] .. 'music_t' .. env.term_call[2] .. 'tmux'})
+run_once({ env.term .. env.term_call[1] .. 'mail' .. env.term_call[2] .. 'neomutt'})
+run_once({ env.term .. env.term_call[1] .. 'chat' .. env.term_call[2] .. 'weechat'})
