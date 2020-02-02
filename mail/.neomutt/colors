@@ -5,7 +5,7 @@
 # Version: 0.1
 
 color normal            default default
-color indicator         yellow      black
+color indicator         white      black
 color status            brightgreen black
 color tree              brightred   default
 color signature         color102    default 
@@ -143,9 +143,9 @@ color index_subject color243 color8 "~Q !~T !~D"
 color index_author color243 color8 "~Q !~T !~D"
 
 # new message
-color index color7 color6 ~N
-color index_subject color10 color6 "~N !~T !~D"
-color index_author  color10 color6 "~N !~T !~D"
+color index cyan black ~N
+color index_subject cyan black "~N !~T !~D"
+color index_author  cyan black "~N !~T !~D"
 
 color index_subject color142 color8 "~O !~T !~D"
 color index_author color142 color8 "~O !~T !~D"

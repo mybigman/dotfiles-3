@@ -264,7 +264,6 @@ theme.widget_mpc_fg = theme.primary
 theme.widget_mpc_bg = theme.grey
 
 -- volume
-theme.widget_volume_icon = ""
 theme.widget_volume_fg = theme.fg_grey
 theme.widget_volume_bg = theme.grey_light
 

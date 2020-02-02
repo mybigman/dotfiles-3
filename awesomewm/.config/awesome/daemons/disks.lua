@@ -1,5 +1,5 @@
 local aspawn = require("awful.spawn")
-local awidget = require("awful.widget")
+local gtimer = require("gears.timer")
 local env = require("env-config")
 
 local fs_info = {}
@@ -28,6 +28,8 @@ local function disks_info()
   awesome.emit_signal("daemon::disks", fs_info)
 end
 
-awidget.watch('sh -c ":"', 50, function(widget, stdout)
-  disks_info()
-end)
+-- update every 50 seconds
+gtimer {
+  timeout = 50, autostart = true, call_now = true,
+  callback = function() disks_info() end
+}

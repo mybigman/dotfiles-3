@@ -17,7 +17,7 @@ local brightness_script = [[
 local emit_brightness_info = function()
   awful.spawn.with_line_callback(brightness_script, {
     stdout = function(line)
-      percentage = math.floor(tonumber(line))
+      percentage = (tonumber(line))
       awesome.emit_signal("daemon::brightness", percentage)
     end
   })

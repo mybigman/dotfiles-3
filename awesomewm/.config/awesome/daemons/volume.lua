@@ -54,5 +54,4 @@ else -- asume you use pulseaudio
     })
 
   end)
-
 end

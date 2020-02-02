@@ -28,10 +28,16 @@ local function start_screen_hide()
   start_screen.visible = false
 end
 
+local exec_prog = function(cmd)
+  awful.spawn(cmd)
+  start_screen_hide()
+end
+
 local function add_link(w, url)
   w:buttons(gtable.join(
      awful.button({ }, 1, function()
-      awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web_browser_term .. " " ..tostring(url))
+      --awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web_browser_term .. " " ..tostring(url))
+      exec_prog(env.web_browser .. " " .. tostring(url))
       start_screen_hide()
     end)
   ))
@@ -150,11 +156,6 @@ local date_widget = widget.box("vertical", { day, month }, dpi(14))
 local launch_term = function(cmd)
  awful.spawn.with_shell(env.term .. env.term_call[2] .. cmd)
  start_screen_hide()
-end
-
-local exec_prog = function(cmd)
-  awful.spawn(cmd)
-  start_screen_hide()
 end
 
 local button_font_size = beautiful.widget_big_button_font_size or "35"

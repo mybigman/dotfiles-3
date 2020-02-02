@@ -5,7 +5,6 @@ local wibox = require("wibox")
 local aspawn = require("awful.spawn")
 
 -- beautiful vars
-local volume_icon = beautiful.widget_volume_icon
 local fg = beautiful.widget_volume_fg
 local fg_err = beautiful.fg_alert or '#882233'
 local spacing = beautiful.widget_spacing or 1
@@ -15,11 +14,13 @@ local volume_root = class()
 
 function volume_root:init(args)
   -- options
+  self.icon = args.icon or beautiful.widget_volume_icon or { "", beautiful.fg_grey }
   self.mode = args.mode or 'text' -- possible values: text, progressbar, slider
   self.want_layout = args.layout or beautiful.widget_volume_layout or 'horizontal' -- possible values: horizontal , vertical
   self.bar_size = args.bar_size or 200
+  self.bar_colors = args.bar_colors or beautiful.bar_colors or { beautiful.primary, beautiful.alert }
   -- base widgets
-  self.wicon = widget.base_icon()
+  self.wicon = widget.base_icon(self.icon[1], self.icon[2])
   self.wtext = widget.base_text()
   self.widget = self:make_widget()
 end
@@ -35,7 +36,6 @@ function volume_root:make_widget()
 end
 
 function volume_root:update(volume, fg)
-  self.wicon.markup = helpers.colorize_text(volume_icon, fg)
   self.wtext.markup = helpers.colorize_text(volume.."%", fg)
 end
 
@@ -53,7 +53,7 @@ end
 
 function volume_root:make_slider()
   local volume = widget.make_a_slider(15)
-  local w = widget.add_icon_to_slider(volume, beautiful.widget_volume_icon, fg, 'horizontal')
+  local w = widget.add_icon_to_slider(volume, self.icon[1], self.icon[2], 'horizontal')
   -- Set value
   volume:connect_signal('property::value', function()
     if env.sound_system == "alsa" then
@@ -70,18 +70,13 @@ function volume_root:make_slider()
 end
 
 function volume_root:make_progressbar()
-  local p = widget.make_progressbar(_, self.bar_size)
-  local w = wibox.widget {
-    p,
-    top = 10,
-    bottom = 10,
-    layout = wibox.container.margin
-  }
+  local p = widget.make_progressbar(_, self.bar_size, { self.bar_colors[1][1], self.bar_colors[2] })
+  local w = widget.progressbar_layout(p, self.want_layout)
+  local space = self.want_layout == "horizontal" and 8 or 2
   awesome.connect_signal("daemon::volume", function(vol, is_muted)
-    self.wicon.markup = helpers.colorize_text(volume_icon, fg)
     p.value = vol
   end)
-  return widget.box_with_margin(self.want_layout, { self.wicon, w }, 8)
+  return widget.box_with_margin(self.want_layout, { self.wicon, w }, space)
 end
 
 -- herit

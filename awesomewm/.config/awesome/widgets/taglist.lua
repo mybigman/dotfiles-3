@@ -183,26 +183,19 @@ function taglist_root:update_icon(item, tag, index)
   end
 end
 
--- TODO: icon too small, help wanted ( used in the theme-anonymous ).
 function taglist_root:template_icon() 
   local t = {
       { 
         id = "img_tag",
         widget = wibox.widget.imagebox,
       },
-      expand = true,
-      homonogeous = false,
-      --forced_num_rows = 2,
-      --forced_num_cols = 5,
-      --forced_heigth = 128,
-      --forced_width = 128,
-      layout = wibox.layout.grid,
-    create_callback = function(item, tag, index, _)
-      self:update_icon(item.img_tag, tag, index)
-    end,
-    update_callback = function(item, tag, index, _)
-      self:update_icon(item.img_tag, tag, index)
-    end,
+      layout = wibox.layout.fixed.horizontal,
+      create_callback = function(item, tag, index, _)
+        self:update_icon(item.img_tag, tag, index)
+      end,
+      update_callback = function(item, tag, index, _)
+        self:update_icon(item.img_tag, tag, index)
+      end,
     }
     return t
 end

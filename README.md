@@ -21,7 +21,9 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 - [use stow](#howto-stow)
 - [vim](#vim)
 - [shell](#shell)
+- [wallpapers](#wallpapers)
 - [screenshots](#screens)
+- [support](#support)
 
 ## Installation for the last theme
 For the last [theme-morpho](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
@@ -53,6 +55,12 @@ You can install theses repos with:
 
     ./install --zsh
 
+## Wallpapers
+To recover all the wallpapers i used, you need to install `wget` and execute a:
+
+    ./install --images
+
+You have to launch this each time a new theme come.  
 It's all for the setup :)
 
 ## Screens
@@ -101,3 +109,8 @@ It's all for the setup :)
 
 ### Other screenshots
 More screenshots are available at [unix-portfolio](https://github.com/szorfein/unix-portfolio).
+
+#### Support
+Any support will be greatly appreciated, star the repo, a coffee, donation, thanks you !
+
+[![Donate](https://img.shields.io/badge/don-liberapay-1ba9a4)](https://liberapay.com/szorfein) [![Donate](https://img.shields.io/badge/don-patreon-ab69f4)](https://www.patreon.com/szorfein)

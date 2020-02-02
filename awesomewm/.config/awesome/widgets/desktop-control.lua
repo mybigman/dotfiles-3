@@ -5,9 +5,9 @@ local helpers = require("helpers")
 local beautiful = require("beautiful")
 
 -- Get theme variables
-local floating_color = beautiful.desktop_mode_color_floating or "#1D8CD2"
-local tile_color = beautiful.desktop_mode_color_tile or "#2DD283"
-local max_color = beautiful.desktop_mode_color_max or "#D21D43"
+local tile_color = beautiful.desktop_mode_color_tile or beautiful.primary
+local floating_color = beautiful.desktop_mode_color_floating or beautiful.secondary
+local max_color = beautiful.desktop_mode_color_max or beautiful.alert
 local floating_text = beautiful.desktop_mode_text_floating or ""
 local tile_text = beautiful.desktop_mode_text_tile or ""
 local max_text = beautiful.desktop_mode_text_max or "类"

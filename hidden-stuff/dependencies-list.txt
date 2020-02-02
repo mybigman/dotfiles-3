@@ -113,3 +113,6 @@ sys-fs/inotify-tools
 # extra
 app-admin/pscircle
 app-misc/tmux
+
+# remove metadata (from pentoo)
+app-misc/mat2

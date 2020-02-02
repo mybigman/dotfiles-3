@@ -7,6 +7,12 @@ local exit_screen = require("layouts.logout")
 -- -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- default config
+beautiful.menu_fg_normal = beautiful.fg_grey
+beautiful.menu_bg_normal = beautiful.grey
+beautiful.menu_fg_focus = beautiful.fg_primary
+beautiful.menu_bg_focus = beautiful.primary
+
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 local myawesomemenu = {

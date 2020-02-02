@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -ue
+
 GIT=$(which git)
 
 ###############################################################
@@ -60,29 +62,67 @@ pathogen() {
   chk https://github.com/sainnhe/gruvbox-material ~/.vim/bundle/gruvbox-material
 }
 
+
+get_image() {
+  img_name="$1"
+  url="$2"
+  wget -O /tmp/image "https://api.pcloud.com/getpubthumb?code=${url#*=}&linkpassword=undefined&size=2048x2048&crop=0&type=auto"
+  if file /tmp/image | grep -iE jpeg\|jpg >/dev/null ; then
+    echo "copying $DEST/$1.jpg..."
+    mv /tmp/image $DEST/$1.jpg
+  elif file /tmp/image | grep -i png >/dev/null ; then
+    echo "copying $DEST/$1.png..."
+    mv /tmp/image $DEST/$1.png
+  else
+    echo "extension for $1 is no found :("
+    exit 1
+  fi
+  img_name= url=
+}
+
+download_images() {
+  DEST=~/images
+  [ -d ~/images ] || mkdir ~/images
+  filename=
+  link=
+  while read line; do
+    filename=$(echo ${line%-*} | tr -d " ")
+    link=$(echo ${line#*-} | tr -d " ")
+    if [ -f "${DEST}/${filename}.png" ] ; then
+      echo "file: $filename.png exist"
+    elif [ -f "${DEST}/${filename}.jpg" ] ; then
+      echo "file: $filename.jpg exist"
+    else
+      echo "file: $filename no exist, download..."
+      get_image $filename $link
+    fi
+  done < hidden-stuff/wallpapers-list.txt
+  filename= link= DEST=
+}
+
 banner() {
   printf "%s\n" \
-  '
-▓█████▄  ▒█████  ▄▄▄█████▓  █████▒██▓ ██▓    ▓█████   ██████
-▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▒██    ▒
-░██   █▌▒██░  ██▒▒ ▓██░ ▒░▒████ ░▒██▒▒██░    ▒███   ░ ▓██▄
-░▓█▄   ▌▒██   ██░░ ▓██▓ ░ ░▓█▒  ░░██░▒██░    ▒▓█  ▄   ▒   ██▒
-░▒████▓ ░ ████▓▒░  ▒██▒ ░ ░▒█░   ░██░░██████▒░▒████▒▒██████▒▒
- ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░    ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
- '
-}
+    '
+      ▓█████▄  ▒█████  ▄▄▄█████▓  █████▒██▓ ██▓    ▓█████   ██████
+      ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▒██    ▒
+      ░██   █▌▒██░  ██▒▒ ▓██░ ▒░▒████ ░▒██▒▒██░    ▒███   ░ ▓██▄
+      ░▓█▄   ▌▒██   ██░░ ▓██▓ ░ ░▓█▒  ░░██░▒██░    ▒▓█  ▄   ▒   ██▒
+      ░▒████▓ ░ ████▓▒░  ▒██▒ ░ ░▒█░   ░██░░██████▒░▒████▒▒██████▒▒
+      ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░    ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
+      '
+    }
 
-usage() {
-  banner
-  printf "%s\n" \
-    "-z, --zsh    Download and install dependencies of zsh"
+  usage() {
+    banner
+    printf "%s\n" \
+      "-z, --zsh    Download and install dependencies of zsh"
 
-  printf "%s\n" \
-    "-v, --vim    Download and install dependencies of vim for pathogen"
+    printf "%s\n" \
+      "-v, --vim    Download and install dependencies of vim for pathogen"
 
-  printf "%s\n" \
-    "-h, --help   Display this really usefull message"
-}
+    printf "%s\n" \
+      "-h, --help   Display this really usefull message"
+    }
 
 ###############################################################
 # Command line options
@@ -103,6 +143,11 @@ while [ "$#" -gt 0 ] ; do
     -v | --vim)
       banner
       pathogen
+      shift
+      ;;
+    -i | --images)
+      banner
+      download_images
       shift
       ;;
     -h | --help)

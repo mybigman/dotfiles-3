@@ -1,4 +1,4 @@
-local awidget = require("awful.widget")
+local gtimer = require("gears.timer")
 
 local function mem_info()
   local mem = { buf = {}, swp = {} }
@@ -29,6 +29,7 @@ local function mem_info()
   awesome.emit_signal("daemon::ram", mem )
 end
 
-awidget.watch('sh -c ":"', 15, function(widget, stdout)
-  mem_info()
-end)
+gtimer {
+  timeout = 15, autostart = true, call_now = true,
+  callback = function() mem_info() end
+}

@@ -1,5 +1,5 @@
 -- function from vicious lib :)
-local awidget = require("awful.widget")
+local gtimer = require("gears.timer")
 
 -- Initialize function tables
 local cpu_usage  = {}
@@ -54,6 +54,12 @@ local function cpu_info()
   awesome.emit_signal("daemon::cpu", cpu_usage)
 end
 
-awidget.watch('sh -c ":"', 6, function(widget, stdout)
-  cpu_info()
-end)
+-- update every 6 seconds
+gtimer {
+  timeout = 6,
+  autostart = true,
+  call_now = true,
+  callback = function()
+    cpu_info()
+  end
+}

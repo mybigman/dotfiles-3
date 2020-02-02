@@ -4,7 +4,6 @@ local helpers = require("helpers")
 local wibox = require("wibox")
 
 -- beautiful vars
-local ram_icon = beautiful.widget_ram_icon
 local fg = beautiful.widget_ram_fg
 local spacing = beautiful.widget_spacing or 1
 
@@ -13,12 +12,14 @@ local ram_root = class()
 
 function ram_root:init(args)
   -- options
+  self.icon = args.icon or beautiful.widget_ram_icon or { "", beautiful.fg_grey }
   self.title = args.title or 'Ram'
   self.mode = args.mode or 'text' -- possible values: text, progressbar, arcchart
   self.want_layout = args.layout or beautiful.widget_ram_layout or 'horizontal' -- possible values: horizontal , vertical
   self.bar_size = args.bar_size or 200
+  self.bar_colors = args.bar_colors or beautiful.bar_colors or { beautiful.primary, beautiful.alert }
   -- base widgets
-  self.icon = widget.base_icon()
+  self.wicon = widget.base_icon(self.icon[1], self.icon[2])
   self.text = widget.base_text()
   self.widget = self:make_widget()
 end
@@ -34,9 +35,8 @@ function ram_root:make_widget()
 end
 
 function ram_root:make_text()
-  local w = widget.box_with_margin(self.want_layout, { self.icon, self.text }, spacing)
+  local w = widget.box_with_margin(self.want_layout, { self.wicon, self.text }, spacing)
   awesome.connect_signal("daemon::ram", function(mem)
-    self.icon.markup = helpers.colorize_text(ram_icon, fg)
     self.text.markup = helpers.colorize_text(mem.inuse_percent.."%", fg)
   end)
   return w
@@ -70,18 +70,13 @@ function ram_root:make_arcchart()
 end
 
 function ram_root:make_progressbar()
-  local p = widget.make_progressbar(_, self.bar_size)
-  local w = wibox.widget {
-    p,
-    top = 10,
-    bottom = 10,
-    layout = wibox.container.margin
-  }
+  local p = widget.make_progressbar(_, self.bar_size, { self.bar_colors[1][1], self.bar_colors[2] })
+  local w = widget.progressbar_layout(p, self.want_layout)
+  local space = self.want_layout == "horizontal" and 8 or 2
   awesome.connect_signal("daemon::ram", function(mem)
-    self.icon.markup = helpers.colorize_text(ram_icon, fg)
     p.value = mem.inuse_percent
   end)
-  return widget.box_with_margin(self.want_layout, { self.icon, w }, 8)
+  return widget.box_with_margin(self.want_layout, { self.wicon, w }, space)
 end
 
 -- herit

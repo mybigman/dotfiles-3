@@ -51,8 +51,8 @@ set_tooltip(lock_screen_button, 'Lock screen')
 local function add_margin()
   local c = wibox.container.margin()
   if wibar_pos == 'top' or wibar_pos == 'bottom' then
-    c.top = 6
-    c.bottom = 6
+    c.top = 3
+    c.bottom = 3
   else
     c.left = 6
     c.right = 6

@@ -1,6 +1,6 @@
 -- custom function from vicious lib
 -- original code: https://github.com/vicious-widgets/vicious/blob/master/widgets/net_linux.lua
-local awidget = require("awful.widget")
+local gtimer = require("gears.timer")
 
 local nets = {}
 local unit = 1 -- i use only by byte for now
@@ -61,6 +61,7 @@ local function network_info()
   awesome.emit_signal("daemon::network", args)
 end
 
-awidget.watch('sh -c ":"', 5, function(widget, stdout)
-  network_info()
-end)
+gtimer {
+  timeout = 5, autostart = true, call_now = true,
+  callback = function() network_info() end
+}

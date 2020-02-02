@@ -1,4 +1,4 @@
-local awidget = require("awful.widget")
+local gtimer =require("gears.timer")
 local aspawn = require("awful.spawn")
 
 local rss = {}
@@ -58,7 +58,10 @@ local function ycombinator_rss()
   end)
 end
 
-awidget.watch('sh -c ":"', 900 , function(widget, stdout) -- 15 min
-  treat_rss() 
-  ycombinator_rss()
-end)
+gtimer {
+  timeout = 900, autostart = true, call_now = true, -- 15 min
+  callback = function()
+    treat_rss()
+    ycombinator_rss()
+  end
+}

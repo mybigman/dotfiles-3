@@ -224,7 +224,7 @@ theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
 theme.widget_ram_icon = ""
-theme.widget_ram_fg = theme.fg_alert
+theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.grey .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 
@@ -248,7 +248,6 @@ theme.widget_mpc_bg = theme.grey .. "ff"
 theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
 -- volume
-theme.widget_volume_icon = ""
 theme.widget_volume_fg = theme.fg_grey
 theme.widget_volume_bg = theme.grey_dark
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical

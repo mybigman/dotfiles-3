@@ -83,7 +83,7 @@ function mybar:init(s)
   s.mytaglist = require("taglists.anonymous")
 
 -- For look like a detached bar, we have to add a fake invisible bar...
-s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.screen_margin * 2, opacity = 0, screen = s })
+s.useless_wibar = awful.wibar({ position = beautiful.wibar_position, height = beautiful.screen_margin * 2, opacity = 0, screen = s })
 
 -- Create the wibox with default options
 s.mywibox = awful.wibar({ height = beautiful.wibar_size, bg = beautiful.wibar_bg, width = beautiful.wibar_width, screen = s })

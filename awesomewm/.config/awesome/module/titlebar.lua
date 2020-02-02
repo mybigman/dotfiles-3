@@ -7,6 +7,7 @@ local widget = require("util.widgets")
 local helpers = require("helpers")
 local smartBorders = require("util.smart-borders")
 local theme = require("loaded-theme")
+local gshape = require("gears.shape")
 
 local smart_border = beautiful.double_border or false
 
@@ -15,14 +16,14 @@ local ncmpcpp = require("widgets.mpc")({ mode = "titlebar" })
 
 local mbuttons = function(c)
   return gtable.join(
-    awful.button({ }, 1, function()
-      c:emit_signal("request::activate", "titlebar", { raise = true })
-      awful.mouse.client.move(c)
-    end),
-    awful.button({ }, 3, function()
-      c:emit_signal("request::activate", "titlebar", { raise = true })
-      awful.mouse.client.resize(c)
-    end)
+  awful.button({ }, 1, function()
+    c:emit_signal("request::activate", "titlebar", { raise = true })
+    awful.mouse.client.move(c)
+  end),
+  awful.button({ }, 3, function()
+    c:emit_signal("request::activate", "titlebar", { raise = true })
+    awful.mouse.client.resize(c)
+  end)
   )
 end
 
@@ -36,43 +37,72 @@ local function if_titlebar_is_off(c)
   return false
 end
 
--- if title enable
+-- check if beautiful.titlebar_title_enabled is true
+local with_title_or_not = function(c)
+  if beautiful.titlebar_title_enabled then
+    return wibox.widget {
+      align = "center", widget = awful.titlebar.widget.titlewidget(c)
+    }
+  else
+    return wibox.widget {}
+  end
+end
+
 local mytitle = function(c)
   if if_titlebar_is_off(c) then return wibox.widget{} end
 
-  if beautiful.titlebar_title_enabled then 
-    if beautiful.double_border then -- we need go down the title
-      return wibox.widget {
-        {
-          {
-            {
-              align = "center", widget = awful.titlebar.widget.titlewidget(c),
-            },
-            right = dpi(100), left = dpi(100),
-            widget = wibox.container.margin,
-          },
-          buttons = mbuttons(c),
-          layout  = wibox.layout.flex.horizontal,
-        },
-        top = dpi(30), -- TODO: test on other themes with other font
-        widget = wibox.container.margin,
-        layout = wibox.layout.flex.vertical,
+  local title_with_border = function()
+    local width = c.width / 3
+    if beautiful.titlebar_internal_border then
+
+      -- box_margin change border color if c.client is focus or not
+      local box_margin = wibox.widget {
+        with_title_or_not(),
+        bottom = 2,
+        color = beautiful.titlebar_internal_border_colors[2], -- default color
+        forced_width = dpi(width),
+        widget = wibox.container.margin
       }
-    else -- display the default bar
-      return wibox.widget { 
+      c:connect_signal("unfocus", function(c)
+        box_margin.color = beautiful.titlebar_internal_border_colors[2]
+      end)
+      c:connect_signal("focus", function(c)
+        box_margin.color = beautiful.titlebar_internal_border_colors[1]
+      end)
+
+      return wibox.widget {
+        nil,
+        box_margin,
+        expand = "none",
+        layout = wibox.layout.align.horizontal
+      }
+    else
+      return with_title_or_not(c)
+    end
+  end
+  
+  if beautiful.double_border then -- we need go down the title
+    local width = c.width / 5
+    return wibox.widget {
+      {
         {
-          {
-            align = "center", widget = awful.titlebar.widget.titlewidget(c) 
-          },
-          right = dpi(100), left = dpi(100),
+          title_with_border(),
+          right = dpi(width), left = dpi(width),
           widget = wibox.container.margin,
         },
-        buttons = buttons,
-        layout  = wibox.layout.flex.horizontal
-      }
-    end
-  else -- titlebar_title are disable
-    return wibox.widget {} 
+        buttons = mbuttons(c),
+        layout  = wibox.layout.flex.horizontal,
+      },
+      top = dpi(30), -- TODO: test on other themes with other font
+      widget = wibox.container.margin,
+      layout = wibox.layout.flex.vertical,
+    }
+  else -- display the default bar
+    return wibox.widget {
+      title_with_border(),
+      buttons = buttons,
+      layout  = wibox.layout.flex.horizontal
+    }
   end
 end
 
@@ -83,7 +113,9 @@ end
 
 -- if buttons are enable
 local gen_button = function(c, icon, fg, cmd)
-  local button = widget.base_text()
+  local button = widget.base_icon()
+  local r_margin = 0
+  local r_top = 0
   button.markup = helpers.colorize_text(icon, fg)
 
   button:buttons(gtable.join(
@@ -92,27 +124,35 @@ local gen_button = function(c, icon, fg, cmd)
     end)
   ))
 
+  if smart_border then
+    r_margin = dpi(11)
+    r_top = dpi(4)
+  else
+    r_margin = dpi(8)
+    r_top = dpi(0)
+  end
+
   if if_titlebar_is_off(c) then return wibox.widget{} end
+
   if beautiful.titlebar_buttons_enabled then
-    if beautiful.titlebar_title_enabled then 
-      return wibox.widget {
-        nil,
-        {
-          button,
-          top = dpi(4),
-          right = dpi(11), -- TODO: test with other font
-          widget = wibox.container.margin
-        },
-        nil,
-        layout = wibox.layout.fixed.horizontal
-      }
-    else
-      return button
-    end
+    return wibox.widget {
+      nil,
+      {
+        button,
+        top = r_top,
+        right = r_margin,
+        widget = wibox.container.margin
+      },
+      nil,
+      layout = wibox.layout.fixed.horizontal
+    }
+  else
+    return button
   end
 end
 
 client.connect_signal("request::titlebars", function(c)
+
   -- the titlebar work only on top for now with double_border enable !
   local position = beautiful.titlebar_position or 'top'
 
@@ -134,28 +174,46 @@ client.connect_signal("request::titlebars", function(c)
       nil,
       expand = "none",
       layout = wibox.layout.align.horizontal
-      }
+    }
   end
 
   -- add a titlebar if titlebars_enabled is true
   if beautiful.titlebars_enabled then
     awful.titlebar(c, { size = beautiful.titlebar_size, position = position }) : setup {
       { -- Left
-      --awful.titlebar.widget.iconwidget(c),
-      --buttons = mbuttons(c),
-      layout  = wibox.layout.fixed.horizontal
-    },
-    mytitle(c),
-    { -- Right
-    --awful.titlebar.widget.floatingbutton (c),
-    --awful.titlebar.widget.maximizedbutton(c),
-    --awful.titlebar.widget.stickybutton   (c),
-    --awful.titlebar.widget.ontopbutton    (c),
-    gen_button(c, '', beautiful.alert, window_close),
-    layout = wibox.layout.fixed.horizontal
-  },
-  layout = wibox.layout.align.horizontal
-}
+        --awful.titlebar.widget.iconwidget(c),
+        buttons = mbuttons(c),
+        layout  = wibox.layout.fixed.horizontal
+      },
+      {
+        mytitle(c),
+        buttons = mbuttons(c),
+        layout  = wibox.layout.flex.horizontal
+      },
+      { -- Right
+        --awful.titlebar.widget.floatingbutton (c),
+        --awful.titlebar.widget.maximizedbutton(c),
+        --awful.titlebar.widget.stickybutton   (c),
+        --awful.titlebar.widget.ontopbutton    (c),
+        gen_button(c, '', beautiful.alert, window_close),
+        layout = wibox.layout.fixed.horizontal
+      },
+      layout = wibox.layout.align.horizontal
+    }
+
+    -- add an additional internal border on non floating client
+    if c.floating ~= true and beautiful.titlebar_internal_border then
+      awful.titlebar(c, { size = beautiful.titlebar_size, position = "bottom" }) : setup {
+        nil,
+        {
+          mytitle(c),
+          buttons = mbuttons(c),
+          layout  = wibox.layout.flex.horizontal
+        },
+        nil,
+        layout = wibox.layout.align.horizontal
+      }
+    end
   end
 end)
 

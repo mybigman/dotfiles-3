@@ -1,6 +1,6 @@
-local awidget = require("awful.widget")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
+local gtimer = require("gears.timer")
 
 local unknown_icon = beautiful.widget_battery_icon_unknown or ""
 
@@ -44,6 +44,8 @@ local function battery_info()
   awesome.emit_signal("daemon::battery", state, percent)
 end
 
-awidget.watch('sh -c ":"', 10, function(widget, stdout)
-  battery_info()
-end)
+-- update every 10 seconds
+gtimer {
+  timeout = 10, autostart = true, call_now = true,
+  callback = function() battery_info() end
+}

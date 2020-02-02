@@ -286,9 +286,10 @@ function widgets.make_arcchart(w)
   }
 end
 
-function widgets.make_progressbar(value, width)
+function widgets.make_progressbar(value, width, colors)
   local value = value or 10
   local width = width or 100
+  local colors = colors or { beautiful.alert, beautiful.primary }
   return wibox.widget {
     max_value     = 100,
     value         = value,
@@ -300,10 +301,40 @@ function widgets.make_progressbar(value, width)
     border_color  = beautiful.grey,
     bar_shape     = gshape.rounded_bar,
     shape         = gshape.rounded_bar,
-    background_color = beautiful.primary,
-    color         = beautiful.alert,
+    color         = colors[1],
+    background_color = colors[2],
     widget        = wibox.widget.progressbar
   }
+end
+
+function widgets.progressbar_layout(p, layout)
+  local w
+  if layout == "horizontal" then
+    w = wibox.widget {
+      p,
+      top = 10,
+      bottom = 10,
+      layout = wibox.container.margin
+    }
+  else
+    w = wibox.widget {
+      nil,
+      {
+        {
+          p,
+          forced_width = 6,
+          direction = 'east',
+          layout = wibox.container.rotate,
+        },
+        forced_width = dpi(16),
+        widget = wibox.container.constraint
+      },
+      nil,
+      expand = "none",
+      layout  = wibox.layout.align.horizontal
+    }
+  end
+  return w
 end
 
 return widgets

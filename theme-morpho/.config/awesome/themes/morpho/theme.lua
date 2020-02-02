@@ -218,7 +218,9 @@ theme.widget_email_layout = 'horizontal' -- horizontal or vertical
 theme.widget_email_type = 'button' -- button or text
 
 -- Network
-theme.widget_network_icon = ""
+theme.widget_network_icon_up = { "ﲗ", theme.primary }
+theme.widget_network_icon_down = { "ﲐ", theme.secondary }
+theme.widget_network_icon_ip = { "", theme.alert }
 theme.widget_network_fg = theme.fg_primary
 theme.widget_network_bg = theme.grey .. "00"
 theme.widget_network_layout = 'horizontal' -- horizontal or vertical
@@ -229,12 +231,12 @@ theme.widget_wifi_str_bg = theme.grey .. "00"
 theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
-theme.widget_ram_icon = ""
 theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.grey .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
 
 -- Battery
+theme.widget_battery_icon = { "臘" , theme.fg_grey }
 theme.widget_battery_icon_discharging = ""
 theme.widget_battery_icon_charging = ""
 theme.widget_battery_icon_full = ""
@@ -254,7 +256,7 @@ theme.widget_mpc_bg = theme.grey .. "ff"
 theme.widget_mpc_layout = 'horizontal' -- horizontal or vertical
 
 -- volume
-theme.widget_volume_icon = ""
+theme.widget_volume_icon = { "", theme.fg_grey }
 theme.widget_volume_fg = theme.fg_grey
 theme.widget_volume_bg = theme.grey_dark
 theme.widget_volume_layout = 'horizontal' -- horizontal or vertical
@@ -274,6 +276,9 @@ theme.widget_button_music_layout = 'horizontal'
 
 -- Button mpc
 theme.widget_mpc_button_icon = "ﱘ"
+
+-- progressbar colors
+theme.bar_colors = { { theme.alert, theme.alert, theme.alert }, theme.primary }
 
 -- }}} End WIDGET
 
