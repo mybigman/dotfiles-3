@@ -9,6 +9,7 @@ local naughty = require("naughty")
 local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 local theme = require("loaded-theme")
+local app = require("util.app")
 
 local text_rss = {
   threatpost = {},
@@ -36,7 +37,6 @@ end
 local function add_link(w, url)
   w:buttons(gtable.join(
      awful.button({ }, 1, function()
-      --awful.spawn(env.term .. env.term_call[1] .. "shellweb" .. env.term_call[2] .. env.web_browser_term .. " " ..tostring(url))
       exec_prog(env.web_browser .. " " .. tostring(url))
       start_screen_hide()
     end)
@@ -154,8 +154,8 @@ local date_widget = widget.box("vertical", { day, month }, dpi(14))
 
 -- function for buttons
 local launch_term = function(cmd)
- awful.spawn.with_shell(env.term .. env.term_call[2] .. cmd)
- start_screen_hide()
+  app.start({cmd}, true)
+  start_screen_hide()
 end
 
 local button_font_size = beautiful.widget_big_button_font_size or "35"

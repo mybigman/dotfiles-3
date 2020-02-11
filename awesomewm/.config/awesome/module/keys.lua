@@ -198,8 +198,12 @@ keys.globalkeys = gtable.join(
   { description = "lua execute prompt", group = "awesome" }),
 
   -- Rofi
-  awful.key({ modkey }, "p", function() awful.spawn.with_shell("launcher") end,
-  { description = "rofi launcher", group = "launcher" }),
+  --awful.key({ modkey }, "p", function() awful.spawn.with_shell("launcher") end,
+  awful.key({ modkey }, "p", function()
+    app_drawer.visible = not app_drawer.visible
+    update_app_drawer()
+  end,
+  { description = "app launcher", group = "app launcher" }),
 
   -- Music Control (volume)
   awful.key({ altkey, "Control" }, "Up", function() 

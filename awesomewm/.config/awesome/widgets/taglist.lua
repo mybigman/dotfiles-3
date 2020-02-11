@@ -52,21 +52,9 @@ function taglist_root:make_buttons()
   awful.button({}, 1, function(t)
     t:view_only()
   end),
-  awful.button({ modkey }, 1, function(t)
-    if client.focus then
-      client.focus:move_to_tag(t)
-    end
-  end),
-  awful.button({}, 3, awful.tag.viewtoggle),
   awful.button({}, 3, function(t)
-    if client.focus then
-      client.focus:move_to_tag(t)
-    end
-  end),
-  awful.button({ modkey }, 3, function(t)
-    if client.focus then
-      client.focus:toggle_tag(t)
-    end
+    app_drawer.visible = not app_drawer.visible
+    update_app_drawer(t.index)
   end),
   awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
   awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end)
@@ -185,19 +173,29 @@ end
 
 function taglist_root:template_icon() 
   local t = {
+    {
       { 
         id = "img_tag",
         widget = wibox.widget.imagebox,
       },
-      layout = wibox.layout.fixed.horizontal,
-      create_callback = function(item, tag, index, _)
-        self:update_icon(item.img_tag, tag, index)
-      end,
-      update_callback = function(item, tag, index, _)
-        self:update_icon(item.img_tag, tag, index)
-      end,
-    }
-    return t
+      top = 6,
+      bottom = 6,
+      widget = wibox.container.margin,
+    },
+    {
+      id = "just_for_space",
+      widget = wibox.widget.textbox
+    },
+    spacing = 15,
+    layout = wibox.layout.fixed.horizontal,
+    create_callback = function(item, tag, index, _)
+      self:update_icon(item:get_children_by_id('img_tag')[1], tag, index)
+    end,
+    update_callback = function(item, tag, index, _)
+      self:update_icon(item:get_children_by_id('img_tag')[1], tag, index)
+    end
+  }
+  return t
 end
 
 -- herit

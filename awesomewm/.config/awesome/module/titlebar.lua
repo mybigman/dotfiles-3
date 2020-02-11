@@ -57,7 +57,7 @@ local mytitle = function(c)
 
       -- box_margin change border color if c.client is focus or not
       local box_margin = wibox.widget {
-        with_title_or_not(),
+        with_title_or_not(c),
         bottom = 2,
         color = beautiful.titlebar_internal_border_colors[2], -- default color
         forced_width = dpi(width),

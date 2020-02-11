@@ -6,7 +6,7 @@ local widget = require("util.widgets")
 local helpers = require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 local gtable = require('gears.table')
-local icons = require("icons")
+local icons = require("icons.default")
 
 -- beautiful vars
 local icon = beautiful.widget_change_theme_icon or '嗀'
@@ -75,29 +75,23 @@ local w = awful.popup {
 w:bind_to_widget(text)
 
 -- audio.sh arguments are: [music_details] [path of your music directory]
-local miami_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change miami" ]]
-widget.add_left_click_action(popup_miami, miami_change_script, 'shell')
+local miami_change_script = "~/.config/awesome/widgets/change-theme.sh --change miami"
+widget.add_left_click_action(popup_miami, miami_change_script, true, "miniterm")
 
-local machine_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change machine" ]]
-widget.add_left_click_action(popup_machine, machine_change_script, 'shell')
+local machine_change_script = "~/.config/awesome/widgets/change-theme.sh --change machine"
+widget.add_left_click_action(popup_machine, machine_change_script, true, "miniterm")
 
-local connected_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change connected" ]]
-widget.add_left_click_action(popup_connected, connected_change_script, 'shell')
+local connected_change_script = "~/.config/awesome/widgets/change-theme.sh --change connected"
+widget.add_left_click_action(popup_connected, connected_change_script, true, "miniterm")
 
-local anonymous_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change anonymous" ]]
-widget.add_left_click_action(popup_anonymous, anonymous_change_script, 'shell')
+local anonymous_change_script = "~/.config/awesome/widgets/change-theme.sh --change anonymous"
+widget.add_left_click_action(popup_anonymous, anonymous_change_script, true, "miniterm")
 
-local morpho_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change morpho" ]]
-widget.add_left_click_action(popup_morpho, morpho_change_script, 'shell')
+local morpho_change_script = "~/.config/awesome/widgets/change-theme.sh --change morpho"
+widget.add_left_click_action(popup_morpho, morpho_change_script, true, "miniterm")
 
-local beta_change_script = [[
-  bash -c "~/.config/awesome/widgets/change-theme.sh --change beta" ]]
-widget.add_left_click_action(popup_beta, beta_change_script, 'shell')
+local beta_change_script = "~/.config/awesome/widgets/change-theme.sh --change beta"
+widget.add_left_click_action(popup_beta, beta_change_script, true, "miniterm")
 
 rld:buttons(gtable.join(
   awful.button({ }, 1, function()

@@ -32,6 +32,7 @@ require("module.notifications")
 require("layouts.start_screen")
 require("layouts.sidebar")
 require("layouts.lock_screen")
+require("layouts.app_drawer")
 require("module.layout")
 require("module.menu")
 

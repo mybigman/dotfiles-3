@@ -4,7 +4,7 @@ local beautiful = require("beautiful")
 local widget = require("util.widgets")
 local helpers = require("helpers")
 local dpi = require('beautiful').xresources.apply_dpi
-local icons = require("icons")
+local icons = require("icons.default")
 
 -- beautiful vars
 local tor_icon = beautiful.widget_tor_icon
@@ -31,13 +31,13 @@ local popup_image = widget.imagebox(80)
 local little_size = 18
 
 local button_start = widget.imagebox(little_size, icons["tor_start"])
-widget.add_left_click_action(button_start, "sudo systemctl start tor")
+widget.add_left_click_action(button_start, "sudo systemctl start tor", true, 'miniterm')
 
 local button_stop = widget.imagebox(little_size, icons["tor_stop"])
-widget.add_left_click_action(button_stop, "sudo systemctl stop tor")
+widget.add_left_click_action(button_stop, "sudo systemctl stop tor", true, 'miniterm')
 
 local button_restart = widget.imagebox(little_size, icons["tor_restart"])
-widget.add_left_click_action(button_restart, "sudo systemctl restart tor")
+widget.add_left_click_action(button_restart, "sudo systemctl restart tor", true, 'miniterm')
 
 -- To display informations about your ip
 local popup_ip = widget.base_text()

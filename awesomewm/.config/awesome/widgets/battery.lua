@@ -12,7 +12,7 @@ local battery_root = class()
 
 function battery_root:init(args)
   -- options
-  self.icon = args.icon or beautiful.widget_battery_icon or { "ba", beautiful.primary }
+  self.icon = args.icon or beautiful.widget_battery_icon or { "臘", beautiful.fg_grey }
   self.mode = args.mode or 'text' -- possible values: text, progressbar, slider
   self.want_layout = args.layout or beautiful.widget_battery_layout or 'horizontal' -- possible values: horizontal , vertical
   self.bar_size = args.bar_size or 200

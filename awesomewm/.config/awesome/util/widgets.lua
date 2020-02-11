@@ -7,6 +7,7 @@ local awful = require("awful")
 local naughty = require("naughty")
 local separator = require("util.separators")
 local dpi = beautiful.xresources.apply_dpi
+local app = require("util.app")
 
 local widgets = {}
 
@@ -209,21 +210,12 @@ function widgets.imagebox(size, image)
   return w
 end
 
-function widgets.add_left_click_action(w, action, shell)
-  local s = shell or 'noshell' -- noshell (or any word) will prompt a terminal
-  if s == 'shell' then
-    s = awful.spawn
-  else
-    s = awful.spawn
-  end
-  
+function widgets.add_left_click_action(w, action, shell, class)
+  local is_shell = shell or nil
+  local has_class = class or nil
   w:buttons(gtable.join(
     awful.button({ }, 1, function()
-      if s == 'shell' then
-        s(action)
-      else
-        s(env.term .. env.term_call[1] .. 'miniterm' .. env.term_call[2] .. action)
-      end
+      app.start(action, is_shell, has_class)
     end)
   ))
 end
