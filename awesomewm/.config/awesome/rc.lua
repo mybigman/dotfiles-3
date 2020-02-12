@@ -30,7 +30,6 @@ local theme = require("loaded-theme")
 
 require("module.notifications")
 require("layouts.start_screen")
-require("layouts.sidebar")
 require("layouts.lock_screen")
 require("layouts.app_drawer")
 require("module.layout")
@@ -43,6 +42,9 @@ require("daemons")
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   require("module.wallpaper")(s)
+
+  -- Monitor bar
+  require("layouts.monitor_bar")(s)
 
   -- add padding on all screens
   s.padding = beautiful.general_padding

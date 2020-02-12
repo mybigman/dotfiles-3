@@ -19,7 +19,8 @@ end
 local monitoring_button = widget.create_button(fg, " ")
 monitoring_button:buttons(gtable.join(
   awful.button({}, 1, function()
-    sidebar.visible = not sidebar.visible
+    local curr_screen = awful.screen.focused()
+    curr_screen.monitor_bar.visible = not curr_screen.monitor_bar.visible
   end)
 ))
 

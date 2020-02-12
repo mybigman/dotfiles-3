@@ -120,9 +120,10 @@ keys.globalkeys = gtable.join(
   { description = "exit", group = "awesome" }),
 
   awful.key({ modkey }, "F4", function()
-    sidebar.visible = not sidebar.visible 
+    local curr_screen = awful.screen.focused()
+    curr_screen.monitor_bar.visible = not curr_screen.monitor_bar.visible
   end,
-  { description = "show or toggle sidebar", group = "awesome" }),
+  { description = "show or toggle the monitor bar", group = "awesome" }),
 
   awful.key({ modkey }, "F1", function()
     start_screen.visible = not start_screen.visible 

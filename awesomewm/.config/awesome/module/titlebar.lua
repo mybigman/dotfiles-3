@@ -8,6 +8,7 @@ local helpers = require("helpers")
 local smartBorders = require("util.smart-borders")
 local theme = require("loaded-theme")
 local gshape = require("gears.shape")
+--local naughty = require("naughty")
 
 local smart_border = beautiful.double_border or false
 
@@ -38,55 +39,58 @@ local function if_titlebar_is_off(c)
 end
 
 -- check if beautiful.titlebar_title_enabled is true
-local with_title_or_not = function(c)
-  if beautiful.titlebar_title_enabled then
+local with_title_or_not = function(c, disable_title)
+  local disable_title = disable_title or nil -- boolean
+  if disable_title then
+    return wibox.widget.textbox(" ")
+  elseif beautiful.titlebar_title_enabled then
     return wibox.widget {
       align = "center", widget = awful.titlebar.widget.titlewidget(c)
     }
   else
-    return wibox.widget {}
+    return
   end
 end
 
+local title_with_border = function(c, ...)
+  local width = c.width / 3
+
+  if beautiful.titlebar_internal_border then
+    -- box_margin change border color if c.client is focus or not
+    local w = wibox.widget {
+      with_title_or_not(c, ...),
+      bottom = 2,
+      color = beautiful.titlebar_internal_border_colors[2], -- default color
+      forced_width = dpi(width),
+      widget = wibox.container.margin
+    }
+    c:connect_signal("unfocus", function(c)
+      w.color = beautiful.titlebar_internal_border_colors[2]
+    end)
+    c:connect_signal("focus", function(c)
+      w.color = beautiful.titlebar_internal_border_colors[1]
+    end)
+
+    return wibox.widget {
+      nil,
+      w,
+      expand = "none",
+      layout = wibox.layout.align.horizontal
+    }
+  else
+    return with_title_or_not(c, ...)
+  end
+end
+  
 local mytitle = function(c)
   if if_titlebar_is_off(c) then return wibox.widget{} end
 
-  local title_with_border = function()
-    local width = c.width / 3
-    if beautiful.titlebar_internal_border then
-
-      -- box_margin change border color if c.client is focus or not
-      local box_margin = wibox.widget {
-        with_title_or_not(c),
-        bottom = 2,
-        color = beautiful.titlebar_internal_border_colors[2], -- default color
-        forced_width = dpi(width),
-        widget = wibox.container.margin
-      }
-      c:connect_signal("unfocus", function(c)
-        box_margin.color = beautiful.titlebar_internal_border_colors[2]
-      end)
-      c:connect_signal("focus", function(c)
-        box_margin.color = beautiful.titlebar_internal_border_colors[1]
-      end)
-
-      return wibox.widget {
-        nil,
-        box_margin,
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-      }
-    else
-      return with_title_or_not(c)
-    end
-  end
-  
   if beautiful.double_border then -- we need go down the title
     local width = c.width / 5
     return wibox.widget {
       {
         {
-          title_with_border(),
+          title_with_border(c),
           right = dpi(width), left = dpi(width),
           widget = wibox.container.margin,
         },
@@ -99,7 +103,7 @@ local mytitle = function(c)
     }
   else -- display the default bar
     return wibox.widget {
-      title_with_border(),
+      title_with_border(c),
       buttons = buttons,
       layout  = wibox.layout.flex.horizontal
     }
@@ -206,7 +210,7 @@ client.connect_signal("request::titlebars", function(c)
       awful.titlebar(c, { size = beautiful.titlebar_size, position = "bottom" }) : setup {
         nil,
         {
-          mytitle(c),
+          title_with_border(c, true),
           buttons = mbuttons(c),
           layout  = wibox.layout.flex.horizontal
         },

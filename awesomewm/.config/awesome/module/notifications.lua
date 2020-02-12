@@ -2,9 +2,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 
 -- timeout
-naughty.config.defaults.timeout = 6
-naughty.config.presets.low.timeout = 3
-naughty.config.presets.critical.timeout = 12
+naughty.config.defaults.timeout = 8
+naughty.config.presets.low.timeout = 5
+naughty.config.presets.critical.timeout = 20
 
 naughty.config.presets.normal = {
   font         = beautiful.font,
