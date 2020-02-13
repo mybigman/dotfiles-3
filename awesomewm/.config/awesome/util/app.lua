@@ -1,4 +1,5 @@
 local aspawn = require("awful.spawn")
+local ascreen = require("awful.screen")
 
 local app = {}
 
@@ -34,6 +35,16 @@ function app.run_once(cmd, ...)
   local ret = check_proc(cmd)
   if ret ~= nil then
     app.start(cmd[1], ...)
+  end
+end
+
+function app.feh(path, callback_function)
+  local s_width = ascreen.focused().geometry.width / 2
+  local s_height = ascreen.focused().geometry.height / 2
+  local cmd = "feh -. -B black "..path.." -g "..s_width.."x"..s_height
+  app.start(cmd, true, "miniterm")
+  if callback_function ~= nil then
+    callback_function()
   end
 end
 

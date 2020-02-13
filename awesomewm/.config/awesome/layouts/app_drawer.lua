@@ -8,6 +8,7 @@ local beautiful = require("beautiful")
 local icons = require("icons.app_drawer")
 local gshape = require("gears.shape")
 local app = require("util.app")
+local keygrabber = require("awful.keygrabber")
 
 local s = awful.screen.focused()
 local ntags = 10
@@ -19,7 +20,7 @@ local my_apps = {}
 
 local function app_drawer_hide()
   app_drawer.visible = false
-  awful.keygrabber.stop(app_drawer_grabber)
+  keygrabber.stop(app_drawer_grabber)
 end
 
 local function exe_app(name)
@@ -62,48 +63,83 @@ my_apps[2] = {
   { name = "ruby", icon = icons["ruby"], exec = function() 
     exe_web("https://www.ruby-lang.org/en/") 
   end },
+  { name = "youtube", icon = icons["youtube"], exec = function()
+    exe_web("https://www.youtube.com")
+  end },
+  { name = "reddit", icon = icons["reddit"], exec = function()
+    exe_web("https://www.reddit.com/u/szorfein")
+  end },
+  { name = "exploit-db", icon = icons["exploit-db"], exec = function()
+    exe_web("https://www.exploit-db.com/")
+  end },
   keybindings = {
     { {}, 'b', function() exe_app(env.web_browser) end },
     { {}, 'g', function() exe_web("https://github.com/szorfein") end },
     { {}, 't', function() exe_web("https://twitter.com/szorfein") end },
-    { {}, 'r', function() exe_web("https://www.ruby-lang.org/en/") end }
+    { {}, 'r', function() exe_web("https://www.ruby-lang.org/en/") end },
+    { {}, 'y', function() exe_web("https://www.youtube.com") end },
+    { {}, 'e', function() exe_web("https://www.reddit.com/u/szorfein") end },
+    { {}, 'd', function() exe_web("https://www.exploit-db.com/") end }
   },
 }
 
 my_apps[3] = {
+  title = "hack",
+  { name = "hydra", icon = icons["hydra"], exec = function() exe_shell("hydra") end },
+  { name = "wpscrack", icon = icons["wpscrack"], exec = function() exe_shell("wpscrack") end },
+  { name = "wpscan", icon = icons["wpscan"], exec = function() exe_shell("wpscan") end },
+  { name = "wireshark", icon = icons["wireshark"], exec = function() exe_app("wireshark-gtk") end },
+  { name = "wifite", icon = icons["wifite"], exec = function() exe_shell("wifite") end },
+  { name = "reaver", icon = icons["reaver"], exec = function() exe_shell("reaver") end },
+  { name = "nmap", icon = icons["nmap"], exec = function() exe_shell("nmap") end },
+  { name = "nikto", icon = icons["nikto"], exec = function() exe_shell("nikto") end },
+  keybindings = {
+    { {}, 'h', function() exe_shell("hydra") end },
+    { {}, 'w', function() exe_shell("wpscrack") end },
+    { {}, 's', function() exe_shell("wpscan") end },
+    { {}, 'a', function() exe_app("wireshark-gtk") end },
+    { {}, 'i', function() exe_shell("wifite") end },
+    { {}, 'r', function() exe_shell("reaver") end },
+    { {}, 'n', function() exe_shell("nmap") end },
+    { {}, 'k', function() exe_shell("nikto") end },
+  }
 }
 
 my_apps[4] = {
   title = "music",
-  { name = "ncmpcpp", icon = icons["terminal"], exec = function() exe_shell("ncmpcpp") end },
+  { name = "ncmpcpp", icon = icons["mpd"], exec = function() exe_shell("ncmpcpp") end },
   { name = "cava", icon = icons["terminal"], exec = function() exe_shell("cava") end },
   { name = "mpv", icon = icons["mpv"], exec = function() exe_shell("mpv ~/videos", "miniterm") end },
+  { name = "sound", icon = icons["sound"], exec = function() exe_shell("alsamixer") end },
   keybindings = {
     { {}, 'n', function() exe_shell("ncmpcpp") end },
     { {}, 'c', function() exe_shell("cava") end },
     { {}, 'm', function() exe_shell("mpv ~/videos", "miniterm") end },
+    { {}, 's', function() exe_shell("alsamixer") end },
   },
 }
 
 my_apps[5] = {
   title = "image",
   { name = "gimp", icon = icons["gimp"], exec = function() exe_app("gimp") end },
-  { name = "wallpapers", icon = icons["images"], exec = function() exe_shell("sxiv ~/images", "miniterm") end },
+  { name = "wallpapers", icon = icons["images"], exec = function() app.feh("~/images", app_drawer_hide) end },
   { name = "imagemagick", icon = icons["imagemagick"], exec = function() exe_shell("imagemagick") end },
   keybindings = {
     { {}, 'g', function() exe_app("gimp") end },
-    { {}, 'w', function() exe_shell("sxiv ~/images", "miniterm") end },
+    { {}, 'w', function() app.feh("~/images", app_drawer_hide) end },
     { {}, 'i', function() exe_shell("imagemagick") end },
   },
 }
 
 my_apps[6] = {
   title = "chat",
-  { name = "weechat", icon = icons["terminal"], exec = function() exe_shell("weechat") end },
-  { name = "neomutt", icon = icons["terminal"], exec = function() exe_shell("neomutt") end },
+  { name = "weechat", icon = icons["irc-chat"], exec = function() exe_shell("weechat") end },
+  { name = "neomutt", icon = icons["mail"], exec = function() exe_shell("neomutt") end },
+  { name = "signal", icon = icons["signal"], exec = function() exe_app("signal") end },
   keybindings = {
     { {}, 'w', function() exe_shell("weechat") end },
     { {}, 'n', function() exe_shell("neomutt") end },
+    { {}, 's', function() exe_app("signal") end },
   },
 }
 
@@ -118,16 +154,18 @@ my_apps[7] = {
 my_apps[10] = {
   title = "games",
   { name = "steam", icon = icons["steam"], exec = function() exe_app("Steam") end },
-  { name = "lutris", icon = icons["steam"], exec = function() exe_app("lutris") end },
+  { name = "lutris", icon = icons["lutris"], exec = function() exe_app("lutris") end },
+  { name = "dontstarve", icon = icons["dontstarve"], exec = function() exe_app("lutris") end },
   keybindings = {
     { {}, 's', function() exe_app("Steam") end },
     { {}, 'l', function() exe_app("lutris") end },
+    { {}, 'd', function() exe_app("lutris") end },
   },
 }
 
 local function key_grabber(app_tag)
 
-  local grabber = awful.keygrabber {
+  local grabber = keygrabber {
       keybindings = app_tag.keybindings,
       stop_key = "Escape",
       stop_callback = function() app_drawer_hide() end,
@@ -138,8 +176,21 @@ local function key_grabber(app_tag)
   elseif app_drawer.visible == false then
     grabber:stop()
   else
-    grabber()
+    grabber:start()
   end
+end
+
+local bg_hover = function()
+  local w = wibox.container.background()
+  w.shape = helpers.rrect(14)
+  w.bg = beautiful.grey
+  w:connect_signal("mouse::leave", function(c)
+    w.bg = beautiful.grey
+  end)
+  w:connect_signal("mouse::enter", function(c)
+    w.bg = beautiful.grey_light
+  end)
+  return w
 end
 
 local function gen_menu(index)
@@ -162,9 +213,7 @@ local function gen_menu(index)
         margins = 20,
         widget = wibox.container.margin
       },
-      bg = beautiful.grey,
-      shape = helpers.rrect(14),
-      widget = wibox.container.background,
+      widget = bg_hover
     })
   end
   key_grabber(my_apps[index])
@@ -214,8 +263,17 @@ local textclock = wibox.widget {
 }
 
 app_drawer:setup {
-  nil, 
-  widget.box_with_bg('vertical', { wtitle, w }, 10),
+  {
+    wibox.widget.textbox("   "),
+    wtitle,
+    layout = wibox.layout.fixed.horizontal
+  },
+  {
+    nil,
+    w,
+    expand = "none",
+    layout = wibox.layout.align.vertical
+  },
   textclock,
   expand = "none",
   layout = wibox.layout.align.horizontal

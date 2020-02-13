@@ -4,20 +4,26 @@ local gears = require("gears")
 local separators = require("util.separators")
 local keygrabber = require("awful.keygrabber")
 local widgets = require("util.widgets")
+local beautiful = require("beautiful")
+local helpers = require("helpers")
 
 local pad = separators.pad
-local font_icon = "Iosevka Term Bold 63"
-local font_icon_2 = "Iosevka Term Bold 64" -- for little icon to align the text :(
-local font_text = "Iosevka Term Regular 11"
+local font_icon = beautiful.myfont .. " Bold 63"
+local font_icon_2 = beautiful.myfont .. " Bold 64" -- to scale little icon with text
+local font_text = beautiful.myfont .. " Regular 11"
 
-local username = os.getenv("USER")
-local goodbye_text = "Goodbye " .. username:sub(1,1):upper() .. username:sub(2)
-local goodbye_widget = widgets.create_text(goodbye_text, "#999999", "Iosevka Term Bold  20")
+-- keylogger
+local exit_screen_grabber
+
+function exit_screen_hide()
+  keygrabber.stop(exit_screen_grabber)
+  exit_screen.visible = false
+end
 
 -- {{{ Poweroff part
 local poweroff_command = function() 
   awful.spawn.with_shell("poweroff")
-  keygrabber.stop(exit_screen_grabber)
+  exit_screen_hide()
 end
 
 local poweroff_icon = widgets.create_text("⭘", "#7d4c73", font_icon)
@@ -47,8 +53,8 @@ exit:buttons(gears.table.join(
 
 -- {{{ Lock part
 local lock_command = function() 
-  --awful.spawn.with_shell("i3lock")
   exit_screen_hide()
+  lock_screen_show()
 end
 
 local lock_icon = widgets.create_text("", "#42446e", font_icon)
@@ -65,29 +71,30 @@ lock:buttons(gears.table.join(
 local screen_width = awful.screen.focused().geometry.width
 local screen_height = awful.screen.focused().geometry.height
 
-exit_screen = wibox({ x = 0, y = 0, visible = false, ontop = true, type = "dock", width = screen_width, height = screen_height, bg = "#0000004f" })
+exit_screen = wibox({ x = 0, y = 0, visible = false, ontop = true, type = "dock" })
+exit_screen.bg = beautiful.grey_dark .. "00"
+exit_screen.width = screen_width
+exit_screen.height = screen_height
 
--- keylogger
-local exit_screen_grabber
+function exit_screen_show()
+  local grabber = keygrabber {
+    keybindings = {
+      { {}, 'p', function() poweroff_command() end },
+      { {}, 'e', function() exit_command() end },
+      { {}, 'l', function() lock_command() end },
+      { {}, 'q', function() exit_screen_hide() end },
+    },
+    stop_key = "Escape",
+    stop_callback = function() exit_screen_hide() end,
+  }
 
-function exit_screen_hide()
-  keygrabber.stop(exit_screen_grabber)
-  exit_screen.visible = false
-end
+  if grabber.is_running and exit_screen.visible == false then
+    grabber:stop()
+  elseif exit_screen.visible == false then
+    grabber:stop()
+  end
 
-function exit_screen_show() 
-  exit_screen_grabber = keygrabber.run(function(_, key, event)
-    if event == "release" then return end
-    if key == 'Escape' or key == 'q' or key == 'x' then
-      exit_screen_hide()
-    elseif key == 'p' then
-      poweroff_command()
-    elseif key == 'l' then
-      lock_command()
-    elseif key == 'e' then
-      exit_command()
-    end
-  end)
+  grabber:start()
   exit_screen.visible = true
 end
 
@@ -103,33 +110,58 @@ exit_screen:buttons(gears.table.join(
   end)
 ))
 
+local function bg_hover(w)
+  local wbg = wibox.container.background()
+  wbg.shape = helpers.rrect(14)
+  wbg.bg = beautiful.grey
+  wbg:connect_signal("mouse::leave", function(c)
+    wbg.bg = beautiful.grey
+  end)
+  wbg:connect_signal("mouse::enter", function(c)
+    wbg.bg = beautiful.grey_light
+  end)
+  return wibox.widget {
+    {
+      w,
+      top = 10,
+      left = 20,
+      right = 20,
+      bottom = 20,
+      widget = wibox.container.margin
+    },
+    widget = wbg
+  }
+end
+
 exit_screen:setup {
   nil,
   {
     {
       nil,
-      goodbye_widget,
-      nil,
-      expand = "none",
-      layout = wibox.layout.align.horizontal
-    },
-    {
-      nil,
       {
-        --{
-          poweroff,
-          pad(10),
-          exit,
-          pad(10),
-          lock,
-          layout = wibox.layout.fixed.horizontal
-        --},
-        --widget = exit_screen_box
+        {
+          {
+            nil,
+            {
+              bg_hover(poweroff),
+              bg_hover(exit),
+              bg_hover(lock),
+              spacing = 8,
+              layout = wibox.layout.fixed.horizontal
+            },
+            expand = "none",
+            layout = wibox.layout.align.vertical
+          },
+          margins = 18,
+          widget = wibox.container.margin
+        },
+        shape = helpers.rrect(18),
+        bg = beautiful.grey_dark,
+        widget = wibox.container.background
       },
       nil,
       expand = "none",
       layout = wibox.layout.align.horizontal
-      --layout = wibox.layout.fixed.horizontal
     },
     layout = wibox.layout.fixed.vertical
   },

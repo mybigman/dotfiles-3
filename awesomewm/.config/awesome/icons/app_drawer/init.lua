@@ -16,7 +16,27 @@ local icon_name = {
   "github",
   "youtube",
   "brave",
-  "images"
+  "images",
+  "hydra",
+  "wpscrack",
+  "wpscan",
+  "wireshark",
+  "wifite",
+  "weechat",
+  "irc-chat",
+  "videogames",
+  "dontstarve",
+  "signal",
+  "reddit",
+  "reaver",
+  "nmap",
+  "nikto",
+  "lutris",
+  "sound",
+  "feh",
+  "exploit-db",
+  "mail",
+  "mpd"
 }
 
 for _,v in pairs(icon_name) do
