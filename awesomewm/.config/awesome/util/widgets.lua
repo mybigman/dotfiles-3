@@ -329,4 +329,12 @@ function widgets.progressbar_layout(p, layout)
   return w
 end
 
+function widgets.progressbar_margin_horiz()
+  local w = wibox.container.margin()
+  w.top = 4
+  w.bottom = 4
+  w.forced_height = 20
+  return w
+end
+
 return widgets

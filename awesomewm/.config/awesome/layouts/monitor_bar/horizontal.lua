@@ -5,10 +5,10 @@ local dpi = beautiful.xresources.apply_dpi
 local widget = require('util.widgets')
 
 -- widgets for the monitor bar
-local ram = require("widgets.ram")({ mode = "progressbar", bar_size = 100 })
-local volume = require("widgets.volume")({ mode = "progressbar", bar_size = 100 })
-local brightness = require("widgets.brightness")({ mode = "progressbar", bar_size = 100 })
-local battery = require("widgets.battery")({ mode = "progressbar", bar_size = 100 })
+local ram = require("widgets.ram")({ layout = "horizontal", mode = "progressbar", bar_size = 100 })
+local volume = require("widgets.volume")({ layout = "horizontal", mode = "progressbar", bar_size = 100 })
+local brightness = require("widgets.brightness")({ layout = "horizontal", mode = "progressbar", bar_size = 100 })
+local battery = require("widgets.battery")({ layout = "horizontal", mode = "progressbar", bar_size = 100 })
 
 local cpu = require("widgets.cpu")({ mode = "dotsbar" })
 local disk = require("widgets.disks")({ mode = "block" })
@@ -35,10 +35,16 @@ function mybar:init(s)
           layout = wibox.layout.align.vertical
         },
         { -- center
-          w,
-          top = 7, left = 17, right = 17,
-          forced_width = dpi(s),
-          widget = wibox.container.margin
+          nil,
+          {
+            w,
+            left = 15, right = 15,
+            forced_width = dpi(s),
+            widget = wibox.container.margin
+          },
+          nil,
+          expand = "none",
+          layout = wibox.layout.align.vertical
         },
         { -- right
           widget.create_title("", beautiful.secondary, 16), nil, nil, -- top
@@ -46,7 +52,7 @@ function mybar:init(s)
         },
         layout = wibox.layout.align.horizontal
       },
-      top = 2, bottom = 2,
+      top = 1, bottom = 1,
       widget = wibox.container.margin
     }
   end

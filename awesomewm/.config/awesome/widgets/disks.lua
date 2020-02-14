@@ -79,14 +79,19 @@ function disks_root:make_block()
 
   local w
   if self.want_layout == 'horizontal' then
-    w = wibox.widget{ layout=wibox.layout.fixed.vertical, spacing = 1 }
+    w = wibox.widget{ layout = wibox.layout.fixed.vertical }
     for i=1, #env.disks do
       local t = self.wbars[i].title -- box
-      local u = self.wbars[i].used_percent -- box
-      u.forced_height = 2
-      local s = self.wbars[i].size -- title
-      local m = widget.add_margin(u, { top = 4, bottom = 4 }) -- used to correct the height of the progressbar
-      w:add(widget.box(self.want_layout, { self.icon, t, m, s }, 12))
+      local u = self.wbars[i].used_percent -- progressbar
+      local s = self.wbars[i].size -- text size
+      local wx = wibox.widget {
+        {
+          widget.box(self.want_layout, { self.icon, t, u, s }, 8),
+          widget = widget.progressbar_margin_horiz()
+        },
+        layout = wibox.layout.fixed.vertical
+      }
+      w:add(wx)
     end
   elseif self.want_layout == 'vertical' then
     w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 2 }
@@ -108,11 +113,7 @@ function disks_root:make_block()
     end
   end)
   if self.want_layout == 'horizontal' then
-    return wibox.widget {
-      nil, w, nil, -- centered
-      expand = "none",
-      layout = wibox.layout.align.vertical
-    }
+    return w
   else
     return wibox.widget {
       nil, w, nil,

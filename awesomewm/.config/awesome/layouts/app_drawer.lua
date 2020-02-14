@@ -39,10 +39,12 @@ local function exe_web(link)
   app_drawer_hide()
 end 
 
+-- About the code <b></b> (bold), you can use <u></u> (underline) or even
+-- <i></i> (italic) if you prefer
 my_apps[1] = {
   title = "Code",
-  { name = "tmux", icon = icons["tilix"], exec = function() exe_shell("tmux") end },
-  { name = "vim", icon = icons["neovim"], exec = function() exe_shell("vim") end  },
+  { name = "<b>T</b>mux", icon = icons["tilix"], exec = function() exe_shell("tmux") end },
+  { name = "<b>V</b>im", icon = icons["neovim"], exec = function() exe_shell("vim") end  },
   keybindings = {
     { {}, 't', function() exe_shell("tmux") end },
     { {}, 'v', function() exe_shell("vim") end },
@@ -51,25 +53,25 @@ my_apps[1] = {
 
 my_apps[2] = {
   title = "Web",
-  { name = "brave", icon = icons["brave"], exec = function()
+  { name = "<b>B</b>rave", icon = icons["brave"], exec = function()
     exe_app(env.web_browser) 
   end },
-  { name = "github", icon = icons["github"], exec = function() 
+  { name = "<b>G</b>ithub", icon = icons["github"], exec = function()
     exe_web("https://github.com/szorfein") 
   end },
-  { name = "twitter", icon = icons["twitter"], exec = function() 
+  { name = "<b>T</b>witter", icon = icons["twitter"], exec = function()
     exe_web("https://twitter.com/szorfein") 
   end },
-  { name = "ruby", icon = icons["ruby"], exec = function() 
+  { name = "<b>R</b>uby", icon = icons["ruby"], exec = function()
     exe_web("https://www.ruby-lang.org/en/") 
   end },
-  { name = "youtube", icon = icons["youtube"], exec = function()
+  { name = "<b>Y</b>outube", icon = icons["youtube"], exec = function()
     exe_web("https://www.youtube.com")
   end },
-  { name = "reddit", icon = icons["reddit"], exec = function()
+  { name = "r<b>E</b>ddit", icon = icons["reddit"], exec = function()
     exe_web("https://www.reddit.com/u/szorfein")
   end },
-  { name = "exploit-db", icon = icons["exploit-db"], exec = function()
+  { name = "exploit-<b>D</b>b", icon = icons["exploit-db"], exec = function()
     exe_web("https://www.exploit-db.com/")
   end },
   keybindings = {
@@ -84,15 +86,23 @@ my_apps[2] = {
 }
 
 my_apps[3] = {
+  title = "web-dev",
+  { name = "<b>?</b>", icon = icons[""], exec = function() exe_app() end },
+  keybindings = {
+    { {}, 'h', function() exe_app() end },
+  },
+}
+
+my_apps[4] = {
   title = "hack",
-  { name = "hydra", icon = icons["hydra"], exec = function() exe_shell("hydra") end },
-  { name = "wpscrack", icon = icons["wpscrack"], exec = function() exe_shell("wpscrack") end },
-  { name = "wpscan", icon = icons["wpscan"], exec = function() exe_shell("wpscan") end },
-  { name = "wireshark", icon = icons["wireshark"], exec = function() exe_app("wireshark-gtk") end },
-  { name = "wifite", icon = icons["wifite"], exec = function() exe_shell("wifite") end },
-  { name = "reaver", icon = icons["reaver"], exec = function() exe_shell("reaver") end },
-  { name = "nmap", icon = icons["nmap"], exec = function() exe_shell("nmap") end },
-  { name = "nikto", icon = icons["nikto"], exec = function() exe_shell("nikto") end },
+  { name = "<b>H</b>ydra", icon = icons["hydra"], exec = function() exe_shell("hydra") end },
+  { name = "<b>W</b>pscrack", icon = icons["wpscrack"], exec = function() exe_shell("wpscrack") end },
+  { name = "wp<b>S</b>can", icon = icons["wpscan"], exec = function() exe_shell("wpscan") end },
+  { name = "<b>W</b>ireshark", icon = icons["wireshark"], exec = function() exe_app("wireshark-gtk") end },
+  { name = "w<b>I</b>fite", icon = icons["wifite"], exec = function() exe_shell("wifite") end },
+  { name = "<b>R</b>eaver", icon = icons["reaver"], exec = function() exe_shell("reaver") end },
+  { name = "<b>N</b>map", icon = icons["nmap"], exec = function() app.shell_and_wait("sudo nmap -sS $(ip a | grep inet | grep "..env.net_device.." | awk '{print $2}')", app_drawer_hide) end },
+  { name = "ni<b>K</b>to", icon = icons["nikto"], exec = function() exe_shell("nikto") end },
   keybindings = {
     { {}, 'h', function() exe_shell("hydra") end },
     { {}, 'w', function() exe_shell("wpscrack") end },
@@ -100,17 +110,17 @@ my_apps[3] = {
     { {}, 'a', function() exe_app("wireshark-gtk") end },
     { {}, 'i', function() exe_shell("wifite") end },
     { {}, 'r', function() exe_shell("reaver") end },
-    { {}, 'n', function() exe_shell("nmap") end },
+    { {}, 'n', function() app.shell_and_wait("sudo nmap -sS $(ip a | grep inet | grep "..env.net_device.." | awk '{print $2}')", app_drawer_hide) end },
     { {}, 'k', function() exe_shell("nikto") end },
   }
 }
 
-my_apps[4] = {
+my_apps[5] = {
   title = "music",
-  { name = "ncmpcpp", icon = icons["mpd"], exec = function() exe_shell("ncmpcpp") end },
-  { name = "cava", icon = icons["terminal"], exec = function() exe_shell("cava") end },
-  { name = "mpv", icon = icons["mpv"], exec = function() exe_shell("mpv ~/videos", "miniterm") end },
-  { name = "sound", icon = icons["sound"], exec = function() exe_shell("alsamixer") end },
+  { name = "<b>N</b>cmpcpp", icon = icons["mpd"], exec = function() exe_shell("ncmpcpp") end },
+  { name = "<b>C</b>ava", icon = icons["terminal"], exec = function() exe_shell("cava") end },
+  { name = "<b>M</b>pv", icon = icons["mpv"], exec = function() exe_shell("mpv ~/videos", "miniterm") end },
+  { name = "<b>S</b>ound", icon = icons["sound"], exec = function() exe_shell("alsamixer") end },
   keybindings = {
     { {}, 'n', function() exe_shell("ncmpcpp") end },
     { {}, 'c', function() exe_shell("cava") end },
@@ -119,23 +129,11 @@ my_apps[4] = {
   },
 }
 
-my_apps[5] = {
-  title = "image",
-  { name = "gimp", icon = icons["gimp"], exec = function() exe_app("gimp") end },
-  { name = "wallpapers", icon = icons["images"], exec = function() app.feh("~/images", app_drawer_hide) end },
-  { name = "imagemagick", icon = icons["imagemagick"], exec = function() exe_shell("imagemagick") end },
-  keybindings = {
-    { {}, 'g', function() exe_app("gimp") end },
-    { {}, 'w', function() app.feh("~/images", app_drawer_hide) end },
-    { {}, 'i', function() exe_shell("imagemagick") end },
-  },
-}
-
 my_apps[6] = {
   title = "chat",
-  { name = "weechat", icon = icons["irc-chat"], exec = function() exe_shell("weechat") end },
-  { name = "neomutt", icon = icons["mail"], exec = function() exe_shell("neomutt") end },
-  { name = "signal", icon = icons["signal"], exec = function() exe_app("signal") end },
+  { name = "<b>W</b>eechat", icon = icons["irc-chat"], exec = function() exe_shell("weechat") end },
+  { name = "<b>N</b>eomutt", icon = icons["mail"], exec = function() exe_shell("neomutt") end },
+  { name = "<b>S</b>ignal", icon = icons["signal"], exec = function() exe_app("signal") end },
   keybindings = {
     { {}, 'w', function() exe_shell("weechat") end },
     { {}, 'n', function() exe_shell("neomutt") end },
@@ -144,8 +142,29 @@ my_apps[6] = {
 }
 
 my_apps[7] = {
+  title = "document",
+  { name = "<b>L</b>ibreoffice", icon = icons["writter"], exec = function() exe_app("libreoffice-writter") end },
+  keybindings = {
+    { {}, 'v', function() exe_app("libreoffice") end },
+  },
+}
+
+my_apps[8] = {
+  title = "image",
+  { name = "<b>G</b>imp", icon = icons["gimp"], exec = function() exe_app("gimp") end },
+  { name = "<b>W</b>allpapers", icon = icons["images"], exec = function() app.feh("~/images", app_drawer_hide) end },
+  { name = "<b>I</b>magemagick", icon = icons["imagemagick"], exec = function() exe_shell("imagemagick") end },
+  keybindings = {
+    { {}, 'g', function() exe_app("gimp") end },
+    { {}, 'w', function() app.feh("~/images", app_drawer_hide) end },
+    { {}, 'i', function() exe_shell("imagemagick") end },
+  },
+}
+
+
+my_apps[9] = {
   title = "vm",
-  { name = "virtualbox", icon = icons["virtualbox"], exec = function() exe_app("VirtualBox") end },
+  { name = "<b>V</b>irtualbox", icon = icons["virtualbox"], exec = function() exe_app("VirtualBox") end },
   keybindings = {
     { {}, 'v', function() exe_app("VirtualBox") end },
   },
@@ -153,12 +172,12 @@ my_apps[7] = {
 
 my_apps[10] = {
   title = "games",
-  { name = "steam", icon = icons["steam"], exec = function() exe_app("Steam") end },
-  { name = "lutris", icon = icons["lutris"], exec = function() exe_app("lutris") end },
-  { name = "dontstarve", icon = icons["dontstarve"], exec = function() exe_app("lutris") end },
+  { name = "<b>L</b>utris", icon = icons["lutris"], exec = function() exe_app("lutris") end },
+  { name = "<b>S</b>team", icon = icons["steam"], exec = function() exe_app("Steam") end },
+  { name = "<b>D</b>ontstarve", icon = icons["dontstarve"], exec = function() exe_app("lutris") end },
   keybindings = {
-    { {}, 's', function() exe_app("Steam") end },
     { {}, 'l', function() exe_app("lutris") end },
+    { {}, 's', function() exe_app("Steam") end },
     { {}, 'd', function() exe_app("lutris") end },
   },
 }
@@ -194,6 +213,7 @@ local bg_hover = function()
 end
 
 local function gen_menu(index)
+  if not my_apps[index] then return end
   w:reset()
   for _,v in ipairs(my_apps[index]) do
     local app_icon = widget.imagebox(70, v.icon)
@@ -244,12 +264,17 @@ app_drawer = wibox({ visible = false, ontop = true, type = "dock", position = "t
 app_drawer.bg = beautiful.grey_dark .. "fc"
 app_drawer.x = 0
 app_drawer.y = beautiful.wibar_position == "top" and beautiful.wibar_size or 0 
-app_drawer.height = 200
+app_drawer.height = 160
 app_drawer.width = awful.screen.focused().geometry.width
 
 app_drawer:buttons(gtable.join(
+  -- Middle click - Hide app_drawer
   awful.button({}, 2, function()
-    app_drawer.visible = false
+    app_drawer_hide()
+  end),
+  -- Right click - Hide app_drawer
+  awful.button({}, 3, function()
+    app_drawer_hide()
   end)
 ))
 
@@ -263,18 +288,19 @@ local textclock = wibox.widget {
 }
 
 app_drawer:setup {
-  {
-    wibox.widget.textbox("   "),
-    wtitle,
-    layout = wibox.layout.fixed.horizontal
-  },
+  --{
+  --  wibox.widget.textbox("   "),
+  --  wtitle,
+  --  layout = wibox.layout.fixed.horizontal
+  --},
+  nil,
   {
     nil,
     w,
     expand = "none",
     layout = wibox.layout.align.vertical
   },
-  textclock,
+  --textclock,
   expand = "none",
   layout = wibox.layout.align.horizontal
 }

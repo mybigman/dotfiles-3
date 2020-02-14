@@ -242,7 +242,6 @@ theme.widget_wifi_str_fg = theme.fg_primary
 theme.widget_wifi_str_bg = theme.primary_dark
 
 -- RAM
-theme.widget_ram_icon = ""
 theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.grey
 
@@ -281,6 +280,9 @@ theme.widget_change_theme_icon = " 嗀"
 theme.widget_change_theme_icon_reload = " 勒 "
 theme.widget_change_theme_fg = theme.fg_grey
 theme.widget_change_theme_bg = theme.grey
+
+-- progressbar colors
+theme.bar_colors = { { theme.alert, theme.alert, theme.alert }, theme.primary }
 
 -- }}} End WIDGET
 

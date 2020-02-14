@@ -64,16 +64,20 @@ function network_root:make_block()
   local w
   local ip = widget.base_text()
   if self.want_layout == 'horizontal' then
-    pu.forced_height = 1
-    pd.forced_height = 1
-    local rx = widget.base_text()
-    local tx = widget.base_text()
-    local m1 = widget.add_margin(pu, { top = 4, bottom = 4 }) -- margin
-    local m2 = widget.add_margin(pd, { top = 4, bottom = 4 }) -- margin
+    local space = 8
     w = wibox.widget {
-      widget.box("horizontal", { self.wicon_net, ip }, 8),
-      widget.box("horizontal", { self.wicon_up, m1, self.wtext_1 }, 8), -- upload
-      widget.box("horizontal", { self.wicon_down, m2, self.wtext_2 }, 8), -- download
+      {
+        widget.box(self.want_layout, { self.wicon_net, ip }, space),
+        widget = widget.progressbar_margin_horiz()
+      },
+      {
+        widget.box(self.want_layout, { self.wicon_up, pu, self.wtext_1 }, space),
+        widget = widget.progressbar_margin_horiz()
+      },
+      {
+        widget.box(self.want_layout, { self.wicon_down, pd, self.wtext_2 }, space),
+        widget = widget.progressbar_margin_horiz()
+      },
       layout = wibox.layout.fixed.vertical
     }
   elseif self.want_layout == 'vertical' then
@@ -97,11 +101,7 @@ function network_root:make_block()
     self.wtext_2.markup = helpers.colorize_text(down.." B/s", fg)
   end)
   if self.want_layout == 'horizontal' then
-    return wibox.widget {
-      nil, w, nil,
-      expand = "none",
-      layout = wibox.layout.align.vertical
-    }
+    return w
   else
     return wibox.widget {
       nil, w, nil,

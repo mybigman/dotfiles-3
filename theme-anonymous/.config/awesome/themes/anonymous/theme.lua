@@ -257,6 +257,9 @@ theme.widget_change_theme_icon = ' 嗀'
 theme.widget_change_theme_icon_reload = ' 勒'
 theme.widget_change_theme_layout = 'vertical' -- horizontal or vertical
 
+-- progressbar colors
+theme.bar_colors = { { theme.alert, theme.alert, theme.alert }, theme.grey_light }
+
 -- }}} End WIDGET
 
 return theme

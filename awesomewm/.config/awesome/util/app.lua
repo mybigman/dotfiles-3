@@ -17,6 +17,13 @@ function app.start(cmd, is_shell, have_class)
   end
 end
 
+function app.shell_and_wait(cmd, callback)
+  aspawn(env.term .. env.term_call[2] .. "bash -c \"".. cmd .. " && read -p 'Press q to quit. ' -n 1\"")
+  if callback then
+    callback()
+  end
+end
+
 local function check_proc(cmd_arr)
   for _, cmd in ipairs(cmd_arr) do
     local findme = cmd

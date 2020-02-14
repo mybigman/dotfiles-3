@@ -223,7 +223,6 @@ theme.widget_wifi_str_bg = theme.grey .. "00"
 theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
-theme.widget_ram_icon = ""
 theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.grey .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical
@@ -272,6 +271,9 @@ theme.widget_change_theme_layout = "horizontal"
 
 -- Button mpc
 theme.widget_mpc_button_icon = "ﱘ"
+
+-- progressbar colors
+theme.bar_colors = { { theme.alert, theme.alert, theme.alert }, theme.primary }
 
 -- }}} End WIDGET
 

@@ -158,12 +158,12 @@ awful.rules.rules = {
 
   { 
     rule = { class = "music*" },
-    properties = { screen = 1, tag = beautiful.tagnames[4] } 
+    properties = { screen = 1, tag = beautiful.tagnames[5] }
   },
 
   {
     rule = { class = "Gimp" },
-    properties = { screen = 1, tag = beautiful.tagnames[5] } 
+    properties = { screen = 1, tag = beautiful.tagnames[8] }
   },
 
   {
@@ -182,6 +182,6 @@ awful.rules.rules = {
         "baldur.exe",
         "Wine"
       },
-    },properties = { screen = 1, tag = beautiful.tagnames[8] } 
+    }, properties = { screen = 1, tag = beautiful.tagnames[10] }
   }
 }
