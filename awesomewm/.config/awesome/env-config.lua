@@ -33,6 +33,8 @@ env.net_device = "wlp2s0" -- interface you want track, only one for now
 -- /home/yagdra, /opt/musics and /opt/torrents, look with the tool 'df'
 env.disks = { "yagdra", "musics", "torrents" }
 
+env.battery = "BAT0" -- name is in /sys/class/power_supply/
+
 -- }}} End Monitoring
 
 -- {{{ Sound Settings

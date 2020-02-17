@@ -13,9 +13,11 @@ local network_root = class()
 
 function network_root:init(args)
   -- options
-  self.icon_up = args.icon_up or beautiful.widget_network_icon_up or { "ﲗ", beautiful.primary }
-  self.icon_down = args.icon_down or beautiful.widget_network_icon_down or { "ﲐ", beautiful.primary }
+  self.icon_up = args.icon_up or beautiful.widget_network_icon_up or { "ﲗ", beautiful.fg_grey }
+  self.icon_down = args.icon_down or beautiful.widget_network_icon_down or { "ﲐ", beautiful.fg_grey }
   self.icon_ip = args.icon_ip or beautiful.widget_network_icon_ip or { "", beautiful.fg_grey }
+  self.title = args.title or beautiful.widget_network_title or { "NET", beautiful.fg_grey  }
+  self.title_size = args.title_size or 10
   self.mode = args.mode or 'text' -- possible values: ip, text
   self.want_layout = args.layout or beautiful.widget_network_layout or 'horizontal' -- possible values: horizontal , vertical
   self.bar_size = args.bar_size or 100
@@ -24,8 +26,10 @@ function network_root:init(args)
   self.wicon_up = widget.base_icon(self.icon_up[1], self.icon_up[2])
   self.wicon_down = widget.base_icon(self.icon_down[1], self.icon_down[2])
   self.wicon_net = widget.base_icon(self.icon_ip[1], self.icon_ip[2])
+  self.wtext = widget.base_text()
   self.wtext_1 = widget.base_text()
   self.wtext_2 = widget.base_text()
+  self.wtitle = widget.create_title(self.title[1], self.title[2], self.title_size)
   self.widget = self:make_widget()
 end
 
@@ -56,6 +60,31 @@ function network_root:make_text()
   return w
 end
 
+function network_root:make_progressbar_vert(p_up, p_down)
+  local w = wibox.widget {
+    {
+      nil,
+      widget.box('vertical', { self.wtitle, self.wtext }),
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    {
+      nil,
+      {
+        widget.box('vertical', { p_up, self.wicon_up }),
+        widget.box('vertical', { p_down, self.wicon_down }),
+        spacing = 2,
+        layout = wibox.layout.fixed.horizontal
+      },
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    spacing = 15,
+    layout = wibox.layout.fixed.horizontal
+  }
+  return w
+end
+
 function network_root:make_block()
   local pu = widget.make_progressbar(_, self.bar_size, { self.bar_colors[1][1], self.bar_colors[2] })
   pu.max_value = 80000
@@ -83,15 +112,10 @@ function network_root:make_block()
   elseif self.want_layout == 'vertical' then
     local p_up = widget.progressbar_layout(pu, self.want_layout)
     local p_down = widget.progressbar_layout(pd, self.want_layout)
-    w = wibox.widget {
-      widget.box("vertical", { self.wicon_up, p_up }, 2), -- upload
-      widget.box("vertical", { self.wicon_down, p_down }, 2), -- download
-      spacing = 2,
-      layout = wibox.layout.fixed.horizontal
-    }
+    w = self:make_progressbar_vert(p_up, p_down)
   end
   awesome.connect_signal("daemon::network", function(net)
-    if net == nil or net[env.net_device] == nil then return end
+    if not net[env.net_device] then return end
     local up = net[env.net_device].up
     local down = net[env.net_device].down
     pu.value = up
@@ -99,16 +123,9 @@ function network_root:make_block()
     ip.markup = helpers.colorize_text(net[env.net_device].ip, fg)
     self.wtext_1.markup = helpers.colorize_text(up.." B/s", fg)
     self.wtext_2.markup = helpers.colorize_text(down.." B/s", fg)
+    self.wtext.markup = helpers.colorize_text(env.net_device, fg)
   end)
-  if self.want_layout == 'horizontal' then
-    return w
-  else
-    return wibox.widget {
-      nil, w, nil,
-      expand = "none",
-      layout = wibox.layout.align.horizontal
-    }
-  end
+  return w
 end
 
 -- herit

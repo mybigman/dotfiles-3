@@ -20,13 +20,11 @@ searchAlbumCover() {
   local cover=""
   local src=""
   album_dir="$MUSIC_DIR/$album_dir"
-  if [ -d "$album_dir" ] ; then
-    covers="$(find "$album_dir" -type d -exec find {} -maxdepth 1 -type f -iregex ".*/.*\(album\|cover\|folder\|artwork\|front\).*[.]\(jpe?g\|png\)" \; )"
-    src="$(echo -n "$covers" | head -n1)"
-    if [ -f "$src" ] ; then
-      echo "$src"
-    fi
-  fi
+  [ -d "$album_dir" ] && {
+    covers="$(find "$album_dir" -maxdepth 1 -regex '.*\.\(jpe?g\|png\)' | head -n 1)"
+    src="$(echo -n "$covers")"
+    [ -f "$src" ] && echo "$src"
+  }
 }
 
 call_mpc_details() {

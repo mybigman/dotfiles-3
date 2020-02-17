@@ -29,6 +29,7 @@ youtube-dl \
   -o '%(title)s.%(ext)s' \
   -f 'bestaudio' \
   --no-playlist \
+  --write-thumbnail \
   -x --audio-format best \
   --audio-quality 0 "$LINK_MUSIC" || exit 1
 

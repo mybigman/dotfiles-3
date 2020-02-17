@@ -3,6 +3,7 @@ local helpers = require("helpers")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local sep = require("util.separators")
 
 -- beautiful vars
 local fg = beautiful.fg_primary
@@ -13,6 +14,8 @@ local disks_root = class()
 function disks_root:init(args)
   -- options
   self.icon = widget.base_icon("", beautiful.primary)
+  self.title = args.title or beautiful.widget_fs_title or { "FS", beautiful.fg_grey }
+  self.title_size = args.title_size or 10
   self.mode = args.mode or 'text' -- possible values: text, arcchart, block
   self.want_layout = args.layout or beautiful.widget_cpu_layout or 'horizontal' -- possible values: horizontal , vertical
   self.bar_size = args.bar_size or 100
@@ -20,7 +23,7 @@ function disks_root:init(args)
   -- base widgets
   self.wicon = widget.base_icon()
   self.wtext = widget.base_text()
-  self.wtitle = widget.create_title("Disks ", fg)
+  self.wtitle = widget.create_title(self.title[1], self.title[2], self.title_size)
   self.wbars = {} -- store all bars (one by cpu/core)
   self.widget = self:make_widget()
 end
@@ -69,6 +72,26 @@ function disks_root:make_arcchart()
   return w
 end
 
+function disks_root:make_progressbar_vert(bars, titles)
+  local w = wibox.widget {
+    {
+      nil,
+      widget.box('vertical', { self.wtitle, titles }),
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    {
+      nil,
+      bars,
+      expand = "none",
+      layout = wibox.layout.align.vertical
+    },
+    spacing = 15,
+    layout = wibox.layout.fixed.horizontal
+  }
+  return w
+end
+
 function disks_root:make_block()
   for i = 1, #env.disks do
     self.wbars[i] = {}
@@ -94,16 +117,17 @@ function disks_root:make_block()
       w:add(wx)
     end
   elseif self.want_layout == 'vertical' then
-    w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 2 }
-    for i=1, #env.disks do
+    local wp = wibox.widget { layout = wibox.layout.fixed.horizontal } -- progressbar
+    local wn = wibox.widget { layout = wibox.layout.fixed.horizontal } -- fs names
+    for i = 1, #env.disks do
+      local n = wibox.widget.textbox(" "..tostring(i))
       local t = self.wbars[i].title
       local u = widget.progressbar_layout(self.wbars[i].used_percent, self.want_layout)
-      w:add(widget.box(self.want_layout, { t, u }, 8))
+      wp:add(widget.box(self.want_layout, { u, n }, 8))
+      wn:add(widget.box('horizontal', { n, wibox.widget.textbox(":"), t, sep.pad(1) }))
     end
-  else
-    return
+    w = self:make_progressbar_vert(wp, wn)
   end
-
   awesome.connect_signal("daemon::disks", function(fs_info)
     if fs_info ~= nil and fs_info[1] ~= nil then
       for i=1, #env.disks do
@@ -112,15 +136,7 @@ function disks_root:make_block()
       end
     end
   end)
-  if self.want_layout == 'horizontal' then
-    return w
-  else
-    return wibox.widget {
-      nil, w, nil,
-      expand = "none",
-      layout = wibox.layout.align.horizontal
-    }
-  end
+  return w
 end
 
 -- herit

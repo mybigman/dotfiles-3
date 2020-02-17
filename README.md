@@ -26,7 +26,7 @@ A list of dependendies can be found [here](https://raw.githubusercontent.com/szo
 - [support](#support)
 
 ## Installation for the last theme
-For the last [theme-morpho](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
+For the last [theme-worker](#screens), please, follow the procedure on the [wiki page](https://github.com/szorfein/dotfiles/wiki/theme-anonymous).  
 
 ## Stow
 If you are blocked with `stow` or need more explanations, see the [wiki page](https://github.com/szorfein/dotfiles/wiki/stow) before post an issue.  
@@ -67,11 +67,17 @@ It's all for the setup :)
 
 ### Awm
 
-**Last**:`theme-morpho` **term**: xst, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Iosevka Term Nerd Font](http://nerdfonts.com/#downloads).
+**Last**:`theme-worker` **term**: xst, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Iosevka Term Nerd Font](http://nerdfonts.com/#downloads).
 
-| clean | start screen | tiling | 
-| --- | --- | --- |
-| ![clean](https://github.com/szorfein/unix-portfolio/raw/master/morpho/clean.png "morpho clean")| ![start\_screen](https://github.com/szorfein/unix-portfolio/raw/master/morpho/start_screen.png "morpho start screen")| ![tiling](https://github.com/szorfein/unix-portfolio/raw/master/morpho/tiling.png "morpho tiling")|
+| monitor bar | app drawer |
+| --- | --- |
+| ![monitor-bar](https://github.com/szorfein/unix-portfolio/raw/master/worker/monitor_bar.png) | ![app-drawer](https://github.com/szorfein/unix-portfolio/raw/master/worker/app_drawer.png) |
+
+`theme-morpho` **term**: xst, **vim-color**: [darkest-space](https://github.com/szorfein/darkest-space), **font**: [Iosevka Term Nerd Font](http://nerdfonts.com/#downloads).
+
+| clean | start screen |
+| --- | --- |
+| ![clean](https://github.com/szorfein/unix-portfolio/raw/master/morpho/clean.png "morpho clean")| ![start\_screen](https://github.com/szorfein/unix-portfolio/raw/master/morpho/start_screen.png "morpho start screen")|
 
 `theme-miami` **term**: xst, **vim-color**: [fromthehell](https://github.com/szorfein/fromthehell.vim), **font**: [Space Mono Nerd Font](http://nerdfonts.com/#downloads).
 

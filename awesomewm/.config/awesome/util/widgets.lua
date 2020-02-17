@@ -310,20 +310,15 @@ function widgets.progressbar_layout(p, layout)
     }
   else
     w = wibox.widget {
-      nil,
       {
-        {
-          p,
-          forced_width = 6,
-          direction = 'east',
-          layout = wibox.container.rotate,
-        },
-        forced_width = dpi(16),
-        widget = wibox.container.constraint
+        p,
+        direction = 'east',
+        layout = wibox.container.rotate,
       },
-      nil,
-      expand = "none",
-      layout  = wibox.layout.align.horizontal
+      forced_width = dpi(16),
+      forced_height = dpi(55),
+      top = dpi(9),
+      widget = wibox.container.margin
     }
   end
   return w

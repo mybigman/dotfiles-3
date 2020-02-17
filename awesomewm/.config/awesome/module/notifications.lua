@@ -2,7 +2,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 
 -- timeout
-naughty.config.defaults.timeout = 8
+naughty.config.defaults.timeout = 10
 naughty.config.presets.low.timeout = 5
 naughty.config.presets.critical.timeout = 20
 

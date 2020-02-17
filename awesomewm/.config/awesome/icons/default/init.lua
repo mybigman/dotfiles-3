@@ -11,7 +11,8 @@ local icon_name = {
   "machine",
   "miami",
   "anonymous",
-  "morpho"
+  "morpho",
+  "worker"
 }
 
 for _,v in pairs(icon_name) do

@@ -30,7 +30,7 @@ local mybar = class()
 
 function mybar:init(s)
 
-  s.monitor_bar = wibox({ visible = false, ontop = true, type = "dock", screen = s })
+  s.monitor_bar = awful.wibar({ stretch = false, visible = false, type = "dock", screen = s })
   s.monitor_bar.bg = beautiful.grey
 
   -- add an exit button
@@ -45,22 +45,20 @@ function mybar:init(s)
 
   local wibar_pos = beautiful.wibar_position or "top"
   -- place the sidebar at the right position
-  if wibar_pos == "top" or wibar_pos == "bottom" then
-    s.monitor_bar.height = awful.screen.focused().geometry.height - beautiful.wibar_size
-    s.monitor_bar.x = 0 
-    s.monitor_bar.y = beautiful.wibar_size
-  elseif wibar_pos == "left" or wibar_pos == "right" then
-    s.monitor_bar.height = awful.screen.focused().geometry.height
+  if wibar_pos == "left" then
     s.monitor_bar.x = beautiful.wibar_size
+    s.monitor_bar.y = 0
+    s.monitor_bar.position = "left"
+  elseif wibar_pos == "right" then
+    s.monitor_bar.position = "right"
   end
 
-  s.monitor_bar.width = dpi(250)
-  --awful.placement.left(sidebar)
+  s.monitor_bar.height = awful.screen.focused().geometry.height
+  s.monitor_bar.width = dpi(230)
 
   local textclock = wibox.widget {
     format = '<span foreground="'..beautiful.fg_primary..'" font="22.5">%H:%M</span>',
     refresh = 60,
-    timezone = "Europe/Paris",
     widget = wibox.widget.textclock,
     forced_height = dpi(88),
     forced_width = dpi(90)

@@ -172,27 +172,49 @@ function taglist_root:update_icon(item, tag, index)
 end
 
 function taglist_root:template_icon() 
+  local function update_bg(w)
+    w:connect_signal("mouse::leave", function(c)
+      w.bg = beautiful.taglist_bg or beautiful.grey_dark
+    end)
+    w:connect_signal("mouse::enter", function(c)
+      w.bg = beautiful.taglist_bg_focus or beautiful.grey_light
+    end)
+  end
   local t = {
     {
-      { 
-        id = "img_tag",
-        widget = wibox.widget.imagebox,
+      nil,
+      {
+        nil,
+        {
+          {
+            id = "img_tag",
+            forced_height = 30,
+            forced_width = 30,
+            widget = wibox.widget.imagebox,
+          },
+          left = beautiful.taglist_spacing or 8,
+          right = beautiful.taglist_spacing or 8,
+          widget = wibox.container.margin
+        },
+        nil,
+        expand = "none",
+        layout = wibox.layout.align.vertical
       },
-      top = 6,
-      bottom = 6,
-      widget = wibox.container.margin,
+      nil,
+      expand = "none",
+      layout = wibox.layout.align.horizontal
     },
-    {
-      id = "just_for_space",
-      widget = wibox.widget.textbox
-    },
-    spacing = 15,
-    layout = wibox.layout.fixed.horizontal,
+    id = "img_tag_bg",
+    shape = beautiful.taglist_shape or helpers.rrect(10),
+    bg = beautiful.taglist_bg or beautiful.grey_dark,
+    widget = wibox.container.background,
     create_callback = function(item, tag, index, _)
       self:update_icon(item:get_children_by_id('img_tag')[1], tag, index)
+      update_bg(item:get_children_by_id('img_tag_bg')[1])
     end,
     update_callback = function(item, tag, index, _)
       self:update_icon(item:get_children_by_id('img_tag')[1], tag, index)
+      update_bg(item:get_children_by_id('img_tag_bg')[1])
     end
   }
   return t

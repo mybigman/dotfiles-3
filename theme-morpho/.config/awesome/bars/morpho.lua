@@ -10,7 +10,7 @@ local pad = separators.pad
 local change_theme = require("widgets.button_change_theme")
 local desktop_ctrl = require("widgets.desktop-control")
 local scrot = require("widgets.scrot")
-local layouts = require("widgets.layouts")
+local layouts = require("widgets.layouts")({})
 
 -- for the top
 

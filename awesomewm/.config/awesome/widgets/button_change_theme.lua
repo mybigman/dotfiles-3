@@ -31,7 +31,7 @@ local popup_connected = widget.imagebox(80, icons["connected"])
 local popup_miami = widget.imagebox(80, icons["miami"])
 local popup_machine = widget.imagebox(80, icons["machine"])
 local popup_morpho = widget.imagebox(80, icons["morpho"])
-local popup_beta = widget.imagebox(80, icons["tor_on"])
+local popup_worker = widget.imagebox(80, icons["worker"])
 
 local w_position -- the position of the popup depend of the wibar
 w_position = widget.check_popup_position(beautiful.wibar_position)
@@ -51,7 +51,7 @@ local w = awful.popup {
             popup_machine,
             popup_miami,
             popup_morpho,
-            popup_beta,
+            popup_worker,
             forced_num_rows = 2,
             forced_num_cols = 3,
             layout = wibox.layout.grid,
@@ -73,6 +73,11 @@ local w = awful.popup {
 
 -- attach popup to widget
 w:bind_to_widget(text)
+text:buttons(gtable.join(
+  awful.button({}, 3, function()
+    w.visible = false
+  end)
+))
 
 -- audio.sh arguments are: [music_details] [path of your music directory]
 local miami_change_script = "~/.config/awesome/widgets/change-theme.sh --change miami"
@@ -90,8 +95,8 @@ widget.add_left_click_action(popup_anonymous, anonymous_change_script, true, "mi
 local morpho_change_script = "~/.config/awesome/widgets/change-theme.sh --change morpho"
 widget.add_left_click_action(popup_morpho, morpho_change_script, true, "miniterm")
 
-local beta_change_script = "~/.config/awesome/widgets/change-theme.sh --change beta"
-widget.add_left_click_action(popup_beta, beta_change_script, true, "miniterm")
+local worker_change_script = "~/.config/awesome/widgets/change-theme.sh --change worker"
+widget.add_left_click_action(popup_worker, worker_change_script, true, "miniterm")
 
 rld:buttons(gtable.join(
   awful.button({ }, 1, function()

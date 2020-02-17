@@ -124,7 +124,7 @@ local theme_picture = wibox.widget {
   widget = theme_picture_container
 }
 
-local theme_name = widget.create_title(theme.name, beautiful.fg_primary, 17)
+local theme_name = widget.create_title(theme.name, beautiful.fg_grey, 17)
 local picture_widget = widget.box('vertical', { theme_picture, theme_name })
 
 -- quotes
@@ -212,14 +212,14 @@ local function update_history()
   if history == nil then return end
   for line in history:lines() do
     local text = line or ""
-    todos.ttexts[i].markup = helpers.colorize_text(text, beautiful.fg_primary)
+    todos.ttexts[i].markup = helpers.colorize_text(text, beautiful.fg_grey)
     i = i+1
   end
   history:close()
 
   if i < todo_max then -- clear the rest
     for o = i, todo_max do
-      todos.ttexts[o].markup = helpers.colorize_text("", beautiful.fg_primary)
+      todos.ttexts[o].markup = helpers.colorize_text("", beautiful.fg_grey)
     end
   end
 end

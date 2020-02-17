@@ -22,12 +22,13 @@ end
 
 -- {{{ Poweroff part
 local poweroff_command = function() 
-  awful.spawn.with_shell("poweroff")
+  --awful.spawn.with_shell("sudo systemctl poweroff")
+  awful.spawn("sudo systemctl poweroff")
   exit_screen_hide()
 end
 
-local poweroff_icon = widgets.create_text("⭘", "#7d4c73", font_icon)
-local poweroff_text = widgets.create_text("Poweroff", "#aaaaaa", font_text)
+local poweroff_icon = widgets.create_text("⭘", beautiful.alert_dark, font_icon)
+local poweroff_text = widgets.create_text("<b>P</b>oweroff", "#aaaaaa", font_text)
 local poweroff = widgets.box("vertical", { poweroff_icon, poweroff_text })
 poweroff:buttons(gears.table.join(
   awful.button({ }, 1, function() 
@@ -41,8 +42,8 @@ local exit_command = function()
   awesome.quit()
 end
 
-local exit_icon = widgets.create_text("ﴙ", "#6f5485", font_icon_2)
-local exit_text = widgets.create_text("Exit", "#aaaaaa", font_text)
+local exit_icon = widgets.create_text("ﴙ", beautiful.secondary_dark, font_icon_2)
+local exit_text = widgets.create_text("<b>E</b>xit", "#aaaaaa", font_text)
 local exit = widgets.box("vertical", { exit_icon, exit_text })
 exit:buttons(gears.table.join(
   awful.button({ }, 1, function() 
@@ -57,8 +58,8 @@ local lock_command = function()
   lock_screen_show()
 end
 
-local lock_icon = widgets.create_text("", "#42446e", font_icon)
-local lock_text = widgets.create_text("Lock", "#aaaaaa", font_text)
+local lock_icon = widgets.create_text("", beautiful.primary_dark, font_icon)
+local lock_text = widgets.create_text("<b>L</b>ock", "#aaaaaa", font_text)
 local lock = widgets.box("vertical", { lock_icon, lock_text })
 lock:buttons(gears.table.join(
   awful.button({ }, 1, function() 
@@ -113,12 +114,12 @@ exit_screen:buttons(gears.table.join(
 local function bg_hover(w)
   local wbg = wibox.container.background()
   wbg.shape = helpers.rrect(14)
-  wbg.bg = beautiful.grey
+  wbg.bg = beautiful.grey_dark
   wbg:connect_signal("mouse::leave", function(c)
-    wbg.bg = beautiful.grey
+    wbg.bg = beautiful.grey_dark
   end)
   wbg:connect_signal("mouse::enter", function(c)
-    wbg.bg = beautiful.grey_light
+    wbg.bg = beautiful.grey
   end)
   return wibox.widget {
     {

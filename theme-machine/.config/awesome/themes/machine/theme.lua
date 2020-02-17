@@ -37,14 +37,14 @@ theme.xcolor14    = xrdb.color14    or "#62CDCD"
 theme.xcolor15    = xrdb.color15    or "#E0E5E5"
 
 -- Regroup fonts
-theme.myfont = "SpaceMono Nerd Font Mono"
+theme.myfont = "SpaceMono Nerd Font"
 theme.font = "SpaceMono Nerd Font Mono Regular 8"
 theme.taglist_font = "SpaceMono Nerd Font Bold 10"
 theme.widget_icon_font = "SpaceMono Nerd Font Mono 13"
 theme.widget_text_font = "SpaceMono Nerd Font Regular 9"
 theme.widget_font = 'SpaceMono Nerd Font Mono 15'
 theme.widget_icon_font_button = "SpaceMono Nerd Font Mono 16"
-theme.widget_title_font = "SpaceMono Nerd Font Bold 10"
+theme.widget_title_font = theme.myfont.." Bold 10"
 
 theme.bg_normal     = theme.xbackground
 theme.bg_focus      = theme.xcolor0
@@ -266,7 +266,7 @@ theme.widget_wifi_str_bg = theme.xbackground .. "00"
 theme.widget_wifi_layout = 'horizontal' -- horizontal or vertical
 
 -- RAM
-theme.widget_ram_icon = ""
+--theme.widget_ram_icon = ""
 theme.widget_ram_fg = theme.fg_grey
 theme.widget_ram_bg = theme.xbackground .. "ff"
 theme.widget_ram_layout = 'horizontal' -- horizontal or vertical

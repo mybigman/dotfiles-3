@@ -43,9 +43,6 @@ awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   require("module.wallpaper")(s)
 
-  -- Monitor bar
-  require("layouts.monitor_bar")(s)
-
   -- add padding on all screens
   s.padding = beautiful.general_padding
 
@@ -54,6 +51,9 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Create the wibox
   require("bars."..theme.name)(s)
+
+  -- Monitor bar
+  require("layouts.monitor_bar")(s)
 end)
 -- }}}
 

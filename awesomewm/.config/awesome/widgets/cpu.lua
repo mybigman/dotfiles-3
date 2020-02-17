@@ -15,10 +15,12 @@ function cpu_root:init(args)
   self.mode = args.mode or 'text' -- possible values: text, arcchart, progressbar, dotsbar
   self.want_layout = args.layout or beautiful.widget_cpu_layout or 'horizontal' -- possible values: horizontal , vertical
   self.cpus = args.cpus or 2 -- number of cpu / core
+  self.title = args.title or beautiful.widget_cpu_title or { "CPU", beautiful.fg_grey }
+  self.title_size = args.title_size or 10
   -- base widgets
   self.wicon = widget.base_icon()
   self.wtext = widget.base_text()
-  self.wtitle = widget.create_title("CPU ", beautiful.fg_grey)
+  self.wtitle = widget.create_title(self.title[1], self.title[2], self.title_size)
   self.wbars = {} -- store all bars (one by cpu/core)
   self.wfreqs = {} -- store all freqs (one by cpu/core)
   self.widget = self:make_widget()
@@ -103,26 +105,27 @@ end
 
 function cpu_root:dotsbar_vert(freq)
   local t = wibox.widget.textbox(self.cpus.." Cores")
-  local y, w, z
-  y = wibox.widget {
-    nil,
-    widget.box(self.want_layout, { t, freq }, 2),
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.vertical
-  }
-  w = wibox.widget{ layout = wibox.layout.fixed.horizontal, spacing = 4 }
+  local wb = wibox.widget { layout = wibox.layout.fixed.horizontal, spacing = 4 }
   for i = 1, self.cpus do
-    --fs[i] = widget.base_text()
-    w:add(widget.box_with_bg(self.want_layout, self.wbars[i], -10, beautiful.grey))
+    wb:add(widget.box_with_bg(self.want_layout, self.wbars[i], -10, beautiful.grey))
   end
-  return wibox.widget {
-    nil,
-    widget.box('horizontal', { y, w }, 16),
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.horizontal
+  local w = wibox.widget {
+    {
+      {
+        nil,
+        widget.box('vertical', { self.wtitle, freq }),
+        expand = "none",
+        layout = wibox.layout.align.vertical
+      },
+      wb,
+      spacing = 15,
+      layout = wibox.layout.fixed.horizontal
+    },
+    top = 8,
+    bottom = 8,
+    widget = wibox.container.margin
   }
+  return w
 end
 
 function cpu_root:dotsbar_horiz(freq)
@@ -151,7 +154,7 @@ end
 
 function cpu_root:make_dotsbar()
   local bar = self.want_layout == 'vertical'
-    and { size = 4, divisor = 20 }
+    and { size = 5, divisor = 18 } -- 100 / 18 = 5
     or { size = 8, divisor = 12 }
 
   for c = 1, self.cpus do
@@ -171,7 +174,7 @@ function cpu_root:make_dotsbar()
     local symbol = self.want_layout == "horizontal" and "" or ""
     freq.markup = helpers.colorize_text(cpus[1].."%", beautiful.fg_grey)
     for c = 1, self.cpus do
-      local val = cpus[c+1] / bar.divisor
+      local val = math.floor(cpus[c+1]/bar.divisor)
       if self.want_layout == "horizontal" then
         self.wfreqs[c].markup = helpers.colorize_text(cpus[c+1].."%", beautiful.fg_grey_light)
       end
