@@ -1,19 +1,19 @@
 set font                        "Iosevka Term 9"
 
-set default-fg                  "#eeeeee" # grey_fg
-set default-bg                  "#111111" # grey
+set default-fg                  "#AABFAA" # grey_fg
+set default-bg                  "#121013" # grey
 
-set statusbar-fg                "#aeaeae" # grey_fg
-set statusbar-bg                "#060606" # grey_dark
+set statusbar-fg                "#AABFAA" # grey_fg
+set statusbar-bg                "#0E0C0F" # grey_dark
 
-set inputbar-bg                 "#8debd2" # primary
-set inputbar-fg                 "#000000" # primary_fg
+set inputbar-bg                 "#7ACCA8" # primary
+set inputbar-fg                 "#1A181C" # primary_fg
 
-set notification-error-bg       "#73aac1" # error
-set notification-error-fg       "#444444" # error_fg
+set notification-error-bg       "#AF2272" # error
+set notification-error-fg       "#121013" # error_fg
 
-set notification-warning-bg     "#94c4d8" # error_light
-set notification-warning-fg     "#444444" # error_fg
+set notification-warning-bg     "#B03388" # error_light
+set notification-warning-fg     "#121013" # error_fg
 
 set highlight-color             "#2a4f81" #0A
 set highlight-active-color      "#1f1b3f" #0D
@@ -24,11 +24,11 @@ set completion-highlight-bg     "#8b09a8" #0C
 set completion-bg               "#e0eaf9" #02
 set completion-fg               "#1f1b3f" #0C
 
-set notification-bg             "#5896af" # error_dark
-set notification-fg             "#444444" # error_fg
+set notification-bg             "#A91164" # error_dark
+set notification-fg             "#121013" # error_fg
 
-set recolor-lightcolor          "#111111" # grey
-set recolor-darkcolor           "#eeeeee" # grey_fg
+set recolor-lightcolor          "#121013" # grey
+set recolor-darkcolor           "#AABFAA" # grey_fg
 set recolor                     "true"
 
 # setting recolor-keep true will keep any color your pdf has.

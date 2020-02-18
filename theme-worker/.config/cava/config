@@ -20,8 +20,8 @@ style = stereo
 [color]
 ; gradient = 0 for xst, 3 for other terms
 gradient = 0
-gradient_color_1 = '#8debd2' #base
-gradient_color_2 = '#e3faf5' #top
+gradient_color_1 = '#7ACCA8' #base
+gradient_color_2 = '#84E8CD' #top
 
 [smoothing]
 

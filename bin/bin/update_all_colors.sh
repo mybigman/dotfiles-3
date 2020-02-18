@@ -2,7 +2,7 @@
 
 # script to automatize boring things like edit all colors in all files
 # who does not look the Xresource.
-# launch when color from the Xresource change
+# manually launched when colors from the Xresource change
 
 set -ue
 
